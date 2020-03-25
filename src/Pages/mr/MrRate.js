@@ -1,7 +1,9 @@
 import React from "react";
 
+import { MrWrapper } from "../../Components/mr";
+
 function MrRate() {
-  return <h2>Rate</h2>;
+  return <MrWrapper>Rate</MrWrapper>;
 }
 
 export default MrRate;
