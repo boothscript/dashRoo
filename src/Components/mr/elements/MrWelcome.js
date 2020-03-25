@@ -5,4 +5,5 @@ export default styled.h1`
   font-weight: 800;
   color: ${props => props.theme.white90 && props.theme.white90};
   grid-column: 1/-1;
+  align-self: center;
 `;

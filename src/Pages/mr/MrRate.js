@@ -1,9 +1,14 @@
 import React from "react";
 
-import { MrWrapper } from "../../Components/mr";
+import { MrWrapper, MrRatePanel } from "../../Components/mr";
 
 function MrRate() {
-  return <MrWrapper>Rate</MrWrapper>;
+  return (
+    <MrWrapper>
+      <MrRatePanel text={"Rate Yesterday"} />
+      <MrRatePanel text={"Rate Sleep"} />
+    </MrWrapper>
+  );
 }
 
 export default MrRate;
