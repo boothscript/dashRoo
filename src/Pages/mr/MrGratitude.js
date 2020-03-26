@@ -11,9 +11,21 @@ function MrGratitude() {
       nextPage="/mr/goal"
       buttonText={"next"}
     >
-      <MrTextAreaPanel inputId={0} confirmFn={confirmInput} />
-      <MrTextAreaPanel inputId={1} confirmFn={confirmInput} />
-      <MrTextAreaPanel inputId={2} confirmFn={confirmInput} />
+      <MrTextAreaPanel
+        inputId={0}
+        confirmFn={confirmInput}
+        placeholder={"Reason to be greatful #1"}
+      />
+      <MrTextAreaPanel
+        inputId={1}
+        confirmFn={confirmInput}
+        placeholder={"Reason to be greatful #2"}
+      />
+      <MrTextAreaPanel
+        inputId={2}
+        confirmFn={confirmInput}
+        placeholder={"Reason to be greatful #3"}
+      />
     </MrWrapper>
   );
 }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Button = styled(Link)`
   grid-column: 3;
   justify-self: right;
-  align-self: center;
+  align-self: start;
   background: ${props => props.theme.panel && props.theme.panel};
   border: 1px solid;
   border-color: ${props =>

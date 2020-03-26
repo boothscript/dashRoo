@@ -16,7 +16,7 @@ const MrTextInput = styled.input`
   outline: none;
 `;
 
-function MrTextInputPanel({ inputId, confirmFn }) {
+function MrTextInputPanel({ inputId, confirmFn, placeholder }) {
   const handleChange = e => {
     if (e.target.value) {
       console.log(e.target.value);
@@ -26,7 +26,7 @@ function MrTextInputPanel({ inputId, confirmFn }) {
 
   return (
     <MrPanel strech skinny>
-      <MrTextInput onChange={e => handleChange(e)} />
+      <MrTextInput onChange={e => handleChange(e)} placeholder={placeholder} />
     </MrPanel>
   );
 }

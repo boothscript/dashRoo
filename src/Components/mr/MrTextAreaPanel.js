@@ -17,7 +17,7 @@ const MrTextArea = styled.textarea`
   outline: none;
 `;
 
-function MrTextAreaPanel({ inputId, confirmFn }) {
+function MrTextAreaPanel({ inputId, confirmFn, placeholder }) {
   const handleChange = e => {
     if (e.target.value) {
       console.log(e.target.value);
@@ -27,7 +27,7 @@ function MrTextAreaPanel({ inputId, confirmFn }) {
 
   return (
     <MrPanel>
-      <MrTextArea onChange={e => handleChange(e)} />
+      <MrTextArea onChange={e => handleChange(e)} placeholder={placeholder} />
     </MrPanel>
   );
 }

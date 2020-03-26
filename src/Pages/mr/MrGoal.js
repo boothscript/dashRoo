@@ -11,7 +11,11 @@ function MrGoal() {
       nextPage="/dash"
       buttonText={"finish"}
     >
-      <MrTextInputPanel inputId={0} confirmFn={confirmInput} />
+      <MrTextInputPanel
+        inputId={0}
+        confirmFn={confirmInput}
+        placeholder={"What's your main goal for today?"}
+      />
     </MrWrapper>
   );
 }
