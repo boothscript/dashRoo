@@ -1,9 +1,15 @@
 import React from "react";
 
-import { MrWrapper, MrTextEntryPannel } from "../../Components/mr";
+import { MrWrapper, MrTextEntryPanel } from "../../Components/mr";
 
 function MrGratitude() {
-  return <h2>Gratitude</h2>;
+  return (
+    <MrWrapper>
+      <MrTextEntryPanel inputId={1} />
+      <MrTextEntryPanel inputId={0} />
+      <MrTextEntryPanel inputId={2} />
+    </MrWrapper>
+  );
 }
 
 export default MrGratitude;

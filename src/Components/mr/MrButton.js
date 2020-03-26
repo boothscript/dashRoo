@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 const Button = styled(Link)`
   grid-column: 3;
   justify-self: right;
@@ -18,9 +19,16 @@ const Button = styled(Link)`
   padding: 0.25em 1em;
   text-decoration: none;
   cursor: ${props => (props.disabled ? "default" : "pointer")};
+  pointer-events: ${props => (props.disabled ? "none" : "default")}
+  &:focus,
+  &:hover {
+    background: ${props => props.theme.white90 && props.theme.white90};
+    color: ${props => props.theme.panel && props.theme.panel};
+  }
 `;
 
 function MrButton({ text, disabled, url }) {
+  // to disable clicks when disabled
   function handleClick(e) {
     if (disabled) {
       e.preventDefault();

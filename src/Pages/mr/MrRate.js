@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { MrWrapper, MrRatePanel } from "../../Components/mr";
+import useConfirmInputs from "../../Hooks/useConfirmInputs";
 
 function MrRate() {
-  const [inputStates, setInputStates] = useState({ 0: false, 1: false });
-
-  function confirmInput({ inputId }) {
-    setInputStates(prevState => ({ ...prevState, [inputId]: true }));
-  }
+  const { inputStates, confirmInput, checkInputs } = useConfirmInputs(2);
   console.log(inputStates);
   return (
     <MrWrapper
-      fieldsCompleted={Object.values(inputStates).every(i => i)}
-      nextPage={"MrGratitude"}
+      fieldsCompleted={checkInputs(inputStates)}
+      nextPage={"/mr/gratitude"}
     >
       <MrRatePanel
         inputId={0}
