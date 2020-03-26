@@ -19,7 +19,7 @@ const Button = styled(Link)`
   padding: 0.25em 1em;
   text-decoration: none;
   cursor: ${props => (props.disabled ? "default" : "pointer")};
-  pointer-events: ${props => (props.disabled ? "none" : "default")}
+  pointer-events: ${props => (props.disabled ? "none" : "default")};
   &:focus,
   &:hover {
     background: ${props => props.theme.white90 && props.theme.white90};

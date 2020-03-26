@@ -18,7 +18,7 @@ function MrRatePanel({ text, inputId, confirmFn }) {
   useEffect(() => {}, []);
 
   return (
-    <MrPanel>
+    <MrPanel strech>
       <MrRateText>{text}</MrRateText>
       <MrRateStars>
         <MrRateStar

@@ -5,7 +5,7 @@ import useConfirmInputs from "../../Hooks/useConfirmInputs";
 
 function MrRate() {
   const { inputStates, confirmInput, checkInputs } = useConfirmInputs(2);
-  console.log(inputStates);
+
   return (
     <MrWrapper
       fieldsCompleted={checkInputs(inputStates)}

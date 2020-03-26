@@ -11,6 +11,7 @@ function useConfirmInputs(numberOfInputs) {
   // confirm input fn
   function confirmInput({ inputId }) {
     setInputStates(prevState => ({ ...prevState, [inputId]: true }));
+    console.log(inputStates);
   }
   // all inputs true check
   const checkInputs = inputStates => {
