@@ -11,13 +11,16 @@ const MrPanel = styled.div`
 
 const MrRateText = styled.h2`
   margin: 0;
+  margin-left: 2em;
   font-family: ${props => props.theme.font && props.theme.font};
   font-weight: 300;
   color: ${props => props.theme.white90 && props.theme.white90};
   align-self: center;
+  flex-basis: 40%;
 `;
 
 const MrRateStars = styled.div`
+  flex-basis: 60%;
   display: flex;
   justify-content: center;
 `;
