@@ -1,50 +1,53 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 
-const MrPanel = styled.div`
-  background: ${props => props.theme.panel && props.theme.panel};
-  border-radius: 16px;
-  grid-column: 1/-1;
-  display: flex;
-  justify-content: space-around;
-`;
-
-const MrRateText = styled.h2`
-  margin: 0;
-  margin-left: 2em;
-  font-family: ${props => props.theme.font && props.theme.font};
-  font-weight: 300;
-  color: ${props => props.theme.white90 && props.theme.white90};
-  align-self: center;
-  flex-basis: 40%;
-`;
-
-const MrRateStars = styled.div`
-  flex-basis: 60%;
-  display: flex;
-  justify-content: center;
-`;
-
-const MrRateStar = styled.div`
-  background: url("/img/star-line.svg");
-  width: 48px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-`;
-
-console.log("test");
+import { MrPanel, MrRateText, MrRateStar, MrRateStars } from "./elements";
 
 function MrRatePanel({ text }) {
+  const [starState, setStarState] = useState({ selected: null, hovered: null });
+
+  function handleClick({ value }) {
+    setStarState(prevState => ({ ...prevState, selected: value }));
+  }
+
+  function handleHover({ value }) {
+    setStarState(prevState => ({ ...prevState, hovered: value }));
+    console.log(starState);
+  }
+
   return (
     <MrPanel>
       <MrRateText>{text}</MrRateText>
       <MrRateStars>
-        <MrRateStar></MrRateStar>
-        <MrRateStar></MrRateStar>
-        <MrRateStar></MrRateStar>
-        <MrRateStar></MrRateStar>
-        <MrRateStar></MrRateStar>
+        <MrRateStar
+          value={1}
+          starState={starState}
+          handleClick={handleClick}
+          handleHover={handleHover}
+        ></MrRateStar>
+        <MrRateStar
+          value={2}
+          starState={starState}
+          handleClick={handleClick}
+          handleHover={handleHover}
+        ></MrRateStar>
+        <MrRateStar
+          value={3}
+          starState={starState}
+          handleClick={handleClick}
+          handleHover={handleHover}
+        ></MrRateStar>
+        <MrRateStar
+          value={4}
+          starState={starState}
+          handleClick={handleClick}
+          handleHover={handleHover}
+        ></MrRateStar>
+        <MrRateStar
+          value={5}
+          starState={starState}
+          handleClick={handleClick}
+          handleHover={handleHover}
+        ></MrRateStar>
       </MrRateStars>
     </MrPanel>
   );
