@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { MrPanel, MrRateText, MrRateStar, MrRateStars } from "./elements";
 
-function MrRatePanel({ text }) {
+function MrRatePanel({ text, inputId, confirmFn }) {
   const [starState, setStarState] = useState({ selected: null, hovered: null });
 
   function handleClick({ value }) {
     setStarState(prevState => ({ ...prevState, selected: value }));
+    confirmFn({ inputId });
   }
 
   function handleHover({ value }) {
     setStarState(prevState => ({ ...prevState, hovered: value }));
-    console.log(starState);
   }
+
+  // tell parent that rating has been made
+  useEffect(() => {}, []);
 
   return (
     <MrPanel>
