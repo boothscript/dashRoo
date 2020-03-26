@@ -4,11 +4,10 @@ import styled from "styled-components";
 import { MrPanel } from "./elements";
 import theme from "../../Themes/colors";
 
-const MrGratitudeInput = styled.textarea`
+const MrTextInput = styled.input`
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.5;
-  height: 100%;
   width: 100%;
   background: inherit;
   border: none;
@@ -17,7 +16,7 @@ const MrGratitudeInput = styled.textarea`
   outline: none;
 `;
 
-function MrTextEntryPannel({ inputId, confirmFn }) {
+function MrTextInputPanel({ inputId, confirmFn }) {
   const handleChange = e => {
     if (e.target.value) {
       console.log(e.target.value);
@@ -26,10 +25,10 @@ function MrTextEntryPannel({ inputId, confirmFn }) {
   };
 
   return (
-    <MrPanel>
-      <MrGratitudeInput onChange={e => handleChange(e)} />
+    <MrPanel strech skinny>
+      <MrTextInput onChange={e => handleChange(e)} />
     </MrPanel>
   );
 }
 
-export default MrTextEntryPannel;
+export default MrTextInputPanel;

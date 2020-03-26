@@ -3,7 +3,7 @@ import React from "react";
 import { MrGrid, MrMain, MrWelcome } from "./elements";
 import MrButton from "./MrButton";
 
-function MrWrapper({ children, fieldsCompleted, nextPage }) {
+function MrWrapper({ children, fieldsCompleted, nextPage, buttonText }) {
   console.log({ children });
 
   return (
@@ -13,7 +13,7 @@ function MrWrapper({ children, fieldsCompleted, nextPage }) {
         {children}
         <MrButton
           disabled={!fieldsCompleted}
-          text="next"
+          text={buttonText}
           url={nextPage}
         ></MrButton>
       </MrGrid>

@@ -10,6 +10,7 @@ function MrRate() {
     <MrWrapper
       fieldsCompleted={checkInputs(inputStates)}
       nextPage={"/mr/gratitude"}
+      buttonText={"next"}
     >
       <MrRatePanel
         inputId={0}
