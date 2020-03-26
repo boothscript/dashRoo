@@ -10,19 +10,16 @@ function MrRate() {
   }
   console.log(inputStates);
   return (
-    <MrWrapper fieldsCompleted={Object.values(inputStates).every(i => i)}>
+    <MrWrapper
+      fieldsCompleted={Object.values(inputStates).every(i => i)}
+      nextPage={"MrGratitude"}
+    >
       <MrRatePanel
         inputId={0}
         confirmFn={confirmInput}
         text={"Rate Yesterday"}
-        selected={false}
       />
-      <MrRatePanel
-        inputId={1}
-        confirmFn={confirmInput}
-        text={"Rate Sleep"}
-        selected={false}
-      />
+      <MrRatePanel inputId={1} confirmFn={confirmInput} text={"Rate Sleep"} />
     </MrWrapper>
   );
 }
