@@ -6,13 +6,13 @@ import useConfirmInputs from "../../Hooks/useConfirmInputs";
 
 function MrRate() {
   const { inputStates, confirmInput, checkInputs } = useConfirmInputs(2);
-
+  console.log(inputStates);
   return (
     <MrContainer>
       <MrHeader />
-      <MrMain main>
-        <MrRater text="Rate Yesterday" input={0} confirmFn={confirmInput} />
-        <MrRater text="Rate Sleep" input={1} confirmFn={confirmInput} />
+      <MrMain panel>
+        <MrRater text="Rate Yesterday" inputId={0} confirmFn={confirmInput} />
+        <MrRater text="Rate Sleep" inputId={1} confirmFn={confirmInput} />
       </MrMain>
       <MrFooter
         fieldsCompleted={checkInputs(inputStates)}

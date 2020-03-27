@@ -1,32 +1,42 @@
 import React from "react";
 
-import { MrWrapper, MrTextAreaPanel } from "../../Components/mr";
+import {
+  MrContainer,
+  MrHeader,
+  MrTextArea,
+  MrFooter
+} from "../../Components/mr";
+import { MrMain } from "../../Components/mr/elements";
 import useConfirmInputs from "../../Hooks/useConfirmInputs";
 
 function MrGratitude() {
   const { inputStates, confirmInput, checkInputs } = useConfirmInputs(3);
   return (
-    <MrWrapper
-      fieldsCompleted={checkInputs(inputStates)}
-      nextPage="/mr/goal"
-      buttonText={"next"}
-    >
-      <MrTextAreaPanel
-        inputId={0}
-        confirmFn={confirmInput}
-        placeholder={"Reason to be greatful #1"}
+    <MrContainer>
+      <MrHeader />
+      <MrMain>
+        <MrTextArea
+          inputId={0}
+          confirmFn={confirmInput}
+          placeholder={"Reason to be greatful #1"}
+        />
+        <MrTextArea
+          inputId={1}
+          confirmFn={confirmInput}
+          placeholder={"Reason to be greatful #2"}
+        />
+        <MrTextArea
+          inputId={2}
+          confirmFn={confirmInput}
+          placeholder={"Reason to be greatful #3"}
+        />
+      </MrMain>
+      <MrFooter
+        fieldsCompleted={checkInputs(inputStates)}
+        nextPage={"/mr/goal"}
+        buttonText={"next"}
       />
-      <MrTextAreaPanel
-        inputId={1}
-        confirmFn={confirmInput}
-        placeholder={"Reason to be greatful #2"}
-      />
-      <MrTextAreaPanel
-        inputId={2}
-        confirmFn={confirmInput}
-        placeholder={"Reason to be greatful #3"}
-      />
-    </MrWrapper>
+    </MrContainer>
   );
 }
 

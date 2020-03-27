@@ -4,20 +4,21 @@ import styled from "styled-components";
 import { MrPanel } from "./elements";
 import theme from "../../Themes/colors";
 
-const MrTextArea = styled.textarea`
+const TextArea = styled.textarea`
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.5;
-  height: 100%;
-  width: 100%;
-  background: inherit;
+
+  background: ${props => props.theme.panel && props.theme.panel};
   border: none;
+  border-radius: 16px;
   color: ${props => props.theme.white90 && props.theme.white90};
   resize: none;
   outline: none;
+  padding: 2em;
 `;
 
-function MrTextAreaPanel({ inputId, confirmFn, placeholder }) {
+function MrTextArea({ inputId, confirmFn, placeholder }) {
   const handleChange = e => {
     if (e.target.value) {
       console.log(e.target.value);
@@ -25,11 +26,7 @@ function MrTextAreaPanel({ inputId, confirmFn, placeholder }) {
     }
   };
 
-  return (
-    <MrPanel>
-      <MrTextArea onChange={e => handleChange(e)} placeholder={placeholder} />
-    </MrPanel>
-  );
+  return <TextArea onChange={e => handleChange(e)} placeholder={placeholder} />;
 }
 
-export default MrTextAreaPanel;
+export default MrTextArea;
