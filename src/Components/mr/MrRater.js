@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
-import { MrPanel, MrRateText, MrRateStar, MrRateStars } from "./elements";
+import { MrRateText, MrRateStar, MrRateStars } from "./elements";
 
-function MrRatePanel({ text, inputId, confirmFn }) {
+const Div = styled.div`
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-around;
+`;
+
+function MrRater({ text, inputId, confirmFn }) {
   const [starState, setStarState] = useState({ selected: null, hovered: null });
 
   function handleClick({ value }) {
@@ -18,7 +25,7 @@ function MrRatePanel({ text, inputId, confirmFn }) {
   useEffect(() => {}, []);
 
   return (
-    <MrPanel strech>
+    <Div rater>
       <MrRateText>{text}</MrRateText>
       <MrRateStars>
         <MrRateStar
@@ -52,8 +59,8 @@ function MrRatePanel({ text, inputId, confirmFn }) {
           handleHover={handleHover}
         ></MrRateStar>
       </MrRateStars>
-    </MrPanel>
+    </Div>
   );
 }
 
-export default MrRatePanel;
+export default MrRater;

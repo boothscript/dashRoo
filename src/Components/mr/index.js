@@ -1,15 +1,21 @@
 import MrButton from "./MrButton";
 import MrProgressIndicator from "./MrProgressIndicator";
-import MrRatePanel from "./MrRatePanel";
+import MrRater from "./MrRater";
 import MrTextAreaPanel from "./MrTextAreaPanel";
 import MrTextInputPanel from "./MrTextInputPanel";
 import MrWrapper from "./MrWrapper";
+import MrContainer from "./MrContainer";
+import MrHeader from "./MrHeader";
+import MrFooter from "./MrFooter";
 
 export {
   MrButton,
   MrProgressIndicator,
-  MrRatePanel,
+  MrRater,
   MrTextAreaPanel,
   MrTextInputPanel,
-  MrWrapper
+  MrWrapper,
+  MrContainer,
+  MrFooter,
+  MrHeader
 };

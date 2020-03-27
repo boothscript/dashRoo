@@ -1,24 +1,25 @@
 import React from "react";
 
-import { MrWrapper, MrRatePanel } from "../../Components/mr";
+import { MrHeader, MrContainer, MrRater, MrFooter } from "../../Components/mr";
+import { MrMain } from "../../Components/mr/elements";
 import useConfirmInputs from "../../Hooks/useConfirmInputs";
 
 function MrRate() {
   const { inputStates, confirmInput, checkInputs } = useConfirmInputs(2);
 
   return (
-    <MrWrapper
-      fieldsCompleted={checkInputs(inputStates)}
-      nextPage={"/mr/gratitude"}
-      buttonText={"next"}
-    >
-      <MrRatePanel
-        inputId={0}
-        confirmFn={confirmInput}
-        text={"Rate Yesterday"}
+    <MrContainer>
+      <MrHeader />
+      <MrMain main>
+        <MrRater text="Rate Yesterday" input={0} confirmFn={confirmInput} />
+        <MrRater text="Rate Sleep" input={1} confirmFn={confirmInput} />
+      </MrMain>
+      <MrFooter
+        fieldsCompleted={checkInputs(inputStates)}
+        nextPage={"/mr/gratitude"}
+        buttonText={"next"}
       />
-      <MrRatePanel inputId={1} confirmFn={confirmInput} text={"Rate Sleep"} />
-    </MrWrapper>
+    </MrContainer>
   );
 }
 

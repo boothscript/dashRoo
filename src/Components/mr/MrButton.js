@@ -3,9 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Button = styled(Link)`
-  grid-column: 3;
-  justify-self: right;
-  align-self: start;
+  align-self: center;
+  margin-left: auto;
   background: ${props => props.theme.panel && props.theme.panel};
   border: 1px solid;
   border-color: ${props =>

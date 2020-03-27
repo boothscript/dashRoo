@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-export default styled.main`
-  background: ${props => props.theme.darkest && props.theme.darkest};
-  height: 100vh;
-  width: 100%;
-  display: grid;
-  grid-template-columns:
-    minmax(1em, 1fr) minmax(200px, 900px)
-    minmax(1em, 1fr);
+export default styled.div`
+  background: ${props => props.theme.panel && props.theme.panel};
+  border-radius: 16px;
+  grid-column: ${props => (props.strech ? "1 / -1" : "span 1")};
+  display: grid !important;
+  grid-template-columns: repeat() (3, 1fr);
+  grid-gap: 15px;
 `;
