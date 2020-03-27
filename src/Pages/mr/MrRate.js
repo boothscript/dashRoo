@@ -1,7 +1,12 @@
 import React from "react";
 
-import { MrHeader, MrContainer, MrRater, MrFooter } from "../../Components/mr";
-import { MrMain } from "../../Components/mr/elements";
+import {
+  MrHeader,
+  MrContainer,
+  MrRater,
+  MrFooter,
+  MrMain
+} from "../../Components/mr";
 import useConfirmInputs from "../../Hooks/useConfirmInputs";
 
 function MrRate() {

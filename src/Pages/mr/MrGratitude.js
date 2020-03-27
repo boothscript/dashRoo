@@ -4,9 +4,10 @@ import {
   MrContainer,
   MrHeader,
   MrTextArea,
-  MrFooter
+  MrFooter,
+  MrMain
 } from "../../Components/mr";
-import { MrMain } from "../../Components/mr/elements";
+
 import useConfirmInputs from "../../Hooks/useConfirmInputs";
 
 function MrGratitude() {
