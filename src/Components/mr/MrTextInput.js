@@ -1,22 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
-import { MrPanel } from "./elements";
 import theme from "../../Themes/colors";
 
-const MrTextInput = styled.input`
+const TextInput = styled.input`
+  grid-column: 1/-1;
+  align-self: center;
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.5;
-  width: 100%;
   background: inherit;
   border: none;
+  border-radius: 16px;
+  background: ${props => props.theme.panel && props.theme.panel};
   color: ${props => props.theme.white90 && props.theme.white90};
   resize: none;
   outline: none;
+  padding: 1.25em;
 `;
 
-function MrTextInputPanel({ inputId, confirmFn, placeholder }) {
+function MrTextInput({ inputId, confirmFn, placeholder }) {
   const handleChange = e => {
     if (e.target.value) {
       console.log(e.target.value);
@@ -25,10 +28,8 @@ function MrTextInputPanel({ inputId, confirmFn, placeholder }) {
   };
 
   return (
-    <MrPanel strech skinny>
-      <MrTextInput onChange={e => handleChange(e)} placeholder={placeholder} />
-    </MrPanel>
+    <TextInput onChange={e => handleChange(e)} placeholder={placeholder} />
   );
 }
 
-export default MrTextInputPanel;
+export default MrTextInput;

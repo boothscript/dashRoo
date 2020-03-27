@@ -2,7 +2,7 @@ import MrButton from "./MrButton";
 import MrProgressIndicator from "./MrProgressIndicator";
 import MrRater from "./MrRater";
 import MrTextArea from "./MrTextArea";
-import MrTextInputPanel from "./MrTextInputPanel";
+import MrTextInput from "./MrTextInput";
 import MrWrapper from "./MrWrapper";
 import MrContainer from "./MrContainer";
 import MrHeader from "./MrHeader";
@@ -13,7 +13,7 @@ export {
   MrProgressIndicator,
   MrRater,
   MrTextArea,
-  MrTextInputPanel,
+  MrTextInput,
   MrWrapper,
   MrContainer,
   MrFooter,
