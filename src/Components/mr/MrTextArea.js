@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { MrPanel } from "./elements";
-import theme from "../../Themes/colors";
-
 const TextArea = styled.textarea`
   font-size: 1.5rem;
   font-weight: 300;

@@ -1,11 +1,11 @@
 import React from "react";
 
 import {
+  MrMain,
   MrHeader,
   MrContainer,
   MrRater,
-  MrFooter,
-  MrMain
+  MrFooter
 } from "../../Components/mr";
 import useConfirmInputs from "../../Hooks/useConfirmInputs";
 

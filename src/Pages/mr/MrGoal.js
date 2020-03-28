@@ -24,7 +24,7 @@ function MrGoal() {
       </MrMain>
       <MrFooter
         fieldsCompleted={checkInputs(inputStates)}
-        nextpage={"/dash"}
+        nextPage={"/dash"}
         buttonText={"finish"}
       />
     </MrContainer>

@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import theme from "../../Themes/colors";
-
 const TextInput = styled.input`
   grid-column: 1/-1;
   align-self: center;
