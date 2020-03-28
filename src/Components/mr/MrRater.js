@@ -7,6 +7,12 @@ const Div = styled.div`
   grid-column: 1/-1;
   display: flex;
   justify-content: space-around;
+  overflow: auto;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 0;
+  }
 `;
 
 function MrRater({ text, inputId, confirmFn }) {

@@ -8,4 +8,7 @@ export default styled.h2`
   color: ${props => props.theme.white90 && props.theme.white90};
   align-self: center;
   flex-basis: 40%;
+  @media (max-width: 500px) {
+    margin: 0 0 0.5em 0;
+  }
 `;
