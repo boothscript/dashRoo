@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   MrMain,
@@ -7,20 +7,30 @@ import {
   MrRater,
   MrFooter
 } from "../../Components/mr";
-import useConfirmInputs from "../../Hooks/useConfirmInputs";
+
+import { MrContext } from "../../Context/MorningRoutine";
 
 function MrRate() {
-  const { inputStates, confirmInput, checkInputs } = useConfirmInputs(2);
-  console.log(inputStates);
+  const { ratings, checkInputs, updateRatings } = useContext(MrContext);
   return (
     <MrContainer>
       <MrHeader />
       <MrMain panel>
-        <MrRater text="Rate Yesterday" inputId={0} confirmFn={confirmInput} />
-        <MrRater text="Rate Sleep" inputId={1} confirmFn={confirmInput} />
+        <MrRater
+          text="Rate Yesterday"
+          inputKey={"day"}
+          dataStore={ratings}
+          updateMethod={updateRatings}
+        />
+        <MrRater
+          text="Rate Sleep"
+          inputKey={"sleep"}
+          dataStore={ratings}
+          updateMethod={updateRatings}
+        />
       </MrMain>
       <MrFooter
-        fieldsCompleted={checkInputs(inputStates)}
+        fieldsCompleted={checkInputs(ratings)}
         nextPage={"/mr/gratitude"}
         buttonText={"next"}
       />

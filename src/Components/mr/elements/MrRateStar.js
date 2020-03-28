@@ -14,12 +14,18 @@ const Star = styled.div`
   background-size: contain;
 `;
 
-function MrRateStar({ value, handleClick, handleHover, starState }) {
+function MrRateStar({
+  starNumber,
+  handleClick,
+  handleHover,
+  ratingValue,
+  hoverValue
+}) {
   // star fill logic
   function starFill() {
-    if (starState.selected >= value) {
+    if (ratingValue >= starNumber) {
       return "heavy";
-    } else if (starState.hovered >= value) {
+    } else if (hoverValue >= starNumber) {
       return "light";
     } else {
       return "none";
@@ -27,16 +33,16 @@ function MrRateStar({ value, handleClick, handleHover, starState }) {
   }
 
   function handleMouseEnter() {
-    handleHover({ value });
+    handleHover({ starNumber });
   }
   function handleMouseLeave() {
-    handleHover({ value: null });
+    handleHover({ starNumber: null });
   }
 
   return (
     <Star
       fill={starFill()}
-      onClick={() => handleClick({ value })}
+      onClick={() => handleClick({ starNumber })}
       onMouseEnter={() => handleMouseEnter()}
       onMouseLeave={() => handleMouseLeave()}
     />

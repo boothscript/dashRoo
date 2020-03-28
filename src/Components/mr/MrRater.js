@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -16,52 +16,53 @@ const Div = styled.div`
   }
 `;
 
-function MrRater({ text, inputId, confirmFn }) {
-  const [starState, setStarState] = useState({ selected: null, hovered: null });
+function MrRater({ text, inputKey, dataStore, updateMethod }) {
+  const [hoveredStar, setHoveredStar] = useState(0);
 
-  function handleClick({ value }) {
-    setStarState(prevState => ({ ...prevState, selected: value }));
-    confirmFn({ inputId });
+  function handleClick({ starNumber }) {
+    updateMethod(inputKey, starNumber);
   }
 
-  function handleHover({ value }) {
-    setStarState(prevState => ({ ...prevState, hovered: value }));
+  function handleHover({ starNumber }) {
+    setHoveredStar(starNumber);
   }
-
-  // tell parent that rating has been made
-  useEffect(() => {}, []);
 
   return (
     <Div rater>
       <MrRateText>{text}</MrRateText>
       <MrRateStars>
         <MrRateStar
-          value={1}
-          starState={starState}
+          starNumber={1}
+          ratingValue={dataStore[inputKey]}
+          hoverValue={hoveredStar}
           handleClick={handleClick}
           handleHover={handleHover}
         ></MrRateStar>
         <MrRateStar
-          value={2}
-          starState={starState}
+          starNumber={2}
+          ratingValue={dataStore[inputKey]}
+          hoverValue={hoveredStar}
           handleClick={handleClick}
           handleHover={handleHover}
         ></MrRateStar>
         <MrRateStar
-          value={3}
-          starState={starState}
+          starNumber={3}
+          ratingValue={dataStore[inputKey]}
+          hoverValue={hoveredStar}
           handleClick={handleClick}
           handleHover={handleHover}
         ></MrRateStar>
         <MrRateStar
-          value={4}
-          starState={starState}
+          starNumber={4}
+          ratingValue={dataStore[inputKey]}
+          hoverValue={hoveredStar}
           handleClick={handleClick}
           handleHover={handleHover}
         ></MrRateStar>
         <MrRateStar
-          value={5}
-          starState={starState}
+          starNumber={5}
+          ratingValue={dataStore[inputKey]}
+          hoverValue={hoveredStar}
           handleClick={handleClick}
           handleHover={handleHover}
         ></MrRateStar>
