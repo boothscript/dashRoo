@@ -1,12 +1,17 @@
 import React from "react";
+import styled from "styled-components";
 
 import { MrWelcome } from "./elements/";
 
+const Div = styled.div`
+  align-self: flex-end;
+`;
+
 function MrHeader({ nextPage, buttonText, fieldsCompleted }) {
   return (
-    <div>
+    <Div>
       <MrWelcome>Good Morning, Steve</MrWelcome>
-    </div>
+    </Div>
   );
 }
 

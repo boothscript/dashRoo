@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import {
   MrContainer,
@@ -10,13 +9,6 @@ import {
 } from "../../Components/mr";
 
 import useConfirmInputs from "../../Hooks/useConfirmInputs";
-
-const Div = styled.div`
-  grid-column: 1/-1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
 
 function MrGratitude() {
   const { inputStates, confirmInput, checkInputs } = useConfirmInputs(3);
