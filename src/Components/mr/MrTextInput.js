@@ -15,6 +15,9 @@ const TextInput = styled.input`
   resize: none;
   outline: none;
   padding: 1.25em;
+  @media (max-width: 500px) {
+    font-size: 1rem;
+  }
 `;
 
 function MrTextInput({ inputId, confirmFn, placeholder }) {
