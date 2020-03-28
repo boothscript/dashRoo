@@ -8,9 +8,9 @@ const Div = styled.div`
   align-self: flex-start;
 `;
 
-function MrFooter({ nextPage, buttonText, fieldsCompleted }) {
+function MrFooter({ nextPage, buttonText, fieldsCompleted, submitFunc }) {
   return (
-    <Div>
+    <Div onClick={submitFunc}>
       <MrButton disabled={!fieldsCompleted} text={buttonText} url={nextPage} />
     </Div>
   );

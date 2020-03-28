@@ -21,16 +21,17 @@ const TextInput = styled.input`
   }
 `;
 
-function MrTextInput({ inputId, confirmFn, placeholder }) {
+function MrTextInput({ inputKey, value, placeholder, update }) {
   const handleChange = e => {
-    if (e.target.value) {
-      console.log(e.target.value);
-      confirmFn({ inputId });
-    }
+    update(inputKey, e.target.value);
   };
 
   return (
-    <TextInput onChange={e => handleChange(e)} placeholder={placeholder} />
+    <TextInput
+      onChange={e => handleChange(e)}
+      placeholder={placeholder}
+      value={value}
+    />
   );
 }
 

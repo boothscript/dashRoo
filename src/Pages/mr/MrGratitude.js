@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   MrContainer,
@@ -8,32 +8,36 @@ import {
   MrMain
 } from "../../Components/mr";
 
-import useConfirmInputs from "../../Hooks/useConfirmInputs";
+import { MrContext } from "../../Context/MorningRoutine";
 
 function MrGratitude() {
-  const { inputStates, confirmInput, checkInputs } = useConfirmInputs(3);
+  const { gratitude, checkInputs, updateGratitude } = useContext(MrContext);
+
   return (
     <MrContainer>
       <MrHeader />
       <MrMain>
         <MrTextInput
-          inputId={0}
-          confirmFn={confirmInput}
+          inputKey={0}
+          value={gratitude[0]}
           placeholder={"Reason to be greatful #1"}
+          update={updateGratitude}
         />
         <MrTextInput
-          inputId={1}
-          confirmFn={confirmInput}
+          inputKey={1}
+          value={gratitude[1]}
           placeholder={"Reason to be greatful #2"}
+          update={updateGratitude}
         />
         <MrTextInput
-          inputId={2}
-          confirmFn={confirmInput}
+          inputKey={2}
+          value={gratitude[2]}
           placeholder={"Reason to be greatful #3"}
+          update={updateGratitude}
         />
       </MrMain>
       <MrFooter
-        fieldsCompleted={checkInputs(inputStates)}
+        fieldsCompleted={checkInputs(gratitude)}
         nextPage={"/mr/goal"}
         buttonText={"next"}
       />

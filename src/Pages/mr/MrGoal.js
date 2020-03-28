@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   MrContainer,
@@ -7,25 +7,26 @@ import {
   MrTextInput,
   MrMain
 } from "../../Components/mr";
-
-import useConfirmInputs from "../../Hooks/useConfirmInputs";
+import { MrContext } from "../../Context/MorningRoutine";
 
 function MrGoal() {
-  const { inputStates, confirmInput, checkInputs } = useConfirmInputs(1);
+  const { goal, checkInputs, updateGoal, submitMrData } = useContext(MrContext);
   return (
     <MrContainer>
       <MrHeader />
       <MrMain>
         <MrTextInput
-          inputId={0}
-          confirmFn={confirmInput}
+          inputKey="text"
+          value={goal.text}
           placeholder="What's your main goal for today?"
+          update={updateGoal}
         />
       </MrMain>
       <MrFooter
-        fieldsCompleted={checkInputs(inputStates)}
+        fieldsCompleted={checkInputs(goal)}
         nextPage={"/dash"}
         buttonText={"finish"}
+        submitFunc={submitMrData}
       />
     </MrContainer>
   );

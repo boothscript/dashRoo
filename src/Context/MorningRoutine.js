@@ -8,11 +8,11 @@ function MrContextProvider(props) {
     sleep: null
   });
   const [gratitude, setGratitude] = useState({
-    0: null,
-    1: null,
-    2: null
+    0: "",
+    1: "",
+    2: ""
   });
-  const [goal, setGoal] = useState({ goal: null });
+  const [goal, setGoal] = useState({ text: "" });
 
   function updateRatings(key, value) {
     setRatings(prevState => ({ ...prevState, [key]: value }));
@@ -29,7 +29,7 @@ function MrContextProvider(props) {
     return Object.values(inputStates).every(i => i);
   }
 
-  function submitData() {
+  function submitMrData() {
     console.log(ratings, gratitude, goal);
   }
 
@@ -43,7 +43,7 @@ function MrContextProvider(props) {
         updateGratitude,
         updateGoal,
         checkInputs,
-        submitData
+        submitMrData
       }}
     >
       {props.children}
