@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import { MrRateText, MrRateStar, MrRateStars } from "./elements";
 
@@ -68,5 +69,11 @@ function MrRater({ text, inputId, confirmFn }) {
     </Div>
   );
 }
+
+MrRater.propTypes = {
+  text: PropTypes.string.isRequired,
+  inputId: PropTypes.number,
+  confirmFn: PropTypes.func
+};
 
 export default MrRater;

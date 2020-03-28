@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import { MrButton } from "./index";
 
@@ -14,5 +15,11 @@ function MrFooter({ nextPage, buttonText, fieldsCompleted }) {
     </Div>
   );
 }
+
+MrFooter.propTypes = {
+  nextPage: PropTypes.string,
+  buttonText: PropTypes.string,
+  fieldsCompleted: PropTypes.bool
+};
 
 export default MrFooter;

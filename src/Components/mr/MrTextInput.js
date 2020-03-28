@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const TextInput = styled.input`
   grid-column: 1/-1;
@@ -32,5 +33,11 @@ function MrTextInput({ inputId, confirmFn, placeholder }) {
     <TextInput onChange={e => handleChange(e)} placeholder={placeholder} />
   );
 }
+
+MrTextInput.propTypes = {
+  inputId: PropTypes.number,
+  confirmFn: PropTypes.func,
+  placeholder: PropTypes.string
+};
 
 export default MrTextInput;
