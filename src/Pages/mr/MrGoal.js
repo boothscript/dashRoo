@@ -12,7 +12,7 @@ import { MrContext } from "../../Context/MorningRoutine";
 function MrGoal() {
   const { goal, checkInputs, updateGoal, submitMrData } = useContext(MrContext);
   return (
-    <MrContainer>
+    <MrContainer className="page">
       <MrHeader />
       <MrMain>
         <MrTextInput

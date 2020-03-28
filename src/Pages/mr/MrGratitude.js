@@ -14,7 +14,7 @@ function MrGratitude() {
   const { gratitude, checkInputs, updateGratitude } = useContext(MrContext);
 
   return (
-    <MrContainer>
+    <MrContainer className="page">
       <MrHeader />
       <MrMain>
         <MrTextInput

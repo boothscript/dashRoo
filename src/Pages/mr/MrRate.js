@@ -13,7 +13,7 @@ import { MrContext } from "../../Context/MorningRoutine";
 function MrRate() {
   const { ratings, checkInputs, updateRatings } = useContext(MrContext);
   return (
-    <MrContainer>
+    <MrContainer className="page">
       <MrHeader />
       <MrMain panel>
         <MrRater

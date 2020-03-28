@@ -1,27 +1,39 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-
+import styled, { ThemeProvider } from "styled-components";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { MrRate, MrGoal, MrGratitude } from "./Pages/mr";
 import { MrContextProvider } from "./Context/MorningRoutine";
 import colors from "./Themes/colors";
+import "./pageTransitions/pageSwipe.css";
+
+const TransitionWrapper = styled.div`
+  position: relative;
+`;
 
 function App() {
   return (
     <Router>
       <ThemeProvider theme={colors}>
         <MrContextProvider>
-          <Switch>
-            <Route path="/mr/rate">
-              <MrRate />
-            </Route>
-            <Route path="/mr/gratitude">
-              <MrGratitude />
-            </Route>
-            <Route path="/mr/goal">
-              <MrGoal />
-            </Route>
-          </Switch>
+          <Route
+            render={({ location }) => (
+              <TransitionGroup>
+                <CSSTransition
+                  key={location.key}
+                  timeout={500}
+                  classNames="swipe"
+                  unmountOnExit
+                >
+                  <Switch location={location}>
+                    <Route path="/mr/rate" component={MrRate} />
+                    <Route path="/mr/gratitude" component={MrGratitude} />
+                    <Route path="/mr/goal" component={MrGoal} />
+                  </Switch>
+                </CSSTransition>
+              </TransitionGroup>
+            )}
+          />
         </MrContextProvider>
       </ThemeProvider>
     </Router>

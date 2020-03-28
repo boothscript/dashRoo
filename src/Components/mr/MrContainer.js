@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export default styled.div`
+  position: absolute;
+  left: 0px;
+  right: 0px;
   background: ${props => props.theme.darkest && props.theme.darkest};
   height: 100vh;
   width: 100%;
