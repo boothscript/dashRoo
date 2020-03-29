@@ -10,7 +10,7 @@ const Div = styled.div`
 
 function MrFooter({ nextPage, buttonText, fieldsCompleted, submitFunc }) {
   return (
-    <Div onClick={submitFunc}>
+    <Div onClick={() => submitFunc()}>
       <MrButton disabled={!fieldsCompleted} text={buttonText} url={nextPage} />
     </Div>
   );

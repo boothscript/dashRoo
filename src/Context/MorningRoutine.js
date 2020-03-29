@@ -3,6 +3,29 @@ import React, { useState } from "react";
 const MrContext = React.createContext();
 
 function MrContextProvider(props) {
+  // states are noEntry, rate, gratitude, goal, complete
+  //  check storage and determin state
+  const [mrState, setMrState] = useState("rate");
+
+  function advanceState(backwards = false) {
+    const states = ["noEntry", "rate", "gratitude", "goal", "complete"];
+
+    // get index of current state
+    // move state forward or backwards by one
+    // update to new state
+    setMrState(prevState => {
+      const stateIndex = states.findIndex(state => state === prevState);
+      console.log(
+        "advancing state, prev state was",
+        stateIndex,
+        "backawrdds is ",
+        backwards
+      );
+
+      return backwards ? states[stateIndex - 1] : states[stateIndex + 1];
+    });
+  }
+
   const [ratings, setRatings] = useState({
     day: null,
     sleep: null
@@ -32,7 +55,7 @@ function MrContextProvider(props) {
   function submitMrData() {
     console.log(ratings, gratitude, goal);
   }
-
+  console.log("THE STATE IS", mrState);
   return (
     <MrContext.Provider
       value={{
@@ -43,7 +66,9 @@ function MrContextProvider(props) {
         updateGratitude,
         updateGoal,
         checkInputs,
-        submitMrData
+        submitMrData,
+        mrState,
+        advanceState
       }}
     >
       {props.children}
