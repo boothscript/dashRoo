@@ -5,7 +5,9 @@ import PropTypes from "prop-types";
 import { MrButton } from "./index";
 
 const Div = styled.div`
-  align-self: flex-start;
+  grid-column: 2/-2;
+  align-self: start;
+  justify-self: end;
 `;
 
 function MrFooter({ nextPage, buttonText, fieldsCompleted, submitFunc }) {

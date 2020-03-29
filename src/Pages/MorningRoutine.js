@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { MrMain, MrHeader, MrContainer, MrFooter } from "../Components/mr";
+import { MrWrapper } from "../Components/mr/elements";
 import { MrRate, MrGratitude, MrGoal } from "./mr";
 
 import { MrContext } from "../Context/MorningRoutine";
@@ -42,10 +43,10 @@ function MorningRoutine() {
         <MrHeader />
         <Route
           render={({ location }) => (
-            <TransitionGroup>
+            <TransitionGroup component={MrWrapper}>
               <CSSTransition
                 key={location.key}
-                timeout={500}
+                timeout={350}
                 classNames="swipe"
                 unmountOnExit
               >

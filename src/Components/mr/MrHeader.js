@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { MrWelcome } from "./elements/";
 
 const Div = styled.div`
-  align-self: flex-end;
+  grid-column: 2/-2;
+  align-self: end;
 `;
 
 function MrHeader() {
