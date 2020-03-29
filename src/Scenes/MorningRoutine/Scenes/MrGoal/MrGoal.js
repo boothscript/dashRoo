@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 
-import { MrTextInput, MrMain } from "../../Components/mr";
+import { MrTextInput, MrMain } from "../Components";
 import { MrContext } from "../../Context/MorningRoutine";
 
 function MrGoal() {
-  const { goal, checkInputs, updateGoal, submitMrData } = useContext(MrContext);
+  const { goal, updateGoal } = useContext(MrContext);
   return (
     <MrMain>
       <MrTextInput

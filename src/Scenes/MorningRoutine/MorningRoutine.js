@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-import { MrMain, MrHeader, MrContainer, MrFooter } from "../Components/mr";
-import { MrWrapper } from "../Components/mr/elements";
-import { MrRate, MrGratitude, MrGoal } from "./mr";
+import { MrHeader, MrContainer, MrFooter, MrWrapper } from "./Components";
+import { MrRate, MrGratitude, MrGoal } from "./Scenes";
 
-import { MrContext } from "../Context/MorningRoutine";
+import { MrContext } from "./Context/MorningRoutine";
 
 function MorningRoutine() {
   const {
@@ -14,7 +13,6 @@ function MorningRoutine() {
     gratitude,
     goal,
     checkInputs,
-    updateRatings,
     mrState,
     advanceState
   } = useContext(MrContext);

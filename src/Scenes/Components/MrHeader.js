@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { MrWelcome } from "./elements/";
+import { MrWelcome } from "../../../Components/mr/elements";
 
 const Div = styled.div`
   grid-column: 2/-2;

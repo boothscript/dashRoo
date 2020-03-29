@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import { MrRateText, MrRateStar, MrRateStars } from "./elements";
+import { MrRateText, MrRateStar, MrRateStars } from "./Components";
 
 const Div = styled.div`
   grid-column: 1/-1;

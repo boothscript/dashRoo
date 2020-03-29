@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 
-import { MrTextInput, MrMain } from "../../Components/mr";
+import { MrTextInput, MrMain } from "../Components";
 
 import { MrContext } from "../../Context/MorningRoutine";
 
 function MrGratitude() {
-  const { gratitude, checkInputs, updateGratitude } = useContext(MrContext);
+  const { gratitude, updateGratitude } = useContext(MrContext);
 
   return (
     <MrMain>

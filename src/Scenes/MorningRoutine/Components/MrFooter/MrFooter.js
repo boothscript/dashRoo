@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import { MrButton } from "./index";
+import MrButton from "./Components/MrButton";
 
 const Div = styled.div`
   grid-column: 2/-2;
