@@ -7,10 +7,6 @@ import { MrContextProvider } from "./Context/MorningRoutine";
 import colors from "./Themes/colors";
 import "./pageTransitions/pageSwipe.css";
 
-const TransitionWrapper = styled.div`
-  position: relative;
-`;
-
 function App() {
   return (
     <Router>
