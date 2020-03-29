@@ -26,12 +26,13 @@ const Button = styled(Link)`
   }
 `;
 
-function MrButton({ text, disabled, url }) {
+function MrButton({ text, disabled, url, submitFunc }) {
   // to disable clicks when disabled
   function handleClick(e) {
     if (disabled) {
       e.preventDefault();
     }
+    submitFunc();
   }
 
   return (

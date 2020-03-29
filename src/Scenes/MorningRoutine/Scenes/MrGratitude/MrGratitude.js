@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { MrTextInput, MrMain } from "../Components";
 
@@ -6,7 +6,13 @@ import { MrContext } from "../../Context/MorningRoutine";
 
 function MrGratitude() {
   const { gratitude, updateGratitude } = useContext(MrContext);
-
+  // set focus on text element
+  useEffect(() => {
+    // hack to delay set focus untill animation has completed
+    setTimeout(() => {
+      document.querySelector("input").focus();
+    }, 350);
+  }, []);
   return (
     <MrMain>
       <MrTextInput

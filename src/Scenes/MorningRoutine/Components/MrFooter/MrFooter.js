@@ -8,12 +8,18 @@ const Div = styled.div`
   grid-column: 2/-2;
   align-self: start;
   justify-self: end;
+  padding-top: 2em;
 `;
 
 function MrFooter({ nextPage, buttonText, fieldsCompleted, submitFunc }) {
   return (
-    <Div onClick={() => submitFunc()}>
-      <MrButton disabled={!fieldsCompleted} text={buttonText} url={nextPage} />
+    <Div>
+      <MrButton
+        disabled={!fieldsCompleted}
+        text={buttonText}
+        url={nextPage}
+        submitFunc={submitFunc}
+      />
     </Div>
   );
 }
