@@ -14,14 +14,14 @@ function MrGoal() {
 
   const { goal, updateGoal } = useContext(MrContext);
   return (
-    <MrMain>
+    <>
       <MrTextInput
         inputKey="text"
         value={goal.text}
         placeholder="What's your main goal for today?"
         update={updateGoal}
       />
-    </MrMain>
+    </>
   );
 }
 

@@ -3,8 +3,6 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const TextInput = styled.input`
-  grid-column: 1/-1;
-  align-self: center;
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.5;

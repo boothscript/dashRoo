@@ -1,6 +1,13 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation
+} from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+import { useTransition, animated } from "react-spring";
 
 import { MrHeader, MrContainer, MrFooter, MrWrapper } from "./Components";
 import { MrRate, MrGratitude, MrGoal } from "./Scenes";
@@ -35,36 +42,39 @@ function MorningRoutine() {
     }
   };
 
+  const location = useLocation();
+  console.log(location);
+  const transitions = useTransition(location, location => location.pathname, {
+    from: { opacity: 0, transform: "translateX(150%)" },
+    enter: { opacity: 1, transform: "translateX(0)" },
+    leave: { opacity: 0, transform: "translateX(-150%)" }
+  });
+
   return (
-    <Router>
-      <MrContainer className="page">
-        <MrHeader />
-        <Route
-          render={({ location }) => (
-            <TransitionGroup component={MrWrapper}>
-              <CSSTransition
-                key={location.key}
-                timeout={350}
-                classNames="swipe"
-                unmountOnExit
-              >
-                <Switch location={location}>
-                  <Route path="/mr/rate" component={MrRate} />
-                  <Route path="/mr/gratitude" component={MrGratitude} />
-                  <Route path="/mr/goal" component={MrGoal} />
-                </Switch>
-              </CSSTransition>
-            </TransitionGroup>
-          )}
-        />
-        <MrFooter
-          fieldsCompleted={checkInputs(dynamicLinks[mrState].inputs)}
-          nextPage={dynamicLinks[mrState]["nextPage"]}
-          buttonText={dynamicLinks[mrState]["buttonText"]}
-          submitFunc={advanceState}
-        />
-      </MrContainer>
-    </Router>
+    <MrContainer className="page">
+      <MrHeader />
+      <MrWrapper>
+        {transitions.map(({ item, props, key }) => (
+          <animated.div
+            key={key}
+            className="main"
+            style={{ ...props, height: "100%" }}
+          >
+            <Switch location={item}>
+              <Route path="/mr/rate" component={MrRate} />
+              <Route path="/mr/gratitude" component={MrGratitude} />
+              <Route path="/mr/goal" component={MrGoal} />
+            </Switch>
+          </animated.div>
+        ))}
+      </MrWrapper>
+      <MrFooter
+        fieldsCompleted={checkInputs(dynamicLinks[mrState].inputs)}
+        nextPage={dynamicLinks[mrState]["nextPage"]}
+        buttonText={dynamicLinks[mrState]["buttonText"]}
+        submitFunc={advanceState}
+      />
+    </MrContainer>
   );
 }
 

@@ -8,7 +8,7 @@ import { MrContext } from "../../Context/MorningRoutine";
 function MrRate() {
   const { ratings, updateRatings } = useContext(MrContext);
   return (
-    <MrMain panel>
+    <>
       <MrRater
         text="Rate Yesterday"
         inputKey={"day"}
@@ -21,7 +21,7 @@ function MrRate() {
         dataStore={ratings}
         updateMethod={updateRatings}
       />
-    </MrMain>
+    </>
   );
 }
 

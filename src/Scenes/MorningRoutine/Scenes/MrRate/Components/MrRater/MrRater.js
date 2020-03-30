@@ -9,6 +9,9 @@ const Div = styled.div`
   display: flex;
   justify-content: space-around;
   overflow: auto;
+  background: #171a21;
+  border-radius: 16px;
+  padding: 2em;
   @media (max-width: 500px) {
     flex-direction: column;
     align-items: center;

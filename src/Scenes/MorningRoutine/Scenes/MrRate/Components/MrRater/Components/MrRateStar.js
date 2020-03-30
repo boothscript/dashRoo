@@ -8,7 +8,8 @@ const Star = styled.div`
       : props.fill === "light"
       ? "url(/img/star-fill-light.svg)"
       : "url(/img/star-line.svg)"};
-  width: 48px;
+  height: 46px;
+  width: 50px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

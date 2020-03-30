@@ -14,7 +14,7 @@ function MrGratitude() {
     }, 350);
   }, []);
   return (
-    <MrMain>
+    <>
       <MrTextInput
         inputKey={0}
         value={gratitude[0]}
@@ -33,7 +33,7 @@ function MrGratitude() {
         placeholder={"Reason to be greatful #3"}
         update={updateGratitude}
       />
-    </MrMain>
+    </>
   );
 }
 
