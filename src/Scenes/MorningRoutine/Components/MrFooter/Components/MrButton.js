@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import { MrContext } from "../../../Context/MorningRoutine";
-
-const Button = styled(Link)`
+const Button = styled.a`
   align-self: center;
   margin-left: auto;
   background: ${props => props.theme.panel && props.theme.panel};
@@ -28,19 +26,25 @@ const Button = styled(Link)`
   }
 `;
 
-function MrButton({ text, url, submitFunc, options, disabled }) {
+function MrButton({ text, disabled, buttonFunc, reverse }) {
   // to disable clicks when disabled
   function handleClick(e) {
     if (disabled) {
       e.preventDefault();
     }
-    submitFunc(options.reverse);
+    buttonFunc(reverse);
   }
   return (
-    <Button to={url} onClick={e => handleClick(e)} disabled={disabled}>
+    <Button onClick={e => handleClick(e)} disabled={disabled}>
       {text}
     </Button>
   );
 }
+MrButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
+  buttonFunc: PropTypes.func.isRequired,
+  reverse: PropTypes.bool.isRequired
+};
 
 export default MrButton;

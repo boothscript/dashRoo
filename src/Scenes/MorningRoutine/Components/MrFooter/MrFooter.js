@@ -12,32 +12,31 @@ const Div = styled.div`
 `;
 
 function MrFooter({
-  nextPage,
-  buttonText,
-  submitFunc,
-  prevPage,
-  options,
-  fieldsCompleted
+  buttonFunc,
+  nextDisabled,
+  displayBackButton,
+  nextButtonText
 }) {
   return (
     <Div>
-      {!options.renderBackButton ? (
-        <MrButton text="back" url={prevPage} submitFunc={submitFunc} />
+      {displayBackButton ? (
+        <MrButton text="back" buttonFunc={buttonFunc} reverse={true} />
       ) : null}
       <MrButton
-        disabled={!fieldsCompleted}
-        text={buttonText}
-        url={nextPage}
-        submitFunc={submitFunc}
+        disabled={nextDisabled}
+        text={nextButtonText}
+        buttonFunc={buttonFunc}
+        reverse={false}
       />
     </Div>
   );
 }
 
 MrFooter.propTypes = {
-  nextPage: PropTypes.string,
-  buttonText: PropTypes.string,
-  fieldsCompleted: PropTypes.bool
+  buttonFunc: PropTypes.func.isRequired,
+  nextButtonText: PropTypes.string.isRequired,
+  displayBackButton: PropTypes.bool.isRequired,
+  nextDisabled: PropTypes.bool.isRequired
 };
 
 export default MrFooter;
