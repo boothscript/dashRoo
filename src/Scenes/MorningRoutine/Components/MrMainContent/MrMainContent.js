@@ -6,8 +6,8 @@ const Div = styled.div`
   grid-column: 2/-2;
 `;
 
-function MrWrapper({ children }) {
+function MrMainContent({ children }) {
   return <Div>{children}</Div>;
 }
 
-export default MrWrapper;
+export default MrMainContent;

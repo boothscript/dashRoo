@@ -1,6 +1,6 @@
 import MrContainer from "./MrContainer";
 import MrFooter from "./MrFooter/MrFooter";
 import MrHeader from "./MrHeader/MrHeader";
-import MrWrapper from "./MrWrapper";
+import MrMainContent from "./MrMainContent/MrMainContent";
 
-export { MrContainer, MrFooter, MrHeader, MrWrapper };
+export { MrContainer, MrFooter, MrHeader, MrMainContent };

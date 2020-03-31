@@ -1,81 +1,62 @@
-import React, { useContext } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useLocation,
-  useHistory
-} from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import React, { useState } from "react";
 
-import { useTransition, animated } from "react-spring";
-
-import { MrHeader, MrContainer, MrFooter, MrWrapper } from "./Components";
-import { MrRate, MrGratitude, MrGoal } from "./Scenes";
-
-import { MrContext } from "./Context/MorningRoutine";
+import { MrHeader, MrMainContent, MrFooter, MrContainer } from "./Components";
 
 function MorningRoutine() {
-  const {
-    ratings,
-    gratitude,
-    goal,
-    checkInputs,
-    mrState,
-    advanceState,
-    getStateNumber
-  } = useContext(MrContext);
+  // TOPLEVEL STATE ====================
+  const steps = ["rate", "gratitude", "goal"];
+  const [routineState, setRoutineState] = useState({
+    step: "rate",
+    inputsComplete: false,
+    direction: "fwd"
+  });
 
-  const dynamicLinks = {
-    rate: {
-      inputs: ratings,
-      nextPage: "/mr/gratitude",
-      prevPage: "/",
-      buttonText: "next",
-      options: { renderBackButton: false }
-    },
-    gratitude: {
-      inputs: gratitude,
-      nextPage: "/mr/goal",
-      prevPage: "/mr/rate",
-      buttonText: "next",
-      options: { renderBackButton: true }
-    },
-    goal: {
-      inputs: goal,
-      nextPage: "/dash",
-      prevPage: "/mr/gratitude",
-      buttonText: "finish",
-      options: { renderBackButton: true }
-    }
+  function advanceState(reverse = false) {
+    setRoutineState(prevState => {
+      const stepIndex = steps.findIndex(step => step === prevState.step);
+      return reverse
+        ? { ...prevState, step: steps[stepIndex - 1], direction: "back" }
+        : { ...prevState, step: steps[stepIndex + 1], direction: "fwd" };
+    });
+  }
+
+  function submitRoutine() {
+    // post data to server and redirect to main dash
+  }
+
+  function updateInputsComplete(complete) {
+    // complete is a bool
+    setRoutineState(prevState => {
+      return { ...prevState, inputsComplete: complete };
+    });
+  }
+
+  const buttonProps = {
+    rate: { displayBackButton: false, nextButtonText: "next" },
+    gratitude: { displayBackButton: true, nextButtonText: "next" },
+    goal: { displayBackButton: true, nextButtonText: "finish" }
   };
 
-  const transitionSets = {
-    fwd: {
-      from: { opacity: 0, transform: "translateX(150%)" },
-      enter: { opacity: 1, transform: "translateX(0)" },
-      leave: { opacity: 0, transform: "translateX(-150%)" }
-    },
-    back: {
-      from: { opacity: 0, transform: "translateX(-150%)" },
-      enter: { opacity: 1, transform: "translateX(0)" },
-      leave: { opacity: 0, transform: "translateX(150%)" }
-    }
-  };
+  // ==============================
 
-  const reverse = true;
-  const location = useLocation();
-  const transitions = useTransition(
-    location,
-    location => location.pathname,
-    transitionSets[mrState.direction]
-  );
+  // const transitionSets = {
+  //   fwd: {
+  //     from: { opacity: 0, transform: "translateX(150%)" },
+  //     enter: { opacity: 1, transform: "translateX(0)" },
+  //     leave: { opacity: 0, transform: "translateX(-150%)" }
+  //   },
+  //   back: {
+  //     from: { opacity: 0, transform: "translateX(-150%)" },
+  //     enter: { opacity: 1, transform: "translateX(0)" },
+  //     leave: { opacity: 0, transform: "translateX(150%)" }
+  //   }
+  // };
 
   return (
     <MrContainer className="page">
       <MrHeader />
-      <MrWrapper>
-        {transitions.map(({ item, props, key }) => (
+      <MrMainContent />
+      {/* {transitions.map(({ item, props, key }) => (
           <animated.div
             key={key}
             className="main"
@@ -87,15 +68,14 @@ function MorningRoutine() {
               <Route path="/mr/goal" component={MrGoal} />
             </Switch>
           </animated.div>
-        ))}
-      </MrWrapper>
+        ))} */}
+
       <MrFooter
-        fieldsCompleted={checkInputs(dynamicLinks[mrState.state].inputs)}
-        nextPage={dynamicLinks[mrState.state]["nextPage"]}
-        prevPage={dynamicLinks[mrState.state]["prevPage"]}
-        buttonText={dynamicLinks[mrState.state]["buttonText"]}
-        submitFunc={advanceState}
-        options={dynamicLinks[mrState.state]["options"]}
+        buttonProps={{
+          buttonFunc: advanceState,
+          nextDisabled: !routineState.inputsComplete,
+          ...buttonProps[routineState.step]
+        }}
       />
     </MrContainer>
   );
