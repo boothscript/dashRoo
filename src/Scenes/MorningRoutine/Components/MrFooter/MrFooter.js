@@ -11,9 +11,19 @@ const Div = styled.div`
   padding-top: 2em;
 `;
 
-function MrFooter({ nextPage, buttonText, fieldsCompleted, submitFunc }) {
+function MrFooter({
+  nextPage,
+  buttonText,
+  submitFunc,
+  prevPage,
+  options,
+  fieldsCompleted
+}) {
   return (
     <Div>
+      {!options.renderBackButton ? (
+        <MrButton text="back" url={prevPage} submitFunc={submitFunc} />
+      ) : null}
       <MrButton
         disabled={!fieldsCompleted}
         text={buttonText}

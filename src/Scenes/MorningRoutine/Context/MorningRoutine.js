@@ -5,24 +5,23 @@ const MrContext = React.createContext();
 function MrContextProvider(props) {
   // states are noEntry, rate, gratitude, goal, complete
   //  check storage and determin state
-  const [mrState, setMrState] = useState("rate");
+  const [mrState, setMrState] = useState({
+    state: "rate",
+    direction: undefined
+  });
 
   function advanceState(backwards = false) {
     const states = ["noEntry", "rate", "gratitude", "goal", "complete"];
-
     // get index of current state
     // move state forward or backwards by one
     // update to new state
     setMrState(prevState => {
-      const stateIndex = states.findIndex(state => state === prevState);
-      console.log(
-        "advancing state, prev state was",
-        stateIndex,
-        "backawrdds is ",
-        backwards
-      );
-
-      return backwards ? states[stateIndex - 1] : states[stateIndex + 1];
+      console.log("prevstate", prevState);
+      const stateIndex = states.findIndex(state => state === prevState.state);
+      console.log("stateIndex", stateIndex, "backwards", backwards);
+      return backwards
+        ? { state: states[stateIndex - 1], direction: "back" }
+        : { state: states[stateIndex + 1], direction: "fwd" };
     });
   }
 

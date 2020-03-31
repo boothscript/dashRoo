@@ -44,9 +44,15 @@ function MrProgress() {
   const { mrState } = useContext(MrContext);
   return (
     <Wrapper>
-      <ProgressCircle status={getProgressStatus(1, mrState)}></ProgressCircle>
-      <ProgressCircle status={getProgressStatus(2, mrState)}></ProgressCircle>
-      <ProgressCircle status={getProgressStatus(3, mrState)}></ProgressCircle>
+      <ProgressCircle
+        status={getProgressStatus(1, mrState.state)}
+      ></ProgressCircle>
+      <ProgressCircle
+        status={getProgressStatus(2, mrState.state)}
+      ></ProgressCircle>
+      <ProgressCircle
+        status={getProgressStatus(3, mrState.state)}
+      ></ProgressCircle>
     </Wrapper>
   );
 }

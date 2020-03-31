@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useLocation
+  useLocation,
+  useHistory
 } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
@@ -21,34 +22,54 @@ function MorningRoutine() {
     goal,
     checkInputs,
     mrState,
-    advanceState
+    advanceState,
+    getStateNumber
   } = useContext(MrContext);
 
   const dynamicLinks = {
     rate: {
       inputs: ratings,
       nextPage: "/mr/gratitude",
-      buttonText: "next"
+      prevPage: "/",
+      buttonText: "next",
+      options: { renderBackButton: false }
     },
     gratitude: {
       inputs: gratitude,
       nextPage: "/mr/goal",
-      buttonText: "next"
+      prevPage: "/mr/rate",
+      buttonText: "next",
+      options: { renderBackButton: true }
     },
     goal: {
       inputs: goal,
       nextPage: "/dash",
-      buttonText: "finish"
+      prevPage: "/mr/gratitude",
+      buttonText: "finish",
+      options: { renderBackButton: true }
     }
   };
 
+  const transitionSets = {
+    fwd: {
+      from: { opacity: 0, transform: "translateX(150%)" },
+      enter: { opacity: 1, transform: "translateX(0)" },
+      leave: { opacity: 0, transform: "translateX(-150%)" }
+    },
+    back: {
+      from: { opacity: 0, transform: "translateX(-150%)" },
+      enter: { opacity: 1, transform: "translateX(0)" },
+      leave: { opacity: 0, transform: "translateX(150%)" }
+    }
+  };
+
+  const reverse = true;
   const location = useLocation();
-  console.log(location);
-  const transitions = useTransition(location, location => location.pathname, {
-    from: { opacity: 0, transform: "translateX(150%)" },
-    enter: { opacity: 1, transform: "translateX(0)" },
-    leave: { opacity: 0, transform: "translateX(-150%)" }
-  });
+  const transitions = useTransition(
+    location,
+    location => location.pathname,
+    transitionSets[mrState.direction]
+  );
 
   return (
     <MrContainer className="page">
@@ -69,10 +90,12 @@ function MorningRoutine() {
         ))}
       </MrWrapper>
       <MrFooter
-        fieldsCompleted={checkInputs(dynamicLinks[mrState].inputs)}
-        nextPage={dynamicLinks[mrState]["nextPage"]}
-        buttonText={dynamicLinks[mrState]["buttonText"]}
+        fieldsCompleted={checkInputs(dynamicLinks[mrState.state].inputs)}
+        nextPage={dynamicLinks[mrState.state]["nextPage"]}
+        prevPage={dynamicLinks[mrState.state]["prevPage"]}
+        buttonText={dynamicLinks[mrState.state]["buttonText"]}
         submitFunc={advanceState}
+        options={dynamicLinks[mrState.state]["options"]}
       />
     </MrContainer>
   );

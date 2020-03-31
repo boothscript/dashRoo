@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
+import { MrContext } from "../../../Context/MorningRoutine";
 
 const Button = styled(Link)`
   align-self: center;
@@ -26,15 +28,14 @@ const Button = styled(Link)`
   }
 `;
 
-function MrButton({ text, disabled, url, submitFunc }) {
+function MrButton({ text, url, submitFunc, options, disabled }) {
   // to disable clicks when disabled
   function handleClick(e) {
     if (disabled) {
       e.preventDefault();
     }
-    submitFunc();
+    submitFunc(options.reverse);
   }
-
   return (
     <Button to={url} onClick={e => handleClick(e)} disabled={disabled}>
       {text}
