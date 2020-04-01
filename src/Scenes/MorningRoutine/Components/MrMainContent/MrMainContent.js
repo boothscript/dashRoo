@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -17,7 +17,6 @@ function MrMainContent({
   direction
 }) {
   const { rate, gratitude, goal } = dataStores;
-  console.log("mrmainconetent datastore update", updateDataStore);
   return (
     <Div>
       {

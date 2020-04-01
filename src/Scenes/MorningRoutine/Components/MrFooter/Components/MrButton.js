@@ -26,13 +26,14 @@ const Button = styled.a`
   }
 `;
 
-function MrButton({ text, disabled, buttonFunc, reverse }) {
+function MrButton({ text, disabled, buttonFunc, reverse, submitRoutine }) {
   // to disable clicks when disabled
   function handleClick(e) {
     if (disabled) {
       e.preventDefault();
     }
     buttonFunc(reverse);
+    submitRoutine && submitRoutine();
   }
   return (
     <Button onClick={e => handleClick(e)} disabled={disabled}>

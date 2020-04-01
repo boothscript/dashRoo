@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 
 import { MrHeader, MrMainContent, MrFooter, MrContainer } from "./Components";
 
 function MorningRoutine() {
   // TOPLEVEL STATE ====================
+  // Stores step form state
 
   const steps = ["rate", "gratitude", "goal"];
   const [routineState, setRoutineState] = useState({
@@ -23,36 +24,39 @@ function MorningRoutine() {
 
   function submitRoutine() {
     // post data to server and redirect to main dash
+    console.log("submit data");
   }
 
   // ==============================
 
   // DATA STORE STATE =============
+  // stores input data
 
   const [ratings, setRatings] = useState({ day: null, sleep: null });
   const [gratitude, setGratitude] = useState({ 1: null, 2: null, 3: null });
   const [goal, setGoal] = useState({ text: null });
 
-  const dataStoreHash = {
-    rate: [ratings, setRatings],
-    gratitude: [gratitude, setGratitude],
-    goal: [goal, setGoal]
+  const setMethods = {
+    rate: setRatings,
+    gratitude: setGratitude,
+    goal: setGoal
   };
 
   function updateDataStore(storeKey, inputKey, value) {
-    const [_, setMethod] = dataStoreHash[storeKey];
+    const setMethod = setMethods[storeKey];
     setMethod(prevState => {
       return { ...prevState, [inputKey]: value };
     });
   }
-  console.log("hoc ratings", ratings);
   const dataStores = {
     rate: ratings,
     gratitude: gratitude,
     goal: goal
   };
 
-  // check steps datastore for input completion
+  // ==============================
+
+  // Update Step state when necessary
   useLayoutEffect(() => {
     const dataStores = {
       rate: ratings,
@@ -67,14 +71,11 @@ function MorningRoutine() {
     });
   }, [ratings, gratitude, goal, routineState.step]);
 
-  // ==============================
-
   const buttonProps = {
     rate: { displayBackButton: false, nextButtonText: "next" },
     gratitude: { displayBackButton: true, nextButtonText: "next" },
     goal: { displayBackButton: true, nextButtonText: "finish" }
   };
-  console.log("rendering container", routineState);
   return (
     <MrContainer className="page">
       <MrHeader step={routineState.step} />
@@ -102,6 +103,7 @@ function MorningRoutine() {
         buttonFunc={advanceState}
         nextDisabled={!routineState.inputsComplete}
         buttonProps={buttonProps[routineState.step]}
+        submitRoutine={routineState.step === "goal" ? submitRoutine : null}
       />
     </MrContainer>
   );

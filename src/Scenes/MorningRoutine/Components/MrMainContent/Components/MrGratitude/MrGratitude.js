@@ -11,7 +11,6 @@ function MrGratitude({ dataStore, updateDataStore, storeKey }) {
     }, 350);
   }, []);
 
-  console.log("update", updateDataStore);
   return (
     <>
       <MrTextInput

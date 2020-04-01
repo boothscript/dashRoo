@@ -11,9 +11,7 @@ const Div = styled.div`
   padding-top: 2em;
 `;
 
-function MrFooter({ buttonFunc, nextDisabled, buttonProps }) {
-  console.log("buttonprops", buttonProps);
-  console.log(nextDisabled);
+function MrFooter({ buttonFunc, nextDisabled, buttonProps, submitRoutine }) {
   const { nextButtonText, displayBackButton } = buttonProps;
 
   return (
@@ -26,6 +24,7 @@ function MrFooter({ buttonFunc, nextDisabled, buttonProps }) {
         text={nextButtonText}
         buttonFunc={buttonFunc}
         reverse={false}
+        submitRoutine={submitRoutine}
       />
     </Div>
   );
