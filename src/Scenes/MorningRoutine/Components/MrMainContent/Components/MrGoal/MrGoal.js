@@ -1,9 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
-import { MrTextInput, MrMain } from "../Components";
-import { MrContext } from "../../Context/MorningRoutine";
+import { MrTextInput } from "../Components";
 
-function MrGoal() {
+function MrGoal({ dataStore, updateDataStore, storeKey }) {
   // set focus on text element
   useEffect(() => {
     // hack to delay set focus untill animation has completed
@@ -12,14 +11,14 @@ function MrGoal() {
     }, 350);
   }, []);
 
-  const { goal, updateGoal } = useContext(MrContext);
   return (
     <>
       <MrTextInput
         inputKey="text"
-        value={goal.text}
+        value={dataStore.text}
         placeholder="What's your main goal for today?"
-        update={updateGoal}
+        update={updateDataStore}
+        storeKey={storeKey}
       />
     </>
   );

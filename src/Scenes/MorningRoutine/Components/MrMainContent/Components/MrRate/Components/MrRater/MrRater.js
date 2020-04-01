@@ -19,11 +19,11 @@ const Div = styled.div`
   }
 `;
 
-function MrRater({ text, inputKey, dataStore, updateMethod }) {
+function MrRater({ text, inputKey, dataStore, updateMethod, storeKey }) {
   const [hoveredStar, setHoveredStar] = useState(0);
 
   function handleClick({ starNumber }) {
-    updateMethod(inputKey, starNumber);
+    updateMethod(storeKey, inputKey, starNumber);
   }
 
   function handleHover({ starNumber }) {

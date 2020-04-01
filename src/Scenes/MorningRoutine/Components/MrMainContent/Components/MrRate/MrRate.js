@@ -1,25 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { MrMain } from "../Components";
 import MrRater from "./Components/MrRater/MrRater";
 
-import { MrContext } from "../../Context/MorningRoutine";
-
-function MrRate() {
-  const { ratings, updateRatings } = useContext(MrContext);
+function MrRate({ dataStore, updateDataStore, storeKey }) {
   return (
     <>
       <MrRater
         text="Rate Yesterday"
         inputKey={"day"}
-        dataStore={ratings}
-        updateMethod={updateRatings}
+        dataStore={dataStore}
+        updateMethod={updateDataStore}
+        storeKey={storeKey}
       />
       <MrRater
         text="Rate Sleep"
         inputKey={"sleep"}
-        dataStore={ratings}
-        updateMethod={updateRatings}
+        dataStore={dataStore}
+        updateMethod={updateDataStore}
+        storeKey={storeKey}
       />
     </>
   );

@@ -11,12 +11,11 @@ const Div = styled.div`
   padding-top: 2em;
 `;
 
-function MrFooter({
-  buttonFunc,
-  nextDisabled,
-  displayBackButton,
-  nextButtonText
-}) {
+function MrFooter({ buttonFunc, nextDisabled, buttonProps }) {
+  console.log("buttonprops", buttonProps);
+  console.log(nextDisabled);
+  const { nextButtonText, displayBackButton } = buttonProps;
+
   return (
     <Div>
       {displayBackButton ? (
@@ -34,8 +33,7 @@ function MrFooter({
 
 MrFooter.propTypes = {
   buttonFunc: PropTypes.func.isRequired,
-  nextButtonText: PropTypes.string.isRequired,
-  displayBackButton: PropTypes.bool.isRequired,
+
   nextDisabled: PropTypes.bool.isRequired
 };
 

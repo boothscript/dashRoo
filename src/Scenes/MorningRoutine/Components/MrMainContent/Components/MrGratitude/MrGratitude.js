@@ -1,11 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
-import { MrTextInput, MrMain } from "../Components";
+import { MrTextInput } from "../Components";
 
-import { MrContext } from "../../Context/MorningRoutine";
-
-function MrGratitude() {
-  const { gratitude, updateGratitude } = useContext(MrContext);
+function MrGratitude({ dataStore, updateDataStore, storeKey }) {
   // set focus on text element
   useEffect(() => {
     // hack to delay set focus untill animation has completed
@@ -13,25 +10,30 @@ function MrGratitude() {
       document.querySelector("input").focus();
     }, 350);
   }, []);
+
+  console.log("update", updateDataStore);
   return (
     <>
       <MrTextInput
-        inputKey={0}
-        value={gratitude[0]}
-        placeholder={"Reason to be greatful #1"}
-        update={updateGratitude}
-      />
-      <MrTextInput
         inputKey={1}
-        value={gratitude[1]}
-        placeholder={"Reason to be greatful #2"}
-        update={updateGratitude}
+        value={dataStore[1]}
+        placeholder={"Reason to be greatful #1"}
+        update={updateDataStore}
+        storeKey={storeKey}
       />
       <MrTextInput
         inputKey={2}
-        value={gratitude[2]}
+        value={dataStore[2]}
+        placeholder={"Reason to be greatful #2"}
+        update={updateDataStore}
+        storeKey={storeKey}
+      />
+      <MrTextInput
+        inputKey={3}
+        value={dataStore[3]}
         placeholder={"Reason to be greatful #3"}
-        update={updateGratitude}
+        update={updateDataStore}
+        storeKey={storeKey}
       />
     </>
   );

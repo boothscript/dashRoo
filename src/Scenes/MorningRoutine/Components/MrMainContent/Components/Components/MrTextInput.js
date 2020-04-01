@@ -19,9 +19,9 @@ const TextInput = styled.input`
   }
 `;
 
-function MrTextInput({ inputKey, value, placeholder, update }) {
+function MrTextInput({ inputKey, value, placeholder, update, storeKey }) {
   const handleChange = e => {
-    update(inputKey, e.target.value);
+    update(storeKey, inputKey, e.target.value);
   };
 
   return (

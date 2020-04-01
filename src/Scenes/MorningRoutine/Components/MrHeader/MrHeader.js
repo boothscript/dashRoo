@@ -16,11 +16,11 @@ const Div = styled.div`
   }
 `;
 
-function MrHeader() {
+function MrHeader({ step }) {
   return (
     <Div>
       <MrWelcome>Good Morning, Steve</MrWelcome>
-      <MrProgress />
+      <MrProgress step={step} />
     </Div>
   );
 }

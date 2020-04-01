@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 
 import { MrHeader, MrMainContent, MrFooter, MrContainer } from "./Components";
 
 function MorningRoutine() {
   // TOPLEVEL STATE ====================
+
   const steps = ["rate", "gratitude", "goal"];
   const [routineState, setRoutineState] = useState({
     step: "rate",
@@ -24,38 +25,65 @@ function MorningRoutine() {
     // post data to server and redirect to main dash
   }
 
-  function updateInputsComplete(complete) {
-    // complete is a bool
-    setRoutineState(prevState => {
-      return { ...prevState, inputsComplete: complete };
+  // ==============================
+
+  // DATA STORE STATE =============
+
+  const [ratings, setRatings] = useState({ day: null, sleep: null });
+  const [gratitude, setGratitude] = useState({ 1: null, 2: null, 3: null });
+  const [goal, setGoal] = useState({ text: null });
+
+  const dataStoreHash = {
+    rate: [ratings, setRatings],
+    gratitude: [gratitude, setGratitude],
+    goal: [goal, setGoal]
+  };
+
+  function updateDataStore(storeKey, inputKey, value) {
+    const [_, setMethod] = dataStoreHash[storeKey];
+    setMethod(prevState => {
+      return { ...prevState, [inputKey]: value };
     });
   }
+  console.log("hoc ratings", ratings);
+  const dataStores = {
+    rate: ratings,
+    gratitude: gratitude,
+    goal: goal
+  };
+
+  // check steps datastore for input completion
+  useLayoutEffect(() => {
+    const dataStores = {
+      rate: ratings,
+      gratitude: gratitude,
+      goal: goal
+    };
+    setRoutineState(prevState => {
+      return {
+        ...prevState,
+        inputsComplete: Object.values(dataStores[prevState.step]).every(i => i)
+      };
+    });
+  }, [ratings, gratitude, goal, routineState.step]);
+
+  // ==============================
 
   const buttonProps = {
     rate: { displayBackButton: false, nextButtonText: "next" },
     gratitude: { displayBackButton: true, nextButtonText: "next" },
     goal: { displayBackButton: true, nextButtonText: "finish" }
   };
-
-  // ==============================
-
-  // const transitionSets = {
-  //   fwd: {
-  //     from: { opacity: 0, transform: "translateX(150%)" },
-  //     enter: { opacity: 1, transform: "translateX(0)" },
-  //     leave: { opacity: 0, transform: "translateX(-150%)" }
-  //   },
-  //   back: {
-  //     from: { opacity: 0, transform: "translateX(-150%)" },
-  //     enter: { opacity: 1, transform: "translateX(0)" },
-  //     leave: { opacity: 0, transform: "translateX(150%)" }
-  //   }
-  // };
-
+  console.log("rendering container", routineState);
   return (
     <MrContainer className="page">
-      <MrHeader />
-      <MrMainContent />
+      <MrHeader step={routineState.step} />
+      <MrMainContent
+        step={routineState.step}
+        dataStores={dataStores}
+        updateDataStore={updateDataStore}
+        direction={null}
+      />
       {/* {transitions.map(({ item, props, key }) => (
           <animated.div
             key={key}
@@ -71,11 +99,9 @@ function MorningRoutine() {
         ))} */}
 
       <MrFooter
-        buttonProps={{
-          buttonFunc: advanceState,
-          nextDisabled: !routineState.inputsComplete,
-          ...buttonProps[routineState.step]
-        }}
+        buttonFunc={advanceState}
+        nextDisabled={!routineState.inputsComplete}
+        buttonProps={buttonProps[routineState.step]}
       />
     </MrContainer>
   );
