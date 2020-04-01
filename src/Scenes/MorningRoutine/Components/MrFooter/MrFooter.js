@@ -6,9 +6,11 @@ import MrButton from "./Components/MrButton";
 
 const Div = styled.div`
   grid-column: 2/-2;
+
   align-self: start;
-  justify-self: end;
   padding-top: 2em;
+  display: flex;
+  justify-content: space-between;
 `;
 
 function MrFooter({ buttonFunc, nextDisabled, buttonProps, submitRoutine }) {
@@ -16,9 +18,13 @@ function MrFooter({ buttonFunc, nextDisabled, buttonProps, submitRoutine }) {
 
   return (
     <Div>
-      {displayBackButton ? (
-        <MrButton text="back" buttonFunc={buttonFunc} reverse={true} />
-      ) : null}
+      <MrButton
+        text="back"
+        buttonFunc={buttonFunc}
+        reverse={true}
+        hide={!displayBackButton}
+      />
+
       <MrButton
         disabled={nextDisabled}
         text={nextButtonText}
@@ -32,7 +38,6 @@ function MrFooter({ buttonFunc, nextDisabled, buttonProps, submitRoutine }) {
 
 MrFooter.propTypes = {
   buttonFunc: PropTypes.func.isRequired,
-
   nextDisabled: PropTypes.bool.isRequired
 };
 

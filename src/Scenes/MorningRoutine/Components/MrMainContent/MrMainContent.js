@@ -7,6 +7,9 @@ import { MrRate, MrGratitude, MrGoal } from "./Components";
 const Div = styled.div`
   position: relative;
   grid-column: 2/-2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 function MrMainContent({

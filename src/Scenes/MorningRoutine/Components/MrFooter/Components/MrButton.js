@@ -3,8 +3,10 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Button = styled.a`
+  visibility: ${props => (props.hide ? "hidden" : "visible")};
   align-self: center;
-  margin-left: auto;
+  margin-left: 0;
+  /* margin-left: ${props => (props.text === "back" ? "0" : "auto")}; */
   background: ${props => props.theme.panel && props.theme.panel};
   border: 1px solid;
   border-color: ${props =>
@@ -26,7 +28,14 @@ const Button = styled.a`
   }
 `;
 
-function MrButton({ text, disabled, buttonFunc, reverse, submitRoutine }) {
+function MrButton({
+  text,
+  disabled,
+  buttonFunc,
+  reverse,
+  submitRoutine,
+  hide
+}) {
   // to disable clicks when disabled
   function handleClick(e) {
     if (disabled) {
@@ -36,7 +45,7 @@ function MrButton({ text, disabled, buttonFunc, reverse, submitRoutine }) {
     submitRoutine && submitRoutine();
   }
   return (
-    <Button onClick={e => handleClick(e)} disabled={disabled}>
+    <Button onClick={e => handleClick(e)} disabled={disabled} hide={hide}>
       {text}
     </Button>
   );
