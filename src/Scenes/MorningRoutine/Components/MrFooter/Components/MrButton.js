@@ -50,11 +50,6 @@ function MrButton({
     </Button>
   );
 }
-MrButton.propTypes = {
-  text: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  buttonFunc: PropTypes.func.isRequired,
-  reverse: PropTypes.bool.isRequired
-};
+MrButton.propTypes = {};
 
 export default MrButton;

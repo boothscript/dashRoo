@@ -33,8 +33,8 @@ function MorningRoutine() {
   // stores input data
 
   const [ratings, setRatings] = useState({ day: null, sleep: null });
-  const [gratitude, setGratitude] = useState({ 1: null, 2: null, 3: null });
-  const [goal, setGoal] = useState({ text: null });
+  const [gratitude, setGratitude] = useState({ 1: "", 2: "", 3: "" });
+  const [goal, setGoal] = useState({ text: "" });
 
   const setMethods = {
     rate: setRatings,
@@ -85,20 +85,6 @@ function MorningRoutine() {
         updateDataStore={updateDataStore}
         direction={null}
       />
-      {/* {transitions.map(({ item, props, key }) => (
-          <animated.div
-            key={key}
-            className="main"
-            style={{ ...props, height: "100%" }}
-          >
-            <Switch location={item}>
-              <Route path="/mr/rate" component={MrRate} />
-              <Route path="/mr/gratitude" component={MrGratitude} />
-              <Route path="/mr/goal" component={MrGoal} />
-            </Switch>
-          </animated.div>
-        ))} */}
-
       <MrFooter
         buttonFunc={advanceState}
         nextDisabled={!routineState.inputsComplete}

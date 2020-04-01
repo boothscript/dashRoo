@@ -1,8 +1,17 @@
 import React, { useEffect } from "react";
-
+import styled from "styled-components";
 import { MrTextInput } from "../Components";
 
-function MrGratitude({ dataStore, updateDataStore, storeKey }) {
+const Div = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+function MrGratitude({ style, dataStore, updateDataStore, storeKey }) {
   // set focus on text element
   useEffect(() => {
     // hack to delay set focus untill animation has completed
@@ -12,7 +21,7 @@ function MrGratitude({ dataStore, updateDataStore, storeKey }) {
   }, []);
 
   return (
-    <>
+    <Div style={style}>
       <MrTextInput
         inputKey={1}
         value={dataStore[1]}
@@ -34,7 +43,7 @@ function MrGratitude({ dataStore, updateDataStore, storeKey }) {
         update={updateDataStore}
         storeKey={storeKey}
       />
-    </>
+    </Div>
   );
 }
 

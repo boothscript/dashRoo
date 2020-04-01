@@ -1,10 +1,20 @@
 import React from "react";
+import styled from "styled-components";
 
 import MrRater from "./Components/MrRater/MrRater";
 
-function MrRate({ dataStore, updateDataStore, storeKey }) {
+const Div = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+function MrRate({ style, dataStore, updateDataStore, storeKey }) {
   return (
-    <>
+    <Div style={style}>
       <MrRater
         text="Rate Yesterday"
         inputKey={"day"}
@@ -19,7 +29,7 @@ function MrRate({ dataStore, updateDataStore, storeKey }) {
         updateMethod={updateDataStore}
         storeKey={storeKey}
       />
-    </>
+    </Div>
   );
 }
 
