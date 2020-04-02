@@ -40,7 +40,7 @@ MrFooter.propTypes = {
   buttonFunc: PropTypes.func.isRequired,
   nextDisabled: PropTypes.bool.isRequired,
   buttonProps: PropTypes.object.isRequired,
-  submitRoutine: PropTypes.func.isRequired
+  submitRoutine: PropTypes.func
 };
 
 export default MrFooter;

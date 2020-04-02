@@ -52,7 +52,7 @@ function MrButton({
 }
 MrButton.propTypes = {
   text: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired
+  disabled: PropTypes.bool
 };
 
 export default MrButton;

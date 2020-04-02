@@ -55,8 +55,8 @@ MrRateStar.propTypes = {
   starNumber: PropTypes.number.isRequired,
   handleClick: PropTypes.func.isRequired,
   handleHover: PropTypes.func.isRequired,
-  ratingValue: PropTypes.number.isRequired,
-  hoverValue: PropTypes.number.isRequired
+  ratingValue: PropTypes.number,
+  hoverValue: PropTypes.number
 };
 
 export default MrRateStar;

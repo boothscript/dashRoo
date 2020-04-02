@@ -36,7 +36,7 @@ function MrGoal({ style, dataStore, updateDataStore, storeKey }) {
 }
 
 MrGoal.propTypes = {
-  dataStores: PropTypes.object.isRequired,
+  dataStore: PropTypes.object.isRequired,
   updateDataStore: PropTypes.func.isRequired,
   storeKey: PropTypes.string.isRequired
 };

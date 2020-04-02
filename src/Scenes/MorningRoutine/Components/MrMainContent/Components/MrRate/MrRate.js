@@ -35,7 +35,7 @@ function MrRate({ style, dataStore, updateDataStore, storeKey }) {
 }
 
 MrRate.propTypes = {
-  dataStores: PropTypes.object.isRequired,
+  dataStore: PropTypes.object.isRequired,
   updateDataStore: PropTypes.func.isRequired,
   storeKey: PropTypes.string.isRequired
 };
