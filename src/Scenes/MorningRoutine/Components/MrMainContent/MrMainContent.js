@@ -25,7 +25,6 @@ function getTransitionConfig(step, direction) {
       leave: { transform: "translateX(100%)", opacity: 0 }
     };
   } else if (direction === "fwd" && step === "rate") {
-    console.log("herreee");
     return {
       from: { transform: "translateX(0)", opacity: 0 },
       enter: { transform: "translateX(0)", opacity: 1 },
@@ -47,14 +46,12 @@ function MrMainContent({ step, dataStores, updateDataStore, direction }) {
     null,
     getTransitionConfig(step, direction)
   );
-  console.log(transitions);
 
   const { rate, gratitude, goal } = dataStores;
 
   return (
     <Div key="thisakey">
       {transitions.map(({ item, key, props }) => {
-        console.log(props);
         if (item === "rate") {
           return (
             <MrRateAnimated
