@@ -19,7 +19,7 @@ function MrGratitude({ style, dataStore, updateDataStore, storeKey }) {
     // hack to delay set focus untill animation has completed
     setTimeout(() => {
       document.querySelector("input").focus();
-    }, 350);
+    }, 450);
   }, []);
 
   return (

@@ -16,10 +16,13 @@ const Div = styled.div`
 function MrGoal({ style, dataStore, updateDataStore, storeKey }) {
   // set focus on text element
   useEffect(() => {
+    console.log("use effect");
     // hack to delay set focus untill animation has completed
     setTimeout(() => {
+      console.log("focus");
+      console.log(document.querySelectorAll("input"));
       document.querySelector("input").focus();
-    }, 350);
+    }, 750);
   }, []);
 
   return (
