@@ -6,16 +6,17 @@ Run npm start to try out 👍
 
 ## Features
 
-✔️ Functional Components and Hooks
-✔️ Resposive
-✔️ Sexy Transitions
+✔️ Functional Components and Hooks<br />
+✔️ Resposive<br />
+✔️ Sexy Transitions<br />
 
 ## Yet to be Added
 
-✖️ Aria-labels
-✖️ advance on enter key press
+✖️ Aria-labels<br />
+✖️ advance on enter key press<br />
 
-[React Noob!] Code reviews and advice extreamly welcome
+React Noob! Code reviews and advice extreamly welcome
+<br /><br /><br />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
