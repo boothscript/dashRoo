@@ -4,7 +4,7 @@ Part of an ongoing personal productivity/wellness app.
 
 Run npm start to try out 👍
 
-[!preview](preview/MRDemo.gif)
+![preview](http://github.com/boothscript/routineDemo/preview/MRDemo.gif?raw=true)
 
 ## Features
 
