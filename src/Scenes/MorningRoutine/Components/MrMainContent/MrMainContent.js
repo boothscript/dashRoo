@@ -9,6 +9,7 @@ const Div = styled.div`
   grid-column: 2/-2;
   position: relative;
   height: 100%;
+  overflow: hidden;
 `;
 
 const MrRateAnimated = animated(MrRate);
