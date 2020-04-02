@@ -15,22 +15,36 @@ const MrRateAnimated = animated(MrRate);
 const MrGratitudeAnimated = animated(MrGratitude);
 const MrGoalAnimated = animated(MrGoal);
 
+// transition logic
+function getTransitionConfig(step, direction) {
+  if (direction === "back") {
+    return {
+      from: { transform: "translateX(-100%)", opacity: 0 },
+      enter: { transform: "translateX(0)", opacity: 1 },
+      leave: { transform: "translateX(100%)", opacity: 0 }
+    };
+  } else if (direction === "fwd" && step === "rate") {
+    console.log("herreee");
+    return {
+      from: { transform: "translateX(0)", opacity: 0 },
+      enter: { transform: "translateX(0)", opacity: 1 },
+      leave: { transform: "translateX(100%)", opacity: 0 }
+    };
+  } else {
+    return {
+      from: { transform: "translateX(100%)", opacity: 0 },
+      enter: { transform: "translateX(0)", opacity: 1 },
+      leave: { transform: "translateX(-100%)", opacity: 0 }
+    };
+  }
+}
+
 function MrMainContent({ step, dataStores, updateDataStore, direction }) {
   // set up transition
   const transitions = useTransition(
     step,
     null,
-    direction === "back"
-      ? {
-          from: { transform: "translateX(-100%)", opacity: 0 },
-          enter: { transform: "translateX(0)", opacity: 1 },
-          leave: { transform: "translateX(100%)", opacity: 0 }
-        }
-      : {
-          from: { transform: "translateX(100%)", opacity: 0 },
-          enter: { transform: "translateX(0)", opacity: 1 },
-          leave: { transform: "translateX(-100%)", opacity: 0 }
-        }
+    getTransitionConfig(step, direction)
   );
   console.log(transitions);
 

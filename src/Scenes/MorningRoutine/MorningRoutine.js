@@ -84,7 +84,7 @@ function MorningRoutine() {
         step={routineState.step}
         dataStores={dataStores}
         updateDataStore={updateDataStore}
-        direction={null}
+        direction={routineState.direction}
       />
       <MrFooter
         buttonFunc={advanceState}
