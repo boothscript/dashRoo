@@ -76,6 +76,11 @@ function MrMainContent({ step, dataStores, updateDataStore, direction }) {
   );
 }
 
-MrMainContent.propTypes = {};
+MrMainContent.propTypes = {
+  step: PropTypes.string.isRequired,
+  dataStores: PropTypes.object.isRequired,
+  updateDataStore: PropTypes.func.isRequired,
+  direction: PropTypes.string.isRequired
+};
 
 export default MrMainContent;

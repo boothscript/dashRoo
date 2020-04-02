@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Star = styled.div`
   background: ${props =>
@@ -49,5 +50,13 @@ function MrRateStar({
     />
   );
 }
+
+MrRateStar.propTypes = {
+  starNumber: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  handleHover: PropTypes.func.isRequired,
+  ratingValue: PropTypes.number.isRequired,
+  hoverValue: PropTypes.number.isRequired
+};
 
 export default MrRateStar;

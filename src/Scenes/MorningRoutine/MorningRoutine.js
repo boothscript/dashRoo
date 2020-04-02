@@ -27,14 +27,18 @@ function MorningRoutine() {
     console.log("submit data");
   }
 
-  // ==============================
-
-  // DATA STORE STATE =============
+  // DATA STORE STATES =============
   // stores input data
 
   const [ratings, setRatings] = useState({ day: null, sleep: null });
   const [gratitude, setGratitude] = useState({ 1: "", 2: "", 3: "" });
   const [goal, setGoal] = useState({ text: "" });
+
+  const dataStores = {
+    rate: ratings,
+    gratitude: gratitude,
+    goal: goal
+  };
 
   const setMethods = {
     rate: setRatings,
@@ -48,15 +52,10 @@ function MorningRoutine() {
       return { ...prevState, [inputKey]: value };
     });
   }
-  const dataStores = {
-    rate: ratings,
-    gratitude: gratitude,
-    goal: goal
-  };
 
   // ==============================
 
-  // Update Step state when necessary
+  // Check storeStates to update routineState when all inputs completed
   useLayoutEffect(() => {
     const dataStores = {
       rate: ratings,
@@ -71,11 +70,13 @@ function MorningRoutine() {
     });
   }, [ratings, gratitude, goal, routineState.step]);
 
+  // Footer buttons configs
   const buttonProps = {
     rate: { displayBackButton: false, nextButtonText: "next" },
     gratitude: { displayBackButton: true, nextButtonText: "next" },
     goal: { displayBackButton: true, nextButtonText: "finish" }
   };
+
   return (
     <MrContainer className="page">
       <MrHeader step={routineState.step} />

@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+
 import { MrTextInput } from "../Components";
 
 const Div = styled.div`
@@ -32,5 +34,11 @@ function MrGoal({ style, dataStore, updateDataStore, storeKey }) {
     </Div>
   );
 }
+
+MrGoal.propTypes = {
+  dataStores: PropTypes.object.isRequired,
+  updateDataStore: PropTypes.func.isRequired,
+  storeKey: PropTypes.string.isRequired
+};
 
 export default MrGoal;

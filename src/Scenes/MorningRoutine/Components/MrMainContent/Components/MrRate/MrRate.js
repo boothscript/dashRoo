@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import MrRater from "./Components/MrRater/MrRater";
 
@@ -32,5 +33,11 @@ function MrRate({ style, dataStore, updateDataStore, storeKey }) {
     </Div>
   );
 }
+
+MrRate.propTypes = {
+  dataStores: PropTypes.object.isRequired,
+  updateDataStore: PropTypes.func.isRequired,
+  storeKey: PropTypes.string.isRequired
+};
 
 export default MrRate;

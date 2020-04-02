@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,5 +36,9 @@ function MrProgress({ step }) {
     </Wrapper>
   );
 }
+
+MrProgress.propTypes = {
+  step: PropTypes.string.isRequired
+};
 
 export default MrProgress;

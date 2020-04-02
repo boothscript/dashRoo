@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import MrWelcome from "./Components/MrWelcome";
 import MrProgress from "./Components/MrProgress";
@@ -24,5 +25,9 @@ function MrHeader({ step }) {
     </Div>
   );
 }
+
+MrHeader.propTypes = {
+  step: PropTypes.string.isRequired
+};
 
 export default MrHeader;
