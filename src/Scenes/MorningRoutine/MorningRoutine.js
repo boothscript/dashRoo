@@ -1,4 +1,5 @@
 import React, { useState, useLayoutEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import { MrHeader, MrMainContent, MrFooter, MrContainer } from "./Components";
 
@@ -21,10 +22,12 @@ function MorningRoutine() {
         : { ...prevState, step: steps[stepIndex + 1], direction: "fwd" };
     });
   }
-
+  const history = useHistory();
   function submitRoutine() {
     // post data to server and redirect to main dash
+    // ** for demo purposes redirects to done message **
     console.log("submit data");
+    history.push("/done");
   }
 
   // DATA STORE STATES =============
