@@ -1,3 +1,22 @@
+# Multi Step Form in React - with styled components and react spring
+
+Part of an ongoing personal productivity/wellness app.
+
+Run npm start to try out 👍
+
+## Features
+
+✔️ Functional Components and Hooks
+✔️ Resposive
+✔️ Sexy Transitions
+
+## Yet to be Added
+
+✖️ Aria-labels
+✖️ advance on enter key press
+
+[React Noob!] Code reviews and advice extreamly welcome
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
