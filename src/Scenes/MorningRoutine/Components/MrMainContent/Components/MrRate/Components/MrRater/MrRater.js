@@ -49,45 +49,22 @@ function MrRater({ text, inputKey, dataStore, updateMethod, storeKey }) {
     setHoveredStar(starNumber);
   }
 
+  const stars = [1, 2, 3, 4, 5];
+
   return (
     <Div rater>
       <MrRateText>{text}</MrRateText>
       <MrRateStars>
-        <MrRateStar
-          starNumber={1}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
-        <MrRateStar
-          starNumber={2}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
-        <MrRateStar
-          starNumber={3}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
-        <MrRateStar
-          starNumber={4}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
-        <MrRateStar
-          starNumber={5}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
+        {stars.map(star => (
+          <MrRateStar
+            key={star}
+            starNumber={star}
+            handleClick={handleClick}
+            handleHover={handleHover}
+            ratingValue={dataStore[inputKey]}
+            hoverValue={hoveredStar}
+          />
+        ))}
       </MrRateStars>
     </Div>
   );

@@ -24,9 +24,13 @@ yep!
 
 even if you are hacking you should use ref instead of document.querySelect
 
+Ahh! Understanding refs much more now, Thanks!
+
 ## MrRater.js
 
 use map to render MrRateStar
+
+yep!
 
 ## MrMainContent.js
 
