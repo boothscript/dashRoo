@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import MrWelcome from "./Components/MrWelcome";
 import MrProgress from "./Components/MrProgress";
 
 const Div = styled.div`
@@ -15,6 +14,13 @@ const Div = styled.div`
     align-self: stretch;
     justify-content: space-around;
   }
+`;
+
+const MrWelcome = styled.h1`
+  font-family: ${props => props.theme.font && props.theme.font};
+  font-weight: 800;
+  color: ${props => props.theme.white90 && props.theme.white90};
+  align-self: center;
 `;
 
 function MrHeader({ step }) {

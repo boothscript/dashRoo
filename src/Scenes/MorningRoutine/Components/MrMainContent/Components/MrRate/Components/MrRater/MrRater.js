@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import { MrRateText, MrRateStar, MrRateStars } from "./Components";
+import MrRateStar from "./Components/MrRateStar";
 
 const Div = styled.div`
   grid-column: 1/-1;
@@ -16,6 +16,25 @@ const Div = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 2em 0;
+  }
+`;
+
+const MrRateStars = styled.div`
+  flex-basis: 60%;
+  display: flex;
+  justify-content: center;
+`;
+
+const MrRateText = styled.h2`
+  margin: 0;
+  margin-left: 2em;
+  font-family: ${props => props.theme.font && props.theme.font};
+  font-weight: 300;
+  color: ${props => props.theme.white90 && props.theme.white90};
+  align-self: center;
+  flex-basis: 40%;
+  @media (max-width: 500px) {
+    margin: 0 0 0.5em 0;
   }
 `;
 
