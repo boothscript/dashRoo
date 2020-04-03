@@ -18,6 +18,8 @@ Hide prop is there as the button need to stay in the document flow for layout re
 
 no need to use ternary condition - you can just pass step === "rate"
 
+yep!
+
 ## MrGratitude.js
 
 even if you are hacking you should use ref instead of document.querySelect

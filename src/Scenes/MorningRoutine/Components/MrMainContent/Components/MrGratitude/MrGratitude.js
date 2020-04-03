@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -14,17 +14,19 @@ const Div = styled.div`
 `;
 
 function MrGratitude({ style, dataStore, updateDataStore, storeKey }) {
+  const inputFocusRef = useRef(null);
   // set focus on text element
   useEffect(() => {
     // hack to delay set focus untill animation has completed
     setTimeout(() => {
-      document.querySelector("input").focus();
+      inputFocusRef.current.focus();
     }, 450);
   }, []);
 
   return (
     <Div style={style}>
       <MrTextInput
+        fwdRef={inputFocusRef}
         inputKey={1}
         value={dataStore[1]}
         placeholder={"Reason to be greatful #1"}
