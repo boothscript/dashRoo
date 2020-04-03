@@ -50,7 +50,7 @@ function MrMainContent({ step, dataStores, updateDataStore, direction }) {
   const { rate, gratitude, goal } = dataStores;
 
   return (
-    <Div key="thisakey">
+    <Div>
       {transitions.map(({ item, key, props }) => {
         if (item === "rate") {
           return (
