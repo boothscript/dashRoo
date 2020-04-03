@@ -11,6 +11,9 @@ I am using eslint and prettier, do I have it setup wrong?
 
 Do you really need disabled check in handleClick condition? Buttons tend to be disabled when disabled state is used. Why component is named a Button, but its actually an anchor? You can simple pass handleClick like this: onClick={handleClick} `buttonFunc(reverse); submitRoutine && submitRoutine();` Looks strange, instead I would define function in the parent component and just pass function reference to MrButton component. Not sure if you need to have hide property if you could just conditionaly render component like {hide && <MrButton /> }
 
+Moved the submit routine into buttonFunc and changed handleClick.
+Hide prop is there as the button need to stay in the document flow for layout reasons.
+
 ## MrProgress.js
 
 no need to use ternary condition - you can just pass step === "rate"

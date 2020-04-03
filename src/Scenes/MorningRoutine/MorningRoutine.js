@@ -16,10 +16,16 @@ function MorningRoutine() {
 
   function advanceState(reverse = false) {
     setRoutineState(prevState => {
-      const stepIndex = steps.findIndex(step => step === prevState.step);
-      return reverse
-        ? { ...prevState, step: steps[stepIndex - 1], direction: "back" }
-        : { ...prevState, step: steps[stepIndex + 1], direction: "fwd" };
+      if (prevState.step === "goal" && !reverse) {
+        // handles form submit
+        submitRoutine();
+        return { ...prevState };
+      } else {
+        const stepIndex = steps.findIndex(step => step === prevState.step);
+        return reverse
+          ? { ...prevState, step: steps[stepIndex - 1], direction: "back" }
+          : { ...prevState, step: steps[stepIndex + 1], direction: "fwd" };
+      }
     });
   }
   const history = useHistory();
@@ -65,6 +71,7 @@ function MorningRoutine() {
       gratitude: gratitude,
       goal: goal
     };
+    console.log("ROTUNE STEP", routineState);
     setRoutineState(prevState => {
       return {
         ...prevState,
@@ -93,7 +100,6 @@ function MorningRoutine() {
         buttonFunc={advanceState}
         nextDisabled={!routineState.inputsComplete}
         buttonProps={buttonProps[routineState.step]}
-        submitRoutine={routineState.step === "goal" ? submitRoutine : null}
       />
     </MrContainer>
   );
