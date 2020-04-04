@@ -2,11 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const Button = styled.a`
+const Button = styled.button`
   visibility: ${props => (props.hide ? "hidden" : "visible")};
   align-self: center;
   margin-left: 0;
-  /* margin-left: ${props => (props.text === "back" ? "0" : "auto")}; */
   background: ${props => props.theme.panel && props.theme.panel};
   border: 1px solid;
   border-color: ${props =>
@@ -28,24 +27,16 @@ const Button = styled.a`
   }
 `;
 
-function MrButton({
-  text,
-  disabled,
-  buttonFunc,
-  reverse,
-  submitRoutine,
-  hide
-}) {
+function MrButton({ text, disabled, buttonFunc, reverse, hide }) {
   // to disable clicks when disabled
   function handleClick(e) {
     if (disabled) {
       e.preventDefault();
     }
     buttonFunc(reverse);
-    submitRoutine && submitRoutine();
   }
   return (
-    <Button onClick={e => handleClick(e)} disabled={disabled} hide={hide}>
+    <Button onClick={handleClick} disabled={disabled} hide={hide}>
       {text}
     </Button>
   );

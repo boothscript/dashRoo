@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import { MrRateText, MrRateStar, MrRateStars } from "./Components";
+import MrRateStar from "./Components/MrRateStar";
 
 const Div = styled.div`
   grid-column: 1/-1;
@@ -19,6 +19,25 @@ const Div = styled.div`
   }
 `;
 
+const MrRateStars = styled.div`
+  flex-basis: 60%;
+  display: flex;
+  justify-content: center;
+`;
+
+const MrRateText = styled.h2`
+  margin: 0;
+  margin-left: 2em;
+  font-family: ${props => props.theme.font && props.theme.font};
+  font-weight: 300;
+  color: ${props => props.theme.white90 && props.theme.white90};
+  align-self: center;
+  flex-basis: 40%;
+  @media (max-width: 500px) {
+    margin: 0 0 0.5em 0;
+  }
+`;
+
 function MrRater({ text, inputKey, dataStore, updateMethod, storeKey }) {
   const [hoveredStar, setHoveredStar] = useState(0);
 
@@ -30,45 +49,22 @@ function MrRater({ text, inputKey, dataStore, updateMethod, storeKey }) {
     setHoveredStar(starNumber);
   }
 
+  const stars = [1, 2, 3, 4, 5];
+
   return (
     <Div rater>
       <MrRateText>{text}</MrRateText>
       <MrRateStars>
-        <MrRateStar
-          starNumber={1}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
-        <MrRateStar
-          starNumber={2}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
-        <MrRateStar
-          starNumber={3}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
-        <MrRateStar
-          starNumber={4}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
-        <MrRateStar
-          starNumber={5}
-          ratingValue={dataStore[inputKey]}
-          hoverValue={hoveredStar}
-          handleClick={handleClick}
-          handleHover={handleHover}
-        ></MrRateStar>
+        {stars.map(star => (
+          <MrRateStar
+            key={star}
+            starNumber={star}
+            handleClick={handleClick}
+            handleHover={handleHover}
+            ratingValue={dataStore[inputKey]}
+            hoverValue={hoveredStar}
+          />
+        ))}
       </MrRateStars>
     </Div>
   );

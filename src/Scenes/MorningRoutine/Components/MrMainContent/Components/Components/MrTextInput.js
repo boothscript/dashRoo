@@ -19,13 +19,21 @@ const TextInput = styled.input`
   }
 `;
 
-function MrTextInput({ inputKey, value, placeholder, update, storeKey }) {
+function MrTextInput({
+  fwdRef,
+  inputKey,
+  value,
+  placeholder,
+  update,
+  storeKey
+}) {
   const handleChange = e => {
     update(storeKey, inputKey, e.target.value);
   };
 
   return (
     <TextInput
+      ref={fwdRef}
       onChange={e => handleChange(e)}
       placeholder={placeholder}
       value={value}

@@ -13,7 +13,7 @@ const Div = styled.div`
   justify-content: space-between;
 `;
 
-function MrFooter({ buttonFunc, nextDisabled, buttonProps, submitRoutine }) {
+function MrFooter({ buttonFunc, nextDisabled, buttonProps }) {
   const { nextButtonText, displayBackButton } = buttonProps;
 
   return (
@@ -30,7 +30,6 @@ function MrFooter({ buttonFunc, nextDisabled, buttonProps, submitRoutine }) {
         text={nextButtonText}
         buttonFunc={buttonFunc}
         reverse={false}
-        submitRoutine={submitRoutine}
       />
     </Div>
   );
@@ -39,8 +38,7 @@ function MrFooter({ buttonFunc, nextDisabled, buttonProps, submitRoutine }) {
 MrFooter.propTypes = {
   buttonFunc: PropTypes.func.isRequired,
   nextDisabled: PropTypes.bool.isRequired,
-  buttonProps: PropTypes.object.isRequired,
-  submitRoutine: PropTypes.func
+  buttonProps: PropTypes.object.isRequired
 };
 
 export default MrFooter;

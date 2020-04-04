@@ -30,9 +30,9 @@ const ProgressCircle = styled.div`
 function MrProgress({ step }) {
   return (
     <Wrapper>
-      <ProgressCircle active={step === "rate" ? true : false} />
-      <ProgressCircle active={step === "gratitude" ? true : false} />
-      <ProgressCircle active={step === "goal" ? true : false} />
+      <ProgressCircle active={step === "rate"} />
+      <ProgressCircle active={step === "gratitude"} />
+      <ProgressCircle active={step === "goal"} />
     </Wrapper>
   );
 }
