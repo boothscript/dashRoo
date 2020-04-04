@@ -7,6 +7,7 @@ import colors from "./Themes/colors";
 
 import MorningRoutine from "./Scenes/MorningRoutine/MorningRoutine";
 import Done from "./Scenes/Done/Done";
+import Dash from "./Scenes/Dash/Dash";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={MorningRoutine} />
           <Route exact path="/done" component={Done} />
+          <Route exact path="/dash" component={Dash} />
         </Switch>
       </Router>
     </ThemeProvider>
