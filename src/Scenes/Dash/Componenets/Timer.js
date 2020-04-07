@@ -3,6 +3,11 @@ import styled from "styled-components";
 
 import { useInterval } from "../../../Hooks/useInterval";
 
+import {
+  convertToDisplayTime,
+  displayTimeToMs,
+} from "../../../Helpers/timeConversions";
+
 import ProgressCircle from "./ProgressCircle";
 import Dropdown from "./Dropdown";
 import PpButton from "./PpButton";
@@ -22,6 +27,7 @@ const TimeText = styled.input`
   font-family: ${(props) => props.theme.font};
   font-size: 3em;
   text-align: center;
+  outline: none;
 `;
 
 // =====================================================================
@@ -29,7 +35,7 @@ const TimeText = styled.input`
 function Timer() {
   // TIMER STATE =========================================================
 
-  const durations = { session: 4, break: 2, longBreak: 3 }; // time in seconds
+  const durations = { session: 300000, break: 2000, longBreak: 3000 }; // time in seconds
   const projectArr = [
     { title: "project 1", id: 1, color: "#B3F8F1" },
     { title: "project 2", id: 2, color: "#EBEE89" },
@@ -42,8 +48,8 @@ function Timer() {
     id: 1,
     color: "#B3F8F1",
   });
-  const [timerValue, setTimerValue] = useState(4);
-  const [startValue, setStartValue] = useState(4);
+  const [timerValue, setTimerValue] = useState(durations.session);
+  const [startValue, setStartValue] = useState(durations.session);
   const [sessionCount, setSessionCount] = useState(0);
 
   // =====================================================================
@@ -51,13 +57,16 @@ function Timer() {
   // TIMER FUNCTIONS =====================================================
 
   useInterval(
-    () => setTimerValue((prevState) => prevState - 1),
-    isActive ? 1000 : null
+    () => setTimerValue((prevState) => prevState - 500),
+    isActive ? 500 : null
   );
 
   function handleTimerChange(newTime) {
     setTimerValue(newTime);
     setStartValue(newTime);
+  }
+  function handleManChange(e) {
+    handleTimerChange(displayTimeToMs(e.target.value));
   }
 
   function updateProjectSelected(projectId) {
@@ -103,7 +112,11 @@ function Timer() {
           isActive={isActive}
           color={projectSelected.color}
         />
-        <TimeText value={timerValue} readOnly />
+        <TimeText
+          value={convertToDisplayTime(timerValue)}
+          readOnly={isActive}
+          onChange={handleManChange}
+        />
         <Dropdown
           projectArr={projectArr}
           currentProject={projectSelected}
