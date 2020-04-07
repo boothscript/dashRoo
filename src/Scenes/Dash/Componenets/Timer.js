@@ -4,14 +4,22 @@ import styled from "styled-components";
 import { useInterval } from "../../../Hooks/useInterval";
 
 import PanelGrid from "./PanelGrid";
+import ProgressCircle from "./ProgressCircle";
+import Dropdown from "./Dropdown";
 
 // STYLED COMPONENTS ==================================================
+
+const Div = styled.div`
+  grid-column: -4 / span 3;
+  grid-row: 2 / span 4;
+  position: relative;
+`;
 
 const TimeText = styled.input`
   color: ${(props) => props.theme.white90};
   background: ${(props) => props.theme.panel};
 `;
-const PlayButton = styled.button`
+const PlayPauseButton = styled.button`
   background: blue;
 `;
 const PauseButton = styled.button`
@@ -25,11 +33,20 @@ function Timer() {
   // TIMER STATE =========================================================
 
   const durations = { session: 4, break: 2, longBreak: 3 }; // time in seconds
-
+  const projectArr = [
+    { title: "project 1", id: 1, color: "#B3F8F1" },
+    { title: "project 2", id: 2, color: "#EBEE89" },
+    { title: "project 3", id: 3, color: "#EE9FD3" },
+  ];
   const [mode, setMode] = useState("session");
   const [isActive, setIsActive] = useState(false);
-  const [projectSelected, setProjectSelected] = useState("null");
+  const [projectSelected, setProjectSelected] = useState({
+    title: "project 1",
+    id: 1,
+    color: "#B3F8F1",
+  });
   const [timerValue, setTimerValue] = useState(4);
+  const [startValue, setStartValue] = useState(4);
   const [sessionCount, setSessionCount] = useState(0);
 
   // =====================================================================
@@ -41,40 +58,56 @@ function Timer() {
     isActive ? 1000 : null
   );
 
+  function handleTimerChange(newTime) {
+    setTimerValue(newTime);
+    setStartValue(newTime);
+  }
+
+  function updateProjectSelected(projectId) {
+    setProjectSelected(projectArr.find((project) => project.id === projectId));
+  }
+
   useEffect(() => {
     console.log("inuseeffect");
     if (timerValue <= 0 && mode === "session") {
       if (sessionCount === 4) {
         setSessionCount(0);
         setMode("longBreak");
-        setTimerValue(durations["longBreak"]);
+        handleTimerChange(durations["longBreak"]);
         // save session in memory for stack
       } else {
         setSessionCount((count) => count + 1);
         setMode("break");
-        setTimerValue(durations["break"]);
+        handleTimerChange(durations["break"]);
       }
     } else if (
       (timerValue <= 0 && mode === "break") ||
       (timerValue <= 0 && mode === "longBreak")
     ) {
       setMode("session");
-      setTimerValue(durations["session"]);
+      handleTimerChange(durations["session"]);
     }
   }, [durations, timerValue, mode, sessionCount]);
 
   // =====================================================================
   return (
-    <PanelGrid row="2 / span 4" column="-4  /span 3" bgColor="pannel">
-      <TimeText value={timerValue} readOnly />
-      <PlayButton onClick={() => setIsActive((prevState) => !prevState)}>
-        play/pause
-      </PlayButton>
-      <ProjectSelect>
-        <option value="Project1">Project 1</option>
-        <option value="Project2">Project 2</option>
-      </ProjectSelect>
-    </PanelGrid>
+    <Div>
+      <ProgressCircle
+        startValue={startValue}
+        currentTime={timerValue}
+        color={projectSelected.color}
+      >
+        <TimeText value={timerValue} readOnly />
+        <PlayPauseButton onClick={() => setIsActive((prevState) => !prevState)}>
+          Button{" "}
+        </PlayPauseButton>
+        <Dropdown
+          projectArr={projectArr}
+          currentProject={projectSelected}
+          updateProjectSelected={updateProjectSelected}
+        />
+      </ProgressCircle>
+    </Div>
   );
 }
 
