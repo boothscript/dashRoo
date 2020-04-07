@@ -6,9 +6,12 @@ const Wrapper = styled.div`
   z-index: 100;
 
   display: inline-block;
+  align-self: center;
 `;
 const Header = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 const HeaderTitle = styled.p`
   font-family: ${(props) => props.theme.font};
@@ -18,14 +21,18 @@ const HeaderTitle = styled.p`
   font-weight: 900;
   letter-spacing: 0.05em;
   line-height: 1.16;
-  padding: 1.25em;
+
+  width: 220px;
+  text-align: center;
   cursor: pointer;
 `;
 
 const List = styled.div`
   display: ${(props) => (props.state === "open" ? "inline-block" : "none")};
   position: absolute;
-  width: inherit;
+  width: 220px;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 1);
+  margin-top: -50px;
 `;
 
 const Item = styled.div`
@@ -37,8 +44,9 @@ const Item = styled.div`
   font-weight: 900;
   letter-spacing: 0.05em;
   line-height: 1.16;
-  padding: 1.25em;
+  padding: 1.25em 0.75em;
   cursor: pointer;
+  text-align: center;
 `;
 
 function Dropdown({ projectArr, currentProject, updateProjectSelected }) {

@@ -37,7 +37,7 @@ function ProgressCircle({ children, startValue, currentTime, color }) {
           strokeWidth="2"
           strokeDasharray={circumference}
           strokeDashoffset={`${circumference * (1 - timePercentage)}`}
-          style={{ transition: "stroke-dashoffset 500ms" }}
+          style={{ transition: "stroke-dashoffset 500ms linear" }}
         />
       </Svg>
       <Div>{children}</Div>

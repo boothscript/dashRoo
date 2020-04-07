@@ -4,10 +4,8 @@ import styled from "styled-components";
 const ButtonWrapper = styled.button`
   background: inherit;
   border: none;
-  &:focus,
-  &:active {
-    outline: none;
-  }
+  outline: none;
+  margin-bottom: 10px;
 `;
 
 function PpButton({ isActive, color, click }) {
@@ -30,8 +28,8 @@ function PpButton({ isActive, color, click }) {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        width="42"
-        height="42"
+        width="60"
+        height="60"
         stroke={color}
       >
         {iconPath(isActive)}

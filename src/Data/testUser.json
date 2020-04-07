@@ -1,0 +1,18 @@
+[
+  {
+    "userData": {
+      "firstName": "Steve",
+      "SecondName": "User",
+      "location": "Liverpool"
+    },
+    "morningRoutine": [],
+    "stack": {
+      "projects": [
+        { "title": "project rooter", "id": 1, "color": "#B3F8F1" },
+        { "title": "job search", "id": 2, "color": "#EBEE89" },
+        { "title": "project dashroo", "id": 3, "color": "#EE9FD3" }
+      ],
+      "logs": []
+    }
+  }
+]
