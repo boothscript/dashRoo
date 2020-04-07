@@ -16,11 +16,21 @@ const Div = styled.div`
 `;
 
 const TimeText = styled.input`
+  width: 50%;
   color: ${(props) => props.theme.white90};
   background: ${(props) => props.theme.panel};
+  border: none;
+  font-family: ${(props) => props.theme.font};
+  font-size: 3em;
+  text-align: center;
 `;
-const PlayPauseButton = styled.button`
-  background: blue;
+const ButtonWrapper = styled.button`
+  background: inherit;
+  border: none;
+  &:focus,
+  &:active {
+    outline: none;
+  }
 `;
 const PauseButton = styled.button`
   background: red;
@@ -50,7 +60,35 @@ function Timer() {
   const [sessionCount, setSessionCount] = useState(0);
 
   // =====================================================================
-
+  function PpButton({ isActive, color, click }) {
+    function iconPath(isActive) {
+      return isActive ? (
+        <>
+          <path fill={color} d="M6 5h2v14H6V5zm10 0h2v14h-2V5z" />
+        </>
+      ) : (
+        <>
+          <path
+            fill={color}
+            d="M19.376 12.416L8.777 19.482A.5.5 0 0 1 8 19.066V4.934a.5.5 0 0 1 .777-.416l10.599 7.066a.5.5 0 0 1 0 .832z"
+          />
+        </>
+      );
+    }
+    return (
+      <ButtonWrapper onClick={click}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="42"
+          height="42"
+          stroke={color}
+        >
+          {iconPath(isActive)}
+        </svg>
+      </ButtonWrapper>
+    );
+  }
   // TIMER FUNCTIONS =====================================================
 
   useInterval(
@@ -65,6 +103,10 @@ function Timer() {
 
   function updateProjectSelected(projectId) {
     setProjectSelected(projectArr.find((project) => project.id === projectId));
+  }
+
+  function handleClick() {
+    setIsActive((prevState) => !prevState);
   }
 
   useEffect(() => {
@@ -97,10 +139,12 @@ function Timer() {
         currentTime={timerValue}
         color={projectSelected.color}
       >
+        <PpButton
+          click={handleClick}
+          isActive={isActive}
+          color={projectSelected.color}
+        />
         <TimeText value={timerValue} readOnly />
-        <PlayPauseButton onClick={() => setIsActive((prevState) => !prevState)}>
-          Button{" "}
-        </PlayPauseButton>
         <Dropdown
           projectArr={projectArr}
           currentProject={projectSelected}
