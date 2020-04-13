@@ -1,5 +1,7 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+
+import { UserDataContext } from "../../Context/Data";
 
 import { MrHeader, MrMainContent, MrFooter, MrContainer } from "./Components";
 
@@ -7,21 +9,24 @@ function MorningRoutine() {
   // TOPLEVEL STATE ====================
   // Stores step form state
 
+  const { morningRoutineData, submitRoutineObject } = useContext(
+    UserDataContext
+  );
   const steps = ["rate", "gratitude", "goal"];
   const [routineState, setRoutineState] = useState({
     step: "rate",
     inputsComplete: false,
-    direction: "fwd"
+    direction: "fwd",
   });
 
   function advanceState(reverse = false) {
-    setRoutineState(prevState => {
+    setRoutineState((prevState) => {
       if (prevState.step === "goal" && !reverse) {
         // handles form submit
         submitRoutine();
         return { ...prevState };
       } else {
-        const stepIndex = steps.findIndex(step => step === prevState.step);
+        const stepIndex = steps.findIndex((step) => step === prevState.step);
         return reverse
           ? { ...prevState, step: steps[stepIndex - 1], direction: "back" }
           : { ...prevState, step: steps[stepIndex + 1], direction: "fwd" };
@@ -31,9 +36,9 @@ function MorningRoutine() {
   const history = useHistory();
   function submitRoutine() {
     // post data to server and redirect to main dash
-    // ** for demo purposes redirects to done message **
-    console.log("submit data");
-    history.push("/done");
+    const routineObject = { datetime: new Date(), ratings, gratitude, goal };
+    submitRoutineObject(routineObject);
+    history.push("/dash");
   }
 
   // DATA STORE STATES =============
@@ -46,18 +51,18 @@ function MorningRoutine() {
   const dataStores = {
     rate: ratings,
     gratitude: gratitude,
-    goal: goal
+    goal: goal,
   };
 
   const setMethods = {
     rate: setRatings,
     gratitude: setGratitude,
-    goal: setGoal
+    goal: setGoal,
   };
 
   function updateDataStore(storeKey, inputKey, value) {
     const setMethod = setMethods[storeKey];
-    setMethod(prevState => {
+    setMethod((prevState) => {
       return { ...prevState, [inputKey]: value };
     });
   }
@@ -69,13 +74,14 @@ function MorningRoutine() {
     const dataStores = {
       rate: ratings,
       gratitude: gratitude,
-      goal: goal
+      goal: goal,
     };
-    console.log("ROTUNE STEP", routineState);
-    setRoutineState(prevState => {
+    setRoutineState((prevState) => {
       return {
         ...prevState,
-        inputsComplete: Object.values(dataStores[prevState.step]).every(i => i)
+        inputsComplete: Object.values(dataStores[prevState.step]).every(
+          (i) => i
+        ),
       };
     });
   }, [ratings, gratitude, goal, routineState.step]);
@@ -84,7 +90,7 @@ function MorningRoutine() {
   const buttonProps = {
     rate: { displayBackButton: false, nextButtonText: "next" },
     gratitude: { displayBackButton: true, nextButtonText: "next" },
-    goal: { displayBackButton: true, nextButtonText: "finish" }
+    goal: { displayBackButton: true, nextButtonText: "finish" },
   };
 
   return (

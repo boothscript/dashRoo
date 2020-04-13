@@ -22,8 +22,6 @@ function ProgressCircle({ children, startValue, currentTime, color }) {
   const radius = 54;
   const circumference = 2 * Math.PI * radius;
   const timePercentage = currentTime / startValue;
-  console.log(startValue, currentTime);
-  console.log(timePercentage);
 
   return (
     <>

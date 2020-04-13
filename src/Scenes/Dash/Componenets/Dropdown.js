@@ -50,9 +50,6 @@ const Item = styled.div`
 `;
 
 function Dropdown({ projectArr, currentProject, updateProjectSelected }) {
-  console.log(projectArr);
-  console.log(currentProject);
-
   const [dropState, setDropState] = useState("closed");
 
   function handleHeaderClick() {

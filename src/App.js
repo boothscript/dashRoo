@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { UserDataContextProvider } from "./Context/Data";
 import { ThemeProvider } from "styled-components";
 
 import colors from "./Themes/colors";
@@ -12,13 +13,15 @@ import Dash from "./Scenes/Dash/Dash";
 function App() {
   return (
     <ThemeProvider theme={colors}>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={MorningRoutine} />
-          <Route exact path="/done" component={Done} />
-          <Route exact path="/dash" component={Dash} />
-        </Switch>
-      </Router>
+      <UserDataContextProvider>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={MorningRoutine} />
+            <Route exact path="/done" component={Done} />
+            <Route exact path="/dash" component={Dash} />
+          </Switch>
+        </Router>
+      </UserDataContextProvider>
     </ThemeProvider>
   );
 }
