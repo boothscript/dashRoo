@@ -14,15 +14,15 @@ import { MorningRoutineContextProvider } from "./lib/Context/MorningRoutineConte
 function App() {
   return (
     <ThemeProvider theme={colors}>
-      <MorningRoutineContextProvider>
-        <Router>
+      <Router>
+        <MorningRoutineContextProvider>
           <Switch>
             <Route exact path="/" component={MorningRoutine} />
             <Route exact path="/done" component={Done} />
             <Route exact path="/dash" component={Dash} />
           </Switch>
-        </Router>
-      </MorningRoutineContextProvider>
+        </MorningRoutineContextProvider>
+      </Router>
     </ThemeProvider>
   );
 }

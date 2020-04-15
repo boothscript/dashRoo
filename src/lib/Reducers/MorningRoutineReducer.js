@@ -47,6 +47,7 @@ function reducer(state, action) {
       // form has bee completed, redirects to dashboard
       return {
         ...state,
+        step: "complete",
       };
     case GO_BACK:
       return {

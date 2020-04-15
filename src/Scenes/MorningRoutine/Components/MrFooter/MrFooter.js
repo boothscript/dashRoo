@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import MrButton from "./Components/MrButton";
 import { MorningRoutineContext } from "../../../../lib/Context/MorningRoutineContext";
-import { GO_BACK } from "../../../../lib/Actions/MorningRoutineTypes";
+import {
+  GO_BACK,
+  SUBMIT_GOAL,
+} from "../../../../lib/Actions/MorningRoutineTypes";
 const Div = styled.div`
   grid-column: 2/-2;
 
@@ -25,6 +29,11 @@ function MrFooter({ buttonProp }) {
     fwdButtonAction,
   } = buttonProp;
 
+  const history = useHistory();
+  function moveToDash() {
+    history.push("/dash");
+  }
+
   return (
     <Div>
       <MrButton
@@ -36,7 +45,11 @@ function MrFooter({ buttonProp }) {
       <MrButton
         disabled={!isEnabled}
         text={nextButtonText}
-        buttonFunc={() => dispatch({ type: fwdButtonAction })}
+        buttonFunc={
+          fwdButtonAction === SUBMIT_GOAL
+            ? moveToDash
+            : () => dispatch({ type: fwdButtonAction })
+        }
       />
     </Div>
   );
