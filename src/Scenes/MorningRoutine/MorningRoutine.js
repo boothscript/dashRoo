@@ -13,6 +13,11 @@ import {
 } from "../../lib/Reducers/MorningRoutineReducer";
 
 import { MrHeader, MrMainContent, MrFooter, MrContainer } from "./Components";
+import {
+  SUBMIT_RATE,
+  SUBMIT_GRATITUDE,
+  SUBMIT_GOAL,
+} from "../../lib/Actions/MorningRoutineTypes";
 
 function MorningRoutine() {
   const { state } = useContext(MorningRoutineContext);
@@ -25,7 +30,7 @@ function MorningRoutine() {
       displayBackButton: false,
       nextButtonText: "next",
       isEnabled: state.data.ratings.day && state.data.ratings.sleep,
-      fwdButtonAction: "SUBMIT_RATE",
+      fwdButtonAction: SUBMIT_RATE,
     },
     gratitude: {
       displayBackButton: true,
@@ -34,13 +39,13 @@ function MorningRoutine() {
         state.data.gratitude[1] &&
         state.data.gratitude[2] &&
         state.data.gratitude[3],
-      fwdButtonAction: "SUBMIT_GRATITUDE",
+      fwdButtonAction: SUBMIT_GRATITUDE,
     },
     goal: {
       displayBackButton: true,
       nextButtonText: "finish",
       isEnabled: state.data.goal.text,
-      fwdButtonAction: "SUBMIT_GOAL",
+      fwdButtonAction: SUBMIT_GOAL,
     },
   };
   console.log("1", buttonProp);

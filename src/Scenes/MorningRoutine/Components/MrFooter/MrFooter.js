@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import MrButton from "./Components/MrButton";
 import { MorningRoutineContext } from "../../../../lib/Context/MorningRoutineContext";
-
+import { GO_BACK } from "../../../../lib/Actions/MorningRoutineTypes";
 const Div = styled.div`
   grid-column: 2/-2;
 
@@ -29,7 +29,7 @@ function MrFooter({ buttonProp }) {
     <Div>
       <MrButton
         text="back"
-        buttonFunc={() => dispatch({ type: "GO_BACK" })}
+        buttonFunc={() => dispatch({ type: GO_BACK })}
         hide={!displayBackButton}
       />
 

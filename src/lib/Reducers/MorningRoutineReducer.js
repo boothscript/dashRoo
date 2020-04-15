@@ -1,5 +1,13 @@
 import { useHistory } from "react-router-dom";
 
+import {
+  UPDATE_FIELD,
+  SUBMIT_RATE,
+  SUBMIT_GRATITUDE,
+  SUBMIT_GOAL,
+  GO_BACK,
+} from "../Actions/MorningRoutineTypes";
+
 const initialState = {
   date: new Date(),
   step: "rate",
@@ -12,7 +20,7 @@ const initialState = {
 };
 function reducer(state, action) {
   switch (action.type) {
-    case "UPDATE_FIELD":
+    case UPDATE_FIELD:
       return {
         ...state,
         data: {
@@ -23,24 +31,24 @@ function reducer(state, action) {
           },
         },
       };
-    case "SUBMIT_RATE":
+    case SUBMIT_RATE:
       return {
         ...state,
         step: "gratitude",
         direction: "fwd",
       };
-    case "SUBMIT_GRATITUDE":
+    case SUBMIT_GRATITUDE:
       return {
         ...state,
         step: "goal",
         direction: "fwd",
       };
-    case "SUBMIT_GOAL":
+    case SUBMIT_GOAL:
       // form has bee completed, redirects to dashboard
       return {
         ...state,
       };
-    case "GO_BACK":
+    case GO_BACK:
       return {
         ...state,
         step: state.step === "goal" ? "gratitude" : "rate",
