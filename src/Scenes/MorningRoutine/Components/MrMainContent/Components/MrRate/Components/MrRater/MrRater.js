@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import MrRateStar from "./Components/MrRateStar";
+import { MorningRoutineContext } from "../../../../../../../../lib/Context/MorningRoutineContext";
 
 const Div = styled.div`
   grid-column: 1/-1;
@@ -28,9 +29,9 @@ const MrRateStars = styled.div`
 const MrRateText = styled.h2`
   margin: 0;
   margin-left: 2em;
-  font-family: ${props => props.theme.font && props.theme.font};
+  font-family: ${(props) => props.theme.font && props.theme.font};
   font-weight: 300;
-  color: ${props => props.theme.white90 && props.theme.white90};
+  color: ${(props) => props.theme.white90 && props.theme.white90};
   align-self: center;
   flex-basis: 40%;
   @media (max-width: 500px) {
@@ -38,11 +39,17 @@ const MrRateText = styled.h2`
   }
 `;
 
-function MrRater({ text, inputKey, dataStore, updateMethod, storeKey }) {
+function MrRater({ text, inputKey, dataKey }) {
+  const { state, dispatch } = useContext(MorningRoutineContext);
   const [hoveredStar, setHoveredStar] = useState(0);
 
   function handleClick({ starNumber }) {
-    updateMethod(storeKey, inputKey, starNumber);
+    dispatch({
+      type: "UPDATE_FIELD",
+      dataKey,
+      field: inputKey,
+      value: starNumber,
+    });
   }
 
   function handleHover({ starNumber }) {
@@ -50,18 +57,18 @@ function MrRater({ text, inputKey, dataStore, updateMethod, storeKey }) {
   }
 
   const stars = [1, 2, 3, 4, 5];
-
+  console.log("test", state.data);
   return (
     <Div rater>
       <MrRateText>{text}</MrRateText>
       <MrRateStars>
-        {stars.map(star => (
+        {stars.map((star) => (
           <MrRateStar
             key={star}
             starNumber={star}
             handleClick={handleClick}
             handleHover={handleHover}
-            ratingValue={dataStore[inputKey]}
+            ratingValue={state.data.ratings[inputKey]}
             hoverValue={hoveredStar}
           />
         ))}
@@ -70,10 +77,10 @@ function MrRater({ text, inputKey, dataStore, updateMethod, storeKey }) {
   );
 }
 
-MrRater.propTypes = {
-  text: PropTypes.string.isRequired,
-  inputId: PropTypes.number,
-  confirmFn: PropTypes.func
-};
+// MrRater.propTypes = {
+//   text: PropTypes.string.isRequired,
+//   inputId: PropTypes.number,
+//   confirmFn: PropTypes.func
+// };
 
 export default MrRater;

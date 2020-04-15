@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Star = styled.div`
-  background: ${props =>
+  background: ${(props) =>
     props.fill === "heavy"
       ? "url(/img/star-fill-heavy.svg)"
       : props.fill === "light"
@@ -21,7 +21,7 @@ function MrRateStar({
   handleClick,
   handleHover,
   ratingValue,
-  hoverValue
+  hoverValue,
 }) {
   // star fill logic
   function starFill() {
@@ -51,12 +51,12 @@ function MrRateStar({
   );
 }
 
-MrRateStar.propTypes = {
-  starNumber: PropTypes.number.isRequired,
-  handleClick: PropTypes.func.isRequired,
-  handleHover: PropTypes.func.isRequired,
-  ratingValue: PropTypes.number,
-  hoverValue: PropTypes.number
-};
+// MrRateStar.propTypes = {
+//   starNumber: PropTypes.number.isRequired,
+//   handleClick: PropTypes.func.isRequired,
+//   handleHover: PropTypes.func.isRequired,
+//   ratingValue: PropTypes.number,
+//   hoverValue: PropTypes.number
+// };
 
 export default MrRateStar;

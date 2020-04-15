@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { MorningRoutineContext } from "../../../../../lib/Context/MorningRoutineContext";
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
 const ProgressCircle = styled.div`
   height: 30px;
   width: 30px;
-  background-image: ${props =>
+  background-image: ${(props) =>
     props.active
       ? 'url("/img/progress-circle-fill.svg")'
       : 'url("/img/progress-circle-line.svg")'};
@@ -27,18 +28,20 @@ const ProgressCircle = styled.div`
   }
 `;
 
-function MrProgress({ step }) {
+function MrProgress() {
+  const { state } = useContext(MorningRoutineContext);
+
   return (
     <Wrapper>
-      <ProgressCircle active={step === "rate"} />
-      <ProgressCircle active={step === "gratitude"} />
-      <ProgressCircle active={step === "goal"} />
+      <ProgressCircle active={state.step === "rate"} />
+      <ProgressCircle active={state.step === "gratitude"} />
+      <ProgressCircle active={state.step === "goal"} />
     </Wrapper>
   );
 }
 
-MrProgress.propTypes = {
-  step: PropTypes.string.isRequired
-};
+// MrProgress.propTypes = {
+//   step: PropTypes.string.isRequired,
+// };
 
 export default MrProgress;

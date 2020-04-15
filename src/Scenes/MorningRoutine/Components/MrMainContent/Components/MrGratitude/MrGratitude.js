@@ -13,7 +13,7 @@ const Div = styled.div`
   justify-content: space-around;
 `;
 
-function MrGratitude({ style, dataStore, updateDataStore, storeKey }) {
+function MrGratitude({ style, dataKey }) {
   const inputFocusRef = useRef(null);
   // set focus on text element
   useEffect(() => {
@@ -28,33 +28,27 @@ function MrGratitude({ style, dataStore, updateDataStore, storeKey }) {
       <MrTextInput
         fwdRef={inputFocusRef}
         inputKey={1}
-        value={dataStore[1]}
         placeholder={"Reason to be greatful #1"}
-        update={updateDataStore}
-        storeKey={storeKey}
+        dataKey={dataKey}
       />
       <MrTextInput
         inputKey={2}
-        value={dataStore[2]}
         placeholder={"Reason to be greatful #2"}
-        update={updateDataStore}
-        storeKey={storeKey}
+        dataKey={dataKey}
       />
       <MrTextInput
         inputKey={3}
-        value={dataStore[3]}
         placeholder={"Reason to be greatful #3"}
-        update={updateDataStore}
-        storeKey={storeKey}
+        dataKey={dataKey}
       />
     </Div>
   );
 }
 
-MrGratitude.propTypes = {
-  dataStore: PropTypes.object.isRequired,
-  updateDataStore: PropTypes.func.isRequired,
-  storeKey: PropTypes.string.isRequired
-};
+// MrGratitude.propTypes = {
+//   dataStore: PropTypes.object.isRequired,
+//   updateDataStore: PropTypes.func.isRequired,
+//   storeKey: PropTypes.string.isRequired
+// };
 
 export default MrGratitude;

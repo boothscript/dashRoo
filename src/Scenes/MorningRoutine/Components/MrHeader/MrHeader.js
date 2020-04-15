@@ -17,23 +17,23 @@ const Div = styled.div`
 `;
 
 const MrWelcome = styled.h1`
-  font-family: ${props => props.theme.font && props.theme.font};
+  font-family: ${(props) => props.theme.font && props.theme.font};
   font-weight: 800;
-  color: ${props => props.theme.white90 && props.theme.white90};
+  color: ${(props) => props.theme.white90 && props.theme.white90};
   align-self: center;
 `;
 
-function MrHeader({ step }) {
+function MrHeader() {
   return (
     <Div>
       <MrWelcome>Good Morning, Steve</MrWelcome>
-      <MrProgress step={step} />
+      <MrProgress />
     </Div>
   );
 }
 
-MrHeader.propTypes = {
-  step: PropTypes.string.isRequired
-};
+// MrHeader.propTypes = {
+//   step: PropTypes.string.isRequired
+// };
 
 export default MrHeader;

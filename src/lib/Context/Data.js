@@ -36,15 +36,15 @@ function UserDataContextProvider({ children }) {
     setProjects(JSON.parse(localStorage.getItem("projects")) || []);
   }, []);
 
-  // useEffect(() => {
-  //   //   update localStorage on state changes
-  //   localStorage.setItem(
-  //     "morningRoutineData",
-  //     JSON.stringify(morningRoutineData)
-  //   );
-  //   localStorage.setItem("stackData", JSON.stringify(stackData));
-  //   localStorage.setItem("projects", JSON.stringify(projects));
-  // }, [morningRoutineData, stackData, projects]);
+  useEffect(() => {
+    //   update localStorage on state changes
+    localStorage.setItem(
+      "morningRoutineData",
+      JSON.stringify(morningRoutineData)
+    );
+    localStorage.setItem("stackData", JSON.stringify(stackData));
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }, [morningRoutineData, stackData, projects]);
 
   function submitRoutineObject(routineObject) {
     //   example object - {date: datetime, ratings:{day: 5, sleep: 4}, gratitude{1:"dhsfhkdgfhs", 2: "dshhf", 3:"ksdhfkh"}, goal, {text: "hdkfsd"}}

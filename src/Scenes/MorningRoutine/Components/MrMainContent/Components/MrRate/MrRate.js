@@ -13,31 +13,19 @@ const Div = styled.div`
   justify-content: space-around;
 `;
 
-function MrRate({ style, dataStore, updateDataStore, storeKey }) {
+function MrRate({ style, dataKey }) {
   return (
     <Div style={style}>
-      <MrRater
-        text="Rate Yesterday"
-        inputKey={"day"}
-        dataStore={dataStore}
-        updateMethod={updateDataStore}
-        storeKey={storeKey}
-      />
-      <MrRater
-        text="Rate Sleep"
-        inputKey={"sleep"}
-        dataStore={dataStore}
-        updateMethod={updateDataStore}
-        storeKey={storeKey}
-      />
+      <MrRater text="Rate Yesterday" inputKey={"day"} dataKey={dataKey} />
+      <MrRater text="Rate Sleep" inputKey={"sleep"} dataKey={dataKey} />
     </Div>
   );
 }
 
-MrRate.propTypes = {
-  dataStore: PropTypes.object.isRequired,
-  updateDataStore: PropTypes.func.isRequired,
-  storeKey: PropTypes.string.isRequired
-};
+// MrRate.propTypes = {
+//   dataStore: PropTypes.object.isRequired,
+//   updateDataStore: PropTypes.func.isRequired,
+//   storeKey: PropTypes.string.isRequired
+// };
 
 export default MrRate;

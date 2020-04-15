@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import MrButton from "./Components/MrButton";
+import { MorningRoutineContext } from "../../../../lib/Context/MorningRoutineContext";
 
 const Div = styled.div`
   grid-column: 2/-2;
@@ -13,32 +14,38 @@ const Div = styled.div`
   justify-content: space-between;
 `;
 
-function MrFooter({ buttonFunc, nextDisabled, buttonProps }) {
-  const { nextButtonText, displayBackButton } = buttonProps;
+function MrFooter({ buttonProp }) {
+  const { dispatch } = useContext(MorningRoutineContext);
+
+  console.log("buttonprop", buttonProp);
+  const {
+    nextButtonText,
+    displayBackButton,
+    isEnabled,
+    fwdButtonAction,
+  } = buttonProp;
 
   return (
     <Div>
       <MrButton
         text="back"
-        buttonFunc={buttonFunc}
-        reverse={true}
+        buttonFunc={() => dispatch({ type: "GO_BACK" })}
         hide={!displayBackButton}
       />
 
       <MrButton
-        disabled={nextDisabled}
+        disabled={!isEnabled}
         text={nextButtonText}
-        buttonFunc={buttonFunc}
-        reverse={false}
+        buttonFunc={() => dispatch({ type: fwdButtonAction })}
       />
     </Div>
   );
 }
 
-MrFooter.propTypes = {
-  buttonFunc: PropTypes.func.isRequired,
-  nextDisabled: PropTypes.bool.isRequired,
-  buttonProps: PropTypes.object.isRequired
-};
+// MrFooter.propTypes = {
+//   buttonFunc: PropTypes.func.isRequired,
+//   nextDisabled: PropTypes.bool.isRequired,
+//   buttonProps: PropTypes.object.isRequired,
+// };
 
 export default MrFooter;

@@ -13,7 +13,7 @@ const Div = styled.div`
   justify-content: space-around;
 `;
 
-function MrGoal({ style, dataStore, updateDataStore, storeKey }) {
+function MrGoal({ style, dataKey }) {
   const inputFocusRef = useRef(null);
   // set focus on text element
   useEffect(() => {
@@ -29,19 +29,17 @@ function MrGoal({ style, dataStore, updateDataStore, storeKey }) {
       <MrTextInput
         fwdRef={inputFocusRef}
         inputKey="text"
-        value={dataStore.text}
         placeholder="What's your main goal for today?"
-        update={updateDataStore}
-        storeKey={storeKey}
+        dataKey={dataKey}
       />
     </Div>
   );
 }
 
-MrGoal.propTypes = {
-  dataStore: PropTypes.object.isRequired,
-  updateDataStore: PropTypes.func.isRequired,
-  storeKey: PropTypes.string.isRequired
-};
+// MrGoal.propTypes = {
+//   dataStore: PropTypes.object.isRequired,
+//   updateDataStore: PropTypes.func.isRequired,
+//   storeKey: PropTypes.string.isRequired
+// };
 
 export default MrGoal;
