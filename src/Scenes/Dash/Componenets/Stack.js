@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+
+import { TimerStackContext } from "../../../lib/Context/timerStackContext";
 
 const StackWrapper = styled.div`
   grid-column: -4 / span 3;
@@ -21,15 +23,21 @@ const Line = styled.div`
 
 //  create stack array
 
-const stackArr = new Array(16).fill(null);
-stackArr[0] = {
-  datetime: new Date(),
-  project: { title: "project rooter", id: 1, color: "#B3F8F1" },
-};
+// fill array with objects in state.data
 
 // fill stack with todays data
 
 function Stack() {
+  const { state } = useContext(TimerStackContext);
+
+  //  create stack array
+  const stackArr = new Array(16).fill(null);
+  // fill array with objects in state.data
+  state.data.sessionArr.forEach((session, index) => {
+    stackArr[index] = session;
+  });
+  console.log("stack array", stackArr);
+
   return (
     <>
       <StackWrapper>
@@ -37,7 +45,7 @@ function Stack() {
           let strokeColor;
           let strokeOpacity;
           try {
-            strokeColor = session.project.color;
+            strokeColor = session.color;
             strokeOpacity = "1";
           } catch {
             strokeColor = "white";

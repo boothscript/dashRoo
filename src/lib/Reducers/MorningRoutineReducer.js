@@ -13,8 +13,8 @@ const initialState = {
   step: "rate",
   direction: "fwd",
   data: {
-    ratings: { day: null },
-    gratitude: { 1: null, 2: null, 3: null },
+    ratings: { day: undefined, sleep: undefined },
+    gratitude: { 1: "", 2: "", 3: "" },
     goal: { text: "" },
   },
 };

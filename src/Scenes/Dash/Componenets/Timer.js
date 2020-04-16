@@ -1,8 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 
 import { useInterval } from "../../../Hooks/useInterval";
-
+import { TimerStackContext } from "../../../lib/Context/timerStackContext";
+import { durations } from "../../../lib/Reducers/timerStackReducer";
+import {
+  toggleTimer,
+  updateTime,
+  updateProject,
+  updateMode,
+  addSession,
+  updateCount,
+} from "../../../lib/Actions/timerStackActions";
 import {
   convertToDisplayTime,
   displayTimeToMs,
@@ -55,101 +64,97 @@ const Break = styled.p`
 `;
 // =====================================================================
 
+// put this somewhere else
+const projectArr = [
+  { title: "project rooter", id: 1, color: "#B3F8F1" },
+  { title: "job search", id: 2, color: "#EBEE89" },
+  { title: "project dashroo", id: 3, color: "#EE9FD3" },
+];
+
 function Timer() {
-  // TIMER STATE =========================================================
-
-  const durations = { session: 5000, break: 5000, longBreak: 3000 }; // time in seconds
-  const projectArr = [
-    { title: "project rooter", id: 1, color: "#B3F8F1" },
-    { title: "job search", id: 2, color: "#EBEE89" },
-    { title: "project dashroo", id: 3, color: "#EE9FD3" },
-  ];
-  const [mode, setMode] = useState("session");
-  const [isActive, setIsActive] = useState(false);
-  const [projectSelected, setProjectSelected] = useState({
-    title: "project rooter",
-    id: 1,
-    color: "#B3F8F1",
-  });
-  const [timerValue, setTimerValue] = useState(durations.session);
-  const [startValue, setStartValue] = useState(durations.session);
-  const [sessionCount, setSessionCount] = useState(0);
-
-  // =====================================================================
+  const { state, dispatch } = useContext(TimerStackContext);
 
   // TIMER FUNCTIONS =====================================================
 
   useInterval(
-    () => setTimerValue((prevState) => prevState - 500),
-    isActive ? 500 : null
+    () => {
+      console.log(state.timerValue);
+      dispatch(updateTime(state, state.timerValue - 500));
+    },
+    state.isTicking ? 500 : null
   );
 
-  function handleTimerChange(newTime) {
-    setTimerValue(newTime);
-    setStartValue(newTime);
-  }
   function handleManChange(e) {
-    handleTimerChange(displayTimeToMs(e.target.value));
+    dispatch(updateTime(displayTimeToMs(e.target.value)));
   }
 
   function updateProjectSelected(projectId) {
-    setProjectSelected(projectArr.find((project) => project.id === projectId));
+    dispatch(
+      updateProject(projectArr.find((project) => project.id === projectId))
+    );
   }
 
   function handleClick() {
-    setIsActive((prevState) => !prevState);
+    dispatch(toggleTimer());
   }
 
   // handles when clock reaches 0
   useEffect(() => {
-    if (timerValue <= 0 && mode === "session" && isActive) {
-      if (sessionCount === 4) {
-        setSessionCount(0);
-        setMode("longBreak");
-        handleTimerChange(durations["longBreak"]);
-        // save session in memory for stack
+    if (state.timerValue <= 0 && state.mode === "session" && state.isTicking) {
+      console.log("session eneded", {
+        ...state.projectSelected,
+        time: new Date(),
+      });
+      dispatch(addSession({ ...state.projectSelected, time: new Date() }));
+      if (state.sessionCount === 3) {
+        dispatch(updateCount(0));
+        dispatch(updateMode("longBreak", durations["longBreak"]));
       } else {
-        setSessionCount((count) => count + 1);
-        setMode("break");
-        handleTimerChange(durations["break"]);
+        console.log("break mode");
+        dispatch(updateCount(state.sessionCount + 1));
+        dispatch(updateMode("break", durations["break"]));
       }
     } else if (
-      (timerValue <= 0 && mode === "break" && isActive) ||
-      (timerValue <= 0 && mode === "longBreak" && isActive)
+      (state.timerValue <= 0 && state.mode === "break" && state.isTicking) ||
+      (state.timerValue <= 0 && state.mode === "longBreak" && state.isTicking)
     ) {
-      setMode("session");
-      handleTimerChange(durations["session"]);
+      console.log("back to session");
+      dispatch(updateMode("session", durations["session"]));
     }
-  }, [durations, timerValue, mode, sessionCount]);
+    console.log(state);
+  }, [state, dispatch]);
 
   const timerColor =
-    mode === "session" ? projectSelected.color : "rgba(174, 174, 174, 0.7)";
+    state.mode === "session"
+      ? state.projectSelected.color
+      : "rgba(174, 174, 174, 0.7)";
 
   // =====================================================================
+  console.log("toggle timer type is ", typeof toggleTimer);
   return (
     <Div>
       <ProgressCircle
-        startValue={startValue}
-        currentTime={timerValue}
+        startValue={state.startValue}
+        currentTime={state.timerValue}
         color={timerColor}
       >
         <ControlsWrapper>
           <PpButton
             click={handleClick}
-            isActive={isActive}
+            isActive={state.isTicking}
             color={timerColor}
           />
           <TimeText
-            value={convertToDisplayTime(timerValue)}
-            readOnly={isActive}
+            value={convertToDisplayTime(state.timerValue)}
+            readOnly={state.isTicking}
             onChange={handleManChange}
           />
-          {mode !== "session" ? (
-            <Break>{mode}</Break>
+          {state.mode !== "session" ? (
+            <Break>{state.mode}</Break>
           ) : (
             <Dropdown
               projectArr={projectArr}
-              currentProject={projectSelected}
+              currentProject={state.projectSelected}
               updateProjectSelected={updateProjectSelected}
             />
           )}

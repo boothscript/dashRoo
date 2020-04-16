@@ -11,7 +11,7 @@ function MorningRoutineContextProvider({ children }) {
   useEffect(() => {
     morningRoutineRepo.updateData(new Date(), state.data);
   }, [state.data]);
-
+  console.log(state);
   return (
     <MorningRoutineContext.Provider value={{ state, dispatch }}>
       {children}

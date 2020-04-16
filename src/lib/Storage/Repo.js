@@ -1,5 +1,6 @@
 import crypto from "crypto";
 
+import { compareDates } from "../utils/date";
 class Repo {
   constructor(keyName) {
     console.log("keyname", keyName);
@@ -60,6 +61,25 @@ class Repo {
 
   randomId() {
     return crypto.randomBytes(4).toString("hex");
+  }
+  async updateData(date, data) {
+    console.log("running update", date, data);
+    const records = await this.getAll();
+    if (!records) {
+      this.create({ date, ...data });
+    } else {
+      console.log("records", records);
+      const record = records.find((record) =>
+        compareDates(new Date(record.date), date)
+      );
+      if (record) {
+        console.log("found record", record);
+        this.update(record.id, { ...data });
+      } else {
+        console.log("creating record");
+        this.create({ date, ...data });
+      }
+    }
   }
 }
 
