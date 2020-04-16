@@ -45,11 +45,7 @@ function MrFooter({ buttonProp }) {
       <MrButton
         disabled={!isEnabled}
         text={nextButtonText}
-        buttonFunc={
-          fwdButtonAction === SUBMIT_GOAL
-            ? moveToDash
-            : () => dispatch({ type: fwdButtonAction })
-        }
+        buttonFunc={() => dispatch({ type: fwdButtonAction })}
       />
     </Div>
   );

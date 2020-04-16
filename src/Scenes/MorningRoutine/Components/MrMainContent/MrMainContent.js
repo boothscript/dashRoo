@@ -59,8 +59,10 @@ function MrMainContent() {
           return (
             <MrGratitudeAnimated style={props} key={key} dataKey="gratitude" />
           );
-        } else {
+        } else if (item === "goal") {
           return <MrGoalAnimated style={props} key={key} dataKey="goal" />;
+        } else {
+          return <></>;
         }
       })}
     </Div>

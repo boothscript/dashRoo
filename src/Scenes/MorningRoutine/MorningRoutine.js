@@ -47,6 +47,12 @@ function MorningRoutine() {
       isEnabled: state.data.goal.text,
       fwdButtonAction: SUBMIT_GOAL,
     },
+    complete: {
+      displayBackButton: true,
+      nextButtonText: "finish",
+      isEnabled: state.data.goal.text,
+      fwdButtonAction: SUBMIT_GOAL,
+    },
   };
   console.log("1", buttonProp);
   console.log("2", buttonProp["rate"]);
