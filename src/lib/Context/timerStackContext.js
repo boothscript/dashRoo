@@ -6,11 +6,18 @@ import timerStackRepo from "../Storage/TimerStackRepo";
 const TimerStackContext = React.createContext();
 
 function TimerStackContextProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  function getStoredState() {
+    return timerStackRepo.getTodaysState(new Date());
+  }
+
+  const [state, dispatch] = useReducer(
+    reducer,
+    getStoredState() || initialState
+  );
 
   useEffect(() => {
-    timerStackRepo.updateData(new Date(), state.data);
-  }, [state.data]);
+    timerStackRepo.updateStored(new Date(), state);
+  }, [state]);
   console.log(state);
 
   return (

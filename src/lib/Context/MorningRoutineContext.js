@@ -6,12 +6,22 @@ import { reducer, initialState } from "../Reducers/MorningRoutineReducer";
 const MorningRoutineContext = React.createContext();
 
 function MorningRoutineContextProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // check for stored state
+
+  function getStoredState() {
+    console.log("in getstored", morningRoutineRepo.getTodaysState(new Date()));
+    return morningRoutineRepo.getTodaysState(new Date());
+  }
+  console.log("getStoredState", getStoredState());
+  const [state, dispatch] = useReducer(
+    reducer,
+    getStoredState() || initialState
+  );
 
   useEffect(() => {
-    morningRoutineRepo.updateData(new Date(), state.data);
-  }, [state.data]);
-  console.log(state);
+    morningRoutineRepo.updateStored(new Date(), state);
+  }, [state]);
+  console.log({ state });
   return (
     <MorningRoutineContext.Provider value={{ state, dispatch }}>
       {children}

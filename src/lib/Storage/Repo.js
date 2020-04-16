@@ -62,7 +62,7 @@ class Repo {
   randomId() {
     return crypto.randomBytes(4).toString("hex");
   }
-  async updateData(date, data) {
+  async updateStored(date, data) {
     console.log("running update", date, data);
     const records = await this.getAll();
     if (!records) {
@@ -79,6 +79,18 @@ class Repo {
         console.log("creating record");
         this.create({ date, ...data });
       }
+    }
+  }
+  getTodaysState(date) {
+    const records = this.getAll();
+    if (!records) {
+      return null;
+    } else {
+      console.log("records", records);
+      const record = records.find((record) =>
+        compareDates(new Date(record.date), date)
+      );
+      return record;
     }
   }
 }

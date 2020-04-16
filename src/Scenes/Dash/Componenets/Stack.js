@@ -33,9 +33,12 @@ function Stack() {
   //  create stack array
   const stackArr = new Array(16).fill(null);
   // fill array with objects in state.data
-  state.data.sessionArr.forEach((session, index) => {
-    stackArr[index] = session;
-  });
+  try {
+    state.data.sessionArr.forEach((session, index) => {
+      stackArr[index] = session;
+    });
+  } catch {}
+
   console.log("stack array", stackArr);
 
   return (
