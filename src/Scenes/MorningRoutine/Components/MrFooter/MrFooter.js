@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 
-import MrButton from "./Components/MrButton";
-import { MorningRoutineContext } from "../../../../lib/Context/MorningRoutineContext";
-import { goBack } from "../../../../lib/Actions/MorningRoutineActions";
+import MrButton from './Components/MrButton';
+import { MorningRoutineContext } from '../../../../lib/Context/MorningRoutineContext';
+import { goBack } from '../../../../lib/Actions/MorningRoutineActions';
 const Div = styled.div`
   grid-column: 2/-2;
 
@@ -16,7 +16,7 @@ const Div = styled.div`
 function MrFooter({ buttonProp }) {
   const { dispatch } = useContext(MorningRoutineContext);
 
-  console.log("buttonprop", buttonProp);
+  console.log('buttonprop', buttonProp);
   const {
     nextButtonText,
     displayBackButton,

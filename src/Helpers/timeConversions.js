@@ -5,7 +5,7 @@ function convertToDisplayTime(time) {
 }
 
 function displayTimeToMs(time) {
-  const [mins, secs] = time.split(":");
+  const [mins, secs] = time.split(':');
 
   let result = 0;
 

@@ -4,16 +4,16 @@ import {
   SUBMIT_GRATITUDE,
   SUBMIT_GOAL,
   GO_BACK,
-} from "../Actions/MorningRoutineTypes";
+} from '../Actions/MorningRoutineTypes';
 
 const initialState = {
   date: new Date(),
-  step: "rate",
-  direction: "fwd",
+  step: 'rate',
+  direction: 'fwd',
   data: {
     ratings: { day: undefined, sleep: undefined },
-    gratitude: { 1: "", 2: "", 3: "" },
-    goal: { text: "" },
+    gratitude: { 1: '', 2: '', 3: '' },
+    goal: { text: '' },
   },
 };
 function reducer(state, action) {
@@ -32,26 +32,26 @@ function reducer(state, action) {
     case SUBMIT_RATE:
       return {
         ...state,
-        step: "gratitude",
-        direction: "fwd",
+        step: 'gratitude',
+        direction: 'fwd',
       };
     case SUBMIT_GRATITUDE:
       return {
         ...state,
-        step: "goal",
-        direction: "fwd",
+        step: 'goal',
+        direction: 'fwd',
       };
     case SUBMIT_GOAL:
       // form has bee completed, redirects to dashboard
       return {
         ...state,
-        step: "complete",
+        step: 'complete',
       };
     case GO_BACK:
       return {
         ...state,
-        step: state.step === "goal" ? "gratitude" : "rate",
-        direction: "back",
+        step: state.step === 'goal' ? 'gratitude' : 'rate',
+        direction: 'back',
       };
     default:
       throw new Error();

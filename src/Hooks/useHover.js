@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef } from 'react';
 
 export default function useHover() {
   const [isHovered, setIsHovered] = useState(false);

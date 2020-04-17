@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Svg = styled.svg`
   position: absolute;
@@ -35,7 +35,7 @@ function ProgressCircle({ children, startValue, currentTime, color }) {
           strokeWidth="2"
           strokeDasharray={circumference}
           strokeDashoffset={`${circumference * (1 - timePercentage)}`}
-          style={{ transition: "stroke-dashoffset 500ms linear" }}
+          style={{ transition: 'stroke-dashoffset 500ms linear' }}
         />
       </Svg>
       <Div>{children}</Div>

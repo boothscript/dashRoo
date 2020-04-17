@@ -5,14 +5,14 @@ import {
   UPDATE_MODE,
   ADD_SESSION,
   UPDATE_COUNT,
-} from "../Actions/timerStackTypes";
+} from '../Actions/timerStackTypes';
 
 const durations = { session: 1500000, break: 300000, longBreak: 120000 }; // time in seconds
 
 const initialState = {
-  mode: "session",
+  mode: 'session',
   isTicking: false,
-  projectSelected: { title: "project rooter", id: 1, color: "#B3F8F1" },
+  projectSelected: { title: 'project rooter', id: 1, color: '#B3F8F1' },
   timerValue: durations.session,
   startValue: durations.session,
   sessionCount: 0,
@@ -27,7 +27,7 @@ function reducer(state, action) {
         isTicking: !state.isTicking,
       };
     case UPDATE_TIME:
-      console.log("updating time", action);
+      console.log('updating time', action);
       return {
         ...state,
         timerValue: action.timerValue,
@@ -39,7 +39,7 @@ function reducer(state, action) {
         projectSelected: action.projectObject,
       };
     case UPDATE_MODE:
-      console.log("mode action", action);
+      console.log('mode action', action);
       return {
         ...state,
         timerValue: action.timerValue,
@@ -47,7 +47,7 @@ function reducer(state, action) {
         mode: action.newMode,
       };
     case ADD_SESSION:
-      console.log("adding session");
+      console.log('adding session');
       return {
         ...state,
         data: {

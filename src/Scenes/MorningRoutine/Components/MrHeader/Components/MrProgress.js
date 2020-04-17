@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { MorningRoutineContext } from "../../../../../lib/Context/MorningRoutineContext";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { MorningRoutineContext } from '../../../../../lib/Context/MorningRoutineContext';
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,9 +32,9 @@ function MrProgress() {
 
   return (
     <Wrapper>
-      <ProgressCircle active={state.step === "rate"} />
-      <ProgressCircle active={state.step === "gratitude"} />
-      <ProgressCircle active={state.step === "goal"} />
+      <ProgressCircle active={state.step === 'rate'} />
+      <ProgressCircle active={state.step === 'gratitude'} />
+      <ProgressCircle active={state.step === 'goal'} />
     </Wrapper>
   );
 }

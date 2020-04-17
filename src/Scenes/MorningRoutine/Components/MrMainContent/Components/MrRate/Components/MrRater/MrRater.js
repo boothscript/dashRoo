@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
-import styled from "styled-components";
+import React, { useState, useContext } from 'react';
+import styled from 'styled-components';
 
-import MrRateStar from "./Components/MrRateStar";
-import { MorningRoutineContext } from "../../../../../../../../lib/Context/MorningRoutineContext";
+import MrRateStar from './Components/MrRateStar';
+import { MorningRoutineContext } from '../../../../../../../../lib/Context/MorningRoutineContext';
 
 const Div = styled.div`
   grid-column: 1/-1;
@@ -44,7 +44,7 @@ function MrRater({ text, inputKey, dataKey }) {
 
   function handleClick({ starNumber }) {
     dispatch({
-      type: "UPDATE_FIELD",
+      type: 'UPDATE_FIELD',
       dataKey,
       field: inputKey,
       value: starNumber,
@@ -56,7 +56,7 @@ function MrRater({ text, inputKey, dataKey }) {
   }
 
   const stars = [1, 2, 3, 4, 5];
-  console.log("test", state.data);
+  console.log('test', state.data);
   return (
     <Div rater>
       <MrRateText>{text}</MrRateText>

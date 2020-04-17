@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   position: relative;
@@ -28,7 +28,7 @@ const HeaderTitle = styled.p`
 `;
 
 const List = styled.div`
-  display: ${(props) => (props.state === "open" ? "inline-block" : "none")};
+  display: ${(props) => (props.state === 'open' ? 'inline-block' : 'none')};
   position: absolute;
   width: 220px;
   box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 1);
@@ -50,14 +50,14 @@ const Item = styled.div`
 `;
 
 function Dropdown({ projectArr, currentProject, updateProjectSelected }) {
-  const [dropState, setDropState] = useState("closed");
+  const [dropState, setDropState] = useState('closed');
 
   function handleHeaderClick() {
-    setDropState("open");
+    setDropState('open');
   }
 
   function handleItemClick(projectId) {
-    setDropState("closed");
+    setDropState('closed');
     updateProjectSelected(projectId);
   }
 

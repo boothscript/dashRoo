@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 
-import { TimerStackContext } from "../../../lib/Context/timerStackContext";
+import { TimerStackContext } from '../../../lib/Context/timerStackContext';
 
 const StackWrapper = styled.div`
   grid-column: -4 / span 3;
@@ -39,7 +39,7 @@ function Stack() {
     });
   } catch {}
 
-  console.log("stack array", stackArr);
+  console.log('stack array', stackArr);
 
   return (
     <>
@@ -49,10 +49,10 @@ function Stack() {
           let strokeOpacity;
           try {
             strokeColor = session.color;
-            strokeOpacity = "1";
+            strokeOpacity = '1';
           } catch {
-            strokeColor = "white";
-            strokeOpacity = "0.15";
+            strokeColor = 'white';
+            strokeOpacity = '0.15';
           }
 
           return (

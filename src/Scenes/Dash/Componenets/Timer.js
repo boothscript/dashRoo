@@ -1,9 +1,9 @@
-import React, { useEffect, useContext } from "react";
-import styled from "styled-components";
+import React, { useEffect, useContext } from 'react';
+import styled from 'styled-components';
 
-import { useInterval } from "../../../Hooks/useInterval";
-import { TimerStackContext } from "../../../lib/Context/timerStackContext";
-import { durations } from "../../../lib/Reducers/timerStackReducer";
+import { useInterval } from '../../../Hooks/useInterval';
+import { TimerStackContext } from '../../../lib/Context/timerStackContext';
+import { durations } from '../../../lib/Reducers/timerStackReducer';
 import {
   toggleTimer,
   updateTime,
@@ -11,15 +11,15 @@ import {
   updateMode,
   addSession,
   updateCount,
-} from "../../../lib/Actions/timerStackActions";
+} from '../../../lib/Actions/timerStackActions';
 import {
   convertToDisplayTime,
   displayTimeToMs,
-} from "../../../Helpers/timeConversions";
+} from '../../../Helpers/timeConversions';
 
-import ProgressCircle from "./ProgressCircle";
-import Dropdown from "./Dropdown";
-import PpButton from "./PpButton";
+import ProgressCircle from './ProgressCircle';
+import Dropdown from './Dropdown';
+import PpButton from './PpButton';
 // STYLED COMPONENTS ==================================================
 
 const Div = styled.div`
@@ -66,9 +66,9 @@ const Break = styled.p`
 
 // put this somewhere else
 const projectArr = [
-  { title: "project rooter", id: 1, color: "#B3F8F1" },
-  { title: "job search", id: 2, color: "#EBEE89" },
-  { title: "project dashroo", id: 3, color: "#EE9FD3" },
+  { title: 'project rooter', id: 1, color: '#B3F8F1' },
+  { title: 'job search', id: 2, color: '#EBEE89' },
+  { title: 'project dashroo', id: 3, color: '#EE9FD3' },
 ];
 
 function Timer() {
@@ -100,37 +100,37 @@ function Timer() {
 
   // handles when clock reaches 0
   useEffect(() => {
-    if (state.timerValue <= 0 && state.mode === "session" && state.isTicking) {
-      console.log("session eneded", {
+    if (state.timerValue <= 0 && state.mode === 'session' && state.isTicking) {
+      console.log('session eneded', {
         ...state.projectSelected,
         time: new Date(),
       });
       dispatch(addSession({ ...state.projectSelected, time: new Date() }));
       if (state.sessionCount === 3) {
         dispatch(updateCount(0));
-        dispatch(updateMode("longBreak", durations["longBreak"]));
+        dispatch(updateMode('longBreak', durations['longBreak']));
       } else {
-        console.log("break mode");
+        console.log('break mode');
         dispatch(updateCount(state.sessionCount + 1));
-        dispatch(updateMode("break", durations["break"]));
+        dispatch(updateMode('break', durations['break']));
       }
     } else if (
-      (state.timerValue <= 0 && state.mode === "break" && state.isTicking) ||
-      (state.timerValue <= 0 && state.mode === "longBreak" && state.isTicking)
+      (state.timerValue <= 0 && state.mode === 'break' && state.isTicking) ||
+      (state.timerValue <= 0 && state.mode === 'longBreak' && state.isTicking)
     ) {
-      console.log("back to session");
-      dispatch(updateMode("session", durations["session"]));
+      console.log('back to session');
+      dispatch(updateMode('session', durations['session']));
     }
     console.log(state);
   }, [state, dispatch]);
 
   const timerColor =
-    state.mode === "session"
+    state.mode === 'session'
       ? state.projectSelected.color
-      : "rgba(174, 174, 174, 0.7)";
+      : 'rgba(174, 174, 174, 0.7)';
 
   // =====================================================================
-  console.log("toggle timer type is ", typeof toggleTimer);
+  console.log('toggle timer type is ', typeof toggleTimer);
   return (
     <Div>
       <ProgressCircle
@@ -149,7 +149,7 @@ function Timer() {
             readOnly={state.isTicking}
             onChange={handleManChange}
           />
-          {state.mode !== "session" ? (
+          {state.mode !== 'session' ? (
             <Break>{state.mode}</Break>
           ) : (
             <Dropdown

@@ -1,9 +1,9 @@
-import crypto from "crypto";
+import crypto from 'crypto';
 
-import { compareDates } from "../utils/date";
+import { compareDates } from '../utils/date';
 class Repo {
   constructor(keyName) {
-    console.log("keyname", keyName);
+    console.log('keyname', keyName);
     this.keyName = keyName;
 
     if (!localStorage.getItem(keyName)) {
@@ -23,7 +23,7 @@ class Repo {
     return JSON.parse(localStorage.getItem(this.keyName)) || [];
   }
   async writeAll(records) {
-    console.log("writing", this.keyName);
+    console.log('writing', this.keyName);
     await localStorage.setItem(this.keyName, JSON.stringify(records));
   }
   async getOne(id) {
@@ -55,28 +55,28 @@ class Repo {
     const records = await this.getAll();
     const record = records.find((record) => record.id === id);
     Object.assign(record, attrs);
-    console.log("record in update", record.history);
+    console.log('record in update', record.history);
     await this.writeAll(records);
   }
 
   randomId() {
-    return crypto.randomBytes(4).toString("hex");
+    return crypto.randomBytes(4).toString('hex');
   }
   async updateStored(date, data) {
-    console.log("running update", date, data);
+    console.log('running update', date, data);
     const records = await this.getAll();
     if (!records) {
       this.create({ date, ...data });
     } else {
-      console.log("records", records);
+      console.log('records', records);
       const record = records.find((record) =>
         compareDates(new Date(record.date), date)
       );
       if (record) {
-        console.log("found record", record);
+        console.log('found record', record);
         this.update(record.id, { ...data });
       } else {
-        console.log("creating record");
+        console.log('creating record');
         this.create({ date, ...data });
       }
     }
@@ -86,7 +86,7 @@ class Repo {
     if (!records) {
       return null;
     } else {
-      console.log("records", records);
+      console.log('records', records);
       const record = records.find((record) =>
         compareDates(new Date(record.date), date)
       );

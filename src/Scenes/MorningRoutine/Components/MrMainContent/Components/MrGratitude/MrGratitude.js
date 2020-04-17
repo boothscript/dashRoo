@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
 
-import MrTextInput from "../Components/MrTextInput";
+import MrTextInput from '../Components/MrTextInput';
 
 const Div = styled.div`
   position: absolute;
@@ -27,17 +27,17 @@ function MrGratitude({ style, dataKey }) {
       <MrTextInput
         fwdRef={inputFocusRef}
         inputKey={1}
-        placeholder={"Reason to be greatful #1"}
+        placeholder={'Reason to be greatful #1'}
         dataKey={dataKey}
       />
       <MrTextInput
         inputKey={2}
-        placeholder={"Reason to be greatful #2"}
+        placeholder={'Reason to be greatful #2'}
         dataKey={dataKey}
       />
       <MrTextInput
         inputKey={3}
-        placeholder={"Reason to be greatful #3"}
+        placeholder={'Reason to be greatful #3'}
         dataKey={dataKey}
       />
     </Div>

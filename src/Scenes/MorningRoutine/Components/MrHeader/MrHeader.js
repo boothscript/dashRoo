@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import MrProgress from "./Components/MrProgress";
+import MrProgress from './Components/MrProgress';
 
 const Div = styled.div`
   grid-column: 2/-2;

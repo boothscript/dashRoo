@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import MrRater from "./Components/MrRater/MrRater";
+import MrRater from './Components/MrRater/MrRater';
 
 const Div = styled.div`
   position: absolute;
@@ -15,8 +15,8 @@ const Div = styled.div`
 function MrRate({ style, dataKey }) {
   return (
     <Div style={style}>
-      <MrRater text="Rate Yesterday" inputKey={"day"} dataKey={dataKey} />
-      <MrRater text="Rate Sleep" inputKey={"sleep"} dataKey={dataKey} />
+      <MrRater text="Rate Yesterday" inputKey={'day'} dataKey={dataKey} />
+      <MrRater text="Rate Sleep" inputKey={'sleep'} dataKey={dataKey} />
     </Div>
   );
 }

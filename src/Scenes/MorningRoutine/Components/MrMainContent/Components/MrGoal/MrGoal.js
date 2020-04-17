@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
 
-import MrTextInput from "../Components/MrTextInput";
+import MrTextInput from '../Components/MrTextInput';
 
 const Div = styled.div`
   position: absolute;

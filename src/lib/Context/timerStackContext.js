@@ -1,7 +1,7 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect } from 'react';
 
-import { reducer, initialState } from "../Reducers/timerStackReducer";
-import timerStackRepo from "../Storage/TimerStackRepo";
+import { reducer, initialState } from '../Reducers/timerStackReducer';
+import timerStackRepo from '../Storage/TimerStackRepo';
 
 const TimerStackContext = React.createContext();
 

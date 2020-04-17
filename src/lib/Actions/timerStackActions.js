@@ -5,7 +5,7 @@ import {
   UPDATE_MODE,
   UPDATE_COUNT,
   ADD_SESSION,
-} from "./timerStackTypes";
+} from './timerStackTypes';
 
 function toggleTimer() {
   return {
@@ -29,7 +29,7 @@ function updateProject(projectObj) {
 }
 
 function updateMode(newMode, newTime) {
-  console.log("updating mode", newMode, newTime);
+  console.log('updating mode', newMode, newTime);
   return {
     type: UPDATE_MODE,
     newMode: newMode,

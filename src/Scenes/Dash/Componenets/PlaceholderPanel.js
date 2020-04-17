@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Div = styled.div`
   background: ${(props) => props.theme.panel};
-  grid-column: ${(props) => (props.gridCol ? props.gridCol : "")};
-  grid-row: ${(props) => props.gridRow || ""};
+  grid-column: ${(props) => (props.gridCol ? props.gridCol : '')};
+  grid-row: ${(props) => props.gridRow || ''};
   border-radius: 16px;
 `;
 

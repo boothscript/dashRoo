@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Button = styled.button`
-  visibility: ${(props) => (props.hide ? "hidden" : "visible")};
+  visibility: ${(props) => (props.hide ? 'hidden' : 'visible')};
   align-self: center;
   margin-left: 0;
   background: ${(props) => props.theme.panel && props.theme.panel};
@@ -17,8 +17,8 @@ const Button = styled.button`
     props.disabled ? props.theme.white30 : props.theme.white90};
   padding: 0.25em 1em;
   text-decoration: none;
-  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
-  pointer-events: ${(props) => (props.disabled ? "none" : "default")};
+  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
+  pointer-events: ${(props) => (props.disabled ? 'none' : 'default')};
   &:focus,
   &:hover {
     background: ${(props) => props.theme.white90 && props.theme.white90};

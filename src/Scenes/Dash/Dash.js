@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Timer, Stack } from "./Componenets";
-import PlaceholderPanel from "./Componenets/PlaceholderPanel";
+import { Timer, Stack } from './Componenets';
+import PlaceholderPanel from './Componenets/PlaceholderPanel';
 
 const Container = styled.div`
   width: 100vw;

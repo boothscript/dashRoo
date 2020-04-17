@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { MorningRoutineContext } from "../../../../../../lib/Context/MorningRoutineContext";
-import { updateField } from "../../../../../../lib/Actions/MorningRoutineActions";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { MorningRoutineContext } from '../../../../../../lib/Context/MorningRoutineContext';
+import { updateField } from '../../../../../../lib/Actions/MorningRoutineActions';
 
 const TextInput = styled.input`
   font-size: 1.5rem;

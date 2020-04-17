@@ -1,5 +1,5 @@
-import Repo from "./Repo";
+import Repo from './Repo';
 
 class MorningRoutineRepo extends Repo {}
 
-export default new MorningRoutineRepo("morningRoutine");
+export default new MorningRoutineRepo('morningRoutine');
