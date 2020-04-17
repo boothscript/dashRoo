@@ -1,21 +1,13 @@
-# Multi Step Form in React - with styled components and react spring
+# WORK IN PROGRESS - Project DashRoo
 
-Part of an ongoing personal productivity/wellness app.
+Personal productivity/journal web app.
 
-Run npm start to try out 👍
+Run npm i / npm start to try out 👍
 
-![preview](https://github.com/boothscript/routineDemo/blob/master/preview/MRDemo.gif?raw=true)
+## Progress So Far...
 
-## Features
-
-✔️ Functional Components and Hooks<br />
-✔️ Resposive<br />
-✔️ Sexy Transitions<br />
-
-## Yet to be Added
-
-✖️ Aria-labels<br />
-✖️ advance on enter key press<br />
+✔️ Morning Journal Form</br >
+✔️ Dashboard Pomodoro Timer<br />
 
 React Noob! Code reviews and advice extreamly welcome
 <br /><br /><br />
