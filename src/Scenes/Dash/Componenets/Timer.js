@@ -66,9 +66,9 @@ const Break = styled.p`
 
 // put this somewhere else
 const projectArr = [
-  { title: 'project rooter', id: 1, color: '#B3F8F1' },
-  { title: 'job search', id: 2, color: '#EBEE89' },
-  { title: 'project dashroo', id: 3, color: '#EE9FD3' },
+  { title: 'project rooter', id: "h2g4j5", color: '#B3F8F1' },
+  { title: 'job search', id: "gsfhdj", color: '#EBEE89' },
+  { title: 'project dashroo', id: "gfdhs", color: '#EE9FD3' },
 ];
 
 function Timer() {

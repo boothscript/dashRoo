@@ -25,6 +25,11 @@ function MrFooter({ buttonProp }) {
     fwdButtonAction,
   } = buttonProp;
 
+
+  console.log({nextButtonText,
+    displayBackButton,
+    isEnabled,
+    fwdButtonAction,})
   return (
     <Div>
       <MrButton
@@ -47,7 +52,7 @@ MrFooter.propTypes = {
     nextButtonText: PropTypes.string,
     displayBackButton: PropTypes.bool,
     isEnabled: PropTypes.bool,
-    fwdButtonAction: PropTypes,
+    fwdButtonAction: PropTypes.func,
   }).isRequired,
 };
 

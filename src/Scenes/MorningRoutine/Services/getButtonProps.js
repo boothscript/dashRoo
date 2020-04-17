@@ -9,7 +9,7 @@ export default function getButtonProps(state) {
     rate: {
       displayBackButton: false,
       nextButtonText: 'next',
-      isEnabled: state.data.ratings.day && state.data.ratings.sleep,
+      isEnabled: state.data.ratings.day > 0 && state.data.ratings.sleep > 0,
       fwdButtonAction: submitRate,
     },
     gratitude: {
@@ -18,21 +18,22 @@ export default function getButtonProps(state) {
       isEnabled:
         state.data.gratitude[1] &&
         state.data.gratitude[2] &&
-        state.data.gratitude[3],
+        state.data.gratitude[3]),
       fwdButtonAction: submitGratitude,
     },
     goal: {
       displayBackButton: true,
       nextButtonText: 'finish',
-      isEnabled: state.data.goal.text,
+      isEnabled: !!state.data.goal.text,
       fwdButtonAction: submitGoal,
     },
     complete: {
       displayBackButton: true,
       nextButtonText: 'finish',
-      isEnabled: state.data.goal.text,
+      isEnabled: !!state.data.goal.text,
       fwdButtonAction: submitGoal,
     },
+  
   };
   return buttonProp[state.step];
 }

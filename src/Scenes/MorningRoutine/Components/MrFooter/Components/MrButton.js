@@ -43,9 +43,13 @@ function MrButton({ text, disabled, buttonFunc, hide }) {
 }
 MrButton.propTypes = {
   text: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
   buttonFunc: PropTypes.func.isRequired,
-  hide: PropTypes.bool.isRequired,
+  hide: PropTypes.bool,
 };
 
+MrButton.defaultProps = {
+  hide: false,
+  disabled: true
+}
 export default MrButton;

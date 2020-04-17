@@ -39,7 +39,7 @@ function MrRateStar({
     handleHover({ starNumber });
   }
   function handleMouseLeave() {
-    handleHover({ starNumber: null });
+    handleHover({ starNumber: 0 });
   }
 
   return (
