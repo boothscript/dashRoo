@@ -83,18 +83,10 @@ function Timer() {
     state.isTicking ? 500 : null
   );
 
-  function handleManChange(e) {
-    dispatch(updateTime(displayTimeToMs(e.target.value)));
-  }
-
   function updateProjectSelected(projectId) {
     dispatch(
       updateProject(projectArr.find((project) => project.id === projectId))
     );
-  }
-
-  function handleClick() {
-    dispatch(toggleTimer());
   }
 
   // handles when clock reaches 0
@@ -132,14 +124,14 @@ function Timer() {
       >
         <ControlsWrapper>
           <PpButton
-            click={handleClick}
+            click={() => (dispatch(toggleTimer()))}
             isActive={state.isTicking}
             color={timerColor}
           />
           <TimeText
             value={convertToDisplayTime(state.timerValue)}
             readOnly={state.isTicking}
-            onChange={handleManChange}
+            onChange={(e) => (dispatch(updateTime(displayTimeToMs(e.target.value))))}
           />
           {state.mode !== 'session' ? (
             <Break>{state.mode}</Break>
