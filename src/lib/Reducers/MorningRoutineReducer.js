@@ -1,5 +1,3 @@
-import { useHistory } from "react-router-dom";
-
 import {
   UPDATE_FIELD,
   SUBMIT_RATE,

@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 import MrButton from "./Components/MrButton";
 import { MorningRoutineContext } from "../../../../lib/Context/MorningRoutineContext";
@@ -25,11 +23,6 @@ function MrFooter({ buttonProp }) {
     isEnabled,
     fwdButtonAction,
   } = buttonProp;
-
-  const history = useHistory();
-  function moveToDash() {
-    history.push("/dash");
-  }
 
   return (
     <Div>

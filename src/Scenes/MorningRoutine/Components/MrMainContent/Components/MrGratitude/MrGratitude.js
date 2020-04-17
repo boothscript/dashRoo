@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 import MrTextInput from "../Components/MrTextInput";
 

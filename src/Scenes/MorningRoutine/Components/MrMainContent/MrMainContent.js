@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { animated, useTransition } from "react-spring";
 
 import { MrRate, MrGratitude, MrGoal } from "./Components";

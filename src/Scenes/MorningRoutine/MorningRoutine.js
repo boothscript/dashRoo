@@ -1,16 +1,6 @@
-import React, {
-  useState,
-  useLayoutEffect,
-  useContext,
-  useReducer,
-} from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext } from "react";
 
 import { MorningRoutineContext } from "../../lib/Context/MorningRoutineContext";
-import {
-  reducer,
-  initialState,
-} from "../../lib/Reducers/MorningRoutineReducer";
 
 import { MrHeader, MrMainContent, MrFooter, MrContainer } from "./Components";
 import {
