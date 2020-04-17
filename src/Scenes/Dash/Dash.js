@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Timer, Stack } from './Componenets';
+import Timer from './Componenets/Timer';
+import Stack from './Componenets/Stack';
 import PlaceholderPanel from './Componenets/PlaceholderPanel';
 
 const Container = styled.div`

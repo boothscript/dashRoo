@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 import MrTextInput from '../Components/MrTextInput';
 
 const Div = styled.div`
@@ -35,10 +35,11 @@ function MrGoal({ style, dataKey }) {
   );
 }
 
-// MrGoal.propTypes = {
-//   dataStore: PropTypes.object.isRequired,
-//   updateDataStore: PropTypes.func.isRequired,
-//   storeKey: PropTypes.string.isRequired
-// };
+MrGoal.propTypes = {
+  dataKey: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object.isRequired,
+};
+
 
 export default MrGoal;

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import MrButton from './Components/MrButton';
 import { MorningRoutineContext } from '../../../../lib/Context/MorningRoutineContext';
@@ -17,7 +18,6 @@ const Div = styled.div`
 function MrFooter({ buttonProp }) {
   const { dispatch } = useContext(MorningRoutineContext);
 
-  console.log('buttonprop', buttonProp);
   const {
     nextButtonText,
     displayBackButton,
@@ -42,10 +42,15 @@ function MrFooter({ buttonProp }) {
   );
 }
 
-// MrFooter.propTypes = {
-//   buttonFunc: PropTypes.func.isRequired,
-//   nextDisabled: PropTypes.bool.isRequired,
-//   buttonProps: PropTypes.object.isRequired,
-// };
+MrFooter.propTypes = {
+  buttonProp: PropTypes.shape(
+    {
+      nextButtonText: PropTypes.string,
+      displayBackButton: PropTypes.bool,
+      isEnabled: PropTypes.bool,
+      fwdButtonAction: PropTypes,
+    },
+  ).isRequired };
+
 
 export default MrFooter;

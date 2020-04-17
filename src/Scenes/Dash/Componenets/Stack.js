@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import crypto from 'crypto';
 
 import { TimerStackContext } from '../../../lib/Context/timerStackContext';
 
@@ -21,12 +22,6 @@ const Line = styled.div`
   width: 289.35px;
 `;
 
-//  create stack array
-
-// fill array with objects in state.data
-
-// fill stack with todays data
-
 function Stack() {
   const { state } = useContext(TimerStackContext);
 
@@ -37,27 +32,29 @@ function Stack() {
     state.data.sessionArr.forEach((session, index) => {
       stackArr[index] = session;
     });
-  } catch {}
+  } catch (error) {
+    throw new Error(error);
+  }
 
-  console.log('stack array', stackArr);
 
   return (
     <>
       <StackWrapper>
-        {stackArr.map((session, indx) => {
+        {stackArr.map((session) => {
+          const randomKey = crypto.randomBytes(4).toString('hex');
           let strokeColor;
           let strokeOpacity;
           try {
             strokeColor = session.color;
             strokeOpacity = '1';
-          } catch {
+          } catch (error) {
             strokeColor = 'white';
             strokeOpacity = '0.15';
           }
 
           return (
             <Line
-              key={indx}
+              key={randomKey}
               strokeColor={strokeColor}
               strokeOpacity={strokeOpacity}
             />

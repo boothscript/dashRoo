@@ -31,8 +31,5 @@ function MrHeader() {
   );
 }
 
-// MrHeader.propTypes = {
-//   step: PropTypes.string.isRequired
-// };
 
 export default MrHeader;

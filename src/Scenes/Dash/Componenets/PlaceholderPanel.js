@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Div = styled.div`
   background: ${(props) => props.theme.panel};
@@ -22,5 +23,11 @@ function PlaceholderPanel({ text, gridCol, gridRow }) {
     </Div>
   );
 }
+
+PlaceholderPanel.propTypes = {
+  text: PropTypes.string.isRequired,
+  gridCol: PropTypes.string.isRequired,
+  gridRow: PropTypes.string.isRequired,
+};
 
 export default PlaceholderPanel;

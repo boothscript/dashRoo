@@ -15,10 +15,9 @@ const Wrapper = styled.div`
 const ProgressCircle = styled.div`
   height: 30px;
   width: 30px;
-  background-image: ${(props) =>
-    props.active
-      ? 'url("/img/progress-circle-fill.svg")'
-      : 'url("/img/progress-circle-line.svg")'};
+  background-image: ${(props) => (props.active
+    ? 'url("/img/progress-circle-fill.svg")'
+    : 'url("/img/progress-circle-line.svg")')};
   background-size: contain;
   background-position: center;
   @media (max-width: 500px) {
@@ -39,8 +38,5 @@ function MrProgress() {
   );
 }
 
-// MrProgress.propTypes = {
-//   step: PropTypes.string.isRequired,
-// };
 
 export default MrProgress;

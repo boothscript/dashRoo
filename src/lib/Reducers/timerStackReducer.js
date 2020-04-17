@@ -27,7 +27,6 @@ function reducer(state, action) {
         isTicking: !state.isTicking,
       };
     case UPDATE_TIME:
-      console.log('updating time', action);
       return {
         ...state,
         timerValue: action.timerValue,
@@ -39,7 +38,6 @@ function reducer(state, action) {
         projectSelected: action.projectObject,
       };
     case UPDATE_MODE:
-      console.log('mode action', action);
       return {
         ...state,
         timerValue: action.timerValue,
@@ -47,7 +45,6 @@ function reducer(state, action) {
         mode: action.newMode,
       };
     case ADD_SESSION:
-      console.log('adding session');
       return {
         ...state,
         data: {

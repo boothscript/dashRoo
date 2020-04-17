@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 import { MorningRoutineContext } from '../../../../../../lib/Context/MorningRoutineContext';
 import { updateField } from '../../../../../../lib/Actions/MorningRoutineActions';
 
@@ -37,10 +39,19 @@ function MrTextInput({ fwdRef, inputKey, placeholder, dataKey }) {
   );
 }
 
-// MrTextInput.propTypes = {
-//   inputId: PropTypes.number,
-//   confirmFn: PropTypes.func,
-//   placeholder: PropTypes.string
-// };
+MrTextInput.propTypes = {
+  inputKey: PropTypes.string.isRequired,
+  dataKey: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  fwdRef: PropTypes.object,
+
+};
+
+MrTextInput.defaultProps = {
+  placeholder: '',
+  fwdRef: {},
+
+};
 
 export default MrTextInput;

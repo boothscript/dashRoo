@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import morningRoutineRepo from '../Storage/MornigRoutineRepo';
 
 import { reducer, initialState } from '../Reducers/MorningRoutineReducer';
@@ -10,13 +11,12 @@ function MorningRoutineContextProvider({ children }) {
   // check for stored state
 
   function getStoredState() {
-    console.log('in getstored', morningRoutineRepo.getTodaysState(new Date()));
     return morningRoutineRepo.getTodaysState(new Date());
   }
-  console.log('getStoredState', getStoredState());
+
   const [state, dispatch] = useReducer(
     reducer,
-    getStoredState() || initialState
+    getStoredState() || initialState,
   );
   const history = useHistory();
   useEffect(() => {
@@ -28,12 +28,19 @@ function MorningRoutineContextProvider({ children }) {
   useEffect(() => {
     morningRoutineRepo.updateStored(new Date(), state);
   }, [state]);
-  console.log({ state });
+
   return (
     <MorningRoutineContext.Provider value={{ state, dispatch }}>
       {children}
     </MorningRoutineContext.Provider>
   );
 }
+
+MorningRoutineContextProvider.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
 
 export { MorningRoutineContext, MorningRoutineContextProvider };

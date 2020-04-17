@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   position: relative;
@@ -83,5 +84,20 @@ function Dropdown({ projectArr, currentProject, updateProjectSelected }) {
     </Wrapper>
   );
 }
+
+Dropdown.propTypes = {
+  updateProjectSelected: PropTypes.func.isRequired,
+  currentProject: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired }).isRequired,
+  projectArr: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired }),
+  ).isRequired,
+
+};
 
 export default Dropdown;

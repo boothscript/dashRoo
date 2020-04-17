@@ -1,10 +1,9 @@
 import crypto from 'crypto';
 
-import { compareDates } from '../utils/date';
+import { compareDates } from '../../Utils/date';
 
 class Repo {
   constructor(keyName) {
-    console.log('keyname', keyName);
     this.keyName = keyName;
 
     if (!localStorage.getItem(keyName)) {
@@ -12,12 +11,12 @@ class Repo {
     }
   }
 
-  async create(attrs) {
+  create(attrs) {
     const newRecord = attrs;
     newRecord.id = this.randomId();
     const records = this.getAll();
     records.push(newRecord);
-    await this.writeAll(records);
+    this.writeAll(records);
     return newRecord;
   }
 
@@ -25,64 +24,48 @@ class Repo {
     return JSON.parse(localStorage.getItem(this.keyName)) || [];
   }
 
-  async writeAll(records) {
-    console.log('writing', this.keyName);
-    await localStorage.setItem(this.keyName, JSON.stringify(records));
+  writeAll(records) {
+    localStorage.setItem(this.keyName, JSON.stringify(records));
   }
 
-  async getOne(id) {
-    const records = await this.getAll();
+  getOne(id) {
+    const records = this.getAll();
     return records.find((record) => record.id === id);
   }
 
-  async getOneBy(attrs) {
-    const records = await this.getAll();
-    return records.find((record) => {
-      let found = false;
-
-      for (const key in attrs) {
-        if (record[key] !== attrs[key]) {
-          return false;
-        }
-        found = true;
-      }
-      return found;
-    });
+  getOneBy(attrs) {
+    const records = this.getAll();
+    return records.find((record) => Object.keys(attrs).every((key) => record.key === attrs[key]));
   }
 
-  async delete(id) {
-    const records = await this.getAll();
+  delete(id) {
+    const records = this.getAll();
     const newRecords = records.filter((record) => record.id !== id);
-    await this.writeAll(newRecords);
+    this.writeAll(newRecords);
   }
 
-  async update(id, attrs) {
-    const records = await this.getAll();
-    const record = records.find((record) => record.id === id);
+  update(id, attrs) {
+    const records = this.getAll();
+    const record = records.find((item) => item.id === id);
     Object.assign(record, attrs);
-    console.log('record in update', record.history);
-    await this.writeAll(records);
+
+    this.writeAll(records);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   randomId() {
     return crypto.randomBytes(4).toString('hex');
   }
 
-  async updateStored(date, data) {
-    console.log('running update', date, data);
-    const records = await this.getAll();
+  updateStored(date, data) {
+    const records = this.getAll();
     if (!records) {
       this.create({ date, ...data });
     } else {
-      console.log('records', records);
-      const record = records.find((record) =>
-        compareDates(new Date(record.date), date)
-      );
+      const record = records.find((item) => compareDates(new Date(item.date), date));
       if (record) {
-        console.log('found record', record);
         this.update(record.id, { ...data });
       } else {
-        console.log('creating record');
         this.create({ date, ...data });
       }
     }
@@ -93,10 +76,7 @@ class Repo {
     if (!records) {
       return null;
     }
-    console.log('records', records);
-    const record = records.find((record) =>
-      compareDates(new Date(record.date), date)
-    );
+    const record = records.find((item) => compareDates(new Date(item.date), date));
     return record;
   }
 }

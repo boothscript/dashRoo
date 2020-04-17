@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Svg = styled.svg`
   position: absolute;
@@ -43,4 +44,14 @@ function ProgressCircle({ children, startValue, currentTime, color }) {
   );
 }
 
+
+ProgressCircle.propTypes = {
+  startValue: PropTypes.number.isRequired,
+  currentTime: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
 export default ProgressCircle;

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 import MrTextInput from '../Components/MrTextInput';
 
 const Div = styled.div`
@@ -44,10 +44,10 @@ function MrGratitude({ style, dataKey }) {
   );
 }
 
-// MrGratitude.propTypes = {
-//   dataStore: PropTypes.object.isRequired,
-//   updateDataStore: PropTypes.func.isRequired,
-//   storeKey: PropTypes.string.isRequired
-// };
+MrGratitude.propTypes = {
+  dataKey: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object.isRequired,
+};
 
 export default MrGratitude;
