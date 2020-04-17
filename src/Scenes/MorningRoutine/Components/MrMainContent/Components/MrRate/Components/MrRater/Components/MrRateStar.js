@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from "prop-types"
 
 const Star = styled.div`
-  background: ${(props) =>
-    props.fill === 'heavy'
-      ? 'url(/img/star-fill-heavy.svg)'
-      : props.fill === 'light'
-      ? 'url(/img/star-fill-light.svg)'
-      : 'url(/img/star-line.svg)'};
+  background: ${(props) =>{
+    if (props.fill === 'heavy'){
+      return 'url(/img/star-fill-heavy.svg)'
+    }
+    return props.fill === 'light' ? 'url(/img/star-fill-light.svg)'
+        : 'url(/img/star-line.svg)'
+  }};
   height: 46px;
   width: 50px;
   background-repeat: no-repeat;
@@ -50,12 +52,12 @@ function MrRateStar({
   );
 }
 
-// MrRateStar.propTypes = {
-//   starNumber: PropTypes.number.isRequired,
-//   handleClick: PropTypes.func.isRequired,
-//   handleHover: PropTypes.func.isRequired,
-//   ratingValue: PropTypes.number,
-//   hoverValue: PropTypes.number
-// };
+MrRateStar.propTypes = {
+  starNumber: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  handleHover: PropTypes.func.isRequired,
+  ratingValue: PropTypes.number.isRequired,
+  hoverValue: PropTypes.number.isRequired
+};
 
 export default MrRateStar;

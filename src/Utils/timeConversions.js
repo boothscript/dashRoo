@@ -8,9 +8,9 @@ function displayTimeToMs(time) {
   const [mins, secs] = time.split(':');
 
   let result = 0;
-
-  result += Math.min(parseInt(mins), 99) * 60 * 1000;
-  result += Math.min(parseInt(secs), 59) * 1000;
+  result += Math.min(parseInt(mins, 2), 99) * 60 * 1000;
+  result += Math.min(parseInt(secs, 2), 59) * 1000;
+  
   return result;
 }
 

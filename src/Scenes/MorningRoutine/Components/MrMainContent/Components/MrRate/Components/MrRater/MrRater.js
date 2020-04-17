@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
+import PropTypes from "prop-types"
 
 import MrRateStar from './Components/MrRateStar';
 import { MorningRoutineContext } from '../../../../../../../../lib/Context/MorningRoutineContext';
@@ -56,7 +57,6 @@ function MrRater({ text, inputKey, dataKey }) {
   }
 
   const stars = [1, 2, 3, 4, 5];
-  console.log('test', state.data);
   return (
     <Div rater>
       <MrRateText>{text}</MrRateText>
@@ -76,10 +76,10 @@ function MrRater({ text, inputKey, dataKey }) {
   );
 }
 
-// MrRater.propTypes = {
-//   text: PropTypes.string.isRequired,
-//   inputId: PropTypes.number,
-//   confirmFn: PropTypes.func
-// };
+MrRater.propTypes = {
+  text: PropTypes.string.isRequired,
+  inputKey: PropTypes.string.isRequired,
+  dataKey: PropTypes.string.isRequired,
+};
 
 export default MrRater;

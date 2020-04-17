@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-import { compareDates } from '../../Utils/date';
+import compareDates  from '../../Utils/date';
 
 class Repo {
   constructor(keyName) {

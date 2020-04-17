@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from "prop-types"
 
 import MrRater from './Components/MrRater/MrRater';
 
@@ -21,10 +22,10 @@ function MrRate({ style, dataKey }) {
   );
 }
 
-// MrRate.propTypes = {
-//   dataStore: PropTypes.object.isRequired,
-//   updateDataStore: PropTypes.func.isRequired,
-//   storeKey: PropTypes.string.isRequired
-// };
+MrRate.propTypes = {
+  dataKey: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object.isRequired,
+}
 
 export default MrRate;

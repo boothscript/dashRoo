@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
+import  { useState} from 'react';
 
 export default function useHover() {
   const [isHovered, setIsHovered] = useState(false);
-  const ref = useRef(null);
 
   function handleEnter() {
     setIsHovered(true);

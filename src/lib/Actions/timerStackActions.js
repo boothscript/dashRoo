@@ -29,7 +29,6 @@ function updateProject(projectObj) {
 }
 
 function updateMode(newMode, newTime) {
-  console.log('updating mode', newMode, newTime);
   return {
     type: UPDATE_MODE,
     newMode,
