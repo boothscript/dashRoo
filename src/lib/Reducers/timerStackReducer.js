@@ -7,7 +7,7 @@ import {
   UPDATE_COUNT,
 } from "../Actions/timerStackTypes";
 
-const durations = { session: 5000, break: 5000, longBreak: 3000 }; // time in seconds
+const durations = { session: 1500000, break: 300000, longBreak: 120000 }; // time in seconds
 
 const initialState = {
   mode: "session",

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { MorningRoutineContext } from "../../../../../../lib/Context/MorningRoutineContext";
+import { updateField } from "../../../../../../lib/Actions/MorningRoutineActions";
 
 const TextInput = styled.input`
   font-size: 1.5rem;
@@ -24,12 +25,7 @@ function MrTextInput({ fwdRef, inputKey, placeholder, dataKey }) {
   const { state, dispatch } = useContext(MorningRoutineContext);
 
   const handleChange = (e) => {
-    dispatch({
-      type: "UPDATE_FIELD",
-      dataKey,
-      field: inputKey,
-      value: e.target.value,
-    });
+    dispatch(updateField(dataKey, inputKey, e.target.value));
   };
 
   return (
