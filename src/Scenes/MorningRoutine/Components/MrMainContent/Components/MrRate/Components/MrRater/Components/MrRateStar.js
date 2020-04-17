@@ -26,11 +26,11 @@ function MrRateStar({
   function starFill() {
     if (ratingValue >= starNumber) {
       return 'heavy';
-    } else if (hoverValue >= starNumber) {
-      return 'light';
-    } else {
-      return 'none';
     }
+    if (hoverValue >= starNumber) {
+      return 'light';
+    }
+    return 'none';
   }
 
   function handleMouseEnter() {

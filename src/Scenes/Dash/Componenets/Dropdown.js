@@ -69,18 +69,16 @@ function Dropdown({ projectArr, currentProject, updateProjectSelected }) {
         </HeaderTitle>
       </Header>
       <List state={dropState}>
-        {projectArr.map((project) => {
-          return (
-            <Item
-              key={project.id}
-              name={project.id}
-              color={project.color}
-              onClick={() => handleItemClick(project.id)}
-            >
-              {project.title}
-            </Item>
-          );
-        })}
+        {projectArr.map((project) => (
+          <Item
+            key={project.id}
+            name={project.id}
+            color={project.color}
+            onClick={() => handleItemClick(project.id)}
+          >
+            {project.title}
+          </Item>
+        ))}
       </List>
     </Wrapper>
   );

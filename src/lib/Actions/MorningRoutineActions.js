@@ -7,7 +7,12 @@ import {
 } from './MorningRoutineTypes';
 
 function updateField(dataKey, field, value) {
-  return { type: UPDATE_FIELD, dataKey, field, value };
+  return {
+    type: UPDATE_FIELD,
+    dataKey,
+    field,
+    value,
+  };
 }
 
 function submitRate() {

@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 
 import { compareDates } from '../utils/date';
+
 class Repo {
   constructor(keyName) {
     console.log('keyname', keyName);
@@ -19,23 +20,27 @@ class Repo {
     await this.writeAll(records);
     return newRecord;
   }
+
   getAll() {
     return JSON.parse(localStorage.getItem(this.keyName)) || [];
   }
+
   async writeAll(records) {
     console.log('writing', this.keyName);
     await localStorage.setItem(this.keyName, JSON.stringify(records));
   }
+
   async getOne(id) {
     const records = await this.getAll();
     return records.find((record) => record.id === id);
   }
+
   async getOneBy(attrs) {
     const records = await this.getAll();
     return records.find((record) => {
       let found = false;
 
-      for (let key in attrs) {
+      for (const key in attrs) {
         if (record[key] !== attrs[key]) {
           return false;
         }
@@ -62,6 +67,7 @@ class Repo {
   randomId() {
     return crypto.randomBytes(4).toString('hex');
   }
+
   async updateStored(date, data) {
     console.log('running update', date, data);
     const records = await this.getAll();
@@ -81,17 +87,17 @@ class Repo {
       }
     }
   }
+
   getTodaysState(date) {
     const records = this.getAll();
     if (!records) {
       return null;
-    } else {
-      console.log('records', records);
-      const record = records.find((record) =>
-        compareDates(new Date(record.date), date)
-      );
-      return record;
     }
+    console.log('records', records);
+    const record = records.find((record) =>
+      compareDates(new Date(record.date), date)
+    );
+    return record;
   }
 }
 

@@ -32,7 +32,7 @@ function updateMode(newMode, newTime) {
   console.log('updating mode', newMode, newTime);
   return {
     type: UPDATE_MODE,
-    newMode: newMode,
+    newMode,
     timerValue: newTime,
     startValue: newTime,
   };

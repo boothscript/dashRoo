@@ -15,8 +15,8 @@ const Div = styled.div`
 function MrRate({ style, dataKey }) {
   return (
     <Div style={style}>
-      <MrRater text="Rate Yesterday" inputKey={'day'} dataKey={dataKey} />
-      <MrRater text="Rate Sleep" inputKey={'sleep'} dataKey={dataKey} />
+      <MrRater text="Rate Yesterday" inputKey="day" dataKey={dataKey} />
+      <MrRater text="Rate Sleep" inputKey="sleep" dataKey={dataKey} />
     </Div>
   );
 }

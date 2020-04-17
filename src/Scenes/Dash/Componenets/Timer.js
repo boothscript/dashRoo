@@ -108,18 +108,18 @@ function Timer() {
       dispatch(addSession({ ...state.projectSelected, time: new Date() }));
       if (state.sessionCount === 3) {
         dispatch(updateCount(0));
-        dispatch(updateMode('longBreak', durations['longBreak']));
+        dispatch(updateMode('longBreak', durations.longBreak));
       } else {
         console.log('break mode');
         dispatch(updateCount(state.sessionCount + 1));
-        dispatch(updateMode('break', durations['break']));
+        dispatch(updateMode('break', durations.break));
       }
     } else if (
       (state.timerValue <= 0 && state.mode === 'break' && state.isTicking) ||
       (state.timerValue <= 0 && state.mode === 'longBreak' && state.isTicking)
     ) {
       console.log('back to session');
-      dispatch(updateMode('session', durations['session']));
+      dispatch(updateMode('session', durations.session));
     }
     console.log(state);
   }, [state, dispatch]);

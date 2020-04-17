@@ -27,17 +27,17 @@ function MrGratitude({ style, dataKey }) {
       <MrTextInput
         fwdRef={inputFocusRef}
         inputKey={1}
-        placeholder={'Reason to be greatful #1'}
+        placeholder="Reason to be greatful #1"
         dataKey={dataKey}
       />
       <MrTextInput
         inputKey={2}
-        placeholder={'Reason to be greatful #2'}
+        placeholder="Reason to be greatful #2"
         dataKey={dataKey}
       />
       <MrTextInput
         inputKey={3}
-        placeholder={'Reason to be greatful #3'}
+        placeholder="Reason to be greatful #3"
         dataKey={dataKey}
       />
     </Div>

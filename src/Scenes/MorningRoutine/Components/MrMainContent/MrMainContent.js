@@ -24,19 +24,19 @@ function getTransitionConfig(step, direction) {
       enter: { transform: 'translateX(0)', opacity: 1 },
       leave: { transform: 'translateX(100%)', opacity: 0 },
     };
-  } else if (direction === 'fwd' && step === 'rate') {
+  }
+  if (direction === 'fwd' && step === 'rate') {
     return {
       from: { transform: 'translateX(0)', opacity: 0 },
       enter: { transform: 'translateX(0)', opacity: 1 },
       leave: { transform: 'translateX(100%)', opacity: 0 },
     };
-  } else {
-    return {
-      from: { transform: 'translateX(100%)', opacity: 0 },
-      enter: { transform: 'translateX(0)', opacity: 1 },
-      leave: { transform: 'translateX(-100%)', opacity: 0 },
-    };
   }
+  return {
+    from: { transform: 'translateX(100%)', opacity: 0 },
+    enter: { transform: 'translateX(0)', opacity: 1 },
+    leave: { transform: 'translateX(-100%)', opacity: 0 },
+  };
 }
 
 function MrMainContent() {
@@ -54,15 +54,16 @@ function MrMainContent() {
       {transitions.map(({ item, key, props }) => {
         if (item === 'rate') {
           return <MrRateAnimated style={props} key={key} dataKey="ratings" />;
-        } else if (item === 'gratitude') {
+        }
+        if (item === 'gratitude') {
           return (
             <MrGratitudeAnimated style={props} key={key} dataKey="gratitude" />
           );
-        } else if (item === 'goal') {
-          return <MrGoalAnimated style={props} key={key} dataKey="goal" />;
-        } else {
-          return <></>;
         }
+        if (item === 'goal') {
+          return <MrGoalAnimated style={props} key={key} dataKey="goal" />;
+        }
+        return <></>;
       })}
     </Div>
   );
