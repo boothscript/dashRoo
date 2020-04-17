@@ -45,13 +45,11 @@ MrTextInput.propTypes = {
   placeholder: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
   fwdRef: PropTypes.object,
-
 };
 
 MrTextInput.defaultProps = {
   placeholder: '',
   fwdRef: {},
-
 };
 
 export default MrTextInput;

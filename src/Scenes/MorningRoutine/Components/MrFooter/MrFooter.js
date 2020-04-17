@@ -43,14 +43,12 @@ function MrFooter({ buttonProp }) {
 }
 
 MrFooter.propTypes = {
-  buttonProp: PropTypes.shape(
-    {
-      nextButtonText: PropTypes.string,
-      displayBackButton: PropTypes.bool,
-      isEnabled: PropTypes.bool,
-      fwdButtonAction: PropTypes,
-    },
-  ).isRequired };
-
+  buttonProp: PropTypes.shape({
+    nextButtonText: PropTypes.string,
+    displayBackButton: PropTypes.bool,
+    isEnabled: PropTypes.bool,
+    fwdButtonAction: PropTypes,
+  }).isRequired,
+};
 
 export default MrFooter;

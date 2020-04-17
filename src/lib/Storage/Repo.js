@@ -35,7 +35,9 @@ class Repo {
 
   getOneBy(attrs) {
     const records = this.getAll();
-    return records.find((record) => Object.keys(attrs).every((key) => record.key === attrs[key]));
+    return records.find((record) =>
+      Object.keys(attrs).every((key) => record.key === attrs[key])
+    );
   }
 
   delete(id) {
@@ -62,7 +64,9 @@ class Repo {
     if (!records) {
       this.create({ date, ...data });
     } else {
-      const record = records.find((item) => compareDates(new Date(item.date), date));
+      const record = records.find((item) =>
+        compareDates(new Date(item.date), date)
+      );
       if (record) {
         this.update(record.id, { ...data });
       } else {
@@ -76,7 +80,9 @@ class Repo {
     if (!records) {
       return null;
     }
-    const record = records.find((item) => compareDates(new Date(item.date), date));
+    const record = records.find((item) =>
+      compareDates(new Date(item.date), date)
+    );
     return record;
   }
 }

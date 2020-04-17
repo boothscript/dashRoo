@@ -44,7 +44,6 @@ function ProgressCircle({ children, startValue, currentTime, color }) {
   );
 }
 
-
 ProgressCircle.propTypes = {
   startValue: PropTypes.number.isRequired,
   currentTime: PropTypes.number.isRequired,

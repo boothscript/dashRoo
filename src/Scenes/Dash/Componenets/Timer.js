@@ -80,7 +80,7 @@ function Timer() {
     () => {
       dispatch(updateTime(state, state.timerValue - 500));
     },
-    state.isTicking ? 500 : null,
+    state.isTicking ? 500 : null
   );
 
   function handleManChange(e) {
@@ -89,7 +89,7 @@ function Timer() {
 
   function updateProjectSelected(projectId) {
     dispatch(
-      updateProject(projectArr.find((project) => project.id === projectId)),
+      updateProject(projectArr.find((project) => project.id === projectId))
     );
   }
 
@@ -109,16 +109,17 @@ function Timer() {
         dispatch(updateMode('break', durations.break));
       }
     } else if (
-      (state.timerValue <= 0 && state.mode === 'break' && state.isTicking)
-      || (state.timerValue <= 0 && state.mode === 'longBreak' && state.isTicking)
+      (state.timerValue <= 0 && state.mode === 'break' && state.isTicking) ||
+      (state.timerValue <= 0 && state.mode === 'longBreak' && state.isTicking)
     ) {
       dispatch(updateMode('session', durations.session));
     }
   }, [state, dispatch]);
 
-  const timerColor = state.mode === 'session'
-    ? state.projectSelected.color
-    : 'rgba(174, 174, 174, 0.7)';
+  const timerColor =
+    state.mode === 'session'
+      ? state.projectSelected.color
+      : 'rgba(174, 174, 174, 0.7)';
 
   // =====================================================================
 

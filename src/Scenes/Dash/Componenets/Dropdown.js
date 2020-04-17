@@ -90,14 +90,15 @@ Dropdown.propTypes = {
   currentProject: PropTypes.shape({
     id: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired }).isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
   projectArr: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired }),
+      title: PropTypes.string.isRequired,
+    })
   ).isRequired,
-
 };
 
 export default Dropdown;

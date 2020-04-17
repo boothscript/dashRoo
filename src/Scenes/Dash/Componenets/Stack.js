@@ -36,7 +36,6 @@ function Stack() {
     throw new Error(error);
   }
 
-
   return (
     <>
       <StackWrapper>

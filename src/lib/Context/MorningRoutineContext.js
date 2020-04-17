@@ -16,7 +16,7 @@ function MorningRoutineContextProvider({ children }) {
 
   const [state, dispatch] = useReducer(
     reducer,
-    getStoredState() || initialState,
+    getStoredState() || initialState
   );
   const history = useHistory();
   useEffect(() => {

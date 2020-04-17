@@ -41,5 +41,4 @@ MrGoal.propTypes = {
   style: PropTypes.object.isRequired,
 };
 
-
 export default MrGoal;
