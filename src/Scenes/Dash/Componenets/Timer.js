@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 
-import { useInterval } from '../../../Hooks/useInterval';
+import useInterval from '../../../Hooks/useInterval';
 import { TimerStackContext } from '../../../lib/Context/timerStackContext';
 import { durations } from '../../../lib/Reducers/timerStackReducer';
 import {
