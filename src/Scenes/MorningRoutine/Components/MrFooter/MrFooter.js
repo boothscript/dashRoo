@@ -24,7 +24,7 @@ function MrFooter({ buttonProp }) {
     isEnabled,
     fwdButtonAction,
   } = buttonProp;
-  
+
   return (
     <Div>
       <MrButton

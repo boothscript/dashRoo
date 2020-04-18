@@ -50,6 +50,6 @@ MrButton.propTypes = {
 
 MrButton.defaultProps = {
   hide: false,
-  disabled: true
+  disabled: false
 }
 export default MrButton;
