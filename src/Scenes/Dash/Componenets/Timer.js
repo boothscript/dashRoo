@@ -64,7 +64,7 @@ const Break = styled.p`
 `;
 // =====================================================================
 
-// put this somewhere else
+// Dummy project data
 const projectArr = [
   { title: 'project rooter', id: "h2g4j5", color: '#B3F8F1' },
   { title: 'job search', id: "gsfhdj", color: '#EBEE89' },
@@ -75,7 +75,6 @@ function Timer() {
   const { state, dispatch } = useContext(TimerStackContext);
 
   // TIMER FUNCTIONS =====================================================
-
   useInterval(
     () => {
       dispatch(updateTime(state, state.timerValue - 500));
