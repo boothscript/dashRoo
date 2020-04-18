@@ -4,12 +4,27 @@ Personal productivity/journal web app.
 
 Run npm i / npm start to try out 👍
 
+## Objectives
+
+✔️ To really get to grips with React </br >
+✔️ Build an outstanding portfolio piece <br />
+✔️ Create a bespoke tool to meet my productivty and journaling needs <br />
+
 ## Progress So Far...
 
-✔️ Morning Journal Form</br >
-✔️ Dashboard Pomodoro Timer<br />
+#### Morning Journal Form
 
-React Noob! Code reviews and advice extreamly welcome
+This is a 3 step form that runs when a user vists for the first time each day. Once complete, it redirects the user to the dashboard.
+
+#### Dashboard Pomodoro Timer
+
+My first of many dashboard "widgets". This timer times sessions and breaks and visualises completed sessions in a "stack". User can define projects with the project dropdown.
+
+#### Local Storage
+
+Data is persisted in localstorage for now as I work on the front end of the project.
+
+**React Noob! Code reviews and advice extreamly welcome**
 <br /><br /><br />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
