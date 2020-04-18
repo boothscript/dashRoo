@@ -8,7 +8,7 @@ Run npm i / npm start to try out 👍
 
 ## Objectives
 
-✔️ To increase my React knowledge</br >
+✔️ Increase my React knowledge</br >
 ✔️ Build an outstanding portfolio piece <br />
 ✔️ Create a bespoke tool to meet my productivity and journaling needs <br />
 
@@ -24,9 +24,9 @@ My first of many dashboard "widgets". This timer times sessions and breaks and v
 
 #### Local Storage
 
-<br /> <br />
 Data is persisted in localstorage for now as I work on the front end of the project.
 
+<br /> <br />
 **React Noob! Code reviews and advice extremely welcome**
 <br /><br /><br />
 
