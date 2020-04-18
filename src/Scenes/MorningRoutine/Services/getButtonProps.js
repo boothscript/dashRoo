@@ -16,9 +16,9 @@ export default function getButtonProps(state) {
       displayBackButton: true,
       nextButtonText: 'next',
       isEnabled:
-        state.data.gratitude[1] &&
+        !!((state.data.gratitude[1] &&
         state.data.gratitude[2] &&
-        state.data.gratitude[3]),
+        state.data.gratitude[3])),
       fwdButtonAction: submitGratitude,
     },
     goal: {

@@ -40,7 +40,7 @@ function MrTextInput({ fwdRef, inputKey, placeholder, dataKey }) {
 }
 
 MrTextInput.propTypes = {
-  inputKey: PropTypes.string.isRequired,
+  inputKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   dataKey: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types

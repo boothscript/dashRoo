@@ -55,7 +55,7 @@ function MrRater({ text, inputKey, dataKey }) {
   function handleHover({ starNumber }) {
     setHoveredStar(starNumber);
   }
-  console.log({hoveredStar})
+
   const stars = [1, 2, 3, 4, 5];
   return (
     <Div rater>

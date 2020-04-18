@@ -24,12 +24,7 @@ function MrFooter({ buttonProp }) {
     isEnabled,
     fwdButtonAction,
   } = buttonProp;
-
-
-  console.log({nextButtonText,
-    displayBackButton,
-    isEnabled,
-    fwdButtonAction,})
+  
   return (
     <Div>
       <MrButton

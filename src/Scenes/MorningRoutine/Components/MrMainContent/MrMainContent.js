@@ -52,6 +52,7 @@ function MrMainContent() {
   return (
     <Div>
       {transitions.map(({ item, key, props }) => {
+
         if (item === 'rate') {
           return <MrRateAnimated style={props} key={key} dataKey="ratings" />;
         }
@@ -63,17 +64,11 @@ function MrMainContent() {
         if (item === 'goal') {
           return <MrGoalAnimated style={props} key={key} dataKey="goal" />;
         }
-        return <></>;
+        return <div key={key} />;
       })}
     </Div>
   );
 }
 
-// MrMainContent.propTypes = {
-//   step: PropTypes.string.isRequired,
-//   dataStores: PropTypes.object.isRequired,
-//   updateDataStore: PropTypes.func.isRequired,
-//   direction: PropTypes.string.isRequired,
-// };
 
 export default MrMainContent;
