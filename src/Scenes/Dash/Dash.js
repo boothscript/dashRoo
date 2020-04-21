@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Timer from './Componenets/Timer';
 import Stack from './Componenets/Stack';
 import PlaceholderPanel from './Componenets/PlaceholderPanel';
+import TodaysGoal from './Componenets/TodaysGoal';
 
 const Container = styled.div`
   width: 100vw;
@@ -46,11 +47,7 @@ function Dash() {
             gridCol="1 / span 2"
             gridRow="8 / span 2"
           />
-          <PlaceholderPanel
-            text="today's goal"
-            gridCol="3 / span 4"
-            gridRow="2 / span 1"
-          />
+          <TodaysGoal />
           <PlaceholderPanel
             text="habit tracker"
             gridCol="3 / span 4"
