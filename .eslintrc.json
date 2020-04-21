@@ -1,10 +1,11 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
-  "extends": ["airbnb", "airbnb/hooks", "prettier"],
-  "plugins": ["react", "prettier"],
+  "extends": ["airbnb", "airbnb/hooks", "prettier", "jest", "jest/style"],
+  "plugins": ["react", "prettier", "jest"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"

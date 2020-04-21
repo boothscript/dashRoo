@@ -5,7 +5,7 @@ import morningRoutineRepo from '../Storage/MornigRoutineRepo';
 
 import { reducer, initialState } from '../Reducers/MorningRoutineReducer';
 
-const MorningRoutineContext = React.createContext();
+const MorningRoutineContext = React.createContext({ test: 'test' });
 
 function MorningRoutineContextProvider({ children }) {
   // check for stored state
