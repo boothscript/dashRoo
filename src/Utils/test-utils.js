@@ -1,11 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ThemeProvider from 'styled-components';
-import colors from '../Themes/colors';
+import PropTypes from 'prop-types';
+
 import { MorningRoutineContextProvider } from '../lib/Context/MorningRoutineContext';
 import { TimerStackContextProvider } from '../lib/Context/timerStackContext';
-import { BrowserRouter } from 'react-router-dom';
 
 const AllTheProviders = ({ children }) => {
   return (
@@ -17,6 +16,13 @@ const AllTheProviders = ({ children }) => {
     </Router>
     // </ThemeProvider>
   );
+};
+
+AllTheProviders.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 const customRender = (ui, options) => {

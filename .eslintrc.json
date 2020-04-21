@@ -4,7 +4,7 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["airbnb", "airbnb/hooks", "prettier", "jest", "jest/style"],
+  "extends": ["airbnb", "airbnb/hooks", "prettier"],
   "plugins": ["react", "prettier", "jest"],
   "globals": {
     "Atomics": "readonly",
