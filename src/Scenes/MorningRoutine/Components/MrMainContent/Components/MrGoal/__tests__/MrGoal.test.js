@@ -3,8 +3,6 @@ import {
   render,
   fireEvent,
   cleanup,
-  wait,
-  getAllByPlaceholderText,
 } from '../../../../../../../Utils/test-utils';
 
 import MrGoal from '../MrGoal';
