@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { useMorningRoutineContext } from '../../../Hooks/useMorningRoutineContext';
 import { updateField } from '../../../lib/Actions/MorningRoutineActions';
+import TextInput from './TextInput';
 
 const Div = styled.div`
   grid-column: 3 / span 4;
@@ -14,23 +15,6 @@ const Div = styled.div`
   padding: 0 1em;
 `;
 
-const Input = styled.input`
-  font-size: 1.25rem;
-  font-weight: 300;
-  line-height: 1.5;
-  width: 100%;
-  background: inherit;
-  border: none;
-  border-radius: 16px;
-  background: ${(props) => props.theme.panel && props.theme.panel};
-  color: ${(props) => props.theme.white90 && props.theme.white90};
-  resize: none;
-  outline: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
 function TodaysGoal() {
   const { state, dispatch } = useMorningRoutineContext();
 
@@ -40,7 +24,7 @@ function TodaysGoal() {
 
   return (
     <Div>
-      <Input
+      <TextInput
         data-testid="goalInput"
         value={state.data.goal.text}
         onChange={handleChange}
