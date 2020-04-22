@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import MrTextInput from '../Components/MrTextInput';
@@ -15,12 +15,8 @@ const Div = styled.div`
 function MrGoal({ style, dataKey }) {
   const inputFocusRef = useRef(null);
   // set focus on text element
-  useEffect(() => {
-    // hack to delay set focus untill animation has completed
-
-    setTimeout(() => {
-      inputFocusRef.current.focus();
-    }, 750);
+  useLayoutEffect(() => {
+    inputFocusRef.current.focus();
   }, []);
 
   return (
