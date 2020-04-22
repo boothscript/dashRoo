@@ -66,9 +66,9 @@ const Break = styled.p`
 
 // Dummy project data
 const projectArr = [
-  { title: 'project rooter', id: "h2g4j5", color: '#B3F8F1' },
-  { title: 'job search', id: "gsfhdj", color: '#EBEE89' },
-  { title: 'project dashroo', id: "gfdhs", color: '#EE9FD3' },
+  { title: 'project rooter', id: 'h2g4j5', color: '#B3F8F1' },
+  { title: 'job search', id: 'gsfhdj', color: '#EBEE89' },
+  { title: 'project dashroo', id: 'gfdhs', color: '#EE9FD3' },
 ];
 
 function Timer() {
@@ -82,9 +82,9 @@ function Timer() {
     state.isTicking ? 500 : null
   );
 
-  function updateProjectSelected(projectId) {
+  function updateProjectSelected(value) {
     dispatch(
-      updateProject(projectArr.find((project) => project.id === projectId))
+      updateProject(projectArr.find((project) => project.title === value))
     );
   }
 
@@ -114,6 +114,12 @@ function Timer() {
 
   // =====================================================================
 
+  // map colors object for dropdown
+  const colorsObj = {};
+  projectArr.forEach((project) => {
+    colorsObj[project.title] = project.color;
+  });
+
   return (
     <Div>
       <ProgressCircle
@@ -123,22 +129,25 @@ function Timer() {
       >
         <ControlsWrapper>
           <PpButton
-            click={() => (dispatch(toggleTimer()))}
+            click={() => dispatch(toggleTimer())}
             isActive={state.isTicking}
             color={timerColor}
           />
           <TimeText
             value={convertToDisplayTime(state.timerValue)}
             readOnly={state.isTicking}
-            onChange={(e) => (dispatch(updateTime(displayTimeToMs(e.target.value))))}
+            onChange={(e) =>
+              dispatch(updateTime(displayTimeToMs(e.target.value)))
+            }
           />
           {state.mode !== 'session' ? (
             <Break>{state.mode}</Break>
           ) : (
             <Dropdown
-              projectArr={projectArr}
-              currentProject={state.projectSelected}
-              updateProjectSelected={updateProjectSelected}
+              valueArray={projectArr.map((project) => project.title)}
+              stateValue={state.projectSelected.title}
+              updateValue={updateProjectSelected}
+              colors={colorsObj}
             />
           )}
         </ControlsWrapper>

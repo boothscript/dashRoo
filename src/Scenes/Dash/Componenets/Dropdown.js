@@ -16,7 +16,7 @@ const Header = styled.div`
 `;
 const HeaderTitle = styled.p`
   font-family: ${(props) => props.theme.font};
-  color: ${(props) => props.color};
+  color: ${(props) => (props.color ? props.color : props.theme.white90)};
   text-transform: uppercase;
   font-size: 1em;
   font-weight: 900;
@@ -39,7 +39,7 @@ const List = styled.div`
 const Item = styled.div`
   background: ${(props) => props.theme.panel};
   font-family: ${(props) => props.theme.font};
-  color: ${(props) => props.color};
+  color: ${(props) => (props.color ? props.color : props.theme.white90)};
   text-transform: uppercase;
   font-size: 1em;
   font-weight: 900;
@@ -50,34 +50,37 @@ const Item = styled.div`
   text-align: center;
 `;
 
-function Dropdown({ projectArr, currentProject, updateProjectSelected }) {
+function Dropdown({ valueArray, stateValue, updateValue, colors = {} }) {
   const [dropState, setDropState] = useState('closed');
 
   function handleHeaderClick() {
     setDropState('open');
   }
 
-  function handleItemClick(projectId) {
+  function handleItemClick(value) {
     setDropState('closed');
-    updateProjectSelected(projectId);
+    updateValue(value);
   }
 
   return (
     <Wrapper>
       <Header>
-        <HeaderTitle onClick={handleHeaderClick} color={currentProject.color}>
-          {currentProject.title}
+        <HeaderTitle
+          onClick={handleHeaderClick}
+          color={colors[stateValue] || undefined}
+        >
+          {stateValue}
         </HeaderTitle>
       </Header>
       <List state={dropState}>
-        {projectArr.map((project) => (
+        {valueArray.map((value) => (
           <Item
-            key={project.id}
-            name={project.id}
-            color={project.color}
-            onClick={() => handleItemClick(project.id)}
+            key={value}
+            name={value}
+            color={colors[value] || undefined}
+            onClick={() => handleItemClick(value)}
           >
-            {project.title}
+            {value}
           </Item>
         ))}
       </List>
@@ -86,19 +89,14 @@ function Dropdown({ projectArr, currentProject, updateProjectSelected }) {
 }
 
 Dropdown.propTypes = {
-  updateProjectSelected: PropTypes.func.isRequired,
-  currentProject: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  projectArr: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      color: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  updateValue: PropTypes.func.isRequired,
+  stateValue: PropTypes.string.isRequired,
+  valueArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  colors: PropTypes.object,
+};
+Dropdown.defaultProps = {
+  colors: {},
 };
 
 export default Dropdown;
