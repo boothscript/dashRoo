@@ -8,6 +8,12 @@ img {
   display: block;
 }
 
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
 .main {
   border-radius: 16px;
   width: 100%;

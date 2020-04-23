@@ -6,7 +6,7 @@ import { updateField } from '../../../lib/Actions/MorningRoutineActions';
 import TextInput from './TextInput';
 
 const Div = styled.div`
-  grid-column: 3 / span 4;
+  grid-column: 1 / span 6;
   grid-row: 2 / span 1;
   background: ${(props) => props.theme.panel && props.theme.panel};
   border-radius: 16px;

@@ -6,11 +6,12 @@ const Div = styled.div`
   grid-row: ${(props) => props.row};
   grid-column: ${(props) => props.column};
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(9, minmax(0, 1fr));
   grid-gap: 5px;
-  padding: 5px;
+  padding: 10px 20px;
   background: ${(props) => props.theme[props.bgColor]};
+  border-radius: 16px;
 `;
 
 function PanelGrid({ row, column, bgColor, children }) {
@@ -27,7 +28,11 @@ PanelGrid.propTypes = {
   ]).isRequired,
   row: PropTypes.string.isRequired,
   column: PropTypes.string.isRequired,
-  bgColor: PropTypes.string.isRequired,
+  bgColor: PropTypes.string,
+};
+
+PanelGrid.defaultProps = {
+  bgColor: 'panel',
 };
 
 export default PanelGrid;

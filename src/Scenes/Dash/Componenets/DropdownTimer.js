@@ -5,72 +5,53 @@ import PropTypes from 'prop-types';
 const Wrapper = styled.div`
   position: relative;
   z-index: 100;
-  border: solid 1px ${(props) => props.theme.white30};
-  border-radius: 6px;
-  border-bottom: none;
+
   display: inline-block;
   align-self: center;
-  margin-right: 1em;
 `;
 const Header = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-bottom: solid 1px ${(props) => props.theme.white30};
 `;
 const HeaderTitle = styled.p`
   font-family: ${(props) => props.theme.font};
-  color: ${(props) =>
-    props.selected ? props.theme.white90 : props.theme.white30};
-  font-size: ${(props) => '.9rem'};
-  font-weight: 300;
-  line-height: 1.5;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  padding: 1em 0.6em;
-  margin: 0;
-  cursor: pointer;
+  color: ${(props) => (props.color ? props.color : props.theme.white90)};
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.16;
 
-  &::after {
-    content: '▾';
-    margin-left: 10px;
-  }
+  width: 220px;
+  text-align: center;
+  cursor: pointer;
 `;
 
 const List = styled.div`
   display: ${(props) => (props.state === 'open' ? 'inline-block' : 'none')};
   position: absolute;
-  width: 100%;
-  max-height: 130px;
-  overflow: scroll;
+  width: 220px;
   box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 1);
-  border: solid 1px ${(props) => props.theme.white30};
-  border-radius: 6px;
-  border-top: none;
+  margin-top: -50px;
 `;
 
 const Item = styled.div`
   background: ${(props) => props.theme.panel};
   font-family: ${(props) => props.theme.font};
-  color: ${(props) => props.theme.white90};
+  color: ${(props) => (props.color ? props.color : props.theme.white90)};
   text-transform: uppercase;
   font-size: 1em;
-  font-weight: 300;
-
+  font-weight: 900;
+  letter-spacing: 0.05em;
   line-height: 1.16;
-  padding: 1em 0.6em;
+  padding: 1.25em 0.75em;
   cursor: pointer;
+  text-align: center;
 `;
 
-function Dropdown({
-  valueArray,
-  stateValue,
-  updateValue,
-  placeholder,
-  colors = {},
-}) {
+function Dropdown({ valueArray, stateValue, updateValue, colors = {} }) {
   const [dropState, setDropState] = useState('closed');
-  const [selected, setSelected] = useState(!placeholder);
 
   function handleHeaderClick() {
     setDropState('open');
@@ -78,15 +59,7 @@ function Dropdown({
 
   function handleItemClick(value) {
     setDropState('closed');
-    setSelected(true);
     updateValue(value);
-  }
-
-  function getHeaderValue() {
-    if (!placeholder) {
-      return stateValue;
-    }
-    return selected ? stateValue : placeholder;
   }
 
   return (
@@ -95,9 +68,8 @@ function Dropdown({
         <HeaderTitle
           onClick={handleHeaderClick}
           color={colors[stateValue] || undefined}
-          selected={selected}
         >
-          {getHeaderValue()}
+          {stateValue}
         </HeaderTitle>
       </Header>
       <List state={dropState}>

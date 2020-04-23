@@ -18,7 +18,7 @@ import {
 } from '../../../Utils/timeConversions';
 
 import ProgressCircle from './ProgressCircle';
-import Dropdown from './Dropdown';
+import Dropdown from './DropdownTimer';
 import PpButton from './PpButton';
 // STYLED COMPONENTS ==================================================
 
