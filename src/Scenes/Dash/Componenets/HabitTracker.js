@@ -5,6 +5,7 @@ import TextInput from './TextInput';
 import Dropdown from './Dropdown';
 import WeekCheck from './WeekCheck';
 import PanelGrid from './PanelGrid';
+import HabitsRepo from '../../../lib/Storage/HabitsRepo';
 
 const Div = styled.div`
   grid-column: 1 / span 9;
@@ -50,7 +51,18 @@ function NewHabitForm() {
     false,
     false,
   ]);
-  const [text, setText] = useState('');
+  const [habitTitle, setHabitTitle] = useState('');
+
+  function submitForm() {
+    const payload = {
+      title: habitTitle,
+      weekArr,
+      targetNumber: Number(dropValue),
+      targetFrequency: dropValue2,
+    };
+    HabitsRepo.createHabit({ ...payload });
+  }
+
   return (
     <>
       <Header>
@@ -61,8 +73,8 @@ function NewHabitForm() {
           <Label htmlFor="title">Habit Title</Label>
           <TextInput
             name="title"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={habitTitle}
+            onChange={(e) => setHabitTitle(e.target.value)}
             placeholder="Habit Name"
             small
           />
@@ -89,7 +101,9 @@ function NewHabitForm() {
             />
           </Wrapper>
         </Fieldset>
-        <button type="submit">Add</button>
+        <button type="submit" onClick={submitForm}>
+          Add
+        </button>
       </Div>
     </>
   );

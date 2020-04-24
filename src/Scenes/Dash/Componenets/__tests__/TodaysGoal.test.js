@@ -5,7 +5,7 @@ import TodaysGoal from '../TodaysGoal';
 
 // render has been overwritten by a custom render to include all providers
 
-describe('TodaysGoal', () => {
+describe.skip('TodaysGoal', () => {
   afterEach(cleanup);
 
   test('renders without crash', () => {
