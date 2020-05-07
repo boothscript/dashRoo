@@ -1,25 +1,37 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 
-import Dropdown from './Dropdown';
-
 import Habit from './Habit';
 import PanelGrid from './PanelGrid';
 import AddHabitForm from './AddHabitForm';
+import Header from './Header';
+
 import { HabitContext } from '../../../lib/Context/HabitContext';
-import { updateHabitData } from '../../../lib/Actions/HabitActions';
 
-const Header = styled.div`
-  grid-column: 1 / span 9;
-  grid-row: 1 / span 1;
-  display: flex;
-  align-items: flex-end;
-  border-bottom: 1px solid ${(props) => props.theme.white30};
-`;
+const Button = styled.button`
+  grid-row: 9;
+  grid-column: 1/-1;
+  visibility: ${(props) => (props.hide ? 'hidden' : 'visible')};
+  align-self: center;
+  margin-left: auto;
+  background: ${(props) => props.theme.panel && props.theme.panel};
+  border: 1px solid;
+  font-size: 1.075rem;
+  border-color: ${(props) => props.theme.white30};
+  border-radius: 6px;
+  font-family: ${(props) => props.theme.font && props.theme.font};
+  font-weight: 200;
 
-const H3 = styled.h3`
-  font-family: ${(props) => props.theme.font};
-  color: ${(props) => props.theme.white90};
+  color: ${(props) => props.theme.white30};
+  padding: 0.25em 1em;
+  text-decoration: none;
+  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
+  pointer-events: ${(props) => (props.disabled ? 'none' : 'default')};
+  &:focus,
+  &:hover {
+    background: ${(props) => props.theme.white90 && props.theme.white90};
+    color: ${(props) => props.theme.panel && props.theme.panel};
+  }
 `;
 
 function HabitTracker() {
@@ -33,16 +45,22 @@ function HabitTracker() {
   return (
     <PanelGrid row="3 / span 7" column="1 / span 4">
       {showAdd ? (
-        <AddHabitForm closeFunc={() => setShowAdd(false)} />
+        <>
+          <Header title="Create New Habit" />
+          <AddHabitForm closeFunc={() => setShowAdd(false)} />
+        </>
       ) : (
-        habitComponents
+        <>
+          <Header title="Habit Tracker" />
+          {habitComponents}
+          <Button
+            type="button"
+            onClick={() => setShowAdd((prevState) => !prevState)}
+          >
+            Add New Habit
+          </Button>
+        </>
       )}
-      <button
-        type="button"
-        onClick={() => setShowAdd((prevState) => !prevState)}
-      >
-        new
-      </button>
     </PanelGrid>
   );
 }
