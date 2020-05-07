@@ -22,7 +22,7 @@ const HeaderTitle = styled.p`
   font-family: ${(props) => props.theme.font};
   color: ${(props) =>
     props.selected ? props.theme.white90 : props.theme.white30};
-  font-size: ${(props) => '.9rem'};
+  font-size: 0.9rem;
   font-weight: 300;
   line-height: 1.5;
   white-space: nowrap;

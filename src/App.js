@@ -9,6 +9,7 @@ import MorningRoutine from './Scenes/MorningRoutine/MorningRoutine';
 import Dash from './Scenes/Dash/Dash';
 import { MorningRoutineContextProvider } from './lib/Context/MorningRoutineContext';
 import { TimerStackContextProvider } from './lib/Context/timerStackContext';
+import { HabitContextProvider } from './lib/Context/HabitContext';
 
 function App() {
   return (
@@ -16,10 +17,12 @@ function App() {
       <Router>
         <MorningRoutineContextProvider>
           <TimerStackContextProvider>
-            <Switch>
-              <Route exact path="/" component={MorningRoutine} />
-              <Route exact path="/dash" component={Dash} />
-            </Switch>
+            <HabitContextProvider>
+              <Switch>
+                <Route exact path="/" component={MorningRoutine} />
+                <Route exact path="/dash" component={Dash} />
+              </Switch>
+            </HabitContextProvider>
           </TimerStackContextProvider>
         </MorningRoutineContextProvider>
       </Router>

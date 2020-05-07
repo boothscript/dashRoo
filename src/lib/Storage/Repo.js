@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-import compareDates  from '../../Utils/date';
+import compareDates from '../../Utils/date';
 
 class Repo {
   constructor(keyName) {
@@ -56,6 +56,7 @@ class Repo {
 
   // eslint-disable-next-line class-methods-use-this
   randomId() {
+    console.log('writing id');
     return crypto.randomBytes(4).toString('hex');
   }
 

@@ -56,7 +56,7 @@ const CustomCheckBox = styled.input`
 
 function CheckBox({ value, handleClick, index }) {
   function getLetter(index) {
-    return ['M', 'T', 'w', 'T', 'F', 'S', 'S'][index];
+    return ['M', 'T', 'W', 'T', 'F', 'S', 'S'][index];
   }
   return (
     <Wrapper>
@@ -77,6 +77,7 @@ function WeekCheck({ weekArray, updateWeekArray }) {
   }
 
   function toggleItem(toggleIndex) {
+    console.log('running toggle');
     updateWeekArray(
       weekArray.map((item, index) => (toggleIndex === index ? !item : item))
     );

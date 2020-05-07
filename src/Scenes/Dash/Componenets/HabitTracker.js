@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
-import faker from 'faker';
+import moment from 'moment';
+
 import TextInput from './TextInput';
 import Dropdown from './Dropdown';
 import WeekCheck from './WeekCheck';
+import WeekCheckAnimated from './weekCheckAnimated';
 import PanelGrid from './PanelGrid';
 import HabitsRepo from '../../../lib/Storage/HabitsRepo';
+
+import { HabitContext } from '../../../lib/Context/HabitContext';
+import { updateHabitData } from '../../../lib/Actions/HabitActions';
 
 const Div = styled.div`
   grid-column: 1 / span 9;
@@ -22,6 +27,7 @@ const Header = styled.div`
   align-items: flex-end;
   border-bottom: 1px solid ${(props) => props.theme.white30};
 `;
+
 const Label = styled.label`
   font-family: ${(props) => props.theme.font};
   color: ${(props) => props.theme.white90};
@@ -39,7 +45,7 @@ const H3 = styled.h3`
   color: ${(props) => props.theme.white90};
 `;
 
-function NewHabitForm() {
+function NewHabitForm(closeFunc) {
   const [dropValue, setDropValue] = useState('1');
   const [dropValue2, setDropValue2] = useState('');
   const [weekArr, setWeekArr] = useState([
@@ -109,10 +115,51 @@ function NewHabitForm() {
   );
 }
 
+const HabitWrapper = styled.div`
+  grid-column: 1 / -1;
+  display: flex;
+  color: ${(props) => props.theme.white90};
+  font-family: ${(props) => props.theme.font};
+  align-items: center;
+`;
+const HabitTitle = styled.p`
+  width: 55%;
+`;
+
+function Habit(habitObj, dispatch) {
+  const weekNumber = moment().week();
+  const weekArr = habitObj.data.find((week) => week.weekNumber === weekNumber);
+  console.log({ weekArr });
+  return (
+    <HabitWrapper>
+      <HabitTitle>{habitObj.title}</HabitTitle>
+      <WeekCheckAnimated
+        weekArray={weekArr.completed}
+        updateWeekArray={(newArr) =>
+          dispatch(updateHabitData(habitObj.id, weekNumber, newArr))
+        }
+      />
+    </HabitWrapper>
+  );
+}
+
 function HabitTracker() {
+  const [showAdd, setShowAdd] = useState(false);
+  const { state, dispatch } = useContext(HabitContext);
+  console.log({ state });
+  const habitComponents = state.map((habit) => {
+    return Habit(habit, dispatch);
+  });
   return (
     <PanelGrid row="3 / span 7" column="1 / span 4">
-      <NewHabitForm />
+      {showAdd && <NewHabitForm />}
+      {habitComponents}
+      <button
+        type="button"
+        onClick={() => setShowAdd((prevState) => !prevState)}
+      >
+        new
+      </button>
     </PanelGrid>
   );
 }
