@@ -10,6 +10,7 @@ function HabitContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    console.log('state has been changed and is being updated');
     HabitsRepo.updateStored(state);
   }, [state]);
 

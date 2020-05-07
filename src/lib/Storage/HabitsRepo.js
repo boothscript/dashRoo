@@ -63,15 +63,18 @@ class HabitRepo extends Repo {
   createHabit(payload) {
     console.log('vreating ne habit');
     const date = new Date();
-    this.create({
+    return {
       ...payload,
+      id: this.randomId(),
       color: this.getHabitColor(),
       dateCreated: date,
       data: [this.createHabitDataWeek(date)],
-    });
+    };
   }
 
   updateStored(payload) {
+    console.log(' im update stpred');
+
     localStorage.setItem(this.keyName, JSON.stringify(payload));
   }
 }

@@ -1,6 +1,6 @@
 import HabitsRepo from '../Storage/HabitsRepo';
 
-import { UPDATE_HABIT_WEEK_ARRAY } from '../Actions/HabitTypes';
+import { UPDATE_HABIT_WEEK_ARRAY, ADD_NEW_HABIT } from '../Actions/HabitTypes';
 
 const initialState = HabitsRepo.getAll();
 console.log({ initialState });
@@ -24,6 +24,8 @@ function reducer(state, action) {
         }
         return habit;
       });
+    case ADD_NEW_HABIT:
+      return [...state, action.payload];
     default:
       throw new Error();
   }
