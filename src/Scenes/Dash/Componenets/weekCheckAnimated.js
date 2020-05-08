@@ -133,13 +133,19 @@ function CheckBox({ value, handleClick, index, color }) {
     handleClick(index);
   }
 
-  const prevValueRef = useRef();
+  const prevValueRef = useRef(null);
 
   useEffect(() => {
     prevValueRef.current = value;
   });
-  console.log(prevValueRef.current, value);
-  const animate = prevValueRef.current !== value;
+
+  function animate() {
+    console.log(prevValueRef.current);
+    if (prevValueRef.current === null) {
+      return false;
+    }
+    return prevValueRef.current !== value;
+  }
 
   return (
     <Wrapper>
@@ -147,7 +153,7 @@ function CheckBox({ value, handleClick, index, color }) {
       <AnimatedLabel
         onClick={(e) => animatedClickFunction(e, value)}
         color={color}
-        animate={animate}
+        animate={animate()}
       />
     </Wrapper>
   );
