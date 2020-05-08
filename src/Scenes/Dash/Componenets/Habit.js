@@ -26,6 +26,7 @@ function Habit(habitObj, dispatch) {
         updateWeekArray={(newArr) =>
           dispatch(updateHabitData(habitObj.id, weekNumber, newArr))
         }
+        color={habitObj.color}
       />
     </HabitWrapper>
   );

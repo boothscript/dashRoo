@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useState, useEffect, useRef } from 'react';
+import styled, { keyframes, css } from 'styled-components';
 import faker from 'faker';
 import mojs from '@mojs/core';
 
@@ -58,7 +58,7 @@ const CustomCheckBox = styled.input`
   left: 0;
   opacity: 0;
 `;
-const checkAnimation = keyframes`
+const checkKeyframes = keyframes`
     40% {
       transform: scale(1.5, 0.5);
     }
@@ -80,6 +80,10 @@ const checkAnimation = keyframes`
     }
 `;
 
+const checkAnimation = css`
+  ${checkKeyframes} 0.6s linear;
+`;
+
 const AnimatedLabel = styled.label`
   border-radius: 6px;
   position: absolute;
@@ -90,16 +94,15 @@ const AnimatedLabel = styled.label`
   background: ${(props) => props.theme.white30};
   cursor: pointer;
 
-  transition: background 4s ease-out 0.3s;
-
   ${CustomCheckBox}:checked + & {
-    background: #ee9fd3;
-    border: 1px solid #ee9fd3;
-    animation: ${checkAnimation} 0.6s linear;
+    background: ${(props) => props.color};
+    border: 1px solid ${(props) => props.color};
+    animation: ${(props) => (props.animate ? checkAnimation : null)};
   }
 `;
 
-function CheckBox({ value, handleClick, index }) {
+function CheckBox({ value, handleClick, index, color }) {
+  console.log('****checkbox renders*****');
   function getLetter(index) {
     return ['M', 'T', 'W', 'T', 'F', 'S', 'S'][index];
   }
@@ -115,10 +118,14 @@ function CheckBox({ value, handleClick, index }) {
       square.tune({
         left: pos.left + 15,
         top: pos.top + 15,
+        stroke: color,
       });
       lines.tune({
         x: pos.left + 15,
         y: pos.top + 15,
+        children: {
+          stroke: color,
+        },
       });
 
       timeline.play();
@@ -126,15 +133,27 @@ function CheckBox({ value, handleClick, index }) {
     handleClick(index);
   }
 
+  const prevValueRef = useRef();
+
+  useEffect(() => {
+    prevValueRef.current = value;
+  });
+  console.log(prevValueRef.current, value);
+  const animate = prevValueRef.current !== value;
+
   return (
     <Wrapper>
       <CustomCheckBox type="checkbox" checked={value} />
-      <AnimatedLabel onClick={(e) => animatedClickFunction(e, value)} />
+      <AnimatedLabel
+        onClick={(e) => animatedClickFunction(e, value)}
+        color={color}
+        animate={animate}
+      />
     </Wrapper>
   );
 }
 
-function WeekCheckAnimated({ weekArray, updateWeekArray }) {
+function WeekCheckAnimated({ weekArray, updateWeekArray, color }) {
   if (weekArray.length !== 7) {
     console.log({ weekArray });
     throw new Error('Array must be length of 7');
@@ -150,10 +169,11 @@ function WeekCheckAnimated({ weekArray, updateWeekArray }) {
     <Div>
       {weekArray.map((item, index) => (
         <CheckBox
-          key={faker.random.uuid()}
+          key={index}
           value={item}
           index={index}
           handleClick={toggleItem}
+          color={color}
         />
       ))}
     </Div>

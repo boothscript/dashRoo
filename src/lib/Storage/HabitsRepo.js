@@ -47,7 +47,9 @@ class HabitRepo extends Repo {
     if (habitColors.colorQueue.length === 0) {
       habitColors.colorQueue = [...habitColors.colors];
     }
-    return habitColors.colorQueue.pop();
+    const result = habitColors.colorQueue.pop();
+    localStorage.setItem('habitColors', JSON.stringify(habitColors));
+    return result;
   }
 
   createHabitDataWeek(date) {
