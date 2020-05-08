@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import faker from 'faker';
+import React from 'react';
+import styled from 'styled-components';
 
 import { CheckBox, CheckBoxAnimated } from './CheckBoxes';
 
@@ -18,18 +17,21 @@ function WeekCheck({
   color = null,
   animated = false,
 }) {
+  // Validation
   if (weekArray.length !== 7) {
     console.log({ weekArray });
     throw new Error('Array must be length of 7');
   }
+  // Choose checkbox component
   const CheckBoxComponent = animated ? CheckBoxAnimated : CheckBox;
+
+  // click handler
   function toggleItem(toggleIndex) {
-    console.log('running toggle');
     updateWeekArray(
       weekArray.map((item, index) => (toggleIndex === index ? !item : item))
     );
   }
-  console.log('rendering weekcheck', weekArray, CheckBoxComponent);
+
   return (
     <Div>
       {weekArray.map((item, index) => (
