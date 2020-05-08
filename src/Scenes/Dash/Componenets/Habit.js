@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import { updateHabitData } from '../../../lib/Actions/HabitActions';
-import WeekCheckAnimated from './weekCheckAnimated';
+import WeekCheck from './WeekCheck';
 
 const HabitWrapper = styled.div`
   grid-column: 1 / -1;
@@ -21,12 +21,13 @@ function Habit(habitObj, dispatch) {
   return (
     <HabitWrapper>
       <HabitTitle>{habitObj.title}</HabitTitle>
-      <WeekCheckAnimated
+      <WeekCheck
         weekArray={weekArr.completed}
         updateWeekArray={(newArr) =>
           dispatch(updateHabitData(habitObj.id, weekNumber, newArr))
         }
         color={habitObj.color}
+        animated
       />
     </HabitWrapper>
   );
