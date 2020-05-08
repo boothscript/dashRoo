@@ -34,6 +34,13 @@ const Button = styled.button`
   }
 `;
 
+const Div = styled.div`
+  grid-row: 2/-2;
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+`;
+
 function HabitTracker() {
   const [showAdd, setShowAdd] = useState(false);
   const { state, dispatch } = useContext(HabitContext);
@@ -52,7 +59,7 @@ function HabitTracker() {
       ) : (
         <>
           <Header title="Habit Tracker" />
-          {habitComponents}
+          <Div>{habitComponents}</Div>
           <Button
             type="button"
             onClick={() => setShowAdd((prevState) => !prevState)}

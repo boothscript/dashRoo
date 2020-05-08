@@ -5,10 +5,10 @@ import { CheckBox, CheckBoxAnimated } from './CheckBoxes';
 
 const Div = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   height: 30px;
-  margin: 15px 0;
+  margin: 0;
 `;
 
 function WeekCheck({

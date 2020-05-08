@@ -9,6 +9,10 @@ import {
 const Wrapper = styled.div`
   position: relative;
 `;
+const WrapperAnimated = styled.div`
+  position: relative;
+  width: 30px;
+`;
 
 const CustomCheckBox = styled.input`
   position: absolute;
@@ -83,7 +87,7 @@ function CheckBoxAnimated({ value, handleClick, index, color }) {
   }
 
   return (
-    <Wrapper>
+    <WrapperAnimated>
       <CustomCheckBoxAnimated type="checkbox" checked={value} />
       <AnimatedLabel
         onClick={(e) =>
@@ -92,7 +96,7 @@ function CheckBoxAnimated({ value, handleClick, index, color }) {
         color={color}
         animate={animate()}
       />
-    </Wrapper>
+    </WrapperAnimated>
   );
 }
 

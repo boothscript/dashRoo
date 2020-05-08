@@ -98,12 +98,13 @@ const CustomCheckBoxAnimated = styled.input`
   top: 0;
   left: 0;
   opacity: 0;
+  margin: 0;
 `;
 
 const AnimatedLabel = styled.label`
   border-radius: 6px;
   position: absolute;
-  left: -34px;
+  left: 0px;
   top: 0;
   height: 30px;
   width: 30px;
