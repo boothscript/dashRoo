@@ -25,8 +25,19 @@ const DashGrid = styled.div`
   grid-template-columns: repeat(9, 1fr);
   grid-gap: 20px;
   padding: 10px;
-  background: linear-gradient(90deg, #0f1115 67.5%, #171a21 67.6%);
+  background: #0f1115;
   border-radius: 16px;
+`;
+
+const TimerStackWrapper = styled.div`
+  grid-column: -3/-1;
+  grid-row: 2 / span 6;
+  background: ${(props) => props.theme.panel};
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5em 0;
 `;
 
 function Dash() {
@@ -36,8 +47,10 @@ function Dash() {
         <DashGrid>
           <HabitTracker />
           <TodaysGoal />
-          <Timer />
-          <Stack />
+          <TimerStackWrapper>
+            <Timer />
+            <Stack />
+          </TimerStackWrapper>
         </DashGrid>
       </Container>
     </>

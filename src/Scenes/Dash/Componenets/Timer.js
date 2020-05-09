@@ -23,9 +23,16 @@ import PpButton from './PpButton';
 // STYLED COMPONENTS ==================================================
 
 const Div = styled.div`
-  grid-column: -4 / span 3;
-  grid-row: 2 / span 4;
+  height: 40%;
+  width: 100%;
   position: relative;
+`;
+
+const ModeWrapper = styled.div`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
 `;
 
 const ControlsWrapper = styled.div`
@@ -35,16 +42,16 @@ const ControlsWrapper = styled.div`
   align-items: space-around;
   height: 80%;
   width: 100%;
-  padding-top: 40px;
+  padding-top: 5px;
 `;
 
 const TimeText = styled.input`
-  width: 50%;
+  width: 35%;
   color: ${(props) => props.theme.white90};
   background: ${(props) => props.theme.panel};
   border: none;
   font-family: ${(props) => props.theme.font};
-  font-size: 3em;
+  font-size: 2em;
   text-align: center;
   outline: none;
   align-self: center;
@@ -54,11 +61,11 @@ const Break = styled.p`
   font-family: ${(props) => props.theme.font};
   color: rgba(174, 174, 174, 0.7);
   text-transform: uppercase;
-  font-size: 1.25em;
+  font-size: 1em;
   font-weight: 900;
   letter-spacing: 0.05em;
   line-height: 1.16;
-  width: 220px;
+  width: 100%;
   text-align: center;
   align-self: center;
 `;
@@ -121,38 +128,42 @@ function Timer() {
   });
 
   return (
-    <Div>
-      <ProgressCircle
-        startValue={state.startValue}
-        currentTime={state.timerValue}
-        color={timerColor}
-      >
-        <ControlsWrapper>
-          <PpButton
-            click={() => dispatch(toggleTimer())}
-            isActive={state.isTicking}
-            color={timerColor}
+    <>
+      <ModeWrapper>
+        {state.mode !== 'session' ? (
+          <Break>{state.mode}</Break>
+        ) : (
+          <Dropdown
+            valueArray={projectArr.map((project) => project.title)}
+            stateValue={state.projectSelected.title}
+            updateValue={updateProjectSelected}
+            colors={colorsObj}
           />
-          <TimeText
-            value={convertToDisplayTime(state.timerValue)}
-            readOnly={state.isTicking}
-            onChange={(e) =>
-              dispatch(updateTime(displayTimeToMs(e.target.value)))
-            }
-          />
-          {state.mode !== 'session' ? (
-            <Break>{state.mode}</Break>
-          ) : (
-            <Dropdown
-              valueArray={projectArr.map((project) => project.title)}
-              stateValue={state.projectSelected.title}
-              updateValue={updateProjectSelected}
-              colors={colorsObj}
+        )}
+      </ModeWrapper>
+      <Div>
+        <ProgressCircle
+          startValue={state.startValue}
+          currentTime={state.timerValue}
+          color={timerColor}
+        >
+          <ControlsWrapper>
+            <PpButton
+              click={() => dispatch(toggleTimer())}
+              isActive={state.isTicking}
+              color={timerColor}
             />
-          )}
-        </ControlsWrapper>
-      </ProgressCircle>
-    </Div>
+            <TimeText
+              value={convertToDisplayTime(state.timerValue)}
+              readOnly={state.isTicking}
+              onChange={(e) =>
+                dispatch(updateTime(displayTimeToMs(e.target.value)))
+              }
+            />
+          </ControlsWrapper>
+        </ProgressCircle>
+      </Div>
+    </>
   );
 }
 

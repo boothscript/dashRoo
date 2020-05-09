@@ -26,6 +26,11 @@ const HeaderTitle = styled.p`
   width: 220px;
   text-align: center;
   cursor: pointer;
+  &::after {
+    font-size: 1.25em;
+    content: '▾';
+    margin-left: 10px;
+  }
 `;
 
 const List = styled.div`

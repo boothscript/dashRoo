@@ -7,12 +7,12 @@ import {
   UPDATE_COUNT,
 } from '../Actions/timerStackTypes';
 
-const durations = { session: 1500000, break: 300000, longBreak: 1200000 }; // time in seconds
+const durations = { session: 15000, break: 15000, longBreak: 15000 }; // time in seconds
 
 const initialState = {
   mode: 'session',
   isTicking: false,
-  projectSelected: { title: 'project rooter', id: "gsdjhfg", color: '#B3F8F1' },
+  projectSelected: { title: 'project rooter', id: 'gsdjhfg', color: '#B3F8F1' },
   timerValue: durations.session,
   startValue: durations.session,
   sessionCount: 0,

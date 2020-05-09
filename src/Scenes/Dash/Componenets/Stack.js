@@ -5,21 +5,20 @@ import crypto from 'crypto';
 import { TimerStackContext } from '../../../lib/Context/timerStackContext';
 
 const StackWrapper = styled.div`
-  grid-column: -4 / span 3;
-  grid-row: 7 / span 4;
+  height: 35%;
+  width: 100%;
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 2em;
 `;
 
 const Line = styled.div`
-  height: 3px;
+  height: 1px;
   padding: 1px 0;
   background-color: ${(props) => props.strokeColor};
   opacity: ${(props) => props.strokeOpacity};
-  width: 289.35px;
+  width: 65%;
 `;
 
 function Stack() {
