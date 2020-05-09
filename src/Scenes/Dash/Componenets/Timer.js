@@ -11,6 +11,9 @@ import {
   updateMode,
   addSession,
   updateCount,
+  editTimer,
+  validateEdit,
+  updateEdit,
 } from '../../../lib/Actions/timerStackActions';
 import {
   convertToDisplayTime,
@@ -80,7 +83,12 @@ const projectArr = [
 
 function Timer() {
   const { state, dispatch } = useContext(TimerStackContext);
-
+  const sessionAudio = new Audio(
+    '/audio/413749__inspectorj__ui-confirmation-alert-d1.mp3'
+  );
+  const breakAudio = new Audio(
+    '/audio/403009__inspectorj__ui-confirmation-alert-b3.mp3'
+  );
   // TIMER FUNCTIONS =====================================================
   useInterval(
     () => {
@@ -99,6 +107,7 @@ function Timer() {
   useEffect(() => {
     if (state.timerValue <= 0 && state.mode === 'session' && state.isTicking) {
       dispatch(addSession({ ...state.projectSelected, time: new Date() }));
+      breakAudio.play();
       if (state.sessionCount === 3) {
         dispatch(updateCount(0));
         dispatch(updateMode('longBreak', durations.longBreak));
@@ -110,6 +119,7 @@ function Timer() {
       (state.timerValue <= 0 && state.mode === 'break' && state.isTicking) ||
       (state.timerValue <= 0 && state.mode === 'longBreak' && state.isTicking)
     ) {
+      sessionAudio.play();
       dispatch(updateMode('session', durations.session));
     }
   }, [state, dispatch]);
@@ -154,10 +164,21 @@ function Timer() {
               color={timerColor}
             />
             <TimeText
-              value={convertToDisplayTime(state.timerValue)}
+              value={
+                state.isInEdit
+                  ? state.editTimerValue
+                  : convertToDisplayTime(state.timerValue)
+              }
               readOnly={state.isTicking}
-              onChange={(e) =>
-                dispatch(updateTime(displayTimeToMs(e.target.value)))
+              onChange={(e) => {
+                if (state.isInEdit) {
+                  dispatch(updateEdit(e.target.value));
+                }
+                dispatch(updateTime(displayTimeToMs(e.target.value)));
+              }}
+              onFocus={(e) => dispatch(editTimer(state, e.targetValue))}
+              onBlur={(e) =>
+                dispatch(validateEdit(state, displayTimeToMs(e.target.value)))
               }
             />
           </ControlsWrapper>

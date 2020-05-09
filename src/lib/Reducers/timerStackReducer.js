@@ -1,10 +1,14 @@
 import {
   TOGGLE_TICK,
+  TOGGLE_EDIT,
   UPDATE_TIME,
   UPDATE_PROJECT,
   UPDATE_MODE,
-  ADD_SESSION,
   UPDATE_COUNT,
+  ADD_SESSION,
+  INIT_EDIT_MODE,
+  UPDATE_TIME_AND_EDIT,
+  UPDATE_EDIT_TIME,
 } from '../Actions/timerStackTypes';
 
 const durations = { session: 15000, break: 15000, longBreak: 15000 }; // time in seconds
@@ -12,6 +16,8 @@ const durations = { session: 15000, break: 15000, longBreak: 15000 }; // time in
 const initialState = {
   mode: 'session',
   isTicking: false,
+  isInEdit: false,
+  editTime: null,
   projectSelected: { title: 'project rooter', id: 'gsdjhfg', color: '#B3F8F1' },
   timerValue: durations.session,
   startValue: durations.session,
@@ -26,6 +32,34 @@ function reducer(state, action) {
         ...state,
         isTicking: !state.isTicking,
       };
+    case TOGGLE_EDIT:
+      return {
+        ...state,
+        isInEdit: !state.isInEdit,
+      };
+
+    case INIT_EDIT_MODE:
+      return {
+        ...state,
+        isInEdit: action.isInEdit,
+        editTimerValue: action.editTimerValue,
+        prevTimerValue: action.prevTimerValue,
+      };
+
+    case UPDATE_TIME_AND_EDIT:
+      return {
+        ...state,
+        timerValue: action.timerValue,
+        startValue: action.startValue,
+        isInEdit: action.isInEdit,
+      };
+
+    case UPDATE_EDIT_TIME:
+      return {
+        ...state,
+        editTimerValue: action.editTimerValue,
+      };
+
     case UPDATE_TIME:
       return {
         ...state,

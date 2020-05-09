@@ -1,10 +1,14 @@
 import {
   TOGGLE_TICK,
+  TOGGLE_EDIT,
   UPDATE_TIME,
   UPDATE_PROJECT,
   UPDATE_MODE,
   UPDATE_COUNT,
   ADD_SESSION,
+  INIT_EDIT_MODE,
+  UPDATE_TIME_AND_EDIT,
+  UPDATE_EDIT_TIME,
 } from './timerStackTypes';
 
 function toggleTimer() {
@@ -12,8 +16,47 @@ function toggleTimer() {
     type: TOGGLE_TICK,
   };
 }
+
+// turn timer edit on
+function editTimer(state, timeText) {
+  return {
+    type: INIT_EDIT_MODE,
+    isInEdit: true,
+    editTimerValue: timeText,
+    prevTimerValue: state.timerValue,
+  };
+}
+
+// turn timer edit off
+function validateEdit(state, newTime) {
+  console.log(newTime);
+  if (newTime) {
+    console.log('falsey');
+    return {
+      type: UPDATE_TIME_AND_EDIT,
+      timerValue: newTime,
+      startValue: newTime,
+      isInEdit: false,
+    };
+  }
+  console.log('true nbitchedx');
+  return {
+    type: UPDATE_TIME_AND_EDIT,
+    timerValue: state.prevTimerValue,
+    startValue: state.startValue,
+    isInEdit: false,
+  };
+}
+
+function updateEdit(newTime) {
+  return {
+    type: UPDATE_EDIT_TIME,
+    editTimerValue: newTime,
+  };
+}
+
 function updateTime(state, newTime) {
-  //   if timer is ticking do not overide the startValue
+  console.log('updating time');
   return {
     type: UPDATE_TIME,
     timerValue: newTime,
@@ -57,4 +100,7 @@ export {
   updateMode,
   addSession,
   updateCount,
+  editTimer,
+  validateEdit,
+  updateEdit,
 };
