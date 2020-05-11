@@ -85,6 +85,10 @@ const projectArr = [
 function Timer() {
   const { state, dispatch } = useContext(TimerStackContext);
 
+  function notify(text) {
+    new window.Notification(text);
+  }
+
   // Audio
   const audioRef = useRef(null);
   useEffect(() => {
@@ -132,9 +136,11 @@ function Timer() {
       if (state.sessionCount === 3) {
         dispatch(updateCount(0));
         dispatch(updateMode('longBreak', durations.longBreak));
+        notify('Long Break Starting');
       } else {
         dispatch(updateCount(state.sessionCount + 1));
         dispatch(updateMode('break', durations.break));
+        notify('Take a second to chill');
       }
     } else if (
       (state.timerValue <= 0 && state.mode === 'break' && state.isTicking) ||
@@ -142,6 +148,7 @@ function Timer() {
     ) {
       audioRef.current.sessionAudio.play();
       dispatch(updateMode('session', durations.session));
+      notify('Get back to work!!!');
     }
   }, [
     state.timerValue,
