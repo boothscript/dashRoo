@@ -61,11 +61,12 @@ function reducer(state, action) {
       };
 
     case UPDATE_TIME:
-      return {
-        ...state,
-        timerValue: action.timerValue,
-        startValue: action.startValue,
-      };
+      return state.isTicking
+        ? {
+            ...state,
+            timerValue: state.timerValue + action.delta,
+          }
+        : { ...state };
     case UPDATE_PROJECT:
       return {
         ...state,

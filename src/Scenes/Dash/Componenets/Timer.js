@@ -1,7 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useRef } from 'react';
 import styled from 'styled-components';
 
-import useInterval from '../../../Hooks/useInterval';
 import { TimerStackContext } from '../../../lib/Context/timerStackContext';
 import { durations } from '../../../lib/Reducers/timerStackReducer';
 import {
@@ -81,21 +80,60 @@ const projectArr = [
   { title: 'project dashroo', id: 'gfdhs', color: '#EE9FD3' },
 ];
 
+// https://codesandbox.io/s/adoring-meninsky-o3pfl
+
 function Timer() {
+  console.log('%%%%%%%%%%');
   const { state, dispatch } = useContext(TimerStackContext);
-  const sessionAudio = new Audio(
-    '/audio/413749__inspectorj__ui-confirmation-alert-d1.mp3'
-  );
-  const breakAudio = new Audio(
-    '/audio/403009__inspectorj__ui-confirmation-alert-b3.mp3'
-  );
+  console.log('timer state at render: ', state.timerValue);
+  console.log('timer start at render: ', state.startValue);
+
+  // Audio
+  const audioRef = useRef(null);
+  useEffect(() => {
+    console.log('useEffect audio');
+    const sessionAudio = new Audio(
+      '/audio/413749__inspectorj__ui-confirmation-alert-d1.mp3'
+    );
+    const breakAudio = new Audio(
+      '/audio/403009__inspectorj__ui-confirmation-alert-b3.mp3'
+    );
+    audioRef.current = { sessionAudio, breakAudio };
+  }, []);
   // TIMER FUNCTIONS =====================================================
-  useInterval(
-    () => {
-      dispatch(updateTime(state, state.timerValue - 500));
-    },
-    state.isTicking ? 500 : null
-  );
+  const workerRef = useRef();
+  // creates worker timer
+
+  function tick() {
+    console.log('ticking');
+    console.log(state.timerValue);
+    dispatch(updateTime(-500));
+  }
+
+  // starts and terminates worker
+  useEffect(() => {
+    console.log('useEffect worker');
+    async function createWorker() {
+      console.log('starting worker');
+      const worker = await new Worker('/workers/timerWorker.js');
+      worker.onmessage = (e) => {
+        console.log('hello');
+        console.log('worker says', e.data);
+        // const tick = state.isTicking ? 500 : null;
+        tick();
+        // console.log({ tick });
+      };
+      worker.postMessage('vroom vroom');
+      workerRef.current = worker;
+      return worker;
+    }
+
+    const worker = createWorker();
+
+    return () => {
+      workerRef.current.terminate();
+    };
+  }, []);
 
   function updateProjectSelected(value) {
     dispatch(
@@ -105,9 +143,10 @@ function Timer() {
 
   // handles when clock reaches 0
   useEffect(() => {
+    console.log('useEffect, 0');
     if (state.timerValue <= 0 && state.mode === 'session' && state.isTicking) {
       dispatch(addSession({ ...state.projectSelected, time: new Date() }));
-      breakAudio.play();
+      audioRef.current.breakAudio.play();
       if (state.sessionCount === 3) {
         dispatch(updateCount(0));
         dispatch(updateMode('longBreak', durations.longBreak));
@@ -119,10 +158,17 @@ function Timer() {
       (state.timerValue <= 0 && state.mode === 'break' && state.isTicking) ||
       (state.timerValue <= 0 && state.mode === 'longBreak' && state.isTicking)
     ) {
-      sessionAudio.play();
+      audioRef.current.sessionAudio.play();
       dispatch(updateMode('session', durations.session));
     }
-  }, [state, dispatch]);
+  }, [
+    state.timerValue,
+    state.mode,
+    state.isTicking,
+    state.sessionCount,
+    state.projectSelected,
+    dispatch,
+  ]);
 
   const timerColor =
     state.mode === 'session'

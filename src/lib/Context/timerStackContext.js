@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
 import { reducer, initialState } from '../Reducers/timerStackReducer';
 import timerStackRepo from '../Storage/TimerStackRepo';
 
@@ -19,6 +19,10 @@ function TimerStackContextProvider({ children }) {
     timerStackRepo.updateStored(new Date(), state);
   }, [state]);
 
+  useEffect(() => {
+    console.log('STATE CHANGED');
+    console.log(state);
+  }, [state]);
 
   return (
     <TimerStackContext.Provider value={{ state, dispatch }}>
@@ -27,11 +31,11 @@ function TimerStackContextProvider({ children }) {
   );
 }
 
-TimerStackContextProvider.propTypes ={
+TimerStackContextProvider.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
-}
+};
 
 export { TimerStackContext, TimerStackContextProvider };

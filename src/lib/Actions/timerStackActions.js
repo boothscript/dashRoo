@@ -55,12 +55,11 @@ function updateEdit(newTime) {
   };
 }
 
-function updateTime(state, newTime) {
-  console.log('updating time');
+function updateTime(delta) {
+  console.log('updating time', delta);
   return {
     type: UPDATE_TIME,
-    timerValue: newTime,
-    startValue: state.isTicking ? state.startValue : newTime,
+    delta,
   };
 }
 
