@@ -1,6 +1,5 @@
 import {
   TOGGLE_TICK,
-  TOGGLE_EDIT,
   UPDATE_TIME,
   UPDATE_PROJECT,
   UPDATE_MODE,
@@ -31,7 +30,6 @@ function editTimer(state, timeText) {
 function validateEdit(state, newTime) {
   console.log(newTime);
   if (newTime) {
-    console.log('falsey');
     return {
       type: UPDATE_TIME_AND_EDIT,
       timerValue: newTime,
@@ -39,7 +37,6 @@ function validateEdit(state, newTime) {
       isInEdit: false,
     };
   }
-  console.log('true nbitchedx');
   return {
     type: UPDATE_TIME_AND_EDIT,
     timerValue: state.prevTimerValue,
@@ -56,7 +53,6 @@ function updateEdit(newTime) {
 }
 
 function updateTime(delta) {
-  console.log('updating time', delta);
   return {
     type: UPDATE_TIME,
     delta,

@@ -83,15 +83,11 @@ const projectArr = [
 // https://codesandbox.io/s/adoring-meninsky-o3pfl
 
 function Timer() {
-  console.log('%%%%%%%%%%');
   const { state, dispatch } = useContext(TimerStackContext);
-  console.log('timer state at render: ', state.timerValue);
-  console.log('timer start at render: ', state.startValue);
 
   // Audio
   const audioRef = useRef(null);
   useEffect(() => {
-    console.log('useEffect audio');
     const sessionAudio = new Audio(
       '/audio/413749__inspectorj__ui-confirmation-alert-d1.mp3'
     );
@@ -102,38 +98,25 @@ function Timer() {
   }, []);
   // TIMER FUNCTIONS =====================================================
   const workerRef = useRef();
-  // creates worker timer
 
-  function tick() {
-    console.log('ticking');
-    console.log(state.timerValue);
-    dispatch(updateTime(-500));
-  }
-
-  // starts and terminates worker
+  // creates and terminates worker
   useEffect(() => {
-    console.log('useEffect worker');
     async function createWorker() {
-      console.log('starting worker');
       const worker = await new Worker('/workers/timerWorker.js');
-      worker.onmessage = (e) => {
-        console.log('hello');
-        console.log('worker says', e.data);
-        // const tick = state.isTicking ? 500 : null;
-        tick();
-        // console.log({ tick });
+      worker.onmessage = () => {
+        dispatch(updateTime(-500));
       };
       worker.postMessage('vroom vroom');
       workerRef.current = worker;
       return worker;
     }
 
-    const worker = createWorker();
+    createWorker();
 
     return () => {
       workerRef.current.terminate();
     };
-  }, []);
+  }, [dispatch]);
 
   function updateProjectSelected(value) {
     dispatch(
@@ -143,7 +126,6 @@ function Timer() {
 
   // handles when clock reaches 0
   useEffect(() => {
-    console.log('useEffect, 0');
     if (state.timerValue <= 0 && state.mode === 'session' && state.isTicking) {
       dispatch(addSession({ ...state.projectSelected, time: new Date() }));
       audioRef.current.breakAudio.play();

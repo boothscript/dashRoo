@@ -19,10 +19,14 @@ function TimerStackContextProvider({ children }) {
     timerStackRepo.updateStored(new Date(), state);
   }, [state]);
 
-  useEffect(() => {
-    console.log('STATE CHANGED');
-    console.log(state);
-  }, [state]);
+  // FOR DEBUGGING
+
+  // useEffect(() => {
+  //   console.log('STATE CHANGED');
+  //   console.log(state);
+  // }, [state]);
+
+  // ==============
 
   return (
     <TimerStackContext.Provider value={{ state, dispatch }}>
