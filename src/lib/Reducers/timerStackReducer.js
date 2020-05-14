@@ -11,7 +11,7 @@ import {
   UPDATE_EDIT_TIME,
 } from '../Actions/timerStackTypes';
 
-const durations = { session: 15000000, break: 300000, longBreak: 15000000 }; // time in seconds
+const durations = { session: 1500000, break: 300000, longBreak: 1500000 }; // time in seconds
 
 const initialState = {
   mode: 'session',
