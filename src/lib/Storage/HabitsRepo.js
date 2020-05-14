@@ -5,7 +5,7 @@ class HabitRepo extends Repo {
   getAll() {
     const habits = super.getAll();
     const date = new Date();
-    console.log('in get all', { habits });
+
     try {
       const result = habits.map((habit) => {
         if (
@@ -15,23 +15,19 @@ class HabitRepo extends Repo {
               dataWeek.year === date.getFullYear()
           )
         ) {
-          console.log('week found');
-          console.log('returning habit', { habit });
           return habit;
         }
-        console.log('week not found');
-        console.log('returning habit', { habit });
+
         habit.data.push(this.createHabitDataWeek(date));
         return habit;
       });
-      console.log({ result });
       return result;
     } catch (err) {
-      console.log('in error');
       return habits;
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getHabitColor() {
     if (!localStorage.getItem('habitColors')) {
       localStorage.setItem(
@@ -43,7 +39,7 @@ class HabitRepo extends Repo {
       );
     }
     const habitColors = JSON.parse(localStorage.getItem('habitColors'));
-    console.log({ habitColors });
+
     if (habitColors.colorQueue.length === 0) {
       habitColors.colorQueue = [...habitColors.colors];
     }
@@ -53,7 +49,6 @@ class HabitRepo extends Repo {
   }
 
   createHabitDataWeek(date) {
-    console.log('creating data week');
     return {
       id: this.randomId(),
       weekNumber: moment(date).week(),
@@ -63,7 +58,6 @@ class HabitRepo extends Repo {
   }
 
   createHabit(payload) {
-    console.log('vreating ne habit');
     const date = new Date();
     return {
       ...payload,
@@ -75,8 +69,6 @@ class HabitRepo extends Repo {
   }
 
   updateStored(payload) {
-    console.log(' im update stpred');
-
     localStorage.setItem(this.keyName, JSON.stringify(payload));
   }
 }

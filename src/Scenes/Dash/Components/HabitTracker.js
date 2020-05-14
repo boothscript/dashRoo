@@ -44,9 +44,8 @@ const Div = styled.div`
 function HabitTracker() {
   const [showAdd, setShowAdd] = useState(false);
   const { state, dispatch } = useContext(HabitContext);
-  console.log({ state });
+
   const habitComponents = state.map((habit) => {
-    console.log('runnning habit components factory');
     return Habit(habit, dispatch);
   });
   return (

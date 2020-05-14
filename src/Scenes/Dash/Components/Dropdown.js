@@ -122,6 +122,7 @@ Dropdown.propTypes = {
   valueArray: PropTypes.arrayOf(PropTypes.string).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   colors: PropTypes.object,
+  placeholder: PropTypes.bool.isRequired,
 };
 Dropdown.defaultProps = {
   colors: {},

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Div = styled.div`
   grid-column: 1 / span 9;
@@ -21,5 +22,9 @@ function Header({ title }) {
     </Div>
   );
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default Header;

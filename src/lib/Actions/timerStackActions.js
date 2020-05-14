@@ -28,7 +28,6 @@ function editTimer(state, timeText) {
 
 // turn timer edit off
 function validateEdit(state, newTime) {
-  console.log(newTime);
   if (newTime) {
     return {
       type: UPDATE_TIME_AND_EDIT,

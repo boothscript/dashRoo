@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import {
   animatedClickFunction,
   AnimatedLabel,
@@ -55,7 +56,7 @@ const CustomCheckBox = styled.input`
 `;
 
 function CheckBox({ value, handleClick, index }) {
-  function getLetter(index) {
+  function getLetter() {
     return ['M', 'T', 'W', 'T', 'F', 'S', 'S'][index];
   }
 
@@ -66,10 +67,16 @@ function CheckBox({ value, handleClick, index }) {
         checked={value}
         letter={getLetter(index)}
       />
-      <label onClick={() => handleClick(index)}></label>
+      <label onClick={() => handleClick(index)} />
     </Wrapper>
   );
 }
+
+CheckBox.propTypes = {
+  value: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 function CheckBoxAnimated({ value, handleClick, index, color }) {
   const prevValueRef = useRef(null);
@@ -79,7 +86,6 @@ function CheckBoxAnimated({ value, handleClick, index, color }) {
   });
 
   function animate() {
-    console.log(prevValueRef.current);
     if (prevValueRef.current === null) {
       return false;
     }
@@ -99,5 +105,11 @@ function CheckBoxAnimated({ value, handleClick, index, color }) {
     </WrapperAnimated>
   );
 }
+CheckBoxAnimated.propTypes = {
+  value: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
+};
 
 export { CheckBox, CheckBoxAnimated };

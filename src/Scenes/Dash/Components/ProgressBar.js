@@ -1,12 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-
-const Wrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-`;
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 function createCSSGradient(color1, color2, value) {
   return `linear-gradient(90deg, ${color2} ${value}%, ${color1} ${
@@ -21,8 +15,13 @@ const Bar = styled.div`
 `;
 
 function ProgressBar({ color1, color2, value }) {
-  console.log({ color1, color2, value });
   return <Bar gradient={createCSSGradient(color1, color2, value)} />;
 }
+
+ProgressBar.propTypes = {
+  color1: PropTypes.string.isRequired,
+  color2: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+};
 
 export default ProgressBar;

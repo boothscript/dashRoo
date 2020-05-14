@@ -85,6 +85,7 @@ const projectArr = [
 function Timer() {
   const { state, dispatch } = useContext(TimerStackContext);
 
+  // notifications
   function notify(text) {
     new window.Notification(text);
   }
@@ -100,7 +101,8 @@ function Timer() {
     );
     audioRef.current = { sessionAudio, breakAudio };
   }, []);
-  // TIMER FUNCTIONS =====================================================
+
+  // Worker
   const workerRef = useRef();
 
   // creates and terminates worker

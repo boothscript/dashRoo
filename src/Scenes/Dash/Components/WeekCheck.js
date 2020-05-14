@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import { CheckBox, CheckBoxAnimated } from './CheckBoxes';
 
@@ -19,7 +20,6 @@ function WeekCheck({
 }) {
   // Validation
   if (weekArray.length !== 7) {
-    console.log({ weekArray });
     throw new Error('Array must be length of 7');
   }
   // Choose checkbox component
@@ -46,5 +46,12 @@ function WeekCheck({
     </Div>
   );
 }
+
+WeekCheck.propTypes = {
+  weekArray: PropTypes.arrayOf(PropTypes.bool).isRequired,
+  updateWeekArray: PropTypes.func.isRequired,
+  color: PropTypes.string,
+  animated: PropTypes.bool,
+};
 
 export default WeekCheck;

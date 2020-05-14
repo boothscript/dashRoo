@@ -28,6 +28,7 @@ function TodaysGoal() {
         data-testid="goalInput"
         value={state.data.goal.text}
         onChange={handleChange}
+        noBorder
       />
     </Div>
   );

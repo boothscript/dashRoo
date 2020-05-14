@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Timer from './Componenets/Timer';
-import Stack from './Componenets/Stack';
-import PlaceholderPanel from './Componenets/PlaceholderPanel';
-import TodaysGoal from './Componenets/TodaysGoal';
-import HabitTracker from './Componenets/HabitTracker';
-import WeekCheck from './Componenets/WeekCheck';
+import Timer from './Components/Timer';
+import Stack from './Components/Stack';
+import TodaysGoal from './Components/TodaysGoal';
+import HabitTracker from './Components/HabitTracker';
 
 const Container = styled.div`
   width: 100vw;

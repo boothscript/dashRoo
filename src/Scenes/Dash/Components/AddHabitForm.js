@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import { HabitContext } from '../../../lib/Context/HabitContext';
 import { addNewHabit } from '../../../lib/Actions/HabitActions';
@@ -29,7 +30,7 @@ const Wrapper = styled.div`
 `;
 
 function AddHabitForm({ closeFunc }) {
-  const { state, dispatch } = useContext(HabitContext);
+  const { dispatch } = useContext(HabitContext);
 
   const [dropValue, setDropValue] = useState('1');
   const [dropValue2, setDropValue2] = useState('');
@@ -51,7 +52,7 @@ function AddHabitForm({ closeFunc }) {
       targetNumber: Number(dropValue),
       targetFrequency: dropValue2,
     };
-    const newHabitObj = dispatch(addNewHabit(payload));
+    dispatch(addNewHabit(payload));
 
     closeFunc();
   }
@@ -98,5 +99,9 @@ function AddHabitForm({ closeFunc }) {
     </>
   );
 }
+
+AddHabitForm.propTypes = {
+  closeFunc: PropTypes.func.isRequired,
+};
 
 export default AddHabitForm;

@@ -1,5 +1,4 @@
 function convertToDisplayTime(time) {
-  console.log('converto to display time ', time);
   const mins = `${Math.floor(time / 1000 / 60)}`;
   const seconds = `${Math.floor(time / 1000) % 60}`;
   return `${mins.padStart(2, 0)}:${seconds.padStart(2, 0)}`;

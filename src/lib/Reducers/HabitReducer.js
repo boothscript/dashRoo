@@ -3,11 +3,8 @@ import HabitsRepo from '../Storage/HabitsRepo';
 import { UPDATE_HABIT_WEEK_ARRAY, ADD_NEW_HABIT } from '../Actions/HabitTypes';
 
 const initialState = HabitsRepo.getAll();
-console.log({ initialState });
+
 function reducer(state, action) {
-  console.log('in reducer');
-  console.log({ state });
-  console.log(action);
   switch (action.type) {
     case UPDATE_HABIT_WEEK_ARRAY:
       return state.map((habit) => {

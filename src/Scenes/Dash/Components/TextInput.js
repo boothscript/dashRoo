@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Input = styled.input`
   font-size: ${(props) => (props.small ? '.9rem' : '1.25em')};
@@ -13,20 +14,35 @@ const Input = styled.input`
   outline: none;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding: 1em 0.6em;
-  border: solid 1px ${(props) => props.theme.white30};
+  padding: 0.8em 0.6em;
+  border: ${(props) => (props.noBorder ? 'none' : 'solid 1px')};
+  border-color: ${(props) => props.theme.white30};
   border-radius: 6px;
 `;
 
-function TextInput({ value, onChange, placeholder, small = false }) {
+function TextInput({
+  value,
+  onChange,
+  placeholder,
+  small = false,
+  noBorder = false,
+}) {
   return (
     <Input
       value={value}
       onChange={onChange}
       placeholder={placeholder}
       small={small}
+      noBorder={noBorder}
     />
   );
 }
+TextInput.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  small: PropTypes.bool,
+  noBorder: PropTypes.bool,
+};
 
 export default TextInput;
