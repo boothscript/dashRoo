@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Habit from './Habit';
 import PanelGrid from './PanelGrid';
 import AddHabitForm from './AddHabitForm';
+import AddHabitForm2 from './AddHabitForm2';
 import Header from './Header';
 
 import { HabitContext } from '../../../lib/Context/HabitContext';
@@ -53,7 +54,7 @@ function HabitTracker() {
       {showAdd ? (
         <>
           <Header title="Create New Habit" />
-          <AddHabitForm closeFunc={() => setShowAdd(false)} />
+          <AddHabitForm2 closeFunc={() => setShowAdd(false)} />
         </>
       ) : (
         <>

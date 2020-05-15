@@ -21,6 +21,7 @@ const Input = styled.input`
 `;
 
 function TextInput({
+  name,
   value,
   onChange,
   placeholder,
@@ -29,6 +30,7 @@ function TextInput({
 }) {
   return (
     <Input
+      name={name}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
