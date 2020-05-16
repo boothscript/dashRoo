@@ -9,6 +9,7 @@ import Dropdown from './Dropdown';
 import TextInput from './TextInput';
 import WeekCheck from './WeekCheck';
 import Button from './Button';
+import FormStepCircles from './FormStepCircles';
 
 const Div = styled.div`
   grid-column: 1 / span 9;
@@ -17,7 +18,7 @@ const Div = styled.div`
   flex-direction: column;
   justify-content: space-around;
 `;
-
+const Header = styled.div``;
 const Main = styled.div``;
 const Footer = styled.div``;
 
@@ -49,11 +50,17 @@ function AddHabitForm2({ closeFunc }) {
 
   return (
     <Div>
+      <Header>
+        <FormStepCircles
+          currentStep={controller.stepIndex + 1}
+          totalSteps={controller.totalSteps}
+        />
+      </Header>
       <Main>
         {/* step 1 */}
         {controller.stepIndex === 0 && (
-          <Label htmlFor="habitTitle">
-            Habit Title
+          <>
+            <Label htmlFor="habitTitle">Habit Title</Label>
             <TextInput
               name="habitTitle"
               value={controller.formValues[0].habitTitle}
@@ -66,7 +73,7 @@ function AddHabitForm2({ closeFunc }) {
               }
               placeholder="Exercise"
             />
-          </Label>
+          </>
         )}
 
         {/* step 2 */}
@@ -119,8 +126,11 @@ function AddHabitForm2({ closeFunc }) {
         )}
       </Main>
       <Footer>
-        <Button onClick={controller.navigation.back}>Back</Button>
+        <Button small onClick={controller.navigation.back}>
+          Back
+        </Button>
         <Button
+          small
           onClick={
             controller.stepIndex === 2 ? submitForm : controller.navigation.next
           }

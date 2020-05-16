@@ -47,7 +47,7 @@ function HabitTracker() {
   const { state, dispatch } = useContext(HabitContext);
 
   const habitComponents = state.map((habit) => {
-    return Habit(habit, dispatch);
+    return <Habit habitObj={habit} dispatch={dispatch} key={habit.id} />;
   });
   return (
     <PanelGrid row="3 / span 7" column="1 / span 4">

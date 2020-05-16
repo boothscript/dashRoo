@@ -58,7 +58,7 @@ const useMultiStage = (steps) => {
 
   return {
     stepIndex: index,
-    steps: stepsList.length,
+    totalSteps: stepsList.length,
     navigation: { next, back },
     formValues,
     setValue,

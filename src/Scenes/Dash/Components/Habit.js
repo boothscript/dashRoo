@@ -32,7 +32,7 @@ const Div = styled.div`
   justify-content: space-between;
 `;
 
-function Habit(habitObj, dispatch) {
+function Habit({ habitObj, dispatch }) {
   const weekNumber = moment().week();
   const weekArr = habitObj.data.find((week) => week.weekNumber === weekNumber);
   return (
