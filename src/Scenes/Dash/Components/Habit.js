@@ -35,6 +35,14 @@ const Div = styled.div`
 function Habit({ habitObj, dispatch }) {
   const weekNumber = moment().week();
   const weekArr = habitObj.data.find((week) => week.weekNumber === weekNumber);
+
+  function calculateProgress() {
+    const numberCompleted = weekArr.completed.filter((day) => day).length;
+
+    return (numberCompleted / habitObj.targetNumber) * 100;
+  }
+
+  const progressValue = calculateProgress();
   return (
     <>
       <HabitWrapper color={habitObj.color}>
@@ -53,7 +61,7 @@ function Habit({ habitObj, dispatch }) {
             <ProgressBar
               color1="rgba(256,256,256,0.3)"
               color2={habitObj.color}
-              value={Math.floor(Math.random() * 100)}
+              value={progressValue}
             />
           </ProgressWrapper>
         </Div>

@@ -2,20 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function createCSSGradient(color1, color2, value) {
-  return `linear-gradient(90deg, ${color2} ${value}%, ${color1} ${
-    value + 0.01
-  }%)`;
-}
-
-const Bar = styled.div`
+const BarContainer = styled.div`
   width: 100%;
   height: 5px;
-  background: ${(props) => props.gradient};
+  background: ${(props) => props.color};
+`;
+
+const Bar = styled.div`
+  width: ${(props) => props.value}%;
+  height: 5px;
+  background: ${(props) => props.color};
+  transition: all ease-in-out 0.3s;
 `;
 
 function ProgressBar({ color1, color2, value }) {
-  return <Bar gradient={createCSSGradient(color1, color2, value)} />;
+  return (
+    <BarContainer color={color1}>
+      <Bar color={color2} value={value} />
+    </BarContainer>
+  );
 }
 
 ProgressBar.propTypes = {
