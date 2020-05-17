@@ -6,19 +6,25 @@ const Div = styled.div`
   grid-column: 1 / span 9;
   grid-row: 1 / span 1;
   display: flex;
-  align-items: flex-end;
-  border-bottom: 1px solid ${(props) => props.theme.white30};
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const H3 = styled.h3`
   font-family: ${(props) => props.theme.font};
-  color: ${(props) => props.theme.white90};
+  color: ${(props) => props.theme.white30};
+  text-transform: uppercase;
 `;
 
-function Header({ title }) {
+const ButtonWrapper = styled.div`
+  display: flex;
+`;
+
+function Header({ title, children }) {
   return (
     <Div>
       <H3>{title}</H3>
+      <ButtonWrapper>{children}</ButtonWrapper>
     </Div>
   );
 }
