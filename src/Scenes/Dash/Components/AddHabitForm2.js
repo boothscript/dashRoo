@@ -140,7 +140,12 @@ function AddHabitForm2({ closeFunc }) {
         )}
       </Main>
       <Footer>
-        <PanelButton onClick={controller.navigation.back}>Back</PanelButton>
+        <PanelButton
+          hide={controller.stepIndex === 0}
+          onClick={controller.navigation.back}
+        >
+          Back
+        </PanelButton>
         <PanelButton
           onClick={
             controller.stepIndex === 2 ? submitForm : controller.navigation.next
