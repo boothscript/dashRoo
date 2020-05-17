@@ -6,33 +6,15 @@ import PanelGrid from './PanelGrid';
 import AddHabitForm from './AddHabitForm';
 import AddHabitForm2 from './AddHabitForm2';
 import Header from './Header';
+import PanelButton from './PanelButton';
 
 import { HabitContext } from '../../../lib/Context/HabitContext';
 
-const Button = styled.button`
+const ButtonWrapper = styled.div`
   grid-row: 9;
   grid-column: 1/-1;
-  visibility: ${(props) => (props.hide ? 'hidden' : 'visible')};
-  align-self: center;
-  margin-left: auto;
-  background: ${(props) => props.theme.panel && props.theme.panel};
-  border: 1px solid;
-  font-size: 1.075rem;
-  border-color: ${(props) => props.theme.white30};
-  border-radius: 6px;
-  font-family: ${(props) => props.theme.font && props.theme.font};
-  font-weight: 200;
-
-  color: ${(props) => props.theme.white30};
-  padding: 0.25em 1em;
-  text-decoration: none;
-  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
-  pointer-events: ${(props) => (props.disabled ? 'none' : 'default')};
-  &:focus,
-  &:hover {
-    background: ${(props) => props.theme.white90 && props.theme.white90};
-    color: ${(props) => props.theme.panel && props.theme.panel};
-  }
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const Div = styled.div`
@@ -60,12 +42,14 @@ function HabitTracker() {
         <>
           <Header title="Habit Tracker" />
           <Div>{habitComponents}</Div>
-          <Button
-            type="button"
-            onClick={() => setShowAdd((prevState) => !prevState)}
-          >
-            Add New Habit
-          </Button>
+          <ButtonWrapper>
+            <PanelButton
+              type="button"
+              onClick={() => setShowAdd((prevState) => !prevState)}
+            >
+              Add New Habit
+            </PanelButton>
+          </ButtonWrapper>
         </>
       )}
     </PanelGrid>

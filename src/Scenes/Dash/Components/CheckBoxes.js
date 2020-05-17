@@ -9,6 +9,7 @@ import {
 
 const Wrapper = styled.div`
   position: relative;
+  width: 30px;
 `;
 const WrapperAnimated = styled.div`
   position: relative;
@@ -21,13 +22,14 @@ const CustomCheckBox = styled.input`
   width: 30px;
   top: 0;
   left: 0;
-  opacity: 0;
+  opacity: 1;
+  background: red;
   & + label::before {
     border: 1px solid  ${(props) => props.theme.white30};
     border-radius: 6px;
     content: '';
     position: absolute;
-    left: -34px;
+    left: 0px;
     top: 0;
     height: 30px;
     width: 30px;
@@ -40,7 +42,7 @@ const CustomCheckBox = styled.input`
   border: 1px solid  ${(props) => props.theme.white30};
     border-radius: 6px;
     position: absolute;
-    left: -34px;
+    left: 0px;
     top: 0;
     height: 30px;
     width: 30px;

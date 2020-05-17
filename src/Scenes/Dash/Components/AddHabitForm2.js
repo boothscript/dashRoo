@@ -8,7 +8,7 @@ import { addNewHabit } from '../../../lib/Actions/HabitActions';
 import Dropdown from './Dropdown';
 import TextInput from './TextInput';
 import WeekCheck from './WeekCheck';
-import Button from './Button';
+import PanelButton from './PanelButton';
 import FormStepCircles from './FormStepCircles';
 
 const Div = styled.div`
@@ -16,16 +16,27 @@ const Div = styled.div`
   grid-row: 2 / span 8;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 2em 0;
 `;
 const Header = styled.div``;
 const Main = styled.div``;
-const Footer = styled.div``;
+const Footer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+`;
 
 const Label = styled.label`
   font-family: ${(props) => props.theme.font};
   color: ${(props) => props.theme.white90};
   margin-bottom: 1em;
+  font-size: 1.25rem;
+  display: block;
+`;
+
+const DropdownWrapper = styled.div`
+  display: flex;
 `;
 
 function AddHabitForm2({ closeFunc }) {
@@ -78,22 +89,25 @@ function AddHabitForm2({ closeFunc }) {
 
         {/* step 2 */}
         {controller.stepIndex === 1 && (
-          <Label htmlFor="weekArr">
-            On what days is it possible for you to complete the habit?
+          <>
+            <Label htmlFor="weekArr">
+              On what days is it possible for you to complete the habit?
+            </Label>
             <WeekCheck
+              name="weekArr"
               weekArray={controller.formValues[1].weekArr}
               updateWeekArray={(newArr) =>
                 controller.setValue(controller.stepIndex, 'weekArr', newArr)
               }
             />
-          </Label>
+          </>
         )}
 
         {/* step 3 */}
         {controller.stepIndex === 2 && (
-          <>
-            <Label htmlFor="targetNumber">
-              Set your target
+          <DropdownWrapper>
+            <div style={{ marginRight: '4em' }}>
+              <Label htmlFor="targetNumber">Set your target: </Label>
               <Dropdown
                 valueArray={['1', '2', '3', '4', '5', '6', '7']}
                 stateValue={controller.formValues[2].targetNumber}
@@ -106,9 +120,9 @@ function AddHabitForm2({ closeFunc }) {
                 }
                 placeholder="How many times?"
               />
-            </Label>
-            <Label htmlFor="targetPeriod">
-              per
+            </div>
+            <div>
+              <Label htmlFor="targetPeriod">Per period:</Label>
               <Dropdown
                 valueArray={['week', 'fortnight', 'month']}
                 stateValue={controller.formValues[2].targetPeriod}
@@ -121,22 +135,19 @@ function AddHabitForm2({ closeFunc }) {
                 }
                 placeholder="period"
               />
-            </Label>
-          </>
+            </div>
+          </DropdownWrapper>
         )}
       </Main>
       <Footer>
-        <Button small onClick={controller.navigation.back}>
-          Back
-        </Button>
-        <Button
-          small
+        <PanelButton onClick={controller.navigation.back}>Back</PanelButton>
+        <PanelButton
           onClick={
             controller.stepIndex === 2 ? submitForm : controller.navigation.next
           }
         >
           {controller.stepIndex === 2 ? 'Create Habbit' : 'Next'}
-        </Button>
+        </PanelButton>
       </Footer>
     </Div>
   );
