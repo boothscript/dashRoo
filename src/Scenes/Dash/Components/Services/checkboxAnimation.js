@@ -37,8 +37,9 @@ const lines = new mojs.Burst({
   },
 });
 
-function animatedClickFunction(e, checked, color, clickFunc) {
-  if (!checked) {
+function animatedClickFunction(e, checked, color, disabled, clickFunc) {
+  console.log({ disabled });
+  if (!checked && !disabled) {
     const pos = e.target.getBoundingClientRect();
 
     const timeline = new mojs.Timeline({ speed: 1.5, delay: 500 });
@@ -60,7 +61,9 @@ function animatedClickFunction(e, checked, color, clickFunc) {
 
     timeline.play();
   }
-  clickFunc();
+  if (!disabled) {
+    clickFunc();
+  }
 }
 
 // CSS ANIMATION
@@ -108,8 +111,10 @@ const AnimatedLabel = styled.label`
   top: 0;
   height: 30px;
   width: 30px;
-  background: ${(props) => props.theme.white30};
-  cursor: pointer;
+  background: ${({ theme, disabled }) =>
+    disabled ? theme.white10 : theme.white30};
+
+  cursor: ${(props) => (props.disabled ? 'cursor' : 'pointer')};
   transition: none;
   ${CustomCheckBoxAnimated}:checked + & {
     background: ${(props) => props.color};

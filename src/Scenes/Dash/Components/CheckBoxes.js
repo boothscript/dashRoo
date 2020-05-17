@@ -80,7 +80,7 @@ CheckBox.propTypes = {
   index: PropTypes.number.isRequired,
 };
 
-function CheckBoxAnimated({ value, handleClick, index, color }) {
+function CheckBoxAnimated({ value, handleClick, index, color, disabled }) {
   const prevValueRef = useRef(null);
 
   useEffect(() => {
@@ -96,10 +96,17 @@ function CheckBoxAnimated({ value, handleClick, index, color }) {
 
   return (
     <WrapperAnimated>
-      <CustomCheckBoxAnimated type="checkbox" checked={value} />
+      <CustomCheckBoxAnimated
+        type="checkbox"
+        checked={value}
+        disabled={disabled}
+      />
       <AnimatedLabel
+        disabled={disabled}
         onClick={(e) =>
-          animatedClickFunction(e, value, color, () => handleClick(index))
+          animatedClickFunction(e, value, color, disabled, () =>
+            handleClick(index)
+          )
         }
         color={color}
         animate={animate()}

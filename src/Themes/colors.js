@@ -6,4 +6,5 @@ export default {
   panel: '#171A21',
   white90: 'rgba(256,256,256,0.75)',
   white30: 'rgba(256,256,256,0.3)',
+  white10: 'rgba(256,256,256,0.1)',
 };

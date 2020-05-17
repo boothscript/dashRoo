@@ -13,6 +13,7 @@ const Div = styled.div`
 `;
 
 function WeekCheck({
+  availability = [],
   weekArray,
   updateWeekArray,
   color = null,
@@ -41,6 +42,7 @@ function WeekCheck({
           index={index}
           handleClick={toggleItem}
           color={color}
+          disabled={!availability[index] || false}
         />
       ))}
     </Div>

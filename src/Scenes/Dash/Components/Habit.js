@@ -41,6 +41,7 @@ function Habit({ habitObj, dispatch }) {
         <HabitTitle>{habitObj.title}</HabitTitle>
         <Div>
           <WeekCheck
+            availability={habitObj.weekArr}
             weekArray={weekArr.completed}
             updateWeekArray={(newArr) =>
               dispatch(updateHabitData(habitObj.id, weekNumber, newArr))
