@@ -8,6 +8,7 @@ const Div = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 3em;
 `;
 
 const H3 = styled.h3`

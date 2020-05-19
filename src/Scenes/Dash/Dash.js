@@ -5,6 +5,7 @@ import Timer from './Components/Timer';
 import Stack from './Components/Stack';
 import TodaysGoal from './Components/TodaysGoal';
 import HabitTracker from './Components/HabitTracker';
+import Visualizer from './Components/Visualizer';
 
 const Container = styled.div`
   width: 100vw;
@@ -45,6 +46,7 @@ function Dash() {
         <DashGrid>
           <HabitTracker />
           <TodaysGoal />
+          {/* <Visualizer /> */}
           <TimerStackWrapper>
             <Timer />
             <Stack />

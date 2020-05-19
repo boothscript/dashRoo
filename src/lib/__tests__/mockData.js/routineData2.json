@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2020-04-17T13:19:42.058Z",
+    "step": "complete",
+    "direction": "fwd",
+    "data": {
+      "ratings": {
+        "day": 3,
+        "sleep": 3
+      },
+      "gratitude": {
+        "1": "dssdffds",
+        "2": "dsdfsdf",
+        "3": "sdfsdfsdfdf"
+      },
+      "goal": {
+        "text": "dsfsdfsdfdf"
+      }
+    },
+    "id": "6e69c082"
+  },
+  {
+    "date": "2020-04-21T05:31:56.118Z",
+    "step": "complete",
+    "direction": "fwd",
+    "data": {
+      "ratings": {
+        "day": 4,
+        "sleep": 4
+      },
+      "gratitude": {
+        "1": "I am able to have enough money to get by whilst I am unable to work",
+        "2": "that I was able to find helpful articles on testing",
+        "3": "That I have a garden to hang out in"
+      },
+      "goal": {
+        "text": "Write tests for todays goal and reducers and context and stores"
+      }
+    },
+    "id": "13a6f746"
+  }
+]
