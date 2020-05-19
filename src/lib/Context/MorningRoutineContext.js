@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import morningRoutineRepo from '../Storage/MornigRoutineRepo';
@@ -29,8 +29,13 @@ function MorningRoutineContextProvider({ children }) {
     morningRoutineRepo.updateStored(new Date(), state);
   }, [state]);
 
+  const ratingsValues = {};
+  useLayoutEffect(() => {
+    Object.assign(ratingsValues, morningRoutineRepo.getRatingData());
+  }, [state, ratingsValues]);
+
   return (
-    <MorningRoutineContext.Provider value={{ state, dispatch }}>
+    <MorningRoutineContext.Provider value={{ state, dispatch, ratingsValues }}>
       {children}
     </MorningRoutineContext.Provider>
   );

@@ -8,12 +8,11 @@ class MorningRoutineRepo extends Repo {
     // make valuehash and dateArray
     const valueHash = {};
     const dateArray = [];
-    records.default.forEach((record) => {
+    records.forEach((record) => {
       const date = record.date.split('T')[0];
       valueHash[date] = record.data.ratings;
       dateArray.push(date);
     });
-
     // create full date array
     const firstDate = new Moment(dateArray[0]);
     const lastDate = new Moment(dateArray[dateArray.length - 1]);
@@ -27,9 +26,9 @@ class MorningRoutineRepo extends Repo {
         const data = valueHash[date];
         Object.entries(data).forEach(([key, value]) => {
           if (!x[key]) {
-            x[key] = [value];
+            x[key] = [value || 1];
           } else {
-            x[key].push(value);
+            x[key].push(value || 1);
           }
         });
       } catch (error) {
@@ -38,7 +37,6 @@ class MorningRoutineRepo extends Repo {
         });
       }
     });
-
     return { x, y };
   }
 }

@@ -46,7 +46,7 @@ function Dash() {
         <DashGrid>
           <HabitTracker />
           <TodaysGoal />
-          {/* <Visualizer /> */}
+          <Visualizer />
           <TimerStackWrapper>
             <Timer />
             <Stack />
