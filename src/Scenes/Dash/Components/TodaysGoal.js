@@ -26,7 +26,7 @@ function TodaysGoal() {
     <Div>
       <TextInput
         data-testid="goalInput"
-        value={state.data.goal.text}
+        value={state.data.goal.text || 'no input'}
         onChange={handleChange}
         noBorder
       />

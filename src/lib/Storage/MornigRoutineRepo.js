@@ -16,27 +16,28 @@ class MorningRoutineRepo extends Repo {
     // create full date array
     const firstDate = new Moment(dateArray[0]);
     const lastDate = new Moment(dateArray[dateArray.length - 1]);
-    const y = enumerateDates(firstDate, lastDate);
+    const x = enumerateDates(firstDate, lastDate);
 
-    const x = {};
+    const y = {};
 
-    y.forEach((date) => {
+    x.forEach((date) => {
       // check if values exist, if so copy, if not fill with 1
       try {
         const data = valueHash[date];
         Object.entries(data).forEach(([key, value]) => {
-          if (!x[key]) {
-            x[key] = [value || 1];
+          if (!y[key]) {
+            y[key] = [value || 1];
           } else {
-            x[key].push(value || 1);
+            y[key].push(value || 1);
           }
         });
       } catch (error) {
-        Object.keys(x).forEach((key) => {
-          x[key].push(1);
+        Object.keys(y).forEach((key) => {
+          y[key].push(1);
         });
       }
     });
+    console.log({ x, y });
     return { x, y };
   }
 }

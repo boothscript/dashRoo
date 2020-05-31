@@ -3,7 +3,7 @@ import React from 'react';
 
 import Header from './Header';
 import PanelGrid from './PanelGrid';
-import RatingsChart from './RatingsChart';
+import RatingsChart from './KPIChart';
 
 function Visualizer() {
   return (
