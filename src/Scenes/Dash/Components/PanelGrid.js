@@ -26,8 +26,8 @@ PanelGrid.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
-  row: PropTypes.string.isRequired,
-  column: PropTypes.string.isRequired,
+  row: PropTypes.string,
+  column: PropTypes.string,
   bgColor: PropTypes.string,
 };
 

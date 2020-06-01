@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import PanelGrid from './PanelGrid';
 import Header from './KPIHeader';
 import KPIChart from './KPIChart';
+
 const PanelMenuButton = styled.button`
   background: ${(props) => props.theme.white10};
   border: none;
@@ -36,11 +37,12 @@ const ChartWrapper = styled.div`
 `;
 
 const KPINumber = styled.p`
-  color: ${(props) => props.theme.white30};
+  color: ${(props) => props.theme.white90};
   font-family: ${(props) => props.theme.font};
   grid-row: 1 / span 3;
   grid-column: 7 / span 3;
   font-size: 3rem;
+  line-height: 0.6;
   text-align: right;
 `;
 
@@ -57,13 +59,18 @@ function KPIDelta({ delta }) {
   return <DeltaP positive={delta > 0}>{delta}%</DeltaP>;
 }
 
-function KPIPanel({ title, subtitle, chartLabelText, chartData }) {
+function KPIPanel({
+  title,
+  subtitle,
+  chartLabelText,
+  chartData,
+  kpiValue,
+  delta,
+}) {
   const chartWrapperRef = useRef(null);
 
   const chartWrapperDimensions = {};
 
-  const kpiValue = 3.89;
-  const delta = -16;
   useLayoutEffect(() => {
     chartWrapperDimensions.width = chartWrapperRef.current
       ? chartWrapperRef.current.offsetWidth
@@ -75,7 +82,7 @@ function KPIPanel({ title, subtitle, chartLabelText, chartData }) {
   console.log({ chartWrapperRef });
   console.log({ chartWrapperDimensions });
   return (
-    <PanelGrid row="3 / span 2" column="5 / span 3">
+    <PanelGrid>
       <Header title={title}>
         <PanelMenuButton>
           <AddIcon />

@@ -5,11 +5,7 @@ import Timer from './Components/Timer';
 import Stack from './Components/Stack';
 import TodaysGoal from './Components/TodaysGoal';
 import HabitTracker from './Components/HabitTracker';
-import Visualizer from './Components/Visualizer';
-import KPIPanel from './Components/KPIPanel';
-
-import { MorningRoutineContext } from '../../lib/Context/MorningRoutineContext';
-import { calculate7DayRollingMean } from '../../Utils/statsHelper';
+import KPIChartsContainer from './Components/KPIChartsContainer';
 
 const Container = styled.div`
   width: 100vw;
@@ -44,110 +40,13 @@ const TimerStackWrapper = styled.div`
 `;
 
 function Dash() {
-  const ratingsValues = [
-    3,
-    4,
-    4,
-    3,
-    4,
-    1,
-    5,
-    5,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    2,
-    3,
-    3,
-    3,
-    1,
-    2,
-    4,
-    4,
-    4,
-    4,
-    4,
-    4,
-    5,
-    5,
-    3,
-    4,
-    4,
-    3,
-    3,
-    1,
-    1,
-    1,
-    1,
-    2,
-    3,
-    3,
-    1,
-    4,
-    4,
-    3,
-  ];
-  const yData = calculate7DayRollingMean(ratingsValues);
-  const xData = [
-    '2020-04-17',
-    '2020-04-18',
-    '2020-04-19',
-    '2020-04-20',
-    '2020-04-21',
-    '2020-04-22',
-    '2020-04-23',
-    '2020-04-24',
-    '2020-04-25',
-    '2020-04-26',
-    '2020-04-27',
-    '2020-04-28',
-    '2020-04-29',
-    '2020-04-30',
-    '2020-05-01',
-    '2020-05-02',
-    '2020-05-03',
-    '2020-05-04',
-    '2020-05-05',
-    '2020-05-06',
-    '2020-05-07',
-    '2020-05-08',
-    '2020-05-09',
-    '2020-05-10',
-    '2020-05-11',
-    '2020-05-12',
-    '2020-05-13',
-    '2020-05-14',
-    '2020-05-15',
-    '2020-05-16',
-    '2020-05-17',
-    '2020-05-18',
-    '2020-05-19',
-    '2020-05-20',
-    '2020-05-21',
-    '2020-05-22',
-    '2020-05-23',
-    '2020-05-24',
-    '2020-05-25',
-    '2020-05-26',
-    '2020-05-27',
-    '2020-05-28',
-    '2020-05-29',
-    '2020-05-30',
-    '2020-05-31',
-  ];
-
   return (
     <>
       <Container>
         <DashGrid>
           <HabitTracker />
           <TodaysGoal />
-          <KPIPanel title="Daily Rating" chartData={{ x: xData, y: yData }} />
-
+          <KPIChartsContainer />
           <TimerStackWrapper>
             <Timer />
             <Stack />

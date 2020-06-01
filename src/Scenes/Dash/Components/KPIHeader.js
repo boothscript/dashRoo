@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 
 const Div = styled.div`
   grid-column: 1 / span 9;
-  grid-row: 1 / span 1;
+  grid-row: 2 / span 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3em;
 `;
 
 const H4 = styled.h4`

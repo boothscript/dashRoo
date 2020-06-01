@@ -30,6 +30,7 @@ function MorningRoutineContextProvider({ children }) {
   }, [state]);
 
   const ratingsValues = {};
+  Object.assign(ratingsValues, morningRoutineRepo.getRatingData());
   useLayoutEffect(() => {
     Object.assign(ratingsValues, morningRoutineRepo.getRatingData());
   }, [state, ratingsValues]);
