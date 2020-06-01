@@ -6,6 +6,7 @@ function KPIChart({ xData, yData, containerDimensions }) {
   const chartNodeRef = useRef();
 
   const options = {
+    animation: false,
     responsive: true,
     maintainAspectRatio: false,
     legend: { display: false },
@@ -25,7 +26,7 @@ function KPIChart({ xData, yData, containerDimensions }) {
           type: 'linear',
           ticks: {
             min: 0.5,
-            max: 5,
+            max: 15,
             stepSize: 1,
           },
           gridLines: {
@@ -40,10 +41,9 @@ function KPIChart({ xData, yData, containerDimensions }) {
   if (chartNodeRef.current) {
     ctx = chartNodeRef.current.getContext('2d');
   }
-  console.log({ xData, yData });
+
   useEffect(() => {
     try {
-      console.log('in effect', xData, yData);
       const chart = new Chart(ctx, {
         type: 'line',
         data: {

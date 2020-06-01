@@ -38,7 +38,7 @@ const lines = new mojs.Burst({
 });
 
 function animatedClickFunction(e, checked, color, disabled, clickFunc) {
-  console.log({ disabled });
+  
   if (!checked && !disabled) {
     const pos = e.target.getBoundingClientRect();
 

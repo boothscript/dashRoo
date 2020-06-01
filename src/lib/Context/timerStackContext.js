@@ -1,14 +1,15 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useLayoutEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { reducer, initialState } from '../Reducers/timerStackReducer';
-import timerStackRepo from '../Storage/TimerStackRepo';
+import TimerStackRepo from '../Storage/TimerStackRepo';
 
 const TimerStackContext = React.createContext();
 
 function TimerStackContextProvider({ children }) {
   function getStoredState() {
-    return timerStackRepo.getTodaysState(new Date());
+    return TimerStackRepo.getTodaysState(new Date());
   }
+  const [stackValues, setStackValues] = useState({ x: [], y: [0, 0, 0, 0] });
 
   const [state, dispatch] = useReducer(
     reducer,
@@ -16,20 +17,23 @@ function TimerStackContextProvider({ children }) {
   );
 
   useEffect(() => {
-    timerStackRepo.updateStored(new Date(), state);
+    TimerStackRepo.updateStored(new Date(), state);
   }, [state]);
 
   // FOR DEBUGGING
 
   // useEffect(() => {
-  //   console.log('STATE CHANGED');
-  //   console.log(state);
+
   // }, [state]);
 
   // ==============
 
+  useEffect(() => {
+    setStackValues(TimerStackRepo.getStackValues());
+  }, []);
+
   return (
-    <TimerStackContext.Provider value={{ state, dispatch }}>
+    <TimerStackContext.Provider value={{ state, dispatch, stackValues }}>
       {children}
     </TimerStackContext.Provider>
   );

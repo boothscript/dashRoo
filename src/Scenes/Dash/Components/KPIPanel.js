@@ -79,8 +79,7 @@ function KPIPanel({
       ? chartWrapperRef.current.offsetHeight
       : 0;
   }, [chartWrapperRef, chartWrapperDimensions]);
-  console.log({ chartWrapperRef });
-  console.log({ chartWrapperDimensions });
+
   return (
     <PanelGrid>
       <Header title={title}>

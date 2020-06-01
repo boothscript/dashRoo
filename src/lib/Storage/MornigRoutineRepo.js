@@ -37,7 +37,7 @@ class MorningRoutineRepo extends Repo {
         });
       }
     });
-    console.log({ x, y });
+
     return { x, y };
   }
 }

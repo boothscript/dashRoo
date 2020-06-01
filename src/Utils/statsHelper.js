@@ -8,6 +8,14 @@ export function calculate7DayRollingMean(valuesArray) {
     }
 
     const sum = sample.reduce((accum, currentValue) => accum + currentValue);
+    // look for zero days in sample and remove 2 max.
+    let count = 0;
+    const filteredSample = sample.filter((value) => {
+      if (value === 0) {
+        count++;
+      }
+      return value > 0 || count > 2;
+    });
     return sum / sample.length;
   });
 

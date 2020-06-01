@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { MorningRoutineContext } from '../../../lib/Context/MorningRoutineContext';
+import { TimerStackContext } from '../../../lib/Context/timerStackContext';
+
 import { calculate7DayRollingMean } from '../../../Utils/statsHelper';
 import KPIPanel from './KPIPanel';
 
@@ -16,42 +18,89 @@ const Div = styled.div`
 `;
 
 function KPIChartsContainer() {
-  const { state, ratingsValues } = useContext(MorningRoutineContext);
+  const { ratingsValues } = useContext(MorningRoutineContext);
+  const { stackValues } = useContext(TimerStackContext);
 
-  const dayYData = calculate7DayRollingMean(ratingsValues.y.day);
-  const dayXData = ratingsValues.x;
-  const dayKpiValue = dayYData[dayYData.length - 1].toFixed(2);
-  const dayDelta = (
-    ((dayKpiValue - dayYData[dayYData.length - 8]) / 5) *
-    100
-  ).toFixed(1);
+  const [chartData, setChartData] = useState({
+    dayXData: [0, 0, 0, 0],
+    dayYData: [0, 0, 0, 0],
+    sleepXData: [0, 0, 0, 0],
+    sleepYData: [0, 0, 0, 0],
+    stackXData: [0, 0, 0, 0],
+    stackYData: [0, 0, 0, 0],
+    dayKpiValue: 0,
+    sleepKpiValue: 0,
+    stackKpiValue: 0,
+    dayDelta: 0,
+    sleepDelta: 0,
+    stackDelta: 0,
+  });
 
-  const sleepYData = calculate7DayRollingMean(ratingsValues.y.sleep);
-  const sleepXData = ratingsValues.x;
-  const sleepKpiValue = sleepYData[sleepYData.length - 1].toFixed(2);
-  const sleepDelta = (
-    ((sleepKpiValue - sleepYData[sleepYData.length - 8]) / 5) *
-    100
-  ).toFixed(1);
-  // load in data
-  // process data
+  useEffect(() => {
+    const dayYData = calculate7DayRollingMean(ratingsValues.y.day);
+    const dayXData = ratingsValues.x;
+    const dayKpiValue = dayYData[dayYData.length - 1].toFixed(2);
+    const dayDelta = (
+      ((dayKpiValue - dayYData[dayYData.length - 8]) / 5) *
+      100
+    ).toFixed(1);
+
+    const sleepYData = calculate7DayRollingMean(ratingsValues.y.sleep);
+    const sleepXData = ratingsValues.x;
+    const sleepKpiValue = sleepYData[sleepYData.length - 1].toFixed(2);
+    const sleepDelta = (
+      ((sleepKpiValue - sleepYData[sleepYData.length - 8]) / 5) *
+      100
+    ).toFixed(1);
+    // load in data
+    // process data
+
+    const stackYData = calculate7DayRollingMean(
+      stackValues.y.slice(0, stackValues.y.length - 1)
+    );
+    const stackXData = stackValues.x;
+    const stackKpiValue = stackYData[stackYData.length - 1].toFixed(2);
+    const stackDelta = (
+      ((stackKpiValue - stackYData[stackYData.length - 8]) / 5) *
+      100
+    ).toFixed(1);
+    setChartData({
+      dayXData,
+      dayYData,
+      sleepXData,
+      sleepYData,
+      stackXData,
+      stackYData,
+      dayKpiValue,
+      sleepKpiValue,
+      stackKpiValue,
+      dayDelta,
+      sleepDelta,
+      stackDelta,
+    });
+  }, [ratingsValues, stackValues]);
 
   return (
     <Div>
       <KPIPanel
         title="Daily Rating"
-        chartData={{ x: dayXData, y: dayYData }}
-        kpiValue={dayKpiValue}
-        delta={dayDelta}
+        chartData={{ x: chartData.dayXData, y: chartData.dayYData }}
+        kpiValue={chartData.dayKpiValue}
+        delta={chartData.dayDelta}
       />
       <KPIPanel
         title="Sleep Quality"
-        chartData={{ x: sleepXData, y: sleepYData }}
-        kpiValue={sleepKpiValue}
-        delta={sleepDelta}
+        chartData={{ x: chartData.sleepXData, y: chartData.sleepYData }}
+        kpiValue={chartData.sleepKpiValue}
+        delta={chartData.sleepDelta}
       />
-      {/* <KPIPanel title="Stacks Rate" chartData={{ x: xData, y: yData }} />
-      <KPIPanel title="Habit Completion" chartData={{ x: xData, y: yData }} /> */}
+      <KPIPanel
+        title="Stacks Rate"
+        chartData={{ x: chartData.stackXData, y: chartData.stackYData }}
+        kpiValue={chartData.stackKpiValue}
+        delta={chartData.stackDelta}
+      />
+      {/* <KPIPanel title="Habit Completion" chartData={{ x: xData, y: yData }} /> */}
     </Div>
   );
 }
