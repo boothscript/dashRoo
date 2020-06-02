@@ -66,6 +66,7 @@ function KPIPanel({
   chartData,
   kpiValue,
   delta,
+  yRange,
 }) {
   const chartWrapperRef = useRef(null);
 
@@ -93,6 +94,7 @@ function KPIPanel({
           yData={chartData.y}
           xAxisLabel={chartLabelText}
           containerDimensions={chartWrapperDimensions}
+          yRange={yRange}
         />
       </ChartWrapper>
       <KPINumber>{kpiValue}</KPINumber>

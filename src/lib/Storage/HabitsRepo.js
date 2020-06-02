@@ -79,13 +79,15 @@ class HabitRepo extends Repo {
     // generate averages for each habit for each week {year: week: [avg, avg, avg]}
     const averages = {};
     habits.forEach((habit) => {
+      console.log(habit.title);
       habit.data.forEach((week) => {
         const completionTotal = week.completed.reduce((accum, day) => {
           if (day) {
             return accum + 1;
           }
           return accum;
-        }, 1);
+        }, 0);
+        console.log(week.number, completionTotal);
         if (!averages[week.year]) {
           averages[week.year] = {};
         }
@@ -99,21 +101,28 @@ class HabitRepo extends Repo {
       });
     });
 
-    // iterate though each week and calc week avg then create new object {date:avg}
+    // iterate though each week and calc week avg then create new object {date:avg} ignore current week
     const result = [];
+    const currentWeek = String(new moment().week());
+    const currentYear = String(new moment().year());
     Object.entries(averages).forEach(([year, week]) => {
       Object.entries(week).forEach(([weekNumber, avgArray]) => {
-        const weekSum = avgArray.reduce((accum, value) => {
-          return accum + value;
-        });
-        const weekAverage = weekSum / avgArray.length;
-        const startDate = moment(`${year}W${weekNumber}`);
-        const endDate = moment(`${year}W${weekNumber}`).add(6, 'days');
-        const weekDateList = enumerateDates(startDate, endDate);
+        console.log({ year, weekNumber, currentYear, currentWeek });
+        if (year === currentYear && weekNumber === currentWeek) {
+          // do nothing
+        } else {
+          const weekSum = avgArray.reduce((accum, value) => {
+            return accum + value;
+          });
+          const weekAverage = weekSum / avgArray.length;
+          const startDate = moment(`${year}W${weekNumber}`);
+          const endDate = moment(`${year}W${weekNumber}`).add(6, 'days');
+          const weekDateList = enumerateDates(startDate, endDate);
 
-        weekDateList.forEach((dateKey) => {
-          result.push({ [dateKey]: weekAverage });
-        });
+          weekDateList.forEach((dateKey) => {
+            result.push({ [dateKey]: weekAverage });
+          });
+        }
       });
     });
 

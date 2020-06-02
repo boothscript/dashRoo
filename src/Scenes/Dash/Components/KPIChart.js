@@ -2,40 +2,8 @@ import React, { useRef, useEffect } from 'react';
 
 import Chart from 'chart.js';
 
-function KPIChart({ xData, yData, containerDimensions }) {
+function KPIChart({ xData, yData, containerDimensions, yRange }) {
   const chartNodeRef = useRef();
-
-  const options = {
-    animation: false,
-    responsive: true,
-    maintainAspectRatio: false,
-    legend: { display: false },
-    scales: {
-      xAxes: [
-        {
-          display: false,
-          type: 'time',
-          gridLines: {
-            display: false,
-          },
-        },
-      ],
-      yAxes: [
-        {
-          display: false,
-          type: 'linear',
-          ticks: {
-            min: 0.5,
-            max: 15,
-            stepSize: 1,
-          },
-          gridLines: {
-            display: false,
-          },
-        },
-      ],
-    },
-  };
 
   let ctx;
   if (chartNodeRef.current) {
@@ -43,6 +11,38 @@ function KPIChart({ xData, yData, containerDimensions }) {
   }
 
   useEffect(() => {
+    const options = {
+      animation: false,
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: { display: false },
+      scales: {
+        xAxes: [
+          {
+            display: false,
+            type: 'time',
+            gridLines: {
+              display: false,
+            },
+          },
+        ],
+        yAxes: [
+          {
+            display: false,
+            type: 'linear',
+            ticks: {
+              min: yRange.min,
+              max: yRange.max,
+              stepSize: 1,
+            },
+            gridLines: {
+              display: false,
+            },
+          },
+        ],
+      },
+    };
+
     try {
       const chart = new Chart(ctx, {
         type: 'line',
@@ -61,7 +61,7 @@ function KPIChart({ xData, yData, containerDimensions }) {
         options,
       });
     } catch (error) {}
-  }, [xData, yData, options]);
+  }, [xData, yData, yRange]);
 
   return <canvas id="myChart" ref={chartNodeRef} />;
 }

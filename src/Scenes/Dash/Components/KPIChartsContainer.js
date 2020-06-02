@@ -47,7 +47,8 @@ function KPIChartsContainer() {
     const dayXData = ratingsValues.x;
     const dayKpiValue = dayYData[dayYData.length - 1].toFixed(2);
     const dayDelta = (
-      ((dayKpiValue - dayYData[dayYData.length - 8]) / 5) *
+      ((dayKpiValue - dayYData[dayYData.length - 8]) /
+        dayYData[dayYData.length - 8]) *
       100
     ).toFixed(1);
 
@@ -55,7 +56,8 @@ function KPIChartsContainer() {
     const sleepXData = ratingsValues.x;
     const sleepKpiValue = sleepYData[sleepYData.length - 1].toFixed(2);
     const sleepDelta = (
-      ((sleepKpiValue - sleepYData[sleepYData.length - 8]) / 5) *
+      ((sleepKpiValue - sleepYData[sleepYData.length - 8]) /
+        sleepYData[sleepYData.length - 8]) *
       100
     ).toFixed(1);
     // load in data
@@ -67,7 +69,8 @@ function KPIChartsContainer() {
     const stackXData = stackValues.x;
     const stackKpiValue = stackYData[stackYData.length - 1].toFixed(2);
     const stackDelta = (
-      ((stackKpiValue - stackYData[stackYData.length - 8]) / 5) *
+      ((stackKpiValue - stackYData[stackYData.length - 8]) /
+        stackYData[stackYData.length - 8]) *
       100
     ).toFixed(1);
 
@@ -77,7 +80,8 @@ function KPIChartsContainer() {
     const habitXData = habitValues.x;
     const habitKpiValue = habitYData[habitYData.length - 1].toFixed(2);
     const habitDelta = (
-      ((habitKpiValue - habitYData[habitYData.length - 8]) / 5) *
+      ((habitKpiValue - habitYData[habitYData.length - 8]) /
+        habitYData[habitYData.length - 8]) *
       100
     ).toFixed(1);
 
@@ -108,24 +112,28 @@ function KPIChartsContainer() {
         chartData={{ x: chartData.dayXData, y: chartData.dayYData }}
         kpiValue={chartData.dayKpiValue}
         delta={chartData.dayDelta}
+        yRange={{ min: 0.5, max: 5.5 }}
       />
       <KPIPanel
         title="Sleep Quality"
         chartData={{ x: chartData.sleepXData, y: chartData.sleepYData }}
         kpiValue={chartData.sleepKpiValue}
         delta={chartData.sleepDelta}
+        yRange={{ min: 0.5, max: 5.5 }}
       />
       <KPIPanel
         title="Stacks Rate"
         chartData={{ x: chartData.stackXData, y: chartData.stackYData }}
         kpiValue={chartData.stackKpiValue}
         delta={chartData.stackDelta}
+        yRange={{ min: -0.05, max: 15 }}
       />
       <KPIPanel
         title="Habit Completion"
         chartData={{ x: chartData.habitXData, y: chartData.habitYData }}
         kpiValue={chartData.habitKpiValue}
         delta={chartData.habitDelta}
+        yRange={{ min: 0, max: 105 }}
       />
     </Div>
   );
