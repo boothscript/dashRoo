@@ -62,9 +62,32 @@ function KPIChartsContainer() {
     ).toFixed(1);
     // load in data
     // process data
+    console.log({ stackValues: stackValues.y });
+    // temp data
+    const stackTempArray = [
+      0,
+      3,
+      8,
+      0,
+      0,
+      9,
+      8,
+      0,
+      4,
+      8,
+      0,
+      7,
+      7,
+      0,
+      8,
+      7,
+      3,
+      0,
+    ];
 
     const stackYData = calculate7DayRollingMean(
-      stackValues.y.slice(0, stackValues.y.length - 1)
+      // stackValues.y.slice(0, stackValues.y.length - 1)
+      stackTempArray
     );
     const stackXData = stackValues.x;
     const stackKpiValue = stackYData[stackYData.length - 1].toFixed(2);
@@ -108,20 +131,6 @@ function KPIChartsContainer() {
   return (
     <Div>
       <KPIPanel
-        title="Daily Rating"
-        chartData={{ x: chartData.dayXData, y: chartData.dayYData }}
-        kpiValue={chartData.dayKpiValue}
-        delta={chartData.dayDelta}
-        yRange={{ min: 0.5, max: 5.5 }}
-      />
-      <KPIPanel
-        title="Sleep Quality"
-        chartData={{ x: chartData.sleepXData, y: chartData.sleepYData }}
-        kpiValue={chartData.sleepKpiValue}
-        delta={chartData.sleepDelta}
-        yRange={{ min: 0.5, max: 5.5 }}
-      />
-      <KPIPanel
         title="Stacks Rate"
         chartData={{ x: chartData.stackXData, y: chartData.stackYData }}
         kpiValue={chartData.stackKpiValue}
@@ -134,6 +143,20 @@ function KPIChartsContainer() {
         kpiValue={chartData.habitKpiValue}
         delta={chartData.habitDelta}
         yRange={{ min: 0, max: 105 }}
+      />
+      <KPIPanel
+        title="Daily Rating"
+        chartData={{ x: chartData.dayXData, y: chartData.dayYData }}
+        kpiValue={chartData.dayKpiValue}
+        delta={chartData.dayDelta}
+        yRange={{ min: 0.5, max: 5.5 }}
+      />
+      <KPIPanel
+        title="Sleep Quality"
+        chartData={{ x: chartData.sleepXData, y: chartData.sleepYData }}
+        kpiValue={chartData.sleepKpiValue}
+        delta={chartData.sleepDelta}
+        yRange={{ min: 0.5, max: 5.5 }}
       />
     </Div>
   );

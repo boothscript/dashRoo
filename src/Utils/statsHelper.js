@@ -16,7 +16,7 @@ export function calculate7DayRollingMean(valuesArray) {
       }
       return value > 0 || count > 2;
     });
-    return sum / sample.length;
+    return sum / filteredSample.length;
   });
 
   return rollingAverage;
