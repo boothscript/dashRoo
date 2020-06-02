@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function compareDates(date1, date2) {
   // compares two date objects and ignores time. returns bool.
   return date1.toDateString() === date2.toDateString();
@@ -14,4 +16,11 @@ export function enumerateDates(firstDate, lastDate) {
   }
 
   return result;
+}
+
+export function compareDateStrings(a, b) {
+  if (moment(a).isBefore(b)) {
+    return -1;
+  }
+  return +1;
 }

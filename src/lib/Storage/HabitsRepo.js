@@ -1,5 +1,6 @@
 import moment from 'moment';
 import Repo from './Repo';
+import { enumerateDates, compareDateStrings } from '../../Utils/date';
 
 class HabitRepo extends Repo {
   getAll() {
@@ -70,6 +71,64 @@ class HabitRepo extends Repo {
 
   updateStored(payload) {
     localStorage.setItem(this.keyName, JSON.stringify(payload));
+  }
+
+  getCompletionData() {
+    const habits = this.getAll();
+
+    // generate averages for each habit for each week {year: week: [avg, avg, avg]}
+    const averages = {};
+    habits.forEach((habit) => {
+      habit.data.forEach((week) => {
+        const completionTotal = week.completed.reduce((accum, day) => {
+          if (day) {
+            return accum + 1;
+          }
+          return accum;
+        }, 1);
+        if (!averages[week.year]) {
+          averages[week.year] = {};
+        }
+        if (!averages[week.year][week.weekNumber]) {
+          averages[week.year][week.weekNumber] = [];
+        }
+
+        averages[week.year][week.weekNumber].push(
+          (completionTotal / habit.targetNumber) * 100
+        );
+      });
+    });
+
+    // iterate though each week and calc week avg then create new object {date:avg}
+    const result = [];
+    Object.entries(averages).forEach(([year, week]) => {
+      Object.entries(week).forEach(([weekNumber, avgArray]) => {
+        const weekSum = avgArray.reduce((accum, value) => {
+          return accum + value;
+        });
+        const weekAverage = weekSum / avgArray.length;
+        const startDate = moment(`${year}W${weekNumber}`);
+        const endDate = moment(`${year}W${weekNumber}`).add(6, 'days');
+        const weekDateList = enumerateDates(startDate, endDate);
+
+        weekDateList.forEach((dateKey) => {
+          result.push({ [dateKey]: weekAverage });
+        });
+      });
+    });
+
+    // sort result array
+    result.sort(compareDateStrings);
+
+    // convert to x, y
+    const habitCompletionData = { x: [], y: [] };
+    result.forEach((day) => {
+      const [date, value] = Object.entries(day)[0];
+      habitCompletionData.x.push(date);
+      habitCompletionData.y.push(value);
+    });
+    console.log({ habitCompletionData });
+    return habitCompletionData;
   }
 }
 
