@@ -7,6 +7,7 @@ import colors from './Themes/colors';
 
 import MorningRoutine from './Scenes/MorningRoutine/MorningRoutine';
 import Dash from './Scenes/Dash/Dash';
+import Journal from './Scenes/Journal/Journal';
 import { MorningRoutineContextProvider } from './lib/Context/MorningRoutineContext';
 import { TimerStackContextProvider } from './lib/Context/timerStackContext';
 import { HabitContextProvider } from './lib/Context/HabitContext';
@@ -21,6 +22,7 @@ function App() {
               <Switch>
                 <Route exact path="/" component={MorningRoutine} />
                 <Route exact path="/dash" component={Dash} />
+                <Route exact path="/journal" component={Journal} />
               </Switch>
             </HabitContextProvider>
           </TimerStackContextProvider>
