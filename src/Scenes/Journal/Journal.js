@@ -6,6 +6,7 @@ import JournalSpine from './JournalSpine';
 import JournalPage from './JournalPage';
 import JournalTextArea from './JournalTextArea';
 import JournalSingleLineEntry from './JournalSingleLineEntry';
+import StarRater from './StarRater';
 import Gratitude from './Gratitude';
 
 const Div = styled.div`
@@ -29,6 +30,8 @@ function Journal() {
         openFunc={setOpenPage}
       />
       <JournalPage open={openPage === 'morningRoutine'}>
+        <StarRater title="Yesterdays Rating" />
+        <StarRater title="Yesterdays Sleep Rating" />
         <Gratitude />
         <JournalSingleLineEntry title="Whats Today's Goal?" />
       </JournalPage>
