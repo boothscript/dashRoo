@@ -18,12 +18,14 @@ function MorningRoutineContextProvider({ children }) {
     reducer,
     getStoredState() || initialState
   );
-  const history = useHistory();
-  useEffect(() => {
-    if (state.step === 'complete') {
-      history.push('/dash');
-    }
-  }, [state.step, history]);
+
+  // CONFLICTS WITH OTHER PAGES
+  // const history = useHistory();
+  // useEffect(() => {
+  //   if (state.step === 'complete') {
+  //     history.push('/dash');
+  //   }
+  // }, [state.step, history]);
 
   useEffect(() => {
     morningRoutineRepo.updateStored(new Date(), state);

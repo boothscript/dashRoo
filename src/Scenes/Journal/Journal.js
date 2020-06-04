@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import JournalSpine from './JournalSpine';
 import JournalPage from './JournalPage';
+import JournalTextArea from './JournalTextArea';
+import Gratitude from './Gratitude';
 
 const Div = styled.div`
   width: 100vw;
@@ -25,19 +27,27 @@ function Journal() {
         sectionName="morningRoutine"
         openFunc={setOpenPage}
       />
-      <JournalPage open={openPage === 'morningRoutine'} />
+      <JournalPage open={openPage === 'morningRoutine'}>
+        <Gratitude />
+      </JournalPage>
       <JournalSpine
         title="Developer Log"
         sectionName="devLog"
         openFunc={setOpenPage}
       />
-      <JournalPage open={openPage === 'devLog'} />
+      <JournalPage open={openPage === 'devLog'}>
+        <JournalTextArea title="Dev Log Entry:" />
+      </JournalPage>
       <JournalSpine
         title="Evening Routine"
         sectionName="eveningRoutine"
         openFunc={setOpenPage}
       />
-      <JournalPage open={openPage === 'eveningRoutine'} />
+      <JournalPage open={openPage === 'eveningRoutine'}>
+        <JournalTextArea title="What Was Challenging Today?" />
+        <JournalTextArea title="What Went Well Today?" />
+        <Gratitude />
+      </JournalPage>
     </Div>
   );
 }
