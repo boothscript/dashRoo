@@ -28,6 +28,7 @@ function Journal() {
         title="Morning Routine"
         sectionName="morningRoutine"
         openFunc={setOpenPage}
+        ticks={4}
       />
       <JournalPage open={openPage === 'morningRoutine'}>
         <StarRater title="Yesterdays Rating" />
@@ -35,18 +36,22 @@ function Journal() {
         <Gratitude />
         <JournalSingleLineEntry title="Whats Today's Goal?" />
       </JournalPage>
+
       <JournalSpine
         title="Developer Log"
         sectionName="devLog"
         openFunc={setOpenPage}
+        ticks={1}
       />
       <JournalPage open={openPage === 'devLog'}>
         <JournalTextArea title="Dev Log Entry:" />
       </JournalPage>
+
       <JournalSpine
         title="Evening Routine"
         sectionName="eveningRoutine"
         openFunc={setOpenPage}
+        ticks={3}
       />
       <JournalPage open={openPage === 'eveningRoutine'}>
         <JournalTextArea title="What Was Challenging Today?" />
