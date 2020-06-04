@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import JournalSpine from './JournalSpine';
 import JournalPage from './JournalPage';
 import JournalTextArea from './JournalTextArea';
+import JournalSingleLineEntry from './JournalSingleLineEntry';
 import Gratitude from './Gratitude';
 
 const Div = styled.div`
@@ -29,6 +30,7 @@ function Journal() {
       />
       <JournalPage open={openPage === 'morningRoutine'}>
         <Gratitude />
+        <JournalSingleLineEntry title="Whats Today's Goal?" />
       </JournalPage>
       <JournalSpine
         title="Developer Log"
