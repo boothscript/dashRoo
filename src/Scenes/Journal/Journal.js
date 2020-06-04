@@ -10,8 +10,8 @@ import StarRater from './StarRater';
 import Gratitude from './Gratitude';
 
 const Div = styled.div`
-  width: 100vw;
-  height: 100vh;
+  grid-column: 1/ -1;
+  grid-row: 2 / span 9;
   display: flex;
   align-items: stretch;
   background: ${(props) => props.theme.darkest};

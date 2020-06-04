@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  position: static;
-  left: 0px;
-  right: 0px;
+  grid-column: 1/ -1;
+  grid-row: 2 / span 9;
   background: ${(props) => props.theme.darkest && props.theme.darkest};
-  height: 100vh;
-  width: 100%;
+
   display: grid;
   grid-template-columns:
     minmax(1em, 1fr) minmax(200px, 900px)

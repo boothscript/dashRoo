@@ -7,27 +7,6 @@ import TodaysGoal from './Components/TodaysGoal';
 import HabitTracker from './Components/HabitTracker';
 import KPIChartsContainer from './Components/KPIChartsContainer';
 
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr);
-  grid-template-columns: minmax(0, 1fr) max(1200px) minmax(0, 1fr);
-  background: #828282;
-`;
-
-const DashGrid = styled.div`
-  grid-column: 2/-2;
-  grid-row: 1 / -1;
-  display: grid;
-  grid-template-rows: repeat(9, minmax(0, 1fr));
-  grid-template-columns: repeat(9, 1fr);
-  grid-gap: 20px;
-  padding: 10px;
-  background: #0f1115;
-  border-radius: 16px;
-`;
-
 const TimerStackWrapper = styled.div`
   grid-column: -3/-1;
   grid-row: 2 / span 6;
@@ -42,17 +21,13 @@ const TimerStackWrapper = styled.div`
 function Dash() {
   return (
     <>
-      <Container>
-        <DashGrid>
-          <HabitTracker />
-          <TodaysGoal />
-          <KPIChartsContainer />
-          <TimerStackWrapper>
-            <Timer />
-            <Stack />
-          </TimerStackWrapper>
-        </DashGrid>
-      </Container>
+      <HabitTracker />
+      <TodaysGoal />
+      <KPIChartsContainer />
+      <TimerStackWrapper>
+        <Timer />
+        <Stack />
+      </TimerStackWrapper>
     </>
   );
 }
