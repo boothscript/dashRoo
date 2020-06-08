@@ -73,7 +73,7 @@ function HabitTracker() {
     return <Habit habitObj={habit} dispatch={dispatch} key={habit.id} />;
   });
   return (
-    <PanelGrid row="3 / span 7" column="1 / span 4">
+    <PanelGrid row="4 / span 7" column="1 / span 4">
       <Header title="Habit Tracker">
         <PanelMenuButton
           type="button"

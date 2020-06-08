@@ -23,7 +23,7 @@ const ProfilePicture = styled.div`
 const Name = styled.p`
   margin: 0 10px;
   font-family: ${(props) => props.theme.font};
-  color: ${(props) => props.theme.white30};
+  color: ${(props) => props.theme.white90};
 `;
 
 function UserPanel() {

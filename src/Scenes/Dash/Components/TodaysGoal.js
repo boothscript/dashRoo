@@ -7,7 +7,7 @@ import TextInput from './TextInput';
 
 const Div = styled.div`
   grid-column: 1 / span 6;
-  grid-row: 2 / span 1;
+  grid-row: 3 / span 1;
   background: ${(props) => props.theme.panel && props.theme.panel};
   border-radius: 16px;
   display: flex;
@@ -29,6 +29,7 @@ function TodaysGoal() {
         value={state.data.goal.text || 'no input'}
         onChange={handleChange}
         noBorder
+        small
       />
     </Div>
   );

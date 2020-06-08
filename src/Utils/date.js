@@ -6,6 +6,7 @@ export function compareDates(date1, date2) {
 }
 
 export function enumerateDates(firstDate, lastDate) {
+  console.log({ firstDate, lastDate });
   const result = [];
   let currentDate = firstDate;
   result.push(currentDate.format('YYYY-MM-DD'));
@@ -23,4 +24,34 @@ export function compareDateStrings(a, b) {
     return -1;
   }
   return +1;
+}
+
+export const monthFullNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+export function createWeekArray(date) {
+  // given on date (moment), creates an array of dates for that week (sun - sat)
+  let dateCopy;
+  try {
+    dateCopy = moment(date.format());
+  } catch (error) {
+    if (error instanceof TypeError) {
+      dateCopy = moment(date);
+    } else {
+      throw new Error(error);
+    }
+  }
+  return enumerateDates(moment(dateCopy.day(0)), moment(dateCopy.day(6)));
 }

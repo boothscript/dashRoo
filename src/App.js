@@ -8,9 +8,11 @@ import MorningRoutine from './Scenes/MorningRoutine/MorningRoutine';
 import Dash from './Scenes/Dash/Dash';
 import Journal from './Scenes/Journal/Journal';
 import Navbar from './Navbar/Navbar';
+import Subbar from './Navbar/Subbar';
 import { MorningRoutineContextProvider } from './lib/Context/MorningRoutineContext';
 import { TimerStackContextProvider } from './lib/Context/timerStackContext';
 import { HabitContextProvider } from './lib/Context/HabitContext';
+import { WeekSelectorContextProvider } from './lib/Context/WeekSelectionContext';
 
 const Container = styled.div`
   width: 100vw;
@@ -25,7 +27,7 @@ const DashGrid = styled.div`
   grid-column: 2/-2;
   grid-row: 1 / -1;
   display: grid;
-  grid-template-rows: repeat(9, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr) 0px repeat(8, minmax(0, 1fr));
   grid-template-columns: repeat(9, 1fr);
   grid-gap: 20px;
   padding: 10px;
@@ -37,22 +39,25 @@ function App() {
   return (
     <ThemeProvider theme={colors}>
       <Router>
-        <MorningRoutineContextProvider>
-          <TimerStackContextProvider>
-            <HabitContextProvider>
-              <Container>
-                <DashGrid>
-                  <Navbar />
-                  <Switch>
-                    <Route exact path="/" component={MorningRoutine} />
-                    <Route exact path="/dash" component={Dash} />
-                    <Route exact path="/journal" component={Journal} />
-                  </Switch>
-                </DashGrid>
-              </Container>
-            </HabitContextProvider>
-          </TimerStackContextProvider>
-        </MorningRoutineContextProvider>
+        <WeekSelectorContextProvider>
+          <MorningRoutineContextProvider>
+            <TimerStackContextProvider>
+              <HabitContextProvider>
+                <Container>
+                  <DashGrid>
+                    <Navbar />
+
+                    <Switch>
+                      <Route exact path="/" component={MorningRoutine} />
+                      <Route exact path="/dash" component={Dash} />
+                      <Route exact path="/journal" component={Journal} />
+                    </Switch>
+                  </DashGrid>
+                </Container>
+              </HabitContextProvider>
+            </TimerStackContextProvider>
+          </MorningRoutineContextProvider>
+        </WeekSelectorContextProvider>
       </Router>
     </ThemeProvider>
   );

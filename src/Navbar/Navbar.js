@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import UserPanel from './UserPanel';
+import WeekSelector from './WeekSelector';
 
 const Div = styled.div`
   grid-column: 1 / -1;
@@ -21,12 +22,12 @@ const Brand = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 50px;
+  width: 40px;
   object-fit: cover;
 `;
 
 const Links = styled.div`
-  grid-column: 2 / span 3;
+  grid-column: 2 / span 2;
 
   display: flex;
   justify-content: flex-end;
@@ -35,14 +36,17 @@ const Links = styled.div`
 
 const Link = styled.a`
   font-family: ${(props) => props.theme.font};
-  color: ${(props) => props.theme.white30};
+  color: ${(props) => props.theme.white90};
   text-decoration: none;
   font-weight: 300;
-  padding: 20px;
+  padding: 0 20px;
 `;
-
-const DateSelector = styled.div`
-  grid-column: 5 / span 3;
+const ActiveLink = styled.a`
+  font-family: ${(props) => props.theme.font};
+  color: ${(props) => props.theme.white90};
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0 20px;
 `;
 
 function Navbar() {
@@ -52,11 +56,12 @@ function Navbar() {
         <Logo src="/img/logo.svg" />
       </Brand>
       <Links>
-        <Link href="#">Dash</Link>
+        <ActiveLink href="#">Dash</ActiveLink>
         <Link href="#">Journal</Link>
         <Link href="#">Settings</Link>
       </Links>
-      <DateSelector />
+      <WeekSelector />
+
       <UserPanel />
     </Div>
   );

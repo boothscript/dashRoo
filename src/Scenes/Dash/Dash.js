@@ -9,7 +9,7 @@ import KPIChartsContainer from './Components/KPIChartsContainer';
 
 const TimerStackWrapper = styled.div`
   grid-column: -3/-1;
-  grid-row: 2 / span 6;
+  grid-row: 3 / span 6;
   background: ${(props) => props.theme.panel};
   border-radius: 16px;
   display: flex;

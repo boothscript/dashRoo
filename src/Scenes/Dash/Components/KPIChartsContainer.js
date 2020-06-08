@@ -10,7 +10,7 @@ import { calculate7DayRollingMean } from '../../../Utils/statsHelper';
 import KPIPanel from './KPIPanel';
 
 const Div = styled.div`
-  grid-row: 3 / span 7;
+  grid-row: 4 / span 7;
   grid-column: 5 / span 3;
   display: grid;
   grid-template-rows: repeat(4, minmax(0px, 1fr));
