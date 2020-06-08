@@ -9,6 +9,7 @@ import Header from './Header';
 import PanelButton from './PanelButton';
 
 import { HabitContext } from '../../../lib/Context/HabitContext';
+import { WeekSelectorContext } from '../../../lib/Context/WeekSelectorContext';
 
 const ButtonWrapper = styled.div`
   grid-row: 9;
@@ -68,9 +69,18 @@ const AddIcon = styled.div`
 function HabitTracker() {
   const [showAdd, setShowAdd] = useState(false);
   const { state, dispatch } = useContext(HabitContext);
+  const weekSelector = useContext(WeekSelectorContext);
+  const { selectedDate } = weekSelector.state;
 
   const habitComponents = state.map((habit) => {
-    return <Habit habitObj={habit} dispatch={dispatch} key={habit.id} />;
+    return (
+      <Habit
+        habitObj={habit}
+        dispatch={dispatch}
+        key={habit.id}
+        weekNumber={selectedDate.week()}
+      />
+    );
   });
   return (
     <PanelGrid row="4 / span 7" column="1 / span 4">

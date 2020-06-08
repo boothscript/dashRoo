@@ -32,12 +32,17 @@ const Div = styled.div`
   justify-content: space-between;
 `;
 
-function Habit({ habitObj, dispatch }) {
-  const weekNumber = moment().week();
+function Habit({ habitObj, dispatch, weekNumber }) {
   const weekArr = habitObj.data.find((week) => week.weekNumber === weekNumber);
+  console.log({ weekArr });
 
   function calculateProgress() {
-    const numberCompleted = weekArr.completed.filter((day) => day).length;
+    let numberCompleted = 0;
+    try {
+      numberCompleted = weekArr.completed.filter((day) => day).length;
+    } catch (error) {
+      // no data
+    }
 
     return (numberCompleted / habitObj.targetNumber) * 100;
   }
@@ -50,7 +55,11 @@ function Habit({ habitObj, dispatch }) {
         <Div>
           <WeekCheck
             availability={habitObj.weekArr}
-            weekArray={weekArr.completed}
+            weekArray={
+              weekArr
+                ? weekArr.completed
+                : [false, false, false, false, false, false, false]
+            }
             updateWeekArray={(newArr) =>
               dispatch(updateHabitData(habitObj.id, weekNumber, newArr))
             }
