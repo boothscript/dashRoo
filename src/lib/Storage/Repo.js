@@ -1,6 +1,5 @@
 import crypto from 'crypto';
-
-import { compareDates } from '../../Utils/date';
+import moment from 'moment';
 
 class Repo {
   constructor(keyName) {
@@ -65,7 +64,7 @@ class Repo {
       this.create({ date, ...data });
     } else {
       const record = records.find((item) =>
-        compareDates(new Date(item.date), date)
+        moment(item.date).isSame(date, 'day')
       );
       if (record) {
         this.update(record.id, { ...data });
@@ -81,7 +80,7 @@ class Repo {
       return null;
     }
     const record = records.find((item) =>
-      compareDates(new Date(item.date), date)
+      moment(item.date).isSame(date, 'day')
     );
     return record;
   }

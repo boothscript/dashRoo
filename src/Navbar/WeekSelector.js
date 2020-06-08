@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import { WeekSelectorContext } from '../lib/Context/WeekSelectionContext';
+import { WeekSelectorContext } from '../lib/Context/WeekSelectorContext';
 import {
   changeSelectedDay,
   goBackOneWeek,

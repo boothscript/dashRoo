@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-import { reducer, initialState } from '../Reducers/WeekSelectionReducer';
+import { reducer, initialState } from '../Reducers/WeekSelectorReducer';
 
 const WeekSelectorContext = React.createContext();
 

@@ -8,7 +8,12 @@ import {
   INIT_EDIT_MODE,
   UPDATE_TIME_AND_EDIT,
   UPDATE_EDIT_TIME,
+  RELOAD_STATE,
 } from './timerStackTypes';
+
+function reloadState(selectedDate) {
+  return { type: RELOAD_STATE, payload: selectedDate };
+}
 
 function toggleTimer() {
   return {
@@ -97,4 +102,5 @@ export {
   editTimer,
   validateEdit,
   updateEdit,
+  reloadState,
 };

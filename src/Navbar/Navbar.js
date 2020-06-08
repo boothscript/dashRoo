@@ -56,8 +56,8 @@ function Navbar() {
         <Logo src="/img/logo.svg" />
       </Brand>
       <Links>
-        <ActiveLink href="#">Dash</ActiveLink>
-        <Link href="#">Journal</Link>
+        <ActiveLink href="/dash">Dash</ActiveLink>
+        <Link href="/journal">Journal</Link>
         <Link href="#">Settings</Link>
       </Links>
       <WeekSelector />

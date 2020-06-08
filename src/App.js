@@ -12,7 +12,7 @@ import Subbar from './Navbar/Subbar';
 import { MorningRoutineContextProvider } from './lib/Context/MorningRoutineContext';
 import { TimerStackContextProvider } from './lib/Context/timerStackContext';
 import { HabitContextProvider } from './lib/Context/HabitContext';
-import { WeekSelectorContextProvider } from './lib/Context/WeekSelectionContext';
+import { WeekSelectorContextProvider } from './lib/Context/WeekSelectorContext';
 
 const Container = styled.div`
   width: 100vw;
