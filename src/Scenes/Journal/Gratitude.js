@@ -66,18 +66,33 @@ const GratitudeWrapper = styled.div`
   }
 `;
 
-function Gratitude() {
+function Gratitude({ state, dataKey, dispatch, updateField }) {
   return (
     <Div>
       <Label>What Are You Grateful For Today?</Label>
       <GratitudeWrapper number="1">
-        <GratitudeInput />
+        <GratitudeInput
+          onChange={(e) => {
+            dispatch(updateField(dataKey, 'gratitude1', e.target.value));
+          }}
+          value={state.data[dataKey].gratitude1}
+        />
       </GratitudeWrapper>
       <GratitudeWrapper number="2">
-        <GratitudeInput />
+        <GratitudeInput
+          onChange={(e) => {
+            dispatch(updateField(dataKey, 'gratitude2', e.target.value));
+          }}
+          value={state.data[dataKey].gratitude2}
+        />
       </GratitudeWrapper>
       <GratitudeWrapper number="3">
-        <GratitudeInput />
+        <GratitudeInput
+          onChange={(e) => {
+            dispatch(updateField(dataKey, 'gratitude3', e.target.value));
+          }}
+          value={state.data[dataKey].gratitude3}
+        />
       </GratitudeWrapper>
     </Div>
   );

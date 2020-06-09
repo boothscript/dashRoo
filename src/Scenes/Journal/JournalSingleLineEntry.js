@@ -46,11 +46,11 @@ const TextInput = styled.input`
   }
 `;
 
-function JournalSingleLineEntry({ title }) {
+function JournalSingleLineEntry({ title, changeFunc, value }) {
   return (
     <Div>
       <Label>{title}</Label>
-      <TextInput />
+      <TextInput value={value} onChange={changeFunc} />
     </Div>
   );
 }

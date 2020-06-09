@@ -37,18 +37,17 @@ const Tick = styled.div`
   background-size: contain;
 `;
 
-function JournalSpine({ title, sectionName, openFunc, ticks }) {
-  const [ticksArray, setTicksArray] = useState(
-    new Array(ticks).fill(Math.random() > 0.5)
-  );
+function JournalSpine({ title, sectionName, openFunc, fields }) {
+  const ticksArray = Object.entries(fields);
   console.log({ ticksArray });
   return (
     <Div onClick={() => openFunc(sectionName)}>
       <SpineTitle>{title}</SpineTitle>
       <TicksWrapper>
-        {ticksArray.map((tickValue) => (
-          <Tick value={tickValue} />
-        ))}
+        {ticksArray.map(([key, value]) => {
+          console.log(key, value);
+          return <Tick value={!!value} />;
+        })}
       </TicksWrapper>
     </Div>
   );

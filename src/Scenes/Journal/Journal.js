@@ -31,20 +31,43 @@ function Journal() {
         title="Morning Routine"
         sectionName="morningRoutine"
         openFunc={setOpenPage}
-        ticks={4}
+        fields={state.data.morning}
       />
       <JournalPage open={openPage === 'morningRoutine'}>
-        <StarRater title="Yesterdays Rating" dataKey="morning" />
-        <StarRater title="Yesterdays Sleep Rating" dataKey="morning" />
-        <Gratitude dataKey="morning" />
-        <JournalSingleLineEntry title="Whats Today's Goal?" dataKey="morning" />
+        <StarRater
+          title="Yesterdays Rating"
+          changeFunc={(starNumber) => {
+            dispatch(updateField('morning', 'dayRating', starNumber));
+          }}
+          value={state.data.morning.dayRating}
+        />
+        <StarRater
+          title="Yesterdays Sleep Rating"
+          changeFunc={(starNumber) => {
+            dispatch(updateField('morning', 'sleepRating', starNumber));
+          }}
+          value={state.data.morning.sleepRating}
+        />
+        <Gratitude
+          dataKey="morning"
+          state={state}
+          dispatch={dispatch}
+          updateField={updateField}
+        />
+        <JournalSingleLineEntry
+          title="Whats Today's Goal?"
+          changeFunc={(e) => {
+            dispatch(updateField('morning', 'goal', e.target.value));
+          }}
+          value={state.data.morning.goal}
+        />
       </JournalPage>
 
       <JournalSpine
         title="Developer Log"
         sectionName="devLog"
         openFunc={setOpenPage}
-        ticks={1}
+        fields={state.data.devLog}
       />
       <JournalPage open={openPage === 'devLog'}>
         <JournalTextArea
@@ -60,7 +83,7 @@ function Journal() {
         title="Evening Routine"
         sectionName="eveningRoutine"
         openFunc={setOpenPage}
-        ticks={3}
+        fields={state.data.evening}
       />
       <JournalPage open={openPage === 'eveningRoutine'}>
         <JournalTextArea
@@ -77,7 +100,12 @@ function Journal() {
           }}
           value={state.data.evening.positive}
         />
-        <Gratitude dataKey="evening" />
+        <Gratitude
+          dataKey="evening"
+          state={state}
+          dispatch={dispatch}
+          updateField={updateField}
+        />
       </JournalPage>
     </Div>
   );

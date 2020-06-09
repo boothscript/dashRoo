@@ -22,12 +22,11 @@ const StarsWrapper = styled.div`
   display: flex;
 `;
 
-function StarRater({ title }) {
-  const [rating, setRating] = useState(null);
+function StarRater({ title, value, changeFunc }) {
   const [hoveredStar, setHoveredStar] = useState(0);
 
   function handleClick({ starNumber }) {
-    setRating(starNumber);
+    changeFunc(starNumber);
   }
 
   function handleHover({ starNumber }) {
@@ -45,7 +44,7 @@ function StarRater({ title }) {
             starNumber={star}
             handleClick={handleClick}
             handleHover={handleHover}
-            ratingValue={rating || 0}
+            ratingValue={value || 0}
             hoverValue={hoveredStar}
           />
         ))}
