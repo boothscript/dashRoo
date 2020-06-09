@@ -64,12 +64,12 @@ class Repo {
       this.create({ date, ...data });
     } else {
       const record = records.find((item) =>
-        moment(item.date).isSame(date, 'day')
+        moment(item.date).isSame(date.format(), 'day')
       );
       if (record) {
-        this.update(record.id, { ...data });
+        this.update(record.id, { data: data.data });
       } else {
-        this.create({ date, ...data });
+        this.create({ ...data, date: date.format() });
       }
     }
   }
@@ -80,7 +80,7 @@ class Repo {
       return null;
     }
     const record = records.find((item) =>
-      moment(item.date).isSame(date, 'day')
+      moment(item.date).isSame(date.format(), 'day')
     );
     return record;
   }

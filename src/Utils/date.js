@@ -8,9 +8,9 @@ export function compareDates(date1, date2) {
 export function enumerateDates(firstDate, lastDate) {
   console.log({ firstDate, lastDate });
   const result = [];
-  let currentDate = firstDate;
+  let currentDate = moment(firstDate);
   result.push(currentDate.format('YYYY-MM-DD'));
-  while (currentDate.format('YYYY-MM-DD') !== lastDate.format('YYYY-MM-DD')) {
+  while (!currentDate.isSame(lastDate, 'day')) {
     currentDate = currentDate.add(1, 'days');
 
     result.push(currentDate.format('YYYY-MM-DD'));

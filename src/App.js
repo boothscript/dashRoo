@@ -8,11 +8,11 @@ import MorningRoutine from './Scenes/MorningRoutine/MorningRoutine';
 import Dash from './Scenes/Dash/Dash';
 import Journal from './Scenes/Journal/Journal';
 import Navbar from './Navbar/Navbar';
-import Subbar from './Navbar/Subbar';
 import { MorningRoutineContextProvider } from './lib/Context/MorningRoutineContext';
 import { TimerStackContextProvider } from './lib/Context/timerStackContext';
 import { HabitContextProvider } from './lib/Context/HabitContext';
 import { WeekSelectorContextProvider } from './lib/Context/WeekSelectorContext';
+import { JournalContextProvider } from './lib/Context/JournalContext';
 
 const Container = styled.div`
   width: 100vw;
@@ -42,19 +42,21 @@ function App() {
         <WeekSelectorContextProvider>
           <MorningRoutineContextProvider>
             <TimerStackContextProvider>
-              <HabitContextProvider>
-                <Container>
-                  <DashGrid>
-                    <Navbar />
+              <JournalContextProvider>
+                <HabitContextProvider>
+                  <Container>
+                    <DashGrid>
+                      <Navbar />
 
-                    <Switch>
-                      <Route exact path="/" component={MorningRoutine} />
-                      <Route exact path="/dash" component={Dash} />
-                      <Route exact path="/journal" component={Journal} />
-                    </Switch>
-                  </DashGrid>
-                </Container>
-              </HabitContextProvider>
+                      <Switch>
+                        <Route exact path="/" component={MorningRoutine} />
+                        <Route exact path="/dash" component={Dash} />
+                        <Route exact path="/journal" component={Journal} />
+                      </Switch>
+                    </DashGrid>
+                  </Container>
+                </HabitContextProvider>
+              </JournalContextProvider>
             </TimerStackContextProvider>
           </MorningRoutineContextProvider>
         </WeekSelectorContextProvider>

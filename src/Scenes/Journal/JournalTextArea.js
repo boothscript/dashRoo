@@ -42,11 +42,11 @@ const TextArea = styled.textarea`
   }
 `;
 
-function JournalTextArea({ title, textAreaId, state }) {
+function JournalTextArea({ title, value, changeFunc }) {
   return (
     <Div>
       <Label>{title}</Label>
-      <TextArea />
+      <TextArea value={value} onChange={changeFunc} />
     </Div>
   );
 }

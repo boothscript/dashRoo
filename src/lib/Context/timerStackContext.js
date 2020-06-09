@@ -2,14 +2,9 @@ import React, { useReducer, useEffect, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { reducer, initialState } from '../Reducers/timerStackReducer';
 import TimerStackRepo from '../Storage/TimerStackRepo';
-import { WeekSelectorContext } from './WeekSelectorContext';
+import { WeekSelectorContext, getStoredState } from './WeekSelectorContext';
 import { reloadState } from '../Actions/timerStackActions';
 const TimerStackContext = React.createContext();
-
-// lazily init function for reducer
-export function getStoredState(selectedDate) {
-  return TimerStackRepo.getTodaysState(selectedDate) || initialState;
-}
 
 function TimerStackContextProvider({ children }) {
   const weekSelector = useContext(WeekSelectorContext);
@@ -17,7 +12,11 @@ function TimerStackContextProvider({ children }) {
 
   const [stackValues, setStackValues] = useState({ x: [], y: [0, 0, 0, 0] });
 
-  const [state, dispatch] = useReducer(reducer, selectedDate, getStoredState);
+  const [state, dispatch] = useReducer(
+    reducer,
+    selectedDate,
+    getStoredState(TimerStackRepo, initialState)
+  );
 
   // updates timer data when date selected changes
   useEffect(() => {
@@ -39,8 +38,6 @@ function TimerStackContextProvider({ children }) {
   useEffect(() => {
     setStackValues(TimerStackRepo.getStackValues());
   }, []);
-
-  console.log({ state });
 
   return (
     <TimerStackContext.Provider value={{ state, dispatch, stackValues }}>

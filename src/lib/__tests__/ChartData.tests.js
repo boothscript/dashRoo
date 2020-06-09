@@ -6,7 +6,7 @@ import * as routineData2 from './mockData/routineData2.json';
 
 test('repo method returns x and y values for rating', () => {
   // set local storage
-  localStorage.__STORE__.morningRoutine = JSON.stringify(routineData1);
+  localStorage.__STORE__.morningRoutine = JSON.stringify(routineData1.default);
 
   const result = MorningRoutineRepo.getRatingData();
 
@@ -18,7 +18,7 @@ test('repo method returns x and y values for rating', () => {
 
 test('handles repo with missing days', () => {
   // set local storage
-  localStorage.__STORE__.morningRoutine = JSON.stringify(routineData2);
+  localStorage.__STORE__.morningRoutine = JSON.stringify(routineData2.default);
 
   const result = MorningRoutineRepo.getRatingData();
 

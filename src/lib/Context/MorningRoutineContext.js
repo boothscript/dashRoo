@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect, useLayoutEffect } from 'react';
+import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import morningRoutineRepo from '../Storage/MornigRoutineRepo';
@@ -11,7 +12,7 @@ function MorningRoutineContextProvider({ children }) {
   // check for stored state
 
   function getStoredState() {
-    return morningRoutineRepo.getTodaysState(new Date());
+    return morningRoutineRepo.getTodaysState(moment());
   }
 
   const [state, dispatch] = useReducer(
@@ -28,7 +29,7 @@ function MorningRoutineContextProvider({ children }) {
   // }, [state.step, history]);
 
   useEffect(() => {
-    morningRoutineRepo.updateStored(new Date(), state);
+    morningRoutineRepo.updateStored(moment(), state);
   }, [state]);
 
   const ratingsValues = {};

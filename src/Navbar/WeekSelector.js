@@ -30,7 +30,7 @@ const DayNumberWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const DayNumberButton = styled.div`
+const DayNumberButton = styled.button`
   font-family: ${(props) => props.theme.font};
   height: 19px;
   width: 19px;
@@ -98,6 +98,7 @@ function WeekSelector() {
         <Month>{monthFullNames[selectedDate.month()]}</Month>
         {dateArray.map((date) => (
           <DayNumberButton
+            date={date}
             selected={selectedDate.isSame(date, 'day')}
             onClick={() => handleDateClick(date)}
           >

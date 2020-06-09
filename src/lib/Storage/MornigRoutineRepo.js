@@ -9,15 +9,8 @@ class MorningRoutineRepo extends Repo {
     // make valuehash and dateArray
     const valueHash = {};
     const dateArray = [];
-    let recordsArray;
 
-    // to catch case where records is an object .default as an array
-    if (typeof records === 'object') {
-      recordsArray = records.default;
-    } else {
-      recordsArray = records;
-    }
-    recordsArray.forEach((record) => {
+    records.forEach((record) => {
       const date = record.date.split('T')[0];
       valueHash[date] = record.data.ratings;
       dateArray.push(date);

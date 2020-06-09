@@ -12,7 +12,8 @@ import {
   RELOAD_STATE,
 } from '../Actions/timerStackTypes';
 
-import { getStoredState } from '../Context/timerStackContext';
+import { getStoredState } from '../Context/WeekSelectorContext';
+import TimerStackRepo from '../Storage/TimerStackRepo';
 
 const durations = { session: 1500000, break: 300000, longBreak: 1500000 }; // time in seconds
 
@@ -96,8 +97,7 @@ function reducer(state, action) {
         sessionCount: action.count,
       };
     case RELOAD_STATE:
-      console.log('in reducer');
-      return getStoredState(action.payload);
+      return getStoredState(TimerStackRepo, initialState)(action.payload);
 
     default:
       throw new Error();
