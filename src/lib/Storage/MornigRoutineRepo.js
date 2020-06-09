@@ -5,10 +5,19 @@ import { enumerateDates } from '../../Utils/date';
 class MorningRoutineRepo extends Repo {
   getRatingData() {
     const records = this.getAll();
+
     // make valuehash and dateArray
     const valueHash = {};
     const dateArray = [];
-    records.forEach((record) => {
+    let recordsArray;
+
+    // to catch case where records is an object .default as an array
+    if (typeof records === 'object') {
+      recordsArray = records.default;
+    } else {
+      recordsArray = records;
+    }
+    recordsArray.forEach((record) => {
       const date = record.date.split('T')[0];
       valueHash[date] = record.data.ratings;
       dateArray.push(date);
@@ -37,7 +46,6 @@ class MorningRoutineRepo extends Repo {
         });
       }
     });
-
     return { x, y };
   }
 }

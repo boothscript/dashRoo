@@ -14,10 +14,10 @@ function setup(...args) {
 
 test('allows client to setup and navigate the steps array with correct direction', () => {
   const multiStepData = setup([{ name: '' }, { address: '' }, { email: '' }]);
-
+  console.log({ multiStepData });
   // assert initial state
   expect(multiStepData.stepIndex).toBe(0);
-  expect(multiStepData.steps).toBe(3);
+  expect(multiStepData.totalSteps).toBe(3);
   expect(multiStepData.direction).toBe('start');
 
   // move forward
@@ -26,7 +26,7 @@ test('allows client to setup and navigate the steps array with correct direction
   });
   // assert new state
   expect(multiStepData.stepIndex).toBe(1);
-  expect(multiStepData.steps).toBe(3);
+  expect(multiStepData.totalSteps).toBe(3);
   expect(multiStepData.direction).toBe('fwd');
 
   // move backwards
@@ -35,7 +35,7 @@ test('allows client to setup and navigate the steps array with correct direction
   });
   // assert new state
   expect(multiStepData.stepIndex).toBe(0);
-  expect(multiStepData.steps).toBe(3);
+  expect(multiStepData.totalSteps).toBe(3);
   expect(multiStepData.direction).toBe('back');
 
   // test backwards boundary
@@ -44,7 +44,7 @@ test('allows client to setup and navigate the steps array with correct direction
   });
   // assert new state
   expect(multiStepData.stepIndex).toBe(0);
-  expect(multiStepData.steps).toBe(3);
+  expect(multiStepData.totalSteps).toBe(3);
   expect(multiStepData.direction).toBe('none');
   // test forwards boundary
   act(() => {
@@ -54,7 +54,7 @@ test('allows client to setup and navigate the steps array with correct direction
   });
   // assert new state
   expect(multiStepData.stepIndex).toBe(2);
-  expect(multiStepData.steps).toBe(3);
+  expect(multiStepData.totalSteps).toBe(3);
   expect(multiStepData.direction).toBe('none');
 });
 
