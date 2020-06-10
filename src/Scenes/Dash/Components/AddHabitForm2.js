@@ -151,7 +151,7 @@ function AddHabitForm2({ closeFunc }) {
             controller.stepIndex === 2 ? submitForm : controller.navigation.next
           }
         >
-          {controller.stepIndex === 2 ? 'Create Habbit' : 'Next'}
+          {controller.stepIndex === 2 ? 'Create Habit' : 'Next'}
         </PanelButton>
       </Footer>
     </Div>
