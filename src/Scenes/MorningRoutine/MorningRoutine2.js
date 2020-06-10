@@ -1,14 +1,14 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { animated, useTransition } from 'react-spring';
 
-import getButtonProps from './Services/getButtonProps';
 import { MrHeader, MrMainContent, MrFooter, MrContainer } from './Components';
 import FormStepCircles from '../Dash/Components/FormStepCircles';
 import TextInput from '../Dash/Components/TextInput';
 
 import useMultiStage from '../../Hooks/useMultiStage';
 import { JournalContext } from '../../lib/Context/JournalContext';
+import { updateField } from '../../lib/Actions/JournalActions';
 import StarRater from '../Journal/StarRater';
 import PanelButton from '../Dash/Components/PanelButton';
 
@@ -169,6 +169,16 @@ function MorningRoutine2() {
     getTransitionConfig(controller.stepIndex, controller.direction)
   );
 
+  // transfer data from multiform state to Journal reducer on submit
+  const { state, dispatch } = useContext(JournalContext);
+  function updateJournal() {
+    controller.formValues.forEach((step) => {
+      Object.entries(step).forEach(([key, value]) => {
+        dispatch(updateField('morning', key, value));
+      });
+    });
+  }
+
   console.log(transitions);
 
   return (
@@ -222,7 +232,7 @@ function MorningRoutine2() {
           <PanelButton
             onClick={
               controller.stepIndex === 2
-                ? controller.navigation.next
+                ? updateJournal
                 : controller.navigation.next
             }
           >
