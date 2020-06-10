@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 
 import colors from './Themes/colors';
 
-import MorningRoutine from './Scenes/MorningRoutine/MorningRoutine';
+import MorningRoutine2 from './Scenes/MorningRoutine/MorningRoutine2';
 import Dash from './Scenes/Dash/Dash';
 import Journal from './Scenes/Journal/Journal';
 import Navbar from './Navbar/Navbar';
@@ -49,7 +49,7 @@ function App() {
                       <Navbar />
 
                       <Switch>
-                        <Route exact path="/" component={MorningRoutine} />
+                        <Route exact path="/" component={MorningRoutine2} />
                         <Route exact path="/dash" component={Dash} />
                         <Route exact path="/journal" component={Journal} />
                       </Switch>

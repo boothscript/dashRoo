@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   width: 70px;
   justify-content: space-between;
-  align-self: flex-start;
+
   opacity: 0.5;
 `;
 const ProgressCircle = styled.div`
@@ -24,7 +24,7 @@ function FormStepCircles({ currentStep, totalSteps }) {
   const circles = [];
   for (let i = 1; i < totalSteps + 1; i += 1) {
     const active = currentStep === i;
-    circles.push(<ProgressCircle key={i} active={active} />);
+    circles.push(<ProgressCircle key={i * 1000} active={active} />);
   }
 
   return <Wrapper>{circles}</Wrapper>;

@@ -27,9 +27,11 @@ function TextInput({
   placeholder,
   small = false,
   noBorder = false,
+  fwdRef = null,
 }) {
   return (
     <Input
+      ref={fwdRef}
       name={name}
       value={value}
       onChange={onChange}

@@ -19,7 +19,10 @@ const Div = styled.div`
   justify-content: space-between;
   padding: 2em 0;
 `;
-const Header = styled.div``;
+const Header = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
 const Main = styled.div``;
 const Footer = styled.div`
   display: flex;
