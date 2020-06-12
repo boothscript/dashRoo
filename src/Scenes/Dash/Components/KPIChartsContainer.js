@@ -64,30 +64,9 @@ function KPIChartsContainer() {
     // process data
     console.log({ stackValues: stackValues.y });
     // temp data
-    const stackTempArray = [
-      0,
-      3,
-      8,
-      0,
-      0,
-      9,
-      8,
-      0,
-      4,
-      8,
-      0,
-      7,
-      7,
-      0,
-      8,
-      7,
-      3,
-      0,
-    ];
 
     const stackYData = calculate7DayRollingMean(
-      // stackValues.y.slice(0, stackValues.y.length - 1)
-      stackTempArray
+      stackValues.y.slice(0, stackValues.y.length - 1)
     );
     const stackXData = stackValues.x;
     const stackKpiValue = stackYData[stackYData.length - 1].toFixed(2);
