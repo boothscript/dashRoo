@@ -9,10 +9,12 @@ class TimerStackRepo extends Repo {
     const stackCounts = [];
     records.forEach((record) => {
       dateArray.push(record.date.split('T')[0]);
+      console.log(record.data);
       stackCounts.push(
         record.data.sessionArr ? record.data.sessionArr.length : 0
       );
     });
+    console.log(stackCounts);
 
     dateArray.sort(sortRecordsByDate);
 
