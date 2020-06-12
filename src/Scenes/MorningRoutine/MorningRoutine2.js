@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { animated, useTransition } from 'react-spring';
 
-import { MrHeader, MrMainContent, MrFooter, MrContainer } from './Components';
+import MrContainer from './Components/MrContainer';
 import FormStepCircles from '../Dash/Components/FormStepCircles';
 import TextInput from '../Dash/Components/TextInput';
 

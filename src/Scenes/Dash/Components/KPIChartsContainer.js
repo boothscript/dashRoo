@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { MorningRoutineContext } from '../../../lib/Context/MorningRoutineContext';
+import { JournalContext } from '../../../lib/Context/JournalContext';
 import { TimerStackContext } from '../../../lib/Context/timerStackContext';
 import { HabitContext } from '../../../lib/Context/HabitContext';
 
@@ -19,7 +19,7 @@ const Div = styled.div`
 `;
 
 function KPIChartsContainer() {
-  const { ratingsValues } = useContext(MorningRoutineContext);
+  const { ratingsValues } = useContext(JournalContext);
   const { stackValues } = useContext(TimerStackContext);
   const { habitValues } = useContext(HabitContext);
 
@@ -43,7 +43,7 @@ function KPIChartsContainer() {
   });
 
   useEffect(() => {
-    const dayYData = calculate7DayRollingMean(ratingsValues.y.day);
+    const dayYData = calculate7DayRollingMean(ratingsValues.y.dayRating);
     const dayXData = ratingsValues.x;
     const dayKpiValue = dayYData[dayYData.length - 1].toFixed(2);
     const dayDelta = (
@@ -52,7 +52,7 @@ function KPIChartsContainer() {
       100
     ).toFixed(1);
 
-    const sleepYData = calculate7DayRollingMean(ratingsValues.y.sleep);
+    const sleepYData = calculate7DayRollingMean(ratingsValues.y.sleepRating);
     const sleepXData = ratingsValues.x;
     const sleepKpiValue = sleepYData[sleepYData.length - 1].toFixed(2);
     const sleepDelta = (

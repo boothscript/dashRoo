@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import { useMorningRoutineContext } from '../../../Hooks/useMorningRoutineContext';
-import { updateField } from '../../../lib/Actions/MorningRoutineActions';
+import { JournalContext } from '../../../lib/Context/JournalContext';
+import { updateField } from '../../../lib/Actions/JournalActions';
 import TextInput from './TextInput';
 
 const Div = styled.div`
@@ -16,17 +16,17 @@ const Div = styled.div`
 `;
 
 function TodaysGoal() {
-  const { state, dispatch } = useMorningRoutineContext();
+  const { state, dispatch } = useContext(JournalContext);
 
   function handleChange(e) {
-    dispatch(updateField('goal', 'text', e.target.value));
+    dispatch(updateField('morning', 'goal', e.target.value));
   }
 
   return (
     <Div>
       <TextInput
         data-testid="goalInput"
-        value={state.data.goal.text || 'no input'}
+        value={state.data.morning.goal || 'no input'}
         onChange={handleChange}
         noBorder
         small

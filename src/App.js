@@ -8,7 +8,7 @@ import MorningRoutine2 from './Scenes/MorningRoutine/MorningRoutine2';
 import Dash from './Scenes/Dash/Dash';
 import Journal from './Scenes/Journal/Journal';
 import Navbar from './Navbar/Navbar';
-import { MorningRoutineContextProvider } from './lib/Context/MorningRoutineContext';
+
 import { TimerStackContextProvider } from './lib/Context/timerStackContext';
 import { HabitContextProvider } from './lib/Context/HabitContext';
 import { WeekSelectorContextProvider } from './lib/Context/WeekSelectorContext';
@@ -40,25 +40,23 @@ function App() {
     <ThemeProvider theme={colors}>
       <Router>
         <WeekSelectorContextProvider>
-          <MorningRoutineContextProvider>
-            <TimerStackContextProvider>
-              <JournalContextProvider>
-                <HabitContextProvider>
-                  <Container>
-                    <DashGrid>
-                      <Navbar />
+          <TimerStackContextProvider>
+            <JournalContextProvider>
+              <HabitContextProvider>
+                <Container>
+                  <DashGrid>
+                    <Navbar />
 
-                      <Switch>
-                        <Route exact path="/" component={MorningRoutine2} />
-                        <Route exact path="/dash" component={Dash} />
-                        <Route exact path="/journal" component={Journal} />
-                      </Switch>
-                    </DashGrid>
-                  </Container>
-                </HabitContextProvider>
-              </JournalContextProvider>
-            </TimerStackContextProvider>
-          </MorningRoutineContextProvider>
+                    <Switch>
+                      <Route exact path="/" component={MorningRoutine2} />
+                      <Route exact path="/dash" component={Dash} />
+                      <Route exact path="/journal" component={Journal} />
+                    </Switch>
+                  </DashGrid>
+                </Container>
+              </HabitContextProvider>
+            </JournalContextProvider>
+          </TimerStackContextProvider>
         </WeekSelectorContextProvider>
       </Router>
     </ThemeProvider>

@@ -1,4 +1,9 @@
-import React, { useReducer, useContext, useEffect } from 'react';
+import React, {
+  useReducer,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+} from 'react';
 
 import { reducer, initialState } from '../Reducers/JournalReducer';
 import JournalRepo from '../Storage/JournalRepo';
@@ -26,8 +31,14 @@ function JournalContextProvider({ children }) {
     JournalRepo.updateStored(selectedDate, state);
   }, [state]);
 
+  const ratingsValues = {};
+  Object.assign(ratingsValues, JournalRepo.getRatingData());
+  useLayoutEffect(() => {
+    Object.assign(ratingsValues, JournalRepo.getRatingData());
+  }, [state, ratingsValues]);
+
   return (
-    <JournalContext.Provider value={{ state, dispatch }}>
+    <JournalContext.Provider value={{ state, dispatch, ratingsValues }}>
       {children}
     </JournalContext.Provider>
   );

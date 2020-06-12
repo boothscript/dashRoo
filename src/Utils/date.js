@@ -53,5 +53,14 @@ export function createWeekArray(date) {
       throw new Error(error);
     }
   }
+
   return enumerateDates(moment(dateCopy.day(0)), moment(dateCopy.day(6)));
+}
+
+export function sortRecordsByDate(dateA, dateB) {
+  const momentA = moment(dateA);
+  const momentB = moment(dateB);
+  console.log({ momentA, momentB });
+  console.log(momentA.isBefore(momentB, 'day'));
+  return momentA.isBefore(momentB) ? -1 : 1;
 }

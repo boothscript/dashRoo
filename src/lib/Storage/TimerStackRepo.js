@@ -1,5 +1,5 @@
 import Moment from 'moment';
-import { enumerateDates } from '../../Utils/date';
+import { enumerateDates, sortRecordsByDate } from '../../Utils/date';
 import Repo from './Repo';
 
 class TimerStackRepo extends Repo {
@@ -13,6 +13,8 @@ class TimerStackRepo extends Repo {
         record.data.sessionArr ? record.data.sessionArr.length : 0
       );
     });
+
+    dateArray.sort(sortRecordsByDate);
 
     // create full date array
     const firstDate = new Moment(dateArray[0]);
