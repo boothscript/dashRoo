@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export default function ContextButton({
   text,
-  size = 'default',
+  size,
   state,
-  icon = null,
+  icon,
   onButtonClick,
 }) {
   if (state === 'DISABLED') {
@@ -24,11 +25,26 @@ export default function ContextButton({
   }
 
   return (
-    <ContextButtonBtn size={size} icon onClick={onButtonClick}>
+    <ContextButtonBtn size={size} icon={!!icon} onClick={onButtonClick}>
       {icon ? <IconDiv icon={icon} size={size} /> : text}
     </ContextButtonBtn>
   );
 }
+
+ContextButton.propTypes = {
+  text: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'default', 'large']),
+  state: PropTypes.oneOf(['DEFAULT', 'DISABLED', 'HIDDEN']),
+  icon: PropTypes.string,
+  onButtonClick: PropTypes.func.isRequired,
+};
+
+ContextButton.defaultProps = {
+  size: 'default',
+  state: 'DEFAULT',
+  text: '',
+  icon: undefined,
+};
 
 const ContextButtonBtn = styled.button`
   border: solid 3px transparent;

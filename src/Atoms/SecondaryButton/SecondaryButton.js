@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-export default function PrimaryButton({
+export default function SecondaryButton({
   text,
   size = 'default',
   state,
@@ -28,6 +29,18 @@ export default function PrimaryButton({
     </SecondaryButtonBtn>
   );
 }
+
+SecondaryButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['small', 'default', 'large']),
+  state: PropTypes.oneOf(['DEFAULT', 'DISABLED', 'HIDDEN']),
+  onButtonClick: PropTypes.func.isRequired,
+};
+
+SecondaryButton.defaultProps = {
+  size: 'default',
+  state: 'DEFAULT',
+};
 
 const SecondaryButtonBtn = styled.button`
   border: solid 3px ${(props) => props.theme.colors.white70};

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export default function PrimaryButton({
   text,
@@ -28,6 +29,18 @@ export default function PrimaryButton({
     </PrimaryButtonBtn>
   );
 }
+
+PrimaryButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['small', 'default', 'large']),
+  state: PropTypes.oneOf(['DEFAULT', 'DISABLED', 'HIDDEN']),
+  onButtonClick: PropTypes.func.isRequired,
+};
+
+PrimaryButton.defaultProps = {
+  size: 'default',
+  state: 'DEFAULT',
+};
 
 const PrimaryButtonBtn = styled.button`
   border: solid 3px transparent;

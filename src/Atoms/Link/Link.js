@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export default function Link({ text, size = 'default', state, onButtonClick }) {
   if (state === 'DISABLED') {
@@ -23,6 +24,18 @@ export default function Link({ text, size = 'default', state, onButtonClick }) {
     </LinkA>
   );
 }
+
+Link.propTypes = {
+  text: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['small', 'default', 'large']),
+  state: PropTypes.oneOf(['DEFAULT', 'DISABLED', 'HIDDEN']),
+  onButtonClick: PropTypes.func.isRequired,
+};
+
+Link.defaultProps = {
+  size: 'default',
+  state: 'DEFAULT',
+};
 
 const LinkA = styled.a`
   color: ${(props) => props.theme.colors.white70};
