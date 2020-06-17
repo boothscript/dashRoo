@@ -5,23 +5,23 @@ import PropTypes from 'prop-types';
 export default function Link({ text, size = 'default', state, onButtonClick }) {
   if (state === 'DISABLED') {
     return (
-      <LinkA size={size} disabled>
+      <LinkBtn size={size} disabled>
         {text}
-      </LinkA>
+      </LinkBtn>
     );
   }
   if (state === 'HIDDEN') {
     return (
-      <LinkA size={size} hidden>
+      <LinkBtn size={size} hidden>
         {text}
-      </LinkA>
+      </LinkBtn>
     );
   }
 
   return (
-    <LinkA size={size} onClick={onButtonClick}>
+    <LinkBtn size={size} onClick={onButtonClick}>
       {text}
-    </LinkA>
+    </LinkBtn>
   );
 }
 
@@ -37,7 +37,10 @@ Link.defaultProps = {
   state: 'DEFAULT',
 };
 
-const LinkA = styled.a`
+const LinkBtn = styled.button`
+  border: none;
+  padding: 0;
+  background: transparent;
   color: ${(props) => props.theme.colors.white70};
   font-family: ${(props) => props.theme.font.main};
   font-weight: 400;
