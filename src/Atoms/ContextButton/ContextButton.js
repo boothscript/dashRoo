@@ -24,7 +24,7 @@ export default function ContextButton({
   }
 
   return (
-    <ContextButtonBtn size={size} icon onclick={onButtonClick}>
+    <ContextButtonBtn size={size} icon onClick={onButtonClick}>
       {icon ? <IconDiv icon={icon} size={size} /> : text}
     </ContextButtonBtn>
   );

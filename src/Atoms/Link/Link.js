@@ -18,7 +18,7 @@ export default function Link({ text, size = 'default', state, onButtonClick }) {
   }
 
   return (
-    <LinkA size={size} onclick={onButtonClick}>
+    <LinkA size={size} onClick={onButtonClick}>
       {text}
     </LinkA>
   );

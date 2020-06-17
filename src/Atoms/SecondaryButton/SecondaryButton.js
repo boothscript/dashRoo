@@ -23,7 +23,7 @@ export default function PrimaryButton({
   }
 
   return (
-    <SecondaryButtonBtn size={size} onclick={onButtonClick}>
+    <SecondaryButtonBtn size={size} onClick={onButtonClick}>
       {text}
     </SecondaryButtonBtn>
   );
