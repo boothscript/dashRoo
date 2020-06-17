@@ -2,11 +2,11 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import Link from './Link';
+import LinkBtn from './LinkBtn';
 
 export default {
-  component: Link,
-  title: 'Link',
+  component: LinkBtn,
+  title: 'LinkBtn',
   excludeStories: /.*Data$/,
   decorators: [
     (story) => (
@@ -30,18 +30,18 @@ export const HiddenData = { ...DefaultData, state: 'HIDDEN' };
 
 export const Default = () => (
   <>
-    <Link
+    <LinkBtn
       text="Button"
       state="DEFAULT"
       size="large"
       onButtonClick={action('onButtonClick')}
     />
-    <Link
+    <LinkBtn
       text="Button"
       state="DEFAULT"
       onButtonClick={action('onButtonClick')}
     />
-    <Link
+    <LinkBtn
       text="Button"
       state="DEFAULT"
       size="small"
@@ -52,18 +52,18 @@ export const Default = () => (
 
 export const Disabled = () => (
   <>
-    <Link
+    <LinkBtn
       text="Button"
       state="DISABLED"
       size="large"
       onButtonClick={action('onButtonClick')}
     />
-    <Link
+    <LinkBtn
       text="Button"
       state="DISABLED"
       onButtonClick={action('onButtonClick')}
     />
-    <Link
+    <LinkBtn
       text="Button"
       state="DISABLED"
       size="small"
@@ -74,18 +74,18 @@ export const Disabled = () => (
 
 export const Hidden = () => (
   <>
-    <Link
+    <LinkBtn
       text="Button"
       state="HIDDEN"
       size="large"
       onButtonClick={action('onButtonClick')}
     />
-    <Link
+    <LinkBtn
       text="Button"
       state="HIDDEN"
       onButtonClick={action('onButtonClick')}
     />
-    <Link
+    <LinkBtn
       text="Button"
       state="HIDDEN"
       size="small"

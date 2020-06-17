@@ -2,42 +2,47 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-export default function Link({ text, size = 'default', state, onButtonClick }) {
+export default function LinkBtn({
+  text,
+  size = 'default',
+  state,
+  onButtonClick,
+}) {
   if (state === 'DISABLED') {
     return (
-      <LinkBtn size={size} disabled>
+      <LinkButton size={size} disabled>
         {text}
-      </LinkBtn>
+      </LinkButton>
     );
   }
   if (state === 'HIDDEN') {
     return (
-      <LinkBtn size={size} hidden>
+      <LinkButton size={size} hidden>
         {text}
-      </LinkBtn>
+      </LinkButton>
     );
   }
 
   return (
-    <LinkBtn size={size} onClick={onButtonClick}>
+    <LinkButton size={size} onClick={onButtonClick}>
       {text}
-    </LinkBtn>
+    </LinkButton>
   );
 }
 
-Link.propTypes = {
+LinkBtn.propTypes = {
   text: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['small', 'default', 'large']),
   state: PropTypes.oneOf(['DEFAULT', 'DISABLED', 'HIDDEN']),
   onButtonClick: PropTypes.func.isRequired,
 };
 
-Link.defaultProps = {
+LinkBtn.defaultProps = {
   size: 'default',
   state: 'DEFAULT',
 };
 
-const LinkBtn = styled.button`
+const LinkButton = styled.button`
   border: none;
   padding: 0;
   background: transparent;

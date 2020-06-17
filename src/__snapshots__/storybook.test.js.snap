@@ -217,6 +217,111 @@ exports[`Storyshots Link Hidden 1`] = `
 </div>
 `;
 
+exports[`Storyshots LinkBtn Default 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="sc-AxiKw iyOIyF"
+    onClick={[Function]}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="sc-AxiKw kfXVLg"
+    onClick={[Function]}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="sc-AxiKw cHGuSo"
+    onClick={[Function]}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots LinkBtn Disabled 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="sc-AxiKw hjJniL"
+    disabled={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="sc-AxiKw hzruma"
+    disabled={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="sc-AxiKw juttmu"
+    disabled={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots LinkBtn Hidden 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="sc-AxiKw iECKbh"
+    hidden={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="sc-AxiKw fhidRs"
+    hidden={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="sc-AxiKw czmwmQ"
+    hidden={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
 exports[`Storyshots Primary Button Default 1`] = `
 <div
   style={
