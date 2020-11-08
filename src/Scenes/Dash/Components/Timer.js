@@ -75,9 +75,9 @@ const Break = styled.p`
 
 // Dummy project data
 const projectArr = [
-  { title: 'project rooter', id: 'h2g4j5', color: '#B3F8F1' },
-  { title: 'job search', id: 'gsfhdj', color: '#EBEE89' },
-  { title: 'project dashroo', id: 'gfdhs', color: '#EE9FD3' },
+  { title: 'epic react', id: 'h2g4j5', color: '#B3F8F1' },
+  { title: 'practice projects', id: 'gsfhdj', color: '#EBEE89' },
+  { title: 'econalu', id: 'gfdhs', color: '#EE9FD3' },
 ];
 
 // https://codesandbox.io/s/adoring-meninsky-o3pfl
