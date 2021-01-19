@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import UserPanel from './UserPanel';
-import WeekSelector from './WeekSelector';
 
 const Div = styled.div`
   grid-column: 1 / -1;
@@ -60,7 +59,6 @@ function Navbar() {
         <Link href="/journal">Journal</Link>
         <Link href="#">Settings</Link>
       </Links>
-      <WeekSelector />
 
       <UserPanel />
     </Div>

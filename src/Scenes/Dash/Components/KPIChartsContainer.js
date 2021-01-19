@@ -69,7 +69,13 @@ function KPIChartsContainer() {
       stackValues.y.slice(0, stackValues.y.length - 1)
     );
     const stackXData = stackValues.x;
-    const stackKpiValue = stackYData[stackYData.length - 1].toFixed(2);
+
+    let stackKpiValue;
+    try {
+      stackKpiValue = stackYData[stackYData.length - 1].toFixed(2);
+    } catch {
+      stackKpiValue = 0;
+    }
     const stackDelta = (
       ((stackKpiValue - stackYData[stackYData.length - 8]) /
         stackYData[stackYData.length - 8]) *
@@ -80,7 +86,12 @@ function KPIChartsContainer() {
       habitValues.y.slice(0, habitValues.y.length - 1)
     );
     const habitXData = habitValues.x;
-    const habitKpiValue = habitYData[habitYData.length - 1].toFixed(2);
+    let habitKpiValue;
+    try {
+      habitKpiValue = stackYData[stackYData.length - 1].toFixed(2);
+    } catch {
+      habitKpiValue = 0;
+    }
     const habitDelta = (
       ((habitKpiValue - habitYData[habitYData.length - 8]) /
         habitYData[habitYData.length - 8]) *
