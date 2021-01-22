@@ -22,6 +22,7 @@
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.3.0",
+    "storybook": "^6.1.14",
     "styled-components": "^5.0.1"
   },
   "scripts": {
