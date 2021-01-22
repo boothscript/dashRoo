@@ -32,10 +32,12 @@ export default function HabitCheckbox({
       <HabitCheckboxInput type="checkbox" checked={value} disabled />
       <AnimatedLabel
         disabled={disabled}
-        onClick={(e) =>
-          animatedClickFunction(e, value, color, disabled, () =>
-            onCheckboxClick(index)
-          )
+        onClick={
+          (e) =>
+            animatedClickFunction(e, value, color, disabled, () =>
+              onCheckboxClick(index)
+            )
+          // eslint-disable-next-line react/jsx-curly-newline
         }
         color={color}
         animate={animate()}
@@ -79,7 +81,7 @@ const AnimatedLabel = styled.label`
   height: 30px;
   width: 30px;
   background: ${({ theme, disabled }) =>
-    disabled ? theme.colors.white10 : theme.colors.white3w0};
+    disabled ? theme.colors.white10 : theme.colors.white30};
 
   cursor: ${(props) => (props.disabled ? 'cursor' : 'pointer')};
   transition: none;

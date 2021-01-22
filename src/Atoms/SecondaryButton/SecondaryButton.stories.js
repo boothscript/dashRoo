@@ -24,9 +24,9 @@ export default {
   ],
 };
 
-export const DefaultData = { text: 'Button', size: '', state: 'DEFAULT' };
-export const DisabledData = { ...DefaultData, state: 'DISABLED' };
-export const HiddenData = { ...DefaultData, state: 'HIDDEN' };
+// export const DefaultData = { text: 'Button', size: '', state: 'DEFAULT' };
+// export const DisabledData = { ...DefaultData, state: 'DISABLED' };
+// export const HiddenData = { ...DefaultData, state: 'HIDDEN' };
 
 export const Default = () => (
   <>
