@@ -1,0 +1,2060 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Checkbox Checked 1`] = `
+.c0 {
+  position: relative;
+  width: 30px;
+}
+
+.c1 {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.c1 + label::before {
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 0;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.c1 + label::after {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  content: 'M';
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  position: absolute;
+  left: 0px;
+  top: 0;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Roboto',sans-serif;
+}
+
+.c1:checked + label::after {
+  background: rgba(255,255,255,0.9);
+  color: #171A21;
+}
+
+<div
+  style={
+    Object {
+      "padding": "3em",
+    }
+  }
+>
+  <div
+    className="c0"
+  >
+    <input
+      checked={true}
+      className="c1"
+      id="Monday"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      htmlFor="Monday"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Checkbox No Text 1`] = `
+.c0 {
+  position: relative;
+  width: 30px;
+}
+
+.c1 {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.c1 + label::before {
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 0;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.c1 + label::after {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  content: '';
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  position: absolute;
+  left: 0px;
+  top: 0;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Roboto',sans-serif;
+}
+
+.c1:checked + label::after {
+  background: rgba(255,255,255,0.9);
+  color: #171A21;
+}
+
+<div
+  style={
+    Object {
+      "padding": "3em",
+    }
+  }
+>
+  <div
+    className="c0"
+  >
+    <input
+      checked={false}
+      className="c1"
+      id="Monday"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      htmlFor="Monday"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Checkbox Un Checked 1`] = `
+.c0 {
+  position: relative;
+  width: 30px;
+}
+
+.c1 {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.c1 + label::before {
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 0;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.c1 + label::after {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  content: 'M';
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  position: absolute;
+  left: 0px;
+  top: 0;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Roboto',sans-serif;
+}
+
+.c1:checked + label::after {
+  background: rgba(255,255,255,0.9);
+  color: #171A21;
+}
+
+<div
+  style={
+    Object {
+      "padding": "3em",
+    }
+  }
+>
+  <div
+    className="c0"
+  >
+    <input
+      checked={false}
+      className="c1"
+      id="Monday"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      htmlFor="Monday"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Context Button Default 1`] = `
+.c0 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 0.2em 0.8em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c0:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 0.2em 0.8em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c1:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0.2em 0.8em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c2:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    onClick={[Function]}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    onClick={[Function]}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    onClick={[Function]}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots Context Button Disabled 1`] = `
+.c0 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c0:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c1:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c2:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    disabled={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    disabled={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    disabled={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots Context Button Hidden 1`] = `
+.c0 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c0:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c1:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c2:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    hidden={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    hidden={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    hidden={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots Context Button Icon 1`] = `
+.c0 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c0:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c2:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c4 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c4:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c4:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c6 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c6:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c6:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c7 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c7:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c7:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c8 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c8:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c8:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c9 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c9:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c9:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c10 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c10:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c10:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c11 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0.2em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c11:hover:enabled {
+  color: rgba(255,255,255,0.9);
+}
+
+.c11:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  height: 20px;
+  width: 20px;
+  background: url("/img/gear.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.c3 {
+  height: 16px;
+  width: 16px;
+  background: url("/img/gear.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.c5 {
+  height: 12px;
+  width: 12px;
+  background: url("/img/gear.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    onClick={[Function]}
+    size="large"
+  >
+    <div
+      className="c1"
+      size="large"
+    />
+  </button>
+  <button
+    className="c2"
+    onClick={[Function]}
+    size="default"
+  >
+    <div
+      className="c3"
+      size="default"
+    />
+  </button>
+  <button
+    className="c4"
+    onClick={[Function]}
+    size="small"
+  >
+    <div
+      className="c5"
+      size="small"
+    />
+  </button>
+  <button
+    className="c6"
+    disabled={true}
+    size="large"
+  >
+    <div
+      className="c1"
+      size="large"
+    />
+  </button>
+  <button
+    className="c7"
+    disabled={true}
+    size="default"
+  >
+    <div
+      className="c3"
+      size="default"
+    />
+  </button>
+  <button
+    className="c8"
+    disabled={true}
+    size="small"
+  >
+    <div
+      className="c5"
+      size="small"
+    />
+  </button>
+  <button
+    className="c9"
+    hidden={true}
+    size="large"
+  >
+    <div
+      className="c1"
+      size="large"
+    />
+  </button>
+  <button
+    className="c10"
+    hidden={true}
+    size="default"
+  >
+    <div
+      className="c3"
+      size="default"
+    />
+  </button>
+  <button
+    className="c11"
+    hidden={true}
+    size="small"
+  >
+    <div
+      className="c5"
+      size="small"
+    />
+  </button>
+</div>
+`;
+
+exports[`Storyshots LinkBtn Default 1`] = `
+.c0 {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c0:hover {
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  outline: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c1:hover {
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  outline: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c2:hover {
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  outline: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    onClick={[Function]}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    onClick={[Function]}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    onClick={[Function]}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots LinkBtn Disabled 1`] = `
+.c0 {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c0:hover {
+  color: rgba(255,255,255,0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c0:focus {
+  outline: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c1:hover {
+  color: rgba(255,255,255,0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c1:focus {
+  outline: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c2:hover {
+  color: rgba(255,255,255,0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c2:focus {
+  outline: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    disabled={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    disabled={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    disabled={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots LinkBtn Hidden 1`] = `
+.c0 {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c0:hover {
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  outline: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c1:hover {
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  outline: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
+.c2:hover {
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  outline: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    hidden={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    hidden={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    hidden={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots Primary Button Default 1`] = `
+.c0 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c0:hover:enabled {
+  background: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c1:hover:enabled {
+  background: rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c2:hover:enabled {
+  background: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    onClick={[Function]}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    onClick={[Function]}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    onClick={[Function]}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots Primary Button Disabled 1`] = `
+.c0 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c0:hover:enabled {
+  background: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c1:hover:enabled {
+  background: rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c2:hover:enabled {
+  background: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    disabled={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    disabled={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    disabled={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots Primary Button Hidden 1`] = `
+.c0 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c0:hover:enabled {
+  background: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c1:hover:enabled {
+  background: rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px transparent;
+  outline: none;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c2:hover:enabled {
+  background: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    hidden={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    hidden={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    hidden={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots ProgressBar Empty 1`] = `
+.c0 {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.3);
+}
+
+.c1 {
+  width: 0%;
+  height: 5px;
+  background: #8497e8;
+  -webkit-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+
+<div
+  style={
+    Object {
+      "padding": "3em",
+    }
+  }
+>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      color="#8497e8"
+      value={0}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots ProgressBar Full 1`] = `
+.c0 {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.3);
+}
+
+.c1 {
+  width: 100%;
+  height: 5px;
+  background: #8497e8;
+  -webkit-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+
+<div
+  style={
+    Object {
+      "padding": "3em",
+    }
+  }
+>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      color="#8497e8"
+      value={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots ProgressBar Negative Value 1`] = `
+.c0 {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.3);
+}
+
+.c1 {
+  width: 0%;
+  height: 5px;
+  background: #8497e8;
+  -webkit-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+
+<div
+  style={
+    Object {
+      "padding": "3em",
+    }
+  }
+>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      color="#8497e8"
+      value={0}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots ProgressBar Value 1`] = `
+.c0 {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.3);
+}
+
+.c1 {
+  width: 55%;
+  height: 5px;
+  background: #8497e8;
+  -webkit-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+
+<div
+  style={
+    Object {
+      "padding": "3em",
+    }
+  }
+>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      color="#8497e8"
+      value={55}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots ProgressBar Value Over 100 1`] = `
+.c0 {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.3);
+}
+
+.c1 {
+  width: 100%;
+  height: 5px;
+  background: #8497e8;
+  -webkit-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+
+<div
+  style={
+    Object {
+      "padding": "3em",
+    }
+  }
+>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      color="#8497e8"
+      value={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Secondary Button Default 1`] = `
+.c0 {
+  border: solid 3px rgba(255,255,255,0.7);
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c0:hover:enabled {
+  border: solid 3px rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  background: rgba(255,255,255,0.3);
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: solid 3px rgba(255,255,255,0.7);
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c1:hover:enabled {
+  border: solid 3px rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  background: rgba(255,255,255,0.3);
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px rgba(255,255,255,0.7);
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c2:hover:enabled {
+  border: solid 3px rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  background: rgba(255,255,255,0.3);
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    onClick={[Function]}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    onClick={[Function]}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    onClick={[Function]}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots Secondary Button Disabled 1`] = `
+.c0 {
+  border: solid 3px rgba(255,255,255,0.7);
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c0:hover:enabled {
+  border: solid 3px rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  background: rgba(255,255,255,0.3);
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: solid 3px rgba(255,255,255,0.7);
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c1:hover:enabled {
+  border: solid 3px rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  background: rgba(255,255,255,0.3);
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px rgba(255,255,255,0.7);
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: visible;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.c2:hover:enabled {
+  border: solid 3px rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  background: rgba(255,255,255,0.3);
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    disabled={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    disabled={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    disabled={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Storyshots Secondary Button Hidden 1`] = `
+.c0 {
+  border: solid 3px rgba(255,255,255,0.7);
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c0:hover:enabled {
+  border: solid 3px rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9);
+}
+
+.c0:focus {
+  background: rgba(255,255,255,0.3);
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c1 {
+  border: solid 3px rgba(255,255,255,0.7);
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c1:hover:enabled {
+  border: solid 3px rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9);
+}
+
+.c1:focus {
+  background: rgba(255,255,255,0.3);
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+.c2 {
+  border: solid 3px rgba(255,255,255,0.7);
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 0.5em 1.5em;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.c2:hover:enabled {
+  border: solid 3px rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.9);
+}
+
+.c2:focus {
+  background: rgba(255,255,255,0.3);
+  border: solid 3px rgba(255,255,255,0.9);
+}
+
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "padding": "3em",
+    }
+  }
+>
+  <button
+    className="c0"
+    hidden={true}
+    size="large"
+  >
+    Button
+  </button>
+  <button
+    className="c1"
+    hidden={true}
+    size="default"
+  >
+    Button
+  </button>
+  <button
+    className="c2"
+    hidden={true}
+    size="small"
+  >
+    Button
+  </button>
+</div>
+`;

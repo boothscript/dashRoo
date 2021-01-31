@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 import mojs from '@mojs/core';
 
 // MO.JS ANIMATION
@@ -37,8 +37,13 @@ const lines = new mojs.Burst({
   },
 });
 
-function animatedClickFunction(e, checked, color, disabled, clickFunc) {
-  
+export default function animatedClickFunction(
+  e,
+  checked,
+  color,
+  disabled,
+  clickFunc
+) {
   if (!checked && !disabled) {
     const pos = e.target.getBoundingClientRect();
 
@@ -90,38 +95,6 @@ const checkKeyframes = keyframes`
     }
 `;
 
-const checkAnimation = css`
+export const checkAnimation = css`
   ${checkKeyframes} 0.6s linear;
 `;
-
-const CustomCheckBoxAnimated = styled.input`
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  margin: 0;
-`;
-
-const AnimatedLabel = styled.label`
-  border-radius: 6px;
-  position: absolute;
-  left: 0px;
-  top: 0;
-  height: 30px;
-  width: 30px;
-  background: ${({ theme, disabled }) =>
-    disabled ? theme.white10 : theme.white30};
-
-  cursor: ${(props) => (props.disabled ? 'cursor' : 'pointer')};
-  transition: none;
-  ${CustomCheckBoxAnimated}:checked + & {
-    background: ${(props) => props.color};
-    border: 1px solid ${(props) => props.color};
-    animation: ${(props) => (props.animate ? checkAnimation : null)};
-    transition: background 50ms linear 400ms, border 50ms linear 400ms;
-  }
-`;
-
-export { AnimatedLabel, animatedClickFunction, CustomCheckBoxAnimated };
